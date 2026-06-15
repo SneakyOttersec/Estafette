@@ -1,0 +1,14 @@
+# Per-run scratch and build output
+work/
+dist/
+
+# Local secrets — never commit
+service_account.json
+*.sa.json
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/

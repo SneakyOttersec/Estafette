@@ -1,0 +1,6 @@
+# Blog post URLs — one per line.
+# Lines starting with '#' and blank lines are ignored.
+# Add a URL here and the pipeline will turn the new post into a PDF on its next run.
+#
+# Example:
+# https://example.com/blog/my-first-post
