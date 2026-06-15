@@ -26,8 +26,8 @@ jobs:
     env:
       GDRIVE_SA_KEY: ${{ secrets.GDRIVE_SA_KEY }}
       GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
-      # PDF layout: twocol (dense, Paged-Out) | compact | comfortable
-      PDF_LAYOUT: twocol
+      # PDF layout: compact (smaller single-column) | twocol (Paged-Out) | comfortable
+      PDF_LAYOUT: compact
     steps:
       - name: Checkout
         uses: actions/checkout@v4

@@ -311,7 +311,7 @@ def render_pdf(output: Path) -> None:
     from weasyprint import CSS, HTML
     from weasyprint.text.fonts import FontConfiguration
 
-    layout = os.environ.get("PDF_LAYOUT", "twocol")
+    layout = os.environ.get("PDF_LAYOUT", "compact")
     style = STYLESHEET + LAYOUTS.get(layout, "")
     font_config = FontConfiguration()
     css = CSS(string=font_face_css() + style, font_config=font_config)
