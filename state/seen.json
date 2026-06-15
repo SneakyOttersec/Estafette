@@ -1,1 +1,583 @@
-{}
+{
+  "sources": {
+    "https://0xdf.gitlab.io/": {
+      "feed": "https://0xdf.gitlab.io/feed.xml",
+      "baseline": "2026-06-13T13:45:00+00:00"
+    },
+    "https://rastamouse.me/": {
+      "feed": "https://rastamouse.me/rss/",
+      "baseline": "2026-06-05T12:03:42+00:00"
+    },
+    "https://adsecurity.org/": {
+      "feed": "https://adsecurity.org/?feed=rss2",
+      "baseline": "2026-05-20T00:17:00+00:00"
+    },
+    "https://posts.specterops.io/": {
+      "feed": "https://specterops.io/feed/",
+      "baseline": "2026-06-11T16:00:00+00:00"
+    },
+    "https://blog.xpnsec.com/": {
+      "feed": "https://blog.xpnsec.com/rss.xml",
+      "baseline": "2026-05-09T19:19:16+00:00"
+    },
+    "https://blog.smallsec.ca/": {
+      "feed": "https://blog.smallsec.ca/feed.xml",
+      "baseline": "2024-02-04T00:00:01+00:00"
+    },
+    "https://akijosberryblog.wordpress.com/": {
+      "feed": "https://akijosberryblog.wordpress.com/feed/",
+      "baseline": "2020-11-08T18:29:43+00:00"
+    },
+    "https://shenaniganslabs.io/": {
+      "feed": "https://shenaniganslabs.io/feed.xml",
+      "baseline": "2023-01-25T00:00:00+00:00"
+    },
+    "https://www.harmj0y.net/blog/": {
+      "feed": "https://blog.harmj0y.net/feed/",
+      "baseline": "2021-06-17T14:56:53+00:00"
+    },
+    "https://blog.ropnop.com/": {
+      "feed": "https://blog.ropnop.com/index.xml",
+      "baseline": "2020-10-03T00:00:00+00:00"
+    },
+    "https://krbtgt.pw/": {
+      "feed": "https://krbtgt.pw/rss/",
+      "baseline": "2021-05-20T11:47:34+00:00"
+    },
+    "https://lsdsecdaemon.com/": {
+      "feed": "https://lsdsecdaemon.com/feed.xml",
+      "baseline": "2018-04-14T16:00:00+00:00"
+    },
+    "https://beta.hackndo.com/": {
+      "feed": "https://beta.hackndo.com/feed.xml",
+      "baseline": "2024-05-30T14:25:55+00:00"
+    },
+    "https://decoder.cloud/": {
+      "feed": "https://decoder.cloud/feed/",
+      "baseline": "2026-05-08T08:38:25+00:00"
+    },
+    "https://tyranidslair.blogspot.com/": {
+      "feed": "https://www.tiraniddo.dev/feeds/posts/default",
+      "baseline": "2024-06-04T04:20:00+00:00"
+    },
+    "https://www.atredis.com/blog/": {
+      "feed": "https://www.atredis.com/blog?format=rss",
+      "baseline": "2026-05-16T03:27:39+00:00"
+    },
+    "https://itm4n.github.io/": {
+      "feed": "https://itm4n.github.io/feed.xml",
+      "baseline": "2026-04-01T22:00:00+00:00"
+    },
+    "https://enigma0x3.net/": {
+      "feed": "https://enigma0x3.net/feed/",
+      "baseline": "2023-10-26T16:56:34+00:00"
+    },
+    "https://www.martinvigo.com/": {
+      "feed": "https://www.martinvigo.com/feed/",
+      "baseline": "2020-11-18T18:53:54+00:00"
+    },
+    "https://m0chan.github.io/": {
+      "feed": "https://m0chan.github.io/feed.xml",
+      "baseline": "2019-12-17T00:00:00+00:00"
+    },
+    "https://blog.netspi.com/": {
+      "feed": "https://www.netspi.com/feed/",
+      "baseline": "2026-06-15T17:52:12+00:00"
+    },
+    "https://secret.club/": {
+      "feed": "https://secret.club/feed.xml",
+      "baseline": "2026-05-21T11:00:00+00:00"
+    },
+    "https://adepts.of0x.cc/": {
+      "feed": "https://adepts.of0x.cc/feed.xml",
+      "baseline": "2024-08-13T00:00:00+00:00"
+    },
+    "https://dazzyddos.github.io/": {
+      "feed": "https://dazzyddos.github.io/feed.xml",
+      "baseline": "2024-08-11T00:15:00+00:00"
+    },
+    "https://googleprojectzero.blogspot.com/": {
+      "feed": "https://projectzero.google/feed.xml",
+      "baseline": "2026-05-13T07:00:00+00:00"
+    },
+    "https://www.ctus.io/": {
+      "feed": "https://thecontractor.io/rss/",
+      "baseline": "2026-05-26T14:52:52+00:00"
+    },
+    "https://jlajara.gitlab.io/": {
+      "feed": "https://jlajara.gitlab.io/feed.xml",
+      "baseline": "2022-06-02T22:00:00+00:00"
+    },
+    "https://amonsec.net/posts/": {
+      "feed": "https://amonsec.net/posts/index.xml",
+      "baseline": "2022-09-02T00:00:00+00:00"
+    },
+    "https://tij.me/": {
+      "feed": "https://tij.me/feeds/atom.xml",
+      "baseline": "2023-06-07T00:00:00+00:00"
+    },
+    "https://labs.watchtowr.com/": {
+      "feed": "https://labs.watchtowr.com/rss/",
+      "baseline": "2026-06-12T20:35:13+00:00"
+    },
+    "https://blog.badsectorlabs.com/": {
+      "feed": "https://blog.badsectorlabs.com/feeds/all.atom.xml",
+      "baseline": "2026-04-07T03:59:00+00:00"
+    },
+    "https://badoption.eu/blogs/": {
+      "feed": "https://badoption.eu/feed.xml",
+      "baseline": "2026-02-28T08:40:17+00:00"
+    },
+    "https://elliotonsecurity.com/": {
+      "feed": "https://elliotonsecurity.com/rss.xml",
+      "baseline": "2023-12-06T00:00:00+00:00"
+    },
+    "https://code-white.com/blog/": {
+      "feed": "https://code-white.com/index.xml",
+      "baseline": "2026-03-25T00:00:00+00:00"
+    },
+    "https://dirkjanm.io/": {
+      "feed": "https://dirkjanm.io/feed.xml",
+      "baseline": "2025-09-17T13:00:57+00:00"
+    },
+    "https://kyjonin.blogspot.com/": {
+      "feed": "https://kyjonin.blogspot.com/feeds/posts/default",
+      "baseline": "2026-01-05T10:46:00+00:00"
+    },
+    "https://blog.p1.gs/": {
+      "feed": "https://blog.p1.gs/atom.xml",
+      "baseline": "2025-07-06T00:00:00+00:00"
+    },
+    "https://www.elttam.com/blog/": {
+      "feed": "https://www.elttam.com/blog/rss.xml",
+      "baseline": "2026-06-10T03:21:26+00:00"
+    },
+    "https://www.wietzebeukema.nl/blog/": {
+      "feed": "https://www.wietzebeukema.nl/blog/feed.xml",
+      "baseline": "2026-02-12T00:00:00+00:00"
+    },
+    "https://blog.trailofbits.com/": {
+      "feed": "https://blog.trailofbits.com/index.xml",
+      "baseline": "2026-06-12T11:00:00+00:00"
+    },
+    "https://www.trustedsec.com/blog/": {
+      "feed": "https://trustedsec.com/feed.rss",
+      "baseline": "2026-06-12T04:00:00+00:00"
+    },
+    "https://www.outflank.nl/blog/": {
+      "feed": "https://www.outflank.nl/blog/feed/"
+    },
+    "https://s3cur3th1ssh1t.github.io/": {
+      "feed": "https://s3cur3th1ssh1t.github.io/feed.xml",
+      "baseline": "2025-07-08T00:00:00+00:00"
+    },
+    "https://bohops.com/": {
+      "feed": "https://bohops.com/feed/",
+      "baseline": "2023-11-27T12:51:30+00:00"
+    },
+    "https://www.praetorian.com/blog/": {
+      "feed": "https://www.praetorian.com/feed/",
+      "baseline": "2026-06-09T19:14:27+00:00"
+    },
+    "https://mez0.cc/": {
+      "feed": "https://mez0.cc/rss.xml",
+      "baseline": "2026-05-19T00:00:00+00:00"
+    },
+    "https://pre.empt.blog/": {
+      "feed": "https://pre.empt.blog/rss.xml",
+      "baseline": "2025-06-16T00:00:00+00:00"
+    },
+    "https://www.blackhillsinfosec.com/blog/": {
+      "feed": "https://www.blackhillsinfosec.com/blog/feed/",
+      "baseline": "2026-06-10T14:00:00+00:00"
+    },
+    "https://rhinosecuritylabs.com/blog/": {
+      "feed": "https://rhinosecuritylabs.com/blog/feed/",
+      "baseline": "2025-08-27T17:03:12+00:00"
+    },
+    "https://blog.orange.tw/": {
+      "feed": "https://blog.orange.tw/atom.xml",
+      "baseline": "2025-08-27T03:00:00+00:00"
+    },
+    "https://devco.re/blog/": {
+      "feed": "https://devco.re/rss",
+      "baseline": "2025-12-29T16:00:00+00:00"
+    },
+    "https://j00ru.vexillium.org/": {
+      "feed": "https://j00ru.vexillium.org/feed/",
+      "baseline": "2018-07-18T11:23:25+00:00"
+    },
+    "https://www.hexacorn.com/blog/": {
+      "feed": "https://www.hexacorn.com/blog/feed/",
+      "baseline": "2026-06-07T00:41:46+00:00"
+    },
+    "https://blog.deeb.ch/": {
+      "feed": "https://blog.deeb.ch/feed.xml",
+      "baseline": "2026-04-24T07:31:16+00:00"
+    },
+    "https://0xrick.github.io/": {
+      "feed": "https://0xrick.github.io/feed.xml",
+      "baseline": "2021-10-29T01:00:00+00:00"
+    },
+    "https://tldrsec.com/": {
+      "feed": "https://rss.beehiiv.com/feeds/xgTKUmMmUm.xml",
+      "baseline": "2026-06-11T14:30:00+00:00"
+    }
+  },
+  "posts": {
+    "https://0xdf.gitlab.io/2026/06/13/htb-variatype.html": {
+      "title": "HTB: VariaType",
+      "slug": "htb-variatypehtml",
+      "date_processed": "2026-06-15",
+      "source": "https://0xdf.gitlab.io/"
+    },
+    "https://rastamouse.me/bof-cocktails-in-cobalt-strike/": {
+      "title": "BOF Cocktails in Cobalt Strike",
+      "slug": "bof-cocktails-in-cobalt-strike",
+      "date_processed": "2026-06-15",
+      "source": "https://rastamouse.me/"
+    },
+    "https://adsecurity.org/?p=5061": {
+      "title": "AD Fundamentals: Group Policy Permissions & Owner Rights",
+      "slug": "adsecurityorg",
+      "date_processed": "2026-06-15",
+      "source": "https://adsecurity.org/"
+    },
+    "https://specterops.io/blog/2026/06/11/building-an-indirect-prompt-injection-workflow/": {
+      "title": "Building an Indirect Prompt Injection Workflow",
+      "slug": "building-an-indirect-prompt-injection-workflow",
+      "date_processed": "2026-06-15",
+      "source": "https://posts.specterops.io/"
+    },
+    "https://blog.xpnsec.com/accidental-c2/": {
+      "title": "The Accidental C2 - Exploring Dev Tunnels for Remote Access",
+      "slug": "accidental-c2",
+      "date_processed": "2026-06-15",
+      "source": "https://blog.xpnsec.com/"
+    },
+    "https://blog.smallsec.ca/openai-markdown-output/": {
+      "title": "Better Markdown Output with OpenAI",
+      "slug": "openai-markdown-output",
+      "date_processed": "2026-06-15",
+      "source": "https://blog.smallsec.ca/"
+    },
+    "https://akijosberryblog.wordpress.com/2020/11/08/yantra-manav-a-wormable-ssh-bot/": {
+      "title": "Yantra Manav – A wormable SSH bot",
+      "slug": "yantra-manav-a-wormable-ssh-bot",
+      "date_processed": "2026-06-15",
+      "source": "https://akijosberryblog.wordpress.com/"
+    },
+    "https://shenaniganslabs.io/2023/01/25/RODCs.html": {
+      "title": "At the Edge of Tier Zero: The Curious Case of the RODC",
+      "slug": "rodcshtml",
+      "date_processed": "2026-06-15",
+      "source": "https://shenaniganslabs.io/"
+    },
+    "https://blog.harmj0y.net/activedirectory/certified-pre-owned/": {
+      "title": "Certified Pre-Owned",
+      "slug": "certified-pre-owned",
+      "date_processed": "2026-06-15",
+      "source": "https://www.harmj0y.net/blog/"
+    },
+    "https://blog.ropnop.com/storing-tokens-in-browser/": {
+      "title": "How to Store Session Tokens in a Browser (and the impacts of each)",
+      "slug": "storing-tokens-in-browser",
+      "date_processed": "2026-06-15",
+      "source": "https://blog.ropnop.com/"
+    },
+    "https://krbtgt.pw/lepide-adss-rce/": {
+      "title": "(0Day) Lepide AD Self-Service - forced browsing to RCE",
+      "slug": "lepide-adss-rce",
+      "date_processed": "2026-06-15",
+      "source": "https://krbtgt.pw/"
+    },
+    "http://lsdsecdaemon.com/highway-to-serv": {
+      "title": "Lsd Security Daemon",
+      "slug": "highway-to-serv",
+      "date_processed": "2026-06-15",
+      "source": "https://lsdsecdaemon.com/"
+    },
+    "https://beta.hackndo.com/password-spraying-lockout/": {
+      "title": "Spray passwords, avoid lockouts",
+      "slug": "password-spraying-lockout",
+      "date_processed": "2026-06-15",
+      "source": "https://beta.hackndo.com/"
+    },
+    "https://decoder.cloud/2026/05/08/oh-myaudi/": {
+      "title": "Oh MyAudi!",
+      "slug": "oh-myaudi",
+      "date_processed": "2026-06-15",
+      "source": "https://decoder.cloud/"
+    },
+    "https://www.tiraniddo.dev/2024/06/working-your-way-around-acl.html": {
+      "title": "Working your way Around an ACL",
+      "slug": "working-your-way-around-aclhtml",
+      "date_processed": "2026-06-15",
+      "source": "https://tyranidslair.blogspot.com/"
+    },
+    "https://www.atredis.com/blog/2026/5/15/bad-news-for-the-average-pentester": {
+      "title": "Bad News for the Average Pentester — Atredis Partners",
+      "slug": "bad-news-for-the-average-pentester",
+      "date_processed": "2026-06-15",
+      "source": "https://www.atredis.com/blog/"
+    },
+    "https://itm4n.github.io/bitlocker-little-secrets-the-undocumented-fve-api/": {
+      "title": "BitLocker’s Little Secrets: The Undocumented FVE API",
+      "slug": "bitlocker-little-secrets-the-undocumented-fve-api",
+      "date_processed": "2026-06-15",
+      "source": "https://itm4n.github.io/"
+    },
+    "https://enigma0x3.net/2023/10/26/cve-2023-4632-local-privilege-escalation-in-lenovo-system-updater/": {
+      "title": "CVE-2023-4632: Local Privilege Escalation in Lenovo System Updater",
+      "slug": "cve-2023-4632-local-privilege-escalation-in-lenovo-system-updater",
+      "date_processed": "2026-06-15",
+      "source": "https://enigma0x3.net/"
+    },
+    "https://www.martinvigo.com/phonerator-an-advanced-valid-phone-number-generator/": {
+      "title": "Phonerator - An advanced valid phone number generator - Martin Vigo",
+      "slug": "phonerator-an-advanced-valid-phone-number-generator",
+      "date_processed": "2026-06-15",
+      "source": "https://www.martinvigo.com/"
+    },
+    "http://blog.m0chan.co.uk/2019/12/17/Bug-Bounty-Cheetsheet.html": {
+      "title": "Bug Bounty Cheatsheet",
+      "slug": "bug-bounty-cheetsheethtml",
+      "date_processed": "2026-06-15",
+      "source": "https://m0chan.github.io/"
+    },
+    "https://www.netspi.com/blog/executive-blog/critical-vulnerability/cve-2026-20253-splunk-enterprise-overview-and-takeaways/": {
+      "title": "Splunk Enterprise Unauthenticated Arbitrary File Operations/RCE (CVE-2026-20253): Overview and Takeaways",
+      "slug": "cve-2026-20253-splunk-enterprise-overview-and-takeaways",
+      "date_processed": "2026-06-15",
+      "source": "https://blog.netspi.com/"
+    },
+    "https://secret.club/2026/05/21/striga.html": {
+      "title": "Striga: Lifting x86 to LLVM IR with Python",
+      "slug": "strigahtml",
+      "date_processed": "2026-06-15",
+      "source": "https://secret.club/"
+    },
+    "https://adepts.of0x.cc/CSS-History-LEAKS/": {
+      "title": "Mixing watering hole attacks with history leak via CSS |",
+      "slug": "css-history-leaks",
+      "date_processed": "2026-06-15",
+      "source": "https://adepts.of0x.cc/"
+    },
+    "https://dazzyddos.github.io/posts/Abusing_Exclusions_To_Evade_Detection/": {
+      "title": "Abusing Exclusions To Evade Detection",
+      "slug": "abusing_exclusions_to_evade_detection",
+      "date_processed": "2026-06-15",
+      "source": "https://dazzyddos.github.io/"
+    },
+    "https://projectzero.google/2026/05/pixel-10-exploit.html": {
+      "title": "A 0-click exploit chain for the Pixel 10: When a Door Closes, a Window Opens",
+      "slug": "pixel-10-exploithtml",
+      "date_processed": "2026-06-15",
+      "source": "https://googleprojectzero.blogspot.com/"
+    },
+    "https://thecontractor.io/cve-2026-34910/": {
+      "title": "CVE-2026-34910",
+      "slug": "cve-2026-34910",
+      "date_processed": "2026-06-15",
+      "source": "https://www.ctus.io/"
+    },
+    "https://jlajara.gitlab.io/Javascript_Hoisting_in_XSS_Scenarios": {
+      "title": "Jorge Lajara Website",
+      "slug": "javascript_hoisting_in_xss_scenarios",
+      "date_processed": "2026-06-15",
+      "source": "https://jlajara.gitlab.io/"
+    },
+    "https://amonsec.net/posts/2022/09/0000000d/": {
+      "title": "Windows Kernel Introspection (WKI)",
+      "slug": "0000000d",
+      "date_processed": "2026-06-15",
+      "source": "https://amonsec.net/posts/"
+    },
+    "https://tij.me/blog/finding-and-utilising-leaked-code-signing-certificates/": {
+      "title": "Finding and utilising leaked code signing certificates",
+      "slug": "finding-and-utilising-leaked-code-signing-certificates",
+      "date_processed": "2026-06-15",
+      "source": "https://tij.me/"
+    },
+    "https://labs.watchtowr.com/why-use-app-level-auth-when-every-database-has-auth-splunk-enterprise-cve-2026-20253-pre-auth-rce/": {
+      "title": "Why Use App-Level Auth When Every Database Has Auth? (Splunk Enterprise CVE-2026-20253 Pre-Auth RCE)",
+      "slug": "why-use-app-level-auth-when-every-database-has-auth-splunk-enterprise-cve-2026-20253-pre-auth-rce",
+      "date_processed": "2026-06-15",
+      "source": "https://labs.watchtowr.com/"
+    },
+    "https://blog.badsectorlabs.com/taking-a-break-2026-04-06.html": {
+      "title": "Taking a Break - 2026-04-06",
+      "slug": "taking-a-break-2026-04-06html",
+      "date_processed": "2026-06-15",
+      "source": "https://blog.badsectorlabs.com/"
+    },
+    "https://badoption.eu/blog/2026/02/28/panic.html": {
+      "title": "Webbrowsers are a complex piece of software",
+      "slug": "panichtml",
+      "date_processed": "2026-06-15",
+      "source": "https://badoption.eu/blogs/"
+    },
+    "https://elliotonsecurity.com/what-is-loader-lock/": {
+      "title": "Elliot on Security - What is Loader Lock?",
+      "slug": "what-is-loader-lock",
+      "date_processed": "2026-06-15",
+      "source": "https://elliotonsecurity.com/"
+    },
+    "https://code-white.com/public-vulnerability-list/#cryptographic-oracle-to-partial-authentication-bypass-in-smartermail": {
+      "title": "CODE WHITE | Public Vulnerability List",
+      "slug": "public-vulnerability-list",
+      "date_processed": "2026-06-15",
+      "source": "https://code-white.com/blog/"
+    },
+    "https://dirkjanm.io/obtaining-global-admin-in-every-entra-id-tenant-with-actor-tokens/": {
+      "title": "One Token to rule them all - obtaining Global Admin in every Entra ID tenant via Actor tokens",
+      "slug": "obtaining-global-admin-in-every-entra-id-tenant-with-actor-tokens",
+      "date_processed": "2026-06-15",
+      "source": "https://dirkjanm.io/"
+    },
+    "https://kyjonin.blogspot.com/2026/01/extra-credits-i-com-objects-attacks.html": {
+      "title": "Extra Credits I: COM Objects Attacking & Detecting",
+      "slug": "extra-credits-i-com-objects-attackshtml",
+      "date_processed": "2026-06-15",
+      "source": "https://kyjonin.blogspot.com/"
+    },
+    "https://blog.p1.gs/writeup/2025/07/06/Hacking-a-crypto-game/": {
+      "title": "Exploiting an ORM Injection to Steal Cryptocurrency from an Online Shooter",
+      "slug": "hacking-a-crypto-game",
+      "date_processed": "2026-06-15",
+      "source": "https://blog.p1.gs/"
+    },
+    "https://www.elttam.com/blog/jupyter-enterprise-gateway": {
+      "title": "Jupyter Enterprise Gateway - From Notebook to Kubernetes Cluster Admin - elttam",
+      "slug": "jupyter-enterprise-gateway",
+      "date_processed": "2026-06-15",
+      "source": "https://www.elttam.com/blog/"
+    },
+    "https://www.wietzebeukema.nl/blog/trust-me-im-a-shortcut": {
+      "title": "Trust Me, I’m a Shortcut",
+      "slug": "trust-me-im-a-shortcut",
+      "date_processed": "2026-06-15",
+      "source": "https://www.wietzebeukema.nl/blog/"
+    },
+    "https://blog.trailofbits.com/2026/06/12/factoring-short-sleeve-rsa-keys-with-polynomials/": {
+      "title": "Factoring \"short-sleeve\" RSA keys with polynomials",
+      "slug": "factoring-short-sleeve-rsa-keys-with-polynomials",
+      "date_processed": "2026-06-15",
+      "source": "https://blog.trailofbits.com/"
+    },
+    "https://trustedsec.com/blog/js-tap-v3-endpoint-post-exploitation-with-javascript-implants": {
+      "title": "JS-Tap v3: Endpoint Post-Exploitation With JavaScript Implants",
+      "slug": "js-tap-v3-endpoint-post-exploitation-with-javascript-implants",
+      "date_processed": "2026-06-15",
+      "source": "https://www.trustedsec.com/blog/"
+    },
+    "https://s3cur3th1ssh1t.github.io/Revisiting_Cross_Session_Activation_Attacks/": {
+      "title": "Revisiting Cross Session Activation Attacks",
+      "slug": "revisiting_cross_session_activation_attacks",
+      "date_processed": "2026-06-15",
+      "source": "https://s3cur3th1ssh1t.github.io/"
+    },
+    "https://bohops.com/2023/11/27/abusing-net-core-clr-diagnostic-features-cve-2023-33127/": {
+      "title": "Abusing .NET Core CLR Diagnostic Features (+ CVE-2023-33127)",
+      "slug": "abusing-net-core-clr-diagnostic-features-cve-2023-33127",
+      "date_processed": "2026-06-15",
+      "source": "https://bohops.com/"
+    },
+    "https://www.praetorian.com/blog/virtualized-loader-centurion/": {
+      "title": "Centurion: Bring Your Own Execution Environment",
+      "slug": "virtualized-loader-centurion",
+      "date_processed": "2026-06-15",
+      "source": "https://www.praetorian.com/blog/"
+    },
+    "https://mez0.cc/posts/cdst-agentic-workflows": {
+      "title": "Coverage-Driven Sustained Testing (CDST): Agentic Workflows",
+      "slug": "cdst-agentic-workflows",
+      "date_processed": "2026-06-15",
+      "source": "https://mez0.cc/"
+    },
+    "https://pre.empt.blog/posts/static-data-exploration/": {
+      "title": "Static Data Exploration of Malware and Goodware Samples",
+      "slug": "static-data-exploration",
+      "date_processed": "2026-06-15",
+      "source": "https://pre.empt.blog/"
+    },
+    "https://www.blackhillsinfosec.com/the-art-of-the-badge/": {
+      "title": "The Art of the Badge: A Hard Truth About Physical Security - Black Hills Information Security, Inc.",
+      "slug": "the-art-of-the-badge",
+      "date_processed": "2026-06-15",
+      "source": "https://www.blackhillsinfosec.com/blog/"
+    },
+    "https://rhinosecuritylabs.com/research/referral-beware-your-rewards-are-mine-part-1/": {
+      "title": "Referral Beware, Your Rewards are Mine (Part 1)",
+      "slug": "referral-beware-your-rewards-are-mine-part-1",
+      "date_processed": "2026-06-15",
+      "source": "https://rhinosecuritylabs.com/blog/"
+    },
+    "https://portswigger.net/research": {
+      "title": "Web Security Research Papers - PortSwigger Research",
+      "slug": "research",
+      "date_processed": "2026-06-15",
+      "source": "https://portswigger.net/research"
+    },
+    "https://blog.orange.tw/posts/2025-08-the-art-of-php-ch/": {
+      "title": "(繁中) The Art of PHP — My CTF Journey and Untold Stories!",
+      "slug": "2025-08-the-art-of-php-ch",
+      "date_processed": "2026-06-15",
+      "source": "https://blog.orange.tw/"
+    },
+    "https://devco.re/blog/2025/12/30/9th-internship-program-recruit/": {
+      "title": "DEVCORE 2026 第九屆實習生計畫 | DEVCORE 戴夫寇爾",
+      "slug": "9th-internship-program-recruit",
+      "date_processed": "2026-06-15",
+      "source": "https://devco.re/blog/"
+    },
+    "https://j00ru.vexillium.org/2018/07/exploiting-a-windows-10-pagedpool-off-by-one/": {
+      "title": "Exploiting a Windows 10 PagedPool off-by-one overflow (WCTF 2018)",
+      "slug": "exploiting-a-windows-10-pagedpool-off-by-one",
+      "date_processed": "2026-06-15",
+      "source": "https://j00ru.vexillium.org/"
+    },
+    "https://www.hexacorn.com/blog/2026/06/07/little-secret-of-msconfig-exe/": {
+      "title": "little secret of msconfig.exe",
+      "slug": "little-secret-of-msconfig-exe",
+      "date_processed": "2026-06-15",
+      "source": "https://www.hexacorn.com/blog/"
+    },
+    "https://blog.deeb.ch/posts/defender-introspection/": {
+      "title": "Defender Introspection",
+      "slug": "defender-introspection",
+      "date_processed": "2026-06-15",
+      "source": "https://blog.deeb.ch/"
+    },
+    "https://0xrick.github.io/win-internals/pe8/": {
+      "title": "A dive into the PE file format - LAB 1: Writing a PE Parser",
+      "slug": "pe8",
+      "date_processed": "2026-06-15",
+      "source": "https://0xrick.github.io/"
+    },
+    "https://tldrsec.com/p/tldr-sec-332": {
+      "title": "[tl;dr sec] #332 - I've Joined OpenAI, fwd:cloudsec, AWS Well Architected Supply Chain Security",
+      "slug": "tldr-sec-332",
+      "date_processed": "2026-06-15",
+      "source": "https://tldrsec.com/"
+    },
+    "https://www.arneswinnen.net/2017/06/authentication-bypass-on-ubers-sso-via-subdomain-takeover/": {
+      "title": "Authentication bypass on Uber’s Single Sign-On via subdomain takeover",
+      "slug": "authentication-bypass-on-ubers-sso-via-subdomain-takeover",
+      "date_processed": "2026-06-15",
+      "source": "https://www.arneswinnen.net/2017/06/authentication-bypass-on-ubers-sso-via-subdomain-takeover/"
+    },
+    "https://samy.pl/poisontap/": {
+      "title": "samy kamkar: PoisonTap",
+      "slug": "poisontap",
+      "date_processed": "2026-06-15",
+      "source": "https://samy.pl/poisontap/"
+    },
+    "https://github.com/OmerYa/Invisi-Shell": {
+      "title": "GitHub - OmerYa/Invisi-Shell: Hide your Powershell script in plain sight. Bypass all Powershell security features",
+      "slug": "invisi-shell",
+      "date_processed": "2026-06-15",
+      "source": "https://github.com/OmerYa/Invisi-Shell"
+    }
+  }
+}
