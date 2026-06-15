@@ -19,7 +19,7 @@ import sys
 from html import escape
 from pathlib import Path
 
-from common import DIST_DIR, ROOT, WORK_DIR, use_utf8_stdout
+from common import DIST_DIR, ROOT, TAG_DISPLAY, WORK_DIR, use_utf8_stdout
 
 FONTS_DIR = ROOT / "fonts"
 MANIFEST_FILE = WORK_DIR / "manifest.json"
@@ -124,6 +124,8 @@ em, i { font-style: italic; }
                 border-top: 0.4pt solid #222; border-bottom: 0.4pt solid #222;
                 width: 80%; }
 .cover .date { font-size: 12pt; color: #222; }
+.cover .subtags { font-size: 10pt; font-style: italic; color: #555;
+                  margin: 7mm auto 0; width: 80%; }
 
 /* Table of contents — LaTeX \\tableofcontents */
 .toc { page-break-after: always; }
@@ -148,6 +150,9 @@ body { counter-reset: sec; }
 .chapter-head h1::before { content: counter(sec) "\\2003"; }
 .source { font-size: 8.5pt; font-style: italic; color: #666; margin: 0;
           text-indent: 0; word-break: break-all; }
+.tags { font-size: 8.5pt; color: #444; margin: 1.5mm 0 0; text-indent: 0;
+        letter-spacing: 0.3px; }
+.tags .main { font-weight: 700; }
 
 /* Body headings -> LaTeX \\subsection / \\subsubsection (numbered within post) */
 h2, h3, h4, h5, h6 { font-weight: 700; text-indent: 0; break-after: avoid;
@@ -217,9 +222,11 @@ def md_to_fragment(markdown: str) -> str:
     return result.stdout
 
 
-def build_html(manifest: list[dict], run_date: str) -> str:
+def build_html(manifest: list[dict], run_date: str, tag_slug: str) -> str:
+    tag_name = TAG_DISPLAY.get(tag_slug, tag_slug.replace("-", " ").title())
     chapters: list[str] = []
     toc_items: list[str] = []
+    all_subs: list[str] = []
     for i, post in enumerate(manifest, start=1):
         slug = post["slug"]
         pid = f"post-{i}"
@@ -227,25 +234,43 @@ def build_html(manifest: list[dict], run_date: str) -> str:
         fragment = md_to_fragment(reroot_images(normalize_markdown(markdown), slug))
         title = escape(post["title"])
         url = escape(post["url"])
+        subs = post.get("subs", [])
+        all_subs.extend(subs)
+        tag_bits = f'<span class="main">{escape(tag_name)}</span>'
+        if subs:
+            tag_bits += " · " + " · ".join(escape(s) for s in subs)
         chapters.append(
             f'<section class="chapter" id="{pid}">'
             f'<div class="chapter-head"><h1>{title}</h1>'
-            f'<p class="source">{url}</p></div>\n{fragment}\n</section>'
+            f'<p class="source">{url}</p>'
+            f'<p class="tags">{tag_bits}</p></div>\n{fragment}\n</section>'
         )
         toc_items.append(f'<li><a href="#{pid}">{title}</a></li>')
 
+    # Distinct sub-tags across this tag's posts, shown on the cover.
+    seen, distinct_subs = set(), []
+    for s in all_subs:
+        if s not in seen:
+            seen.add(s)
+            distinct_subs.append(s)
+    subtags_line = (
+        f'<div class="subtags">{escape(" · ".join(distinct_subs))}</div>'
+        if distinct_subs else ""
+    )
+
     cover = (
         '<section class="cover">'
-        '<div class="kicker">Reading Compilation</div>'
-        '<div class="title">Blog Posts</div>'
-        f'<div class="date">{run_date}</div></section>'
+        '<div class="kicker">Security Reading</div>'
+        f'<div class="title">{escape(tag_name)}</div>'
+        f'<div class="date">{run_date}</div>'
+        f"{subtags_line}</section>"
     )
     toc = (
         '<nav class="toc"><h2>Contents</h2><ol>' + "".join(toc_items) + "</ol></nav>"
     )
     return (
         '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
-        f"<title>Blog Posts — {run_date}</title></head><body>"
+        f"<title>{escape(tag_name)} — {run_date}</title></head><body>"
         f"{cover}{toc}{''.join(chapters)}</body></html>"
     )
 
@@ -270,6 +295,15 @@ def set_github_output(name: str, value: str) -> None:
             fh.write(f"{name}={value}\n")
 
 
+def group_by_tag(manifest: list[dict]) -> dict[str, list[dict]]:
+    groups: dict[str, list[dict]] = {}
+    for post in manifest:
+        groups.setdefault(post.get("tag") or "general", []).append(post)
+    # Order: the known main tags first (in TAG_DISPLAY order), then any others.
+    ordered = list(TAG_DISPLAY) + [t for t in groups if t not in TAG_DISPLAY]
+    return {t: groups[t] for t in ordered if t in groups}
+
+
 def main() -> None:
     use_utf8_stdout()
     manifest = load_manifest()
@@ -279,18 +313,24 @@ def main() -> None:
 
     run_date = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
     WORK_DIR.mkdir(parents=True, exist_ok=True)
+    DIST_DIR.mkdir(parents=True, exist_ok=True)
 
+    built: list[str] = []
     try:
-        MASTER_HTML.write_text(build_html(manifest, run_date), encoding="utf-8")
-        DIST_DIR.mkdir(parents=True, exist_ok=True)
-        output = DIST_DIR / f"{run_date}.pdf"
-        render_pdf(output)
+        for tag_slug, posts in group_by_tag(manifest).items():
+            MASTER_HTML.write_text(
+                build_html(posts, run_date, tag_slug), encoding="utf-8"
+            )
+            output = DIST_DIR / f"{run_date}-{tag_slug}.pdf"
+            render_pdf(output)
+            built.append(str(output))
+            print(f"Built {tag_slug} PDF with {len(posts)} post(s): {output}")
     except (subprocess.CalledProcessError, FileNotFoundError) as exc:
         print(f"PDF build failed: {exc}", file=sys.stderr)
         sys.exit(1)
 
-    set_github_output("pdf_path", str(output))
-    print(f"Built PDF with {len(manifest)} post(s): {output}")
+    set_github_output("pdf_count", str(len(built)))
+    print(f"\nBuilt {len(built)} tag PDF(s) from {len(manifest)} post(s).")
 
 
 if __name__ == "__main__":

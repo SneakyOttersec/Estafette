@@ -210,6 +210,8 @@ def main() -> None:
         if meta is None:
             # Do not record failures — retry on the next run.
             continue
+        meta["tag"] = cand.get("tag", "general")
+        meta["subs"] = cand.get("subs", [])
         manifest.append(meta)
         state["posts"][url] = {
             "title": meta["title"],

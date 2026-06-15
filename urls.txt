@@ -1,85 +1,87 @@
 # Blog sources — one per line. Blank lines and lines starting with '#' are ignored.
 #
-# Each line is either a blog home/section page (its RSS/Atom feed is
-# auto-discovered) or a single post URL (that one article is rendered).
+# Grammar (fields after the URL are optional, '|'-separated, order-free):
+#   <url> | feed=<feed-url> | tag=<main-tag> | sub=<comma,separated,subtags>
 #
-# To pin a specific feed (skip auto-discovery), append "| <feed-url>":
-#   https://example.com/  | https://example.com/blog/feed/
+#   tag = one of: red-team | pentest | ctf | research | general
+#         -> the pipeline builds ONE PDF per main tag, with the tag shown inside.
+#   feed = pin a specific feed (skip auto-discovery).
+#   sub  = free-form topic tags (web, cloud, azure, ad, evasion, ...).
 #
-# Grouped by a feed-discovery probe run on 2026-06-15.
+# A line is a blog home/section page (feed auto-discovered) or a single post URL.
+# Classified by a content probe on 2026-06-15.
 
 # ============================================================
 #  FEED SOURCES — RSS/Atom feed auto-discovered (40)
 # ============================================================
-https://0xdf.gitlab.io/
-https://rastamouse.me/
-https://adsecurity.org/
-https://posts.specterops.io/  | https://specterops.io/feed/
-https://blog.xpnsec.com/
-https://blog.smallsec.ca/
-https://akijosberryblog.wordpress.com/
-https://shenaniganslabs.io/
-https://www.harmj0y.net/blog/
-https://blog.ropnop.com/
-https://krbtgt.pw/
-https://lsdsecdaemon.com/
-https://beta.hackndo.com/
-https://decoder.cloud/
-https://tyranidslair.blogspot.com/
-https://www.atredis.com/blog/
-https://itm4n.github.io/
-https://enigma0x3.net/
-https://www.martinvigo.com/
-https://m0chan.github.io/
-https://blog.netspi.com/
-https://secret.club/
-https://adepts.of0x.cc/
-https://dazzyddos.github.io/
-https://googleprojectzero.blogspot.com/
-https://www.ctus.io/
-https://jlajara.gitlab.io/
-https://amonsec.net/posts/
-https://tij.me/
-https://labs.watchtowr.com/
-https://blog.badsectorlabs.com/
-https://badoption.eu/blogs/
-https://elliotonsecurity.com/
-https://code-white.com/blog/
-https://dirkjanm.io/
-https://kyjonin.blogspot.com/
-https://blog.p1.gs/
-https://www.elttam.com/blog/
-https://www.wietzebeukema.nl/blog/
-https://blog.trailofbits.com/
+https://0xdf.gitlab.io/ | tag=ctf | sub=htb,web,ad,privesc
+https://rastamouse.me/ | tag=red-team | sub=c2,cobalt-strike,evasion,maldev
+https://adsecurity.org/ | tag=red-team | sub=ad,kerberos,windows
+https://posts.specterops.io/ | feed=https://specterops.io/feed/ | tag=red-team | sub=ad,bloodhound,azure,c2
+https://blog.xpnsec.com/ | tag=red-team | sub=evasion,edr,c2,macos
+https://blog.smallsec.ca/ | tag=general | sub=tooling,ai,automation
+https://akijosberryblog.wordpress.com/ | tag=red-team | sub=maldev,linux
+https://shenaniganslabs.io/ | tag=red-team | sub=ad,kerberos
+https://www.harmj0y.net/blog/ | tag=red-team | sub=ad,kerberos,bloodhound
+https://blog.ropnop.com/ | tag=pentest | sub=tooling,cloud,containers,windows
+https://krbtgt.pw/ | tag=red-team | sub=ad,kerberos
+https://lsdsecdaemon.com/ | tag=pentest | sub=wireless,wifi,network
+https://beta.hackndo.com/ | tag=red-team | sub=ad,kerberos,windows
+https://decoder.cloud/ | tag=pentest | sub=windows,privesc
+https://tyranidslair.blogspot.com/ | tag=research | sub=windows,com,reversing,privesc
+https://www.atredis.com/blog/ | tag=research | sub=hardware,web,embedded
+https://itm4n.github.io/ | tag=pentest | sub=windows,privesc,exploit-dev
+https://enigma0x3.net/ | tag=red-team | sub=windows,evasion,privesc
+https://www.martinvigo.com/ | tag=pentest | sub=mobile,osint,web
+https://m0chan.github.io/ | tag=red-team | sub=ad,windows,web
+https://blog.netspi.com/ | tag=pentest | sub=cloud,azure,web,ad
+https://secret.club/ | tag=research | sub=reversing,exploit-dev,anti-cheat
+https://adepts.of0x.cc/ | tag=red-team | sub=maldev,evasion,windows
+https://dazzyddos.github.io/ | tag=red-team | sub=evasion,edr,amsi,maldev,windows
+https://googleprojectzero.blogspot.com/ | tag=research | sub=exploit-dev,browser,mobile,fuzzing
+https://www.ctus.io/ | tag=pentest | sub=cve,web,network
+https://jlajara.gitlab.io/ | tag=pentest | sub=web,xss,bug-bounty
+https://amonsec.net/posts/ | tag=research | sub=windows,exploit-dev,maldev,evasion
+https://tij.me/ | tag=red-team | sub=web,tooling,evasion
+https://labs.watchtowr.com/ | tag=research | sub=web,exploit-dev,n-day
+https://blog.badsectorlabs.com/ | tag=general | sub=news,red-team,tooling
+https://badoption.eu/blogs/ | tag=red-team | sub=cloud,azure,web
+https://elliotonsecurity.com/ | tag=research | sub=windows,exploit-dev,reversing
+https://code-white.com/blog/ | tag=research | sub=java,deserialization,exploit-dev,ad
+https://dirkjanm.io/ | tag=red-team | sub=azure,entra,ad,cloud
+https://kyjonin.blogspot.com/ | tag=red-team | sub=windows,com,detection
+https://blog.p1.gs/ | tag=ctf | sub=ctf,web
+https://www.elttam.com/blog/ | tag=research | sub=web,exploit-dev,crypto
+https://www.wietzebeukema.nl/blog/ | tag=red-team | sub=windows,lolbin,dll-hijack
+https://blog.trailofbits.com/ | tag=research | sub=appsec,crypto,fuzzing,blockchain
 
 # ============================================================
 #  DIRECT POST URLs — no feed, a specific article to render (6)
 # ============================================================
-https://michael-eder.net/post/2018/native_rdp_pass_the_hash/
-https://0metasecurity.com/post-oscp-series-part-5-persistence-techniques-and-desired-state-control/
-https://www.arneswinnen.net/2017/06/authentication-bypass-on-ubers-sso-via-subdomain-takeover/
-https://samy.pl/poisontap/
-https://github.com/OmerYa/Invisi-Shell
-https://iwantmore.pizza/posts/amsi.html
+https://michael-eder.net/post/2018/native_rdp_pass_the_hash/ | tag=red-team | sub=ad,pass-the-hash,lateral-movement
+https://0metasecurity.com/post-oscp-series-part-5-persistence-techniques-and-desired-state-control/ | tag=pentest | sub=oscp,persistence,windows
+https://www.arneswinnen.net/2017/06/authentication-bypass-on-ubers-sso-via-subdomain-takeover/ | tag=pentest | sub=web,bug-bounty,subdomain-takeover
+https://samy.pl/poisontap/ | tag=research | sub=hardware,usb,network
+https://github.com/OmerYa/Invisi-Shell | tag=red-team | sub=evasion,amsi,powershell
+https://iwantmore.pizza/posts/amsi.html | tag=red-team | sub=amsi,evasion,windows
 
 # ============================================================
-#  FEEDLESS / dead — no feed found. Commented out so runs stay
-#  fast. Uncomment to probe again (some may be transient,
-#  others are defunct). (16)
+#  FEEDLESS / dead — no feed found. Commented out so runs stay fast.
+#  Classification kept for reference; uncomment + add feed= to use.
 # ============================================================
-# https://blog.quickbreach.io/                        # rebranded -> caffeinatedsecurity, dead
-# https://offsec.provadys.com/                         # HTTP 410 Gone
-# https://labs.mwrinfosecurity.com/                    # defunct (became F-Secure Labs)
-# https://blogs.technet.microsoft.com/secguide/        # retired Microsoft TechNet blog
-# https://blog.kedeshur.com/security/                  # 404
-# https://www.mdsec.co.uk/knowledge-centre/insights/   # listing page, no feed
-# https://ruuand.github.io/
-# https://infocon.org/
-# https://blog.skullsecurity.org/
-# https://nafiez.github.io/
-# https://www.jomar.fr/
-# https://suspicious.actor/
-# https://pierrekim.github.io/
-# https://eversinc33.com/
-# https://hacktrails.com/
-# https://securitytitles.com/
+# https://blog.quickbreach.io/                        # pentest: ad — rebranded -> caffeinatedsecurity, dead
+# https://offsec.provadys.com/                         # red-team — HTTP 410 Gone
+# https://labs.mwrinfosecurity.com/                    # research: mobile,web,exploit-dev — defunct (WithSecure)
+# https://blogs.technet.microsoft.com/secguide/        # general: windows,hardening — retired
+# https://blog.kedeshur.com/security/                  # unknown — feed 404
+# https://www.mdsec.co.uk/knowledge-centre/insights/   # red-team: c2,evasion,mobile — listing page, no feed
+# https://ruuand.github.io/                            # pentest: notes,cheatsheet,ad — feedless wiki
+# https://infocon.org/                                 # general: conference-archive
+# https://blog.skullsecurity.org/                      # ctf: crypto,tooling
+# https://nafiez.github.io/                            # research: windows,exploit-dev,reversing
+# https://www.jomar.fr/                                # pentest: web,bug-bounty,cve
+# https://suspicious.actor/                            # dead (404, GitHub Pages)
+# https://pierrekim.github.io/                         # research: iot,network,exploit-dev
+# https://eversinc33.com/                              # red-team: maldev,evasion,windows
+# https://hacktrails.com/                              # dead / empty
+# https://securitytitles.com/                          # not a blog (job-titles framework)

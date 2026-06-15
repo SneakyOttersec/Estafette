@@ -26,6 +26,7 @@ from common import (
     load_state,
     normalize_state,
     parse_iso,
+    parse_source_line,
     read_urls,
     save_state,
     use_utf8_stdout,
@@ -42,8 +43,9 @@ def find_candidates(state: dict, sess) -> list[dict]:
     candidates: list[dict] = []
 
     for line in read_urls():
-        # A line may pin an explicit feed:  <source-url> | <feed-url>
-        src, _, feed_override = (part.strip() for part in line.partition("|"))
+        parsed = parse_source_line(line)
+        src, feed_override = parsed["url"], parsed["feed"]
+        tags = {"tag": parsed["tag"], "subs": parsed["subs"]}
 
         if not feed_override and feeds.classify(src) == "post":
             if src in posts_seen:
@@ -52,7 +54,7 @@ def find_candidates(state: dict, sess) -> list[dict]:
             print(f"[post] NEW single post: {src}")
             candidates.append(
                 {"url": src, "title": None, "source": src,
-                 "source_type": "post", "feed": None, "ts": None}
+                 "source_type": "post", "feed": None, "ts": None, **tags}
             )
             continue
 
@@ -79,7 +81,7 @@ def find_candidates(state: dict, sess) -> list[dict]:
             print(f"[blog] first run, latest post: {latest['url']}")
             candidates.append(
                 {"url": latest["url"], "title": latest["title"], "source": src,
-                 "source_type": "blog", "feed": feed, "ts": _iso(latest["ts"])}
+                 "source_type": "blog", "feed": feed, "ts": _iso(latest["ts"]), **tags}
             )
             continue
 
@@ -97,7 +99,7 @@ def find_candidates(state: dict, sess) -> list[dict]:
                 continue
             candidates.append(
                 {"url": entry["url"], "title": entry["title"], "source": src,
-                 "source_type": "blog", "feed": feed, "ts": _iso(entry["ts"])}
+                 "source_type": "blog", "feed": feed, "ts": _iso(entry["ts"]), **tags}
             )
             new_for_blog += 1
         print(f"[blog] {new_for_blog} new post(s) since baseline: {src}")

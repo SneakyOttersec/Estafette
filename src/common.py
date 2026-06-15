@@ -82,6 +82,43 @@ def parse_iso(value: str | None) -> dt.datetime | None:
         return None
 
 
+# Main content tags -> display names used on the per-tag PDF covers.
+TAG_DISPLAY = {
+    "red-team": "Red Team",
+    "pentest": "Pentest",
+    "ctf": "CTF",
+    "research": "Research / Vuln-Dev",
+    "general": "General",
+}
+
+
+def parse_source_line(line: str) -> dict:
+    """Parse a urls.txt entry into {url, feed, tag, subs}.
+
+    Grammar (fields after the URL are optional, '|'-separated, order-free):
+        <url> | feed=<feed-url> | tag=<main-tag> | sub=<csv>
+    A bare URL after '|' is also accepted as a feed override (legacy form).
+    """
+    parts = [p.strip() for p in line.split("|")]
+    url = parts[0]
+    feed: str | None = None
+    tag = "general"
+    subs: list[str] = []
+    for field in parts[1:]:
+        if "=" in field:
+            key, _, value = field.partition("=")
+            key, value = key.strip().lower(), value.strip()
+            if key == "feed":
+                feed = value
+            elif key == "tag":
+                tag = value.lower() or "general"
+            elif key == "sub":
+                subs = [s.strip() for s in value.split(",") if s.strip()]
+        elif field.startswith("http"):
+            feed = field  # legacy positional feed override
+    return {"url": url, "feed": feed, "tag": tag, "subs": subs}
+
+
 def slugify(value: str, fallback: str = "post") -> str:
     """Turn a title or URL fragment into a filesystem/URL-safe slug."""
     value = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii")
