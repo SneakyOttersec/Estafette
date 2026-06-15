@@ -343,7 +343,9 @@ def main() -> None:
         print("No posts in manifest — nothing to build.")
         return
 
-    run_date = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+    now = dt.datetime.now(dt.timezone.utc)
+    run_date = now.strftime("%Y-%m-%d")       # ISO, shown on the cover
+    file_date = now.strftime("%d_%m_%Y")      # DD_MM_YYYY, used in the filename
     WORK_DIR.mkdir(parents=True, exist_ok=True)
     DIST_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -356,7 +358,9 @@ def main() -> None:
             MASTER_HTML.write_text(
                 build_html(posts, run_date, tag_slug), encoding="utf-8"
             )
-            output = DIST_DIR / f"{run_date}-{tag_slug}.pdf"
+            # e.g. REDTEAM_15_06_2026.pdf
+            label = tag_slug.upper().replace("-", "")
+            output = DIST_DIR / f"{label}_{file_date}.pdf"
             render_pdf(output)
             built.append(str(output))
             print(f"Built {tag_slug} PDF with {len(posts)} post(s): {output}")

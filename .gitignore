@@ -5,6 +5,8 @@ dist/
 # Local secrets — never commit
 service_account.json
 *.sa.json
+client_secret*.json
+token.json
 .env
 
 # Python

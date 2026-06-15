@@ -25,35 +25,47 @@ nothing.
      (`1`, `1.2`, `1.2.1`), first-line-indented justified/hyphenated paragraphs,
      running headers, and grayscale images. Page size matches the Kindle Scribe
      reading area (157×210 mm).
-   - `src/upload_drive.py` — uploads the dated PDF to a Drive folder.
+   - `src/upload_drive.py` — uploads the per-tag PDFs to a Drive folder named
+     `BLOG_INFOSEC_NEWS` (created automatically). Files are named per tag and
+     date, e.g. `REDTEAM_15_06_2026.pdf`, `RESEARCH_15_06_2026.pdf`.
    - The workflow commits the updated `state/seen.json` back so baselines and
      processed posts persist between runs.
 
-Each run that finds new posts produces a **separate dated PDF** containing just
-those posts. Multiple new posts in one run share that day's single PDF.
+Each run that finds new posts produces one PDF per main tag containing that
+run's new posts.
 
-## One-time setup
+## One-time setup: Google Drive (OAuth)
 
-### 1. Google Drive service account
-1. In the [Google Cloud Console](https://console.cloud.google.com/), create (or
-   pick) a project and **enable the Google Drive API**.
-2. Create a **service account** and generate a **JSON key** for it.
-3. In Google Drive, create the destination folder, then **Share** it with the
-   service account's `client_email` (from the JSON key) as **Editor**.
-   - Service accounts have no personal Drive storage quota, so uploads must go
-     into a folder shared with them (or a Shared Drive).
-4. Copy the folder ID from its URL: `https://drive.google.com/drive/folders/<FOLDER_ID>`.
+A personal Gmail can't use a service account for Drive uploads (service-account
+files have no storage quota, and Gmail has no Shared Drive). So the pipeline
+uses **your own** Google credentials via OAuth — uploads are owned by you and
+use your storage.
 
-### 2. GitHub secrets
-Repo → **Settings → Secrets and variables → Actions → New repository secret**:
+1. **Google Cloud Console** (<https://console.cloud.google.com>):
+   - Enable the **Google Drive API**.
+   - **OAuth consent screen**: User type *External*; add your Google account
+     under **Test users**.
+   - **Credentials → Create credentials → OAuth client ID → Desktop app**;
+     download the JSON.
+2. **Get a refresh token** (one time, locally — opens a browser):
+   ```bash
+   pip install google-auth-oauthlib
+   python scripts/get_gdrive_token.py path/to/client_secret.json
+   ```
+   It prints `GDRIVE_CLIENT_ID`, `GDRIVE_CLIENT_SECRET`, `GDRIVE_REFRESH_TOKEN`.
+3. **GitHub secrets** — Repo → *Settings → Secrets and variables → Actions*:
 
-| Secret | Value |
-| --- | --- |
-| `GDRIVE_SA_KEY` | The entire contents of the service-account JSON key file |
-| `GDRIVE_FOLDER_ID` | The destination Drive folder ID |
+   | Secret | Value |
+   | --- | --- |
+   | `GDRIVE_CLIENT_ID` | from step 2 |
+   | `GDRIVE_CLIENT_SECRET` | from step 2 |
+   | `GDRIVE_REFRESH_TOKEN` | from step 2 |
 
-The workflow uses the built-in `GITHUB_TOKEN` to commit state back (it needs the
-`workflow` + `contents: write` permissions, already configured in the YAML).
+Once those are set, the upload step activates automatically (it's skipped until
+then) and drops the PDFs into a `BLOG_INFOSEC_NEWS` folder in your Drive,
+updating that day's file in place on re-runs. The folder name is configurable
+via the `GDRIVE_FOLDER_NAME` env in the workflow. The workflow uses the built-in
+`GITHUB_TOKEN` to commit state back (`contents: write`, already set).
 
 ## Usage
 
