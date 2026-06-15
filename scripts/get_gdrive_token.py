@@ -1,22 +1,22 @@
 """One-time helper: obtain a Google Drive OAuth refresh token.
 
 Run this LOCALLY once (it opens a browser for you to consent). It prints the
-three values to store as GitHub Actions secrets:
+values to store as GitHub Actions secrets:
     GDRIVE_CLIENT_ID, GDRIVE_CLIENT_SECRET, GDRIVE_REFRESH_TOKEN
 
-Prerequisites:
-  1. In Google Cloud Console: enable the Google Drive API, configure the OAuth
-     consent screen (External; add your own Google account as a Test user), then
-     create an OAuth client ID of type "Desktop app".
-  2. Download its JSON and either pass it as the first argument or save it as
-     client_secret.json next to this script.
+Provide the OAuth client either by:
+  - env vars GDRIVE_CLIENT_ID + GDRIVE_CLIENT_SECRET, or
+  - a Desktop-app client JSON (path as arg, or ./client_secret.json).
 
 Usage:
     pip install google-auth-oauthlib
-    python scripts/get_gdrive_token.py [path/to/client_secret.json]
+    GDRIVE_CLIENT_ID=... GDRIVE_CLIENT_SECRET=... python scripts/get_gdrive_token.py
+    #   or
+    python scripts/get_gdrive_token.py path/to/client_secret.json
 """
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
@@ -26,18 +26,44 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 SCOPES = ["https://www.googleapis.com/auth/drive.file"]
 
 
-def main() -> None:
+def build_flow() -> InstalledAppFlow:
+    cid = os.environ.get("GDRIVE_CLIENT_ID")
+    csec = os.environ.get("GDRIVE_CLIENT_SECRET")
+    if cid and csec:
+        config = {
+            "installed": {
+                "client_id": cid,
+                "client_secret": csec,
+                "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+                "token_uri": "https://oauth2.googleapis.com/token",
+                "redirect_uris": ["http://localhost"],
+            }
+        }
+        return InstalledAppFlow.from_client_config(config, SCOPES)
+
     secret = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).with_name(
         "client_secret.json"
     )
-    if not secret.exists():
-        print(f"Client secret JSON not found: {secret}", file=sys.stderr)
-        print("Create a Desktop-app OAuth client and download its JSON first.")
-        sys.exit(1)
+    if secret.exists():
+        return InstalledAppFlow.from_client_secrets_file(str(secret), SCOPES)
 
-    flow = InstalledAppFlow.from_client_secrets_file(str(secret), SCOPES)
-    # Opens a browser; access_type=offline + prompt=consent guarantees a refresh token.
+    print(
+        "No client provided. Set GDRIVE_CLIENT_ID + GDRIVE_CLIENT_SECRET, or pass "
+        "a Desktop-app client JSON path.",
+        file=sys.stderr,
+    )
+    sys.exit(1)
+
+
+def main() -> None:
+    flow = build_flow()
+    # Opens a browser; offline + consent guarantees a refresh token is returned.
     creds = flow.run_local_server(port=0, access_type="offline", prompt="consent")
+
+    if not creds.refresh_token:
+        print("\nNo refresh token returned. Revoke prior access and retry with "
+              "prompt=consent (already set).", file=sys.stderr)
+        sys.exit(1)
 
     print("\n=== Add these as GitHub repo secrets ===")
     print(f"GDRIVE_CLIENT_ID     = {creds.client_id}")
