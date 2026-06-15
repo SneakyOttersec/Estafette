@@ -45,7 +45,11 @@ REQUEST_TIMEOUT = 30
 MANIFEST_FILE = WORK_DIR / "manifest.json"
 
 # Matches Markdown images:  ![alt](url "title")
-MD_IMAGE_RE = re.compile(r"!\[(?P<alt>[^\]]*)\]\((?P<url>[^)\s]+)(?P<rest>\s+[^)]*)?\)")
+# Capture everything inside the parens so URLs containing spaces (e.g. GitHub
+# raw links like ".../Pasted image 1.png") aren't truncated at the first space.
+MD_IMAGE_RE = re.compile(r"!\[(?P<alt>[^\]]*)\]\((?P<inside>[^)]+)\)")
+# Splits an optional Markdown title:  <url> "title"
+_IMG_TITLE_RE = re.compile(r'^(?P<url>.+?)\s+"[^"]*"$')
 
 
 def fetch_html(url: str) -> str | None:
@@ -77,7 +81,8 @@ def extract_title(html: str, url: str) -> str:
 
 def download_image(img_url: str, base_url: str, images_dir: Path) -> str | None:
     """Download an image, returning the local relative path or None on failure."""
-    abs_url = urljoin(base_url, img_url)
+    # Percent-encode spaces so URLs with spaces in the filename fetch correctly.
+    abs_url = urljoin(base_url, img_url.strip()).replace(" ", "%20")
     parsed = urlparse(abs_url)
     if parsed.scheme not in ("http", "https"):
         return None  # skip data: URIs and other schemes
@@ -124,10 +129,12 @@ def localize_images(markdown: str, base_url: str, post_dir: Path) -> str:
     cache: dict[str, str | None] = {}
 
     def repl(match: re.Match) -> str:
-        original = match.group("url")
-        if original not in cache:
-            cache[original] = download_image(original, base_url, images_dir)
-        local = cache[original]
+        inside = match.group("inside").strip()
+        title_match = _IMG_TITLE_RE.match(inside)
+        url = title_match.group("url").strip() if title_match else inside
+        if url not in cache:
+            cache[url] = download_image(url, base_url, images_dir)
+        local = cache[url]
         if not local:
             return match.group(0)  # leave original on failure
         alt = match.group("alt")
