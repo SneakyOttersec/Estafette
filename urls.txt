@@ -12,7 +12,7 @@
 # Classified by a content probe on 2026-06-15.
 
 # ============================================================
-#  FEED SOURCES — RSS/Atom feed auto-discovered (40)
+#  FEED SOURCES — RSS/Atom feed auto-discovered (57)
 # ============================================================
 https://0xdf.gitlab.io/ | tag=ctf | sub=htb,web,ad,privesc
 https://rastamouse.me/ | tag=red-team | sub=c2,cobalt-strike,evasion,maldev
@@ -55,6 +55,25 @@ https://www.elttam.com/blog/ | tag=research | sub=web,exploit-dev,crypto
 https://www.wietzebeukema.nl/blog/ | tag=red-team | sub=windows,lolbin,dll-hijack
 https://blog.trailofbits.com/ | tag=research | sub=appsec,crypto,fuzzing,blockchain
 
+# --- added 2026-06-15 (suggested set) ---
+https://www.trustedsec.com/blog/ | tag=red-team | sub=ad,tooling,windows
+https://www.outflank.nl/blog/ | tag=red-team | sub=evasion,edr,maldev
+https://s3cur3th1ssh1t.github.io/ | tag=red-team | sub=maldev,amsi,powershell
+https://bohops.com/ | tag=red-team | sub=windows,lolbin,evasion
+https://www.praetorian.com/blog/ | tag=red-team | sub=cloud,ad,web
+https://mez0.cc/ | tag=red-team | sub=maldev,c2,ai,evasion
+https://pre.empt.blog/ | tag=red-team | sub=c2,maldev,evasion,edr
+https://www.blackhillsinfosec.com/blog/ | tag=pentest | sub=tooling,ad,web
+https://rhinosecuritylabs.com/blog/ | tag=pentest | sub=cloud,aws,web
+https://portswigger.net/research | tag=research | sub=web,appsec
+https://blog.orange.tw/ | tag=research | sub=web,exploit-dev
+https://devco.re/blog/ | tag=research | sub=web,exploit-dev
+https://j00ru.vexillium.org/ | tag=research | sub=windows,fuzzing,exploit-dev
+https://www.hexacorn.com/blog/ | tag=research | sub=windows,persistence,dfir
+https://blog.deeb.ch/ | tag=research | sub=edr,telemetry,maldev,windows
+https://0xrick.github.io/ | tag=ctf | sub=htb,web,privesc
+https://tldrsec.com/ | tag=general | sub=news,appsec,newsletter
+
 # ============================================================
 #  DIRECT POST URLs — no feed, a specific article to render (6)
 # ============================================================
@@ -85,3 +104,10 @@ https://iwantmore.pizza/posts/amsi.html | tag=red-team | sub=amsi,evasion,window
 # https://eversinc33.com/                              # red-team: maldev,evasion,windows
 # https://hacktrails.com/                              # dead / empty
 # https://securitytitles.com/                          # not a blog (job-titles framework)
+# --- added 2026-06-15: no feed found (likely Cloudflare/bot-blocked); pin feed= to use ---
+# https://www.cobaltstrike.com/blog                    # red-team: c2
+# https://samcurry.net/                                # pentest: web,bug-bounty
+# https://www.synacktiv.com/en/publications            # research: exploit-dev,web,reversing
+# https://research.nccgroup.com/                       # research: reversing,crypto,hardware
+# https://www.assetnote.io/resources                   # research: web,n-day,attack-surface
+# https://www.snowscan.io/                             # ctf: htb,ad,web
