@@ -1,0 +1,92 @@
+name: Build blog PDF and upload to Drive
+
+on:
+  schedule:
+    # Daily at 06:00 UTC. Adjust as you like.
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - "urls.txt"
+
+# Allow the workflow to commit the updated state/seen.json back to the repo.
+permissions:
+  contents: write
+
+concurrency:
+  group: build-blog-pdf
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Drive upload is optional: it runs only once these secrets are set.
+    # Until then the pipeline still builds the PDF and exposes it as an artifact.
+    env:
+      GDRIVE_SA_KEY: ${{ secrets.GDRIVE_SA_KEY }}
+      GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install system libraries (Pandoc + WeasyPrint deps)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            pandoc \
+            libpango-1.0-0 \
+            libpangocairo-1.0-0 \
+            libpangoft2-1.0-0 \
+            libgdk-pixbuf-2.0-0 \
+            libffi-dev \
+            shared-mime-info \
+            fonts-dejavu-core \
+            fonts-liberation
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Detect new posts
+        id: detect
+        run: python src/detect.py
+
+      - name: Extract new posts
+        if: steps.detect.outputs.has_new == 'true'
+        run: python src/extract.py
+
+      - name: Build PDF
+        id: build
+        if: steps.detect.outputs.has_new == 'true'
+        run: python src/build_pdf.py
+
+      # Skipped automatically until GDRIVE_* secrets are configured.
+      - name: Upload PDF to Google Drive
+        if: steps.detect.outputs.has_new == 'true' && env.GDRIVE_FOLDER_ID != ''
+        run: python src/upload_drive.py
+
+      - name: Upload PDF as workflow artifact
+        if: steps.detect.outputs.has_new == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: blog-pdf
+          path: dist/*.pdf
+          if-no-files-found: ignore
+
+      - name: Commit updated state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add state/seen.json
+          if git diff --cached --quiet; then
+            echo "No state changes to commit."
+          else
+            git commit -m "chore: update processed posts state [skip ci]"
+            git push
+          fi

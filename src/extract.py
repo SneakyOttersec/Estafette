@@ -1,19 +1,21 @@
-"""Extract the new posts (from work/new_urls.txt) into local Markdown + images.
+"""Extract the candidate posts (from work/new_posts.json) into Markdown + images.
 
-For each URL:
+For each candidate post:
   - fetch the page and pull out the main article as Markdown (via trafilatura),
   - download every referenced image into work/<slug>/images/,
   - rewrite image references to local relative paths so Pandoc can embed them,
   - write work/<slug>/article.md and a small work/<slug>/meta.json.
 
-Successfully-extracted posts are recorded in state/seen.json so they are not
-processed again. A manifest of this run's posts is written to
-work/manifest.json for build_pdf.py to consume.
+After a post is successfully extracted it is recorded in state/seen.json under
+"posts", and its blog source's "baseline" is advanced to the newest extracted
+post's timestamp. Failures are left unrecorded so they retry next run. A
+manifest of this run's posts is written to work/manifest.json for build_pdf.py.
 """
 from __future__ import annotations
 
 import datetime as dt
 import hashlib
+import io
 import json
 import mimetypes
 import re
@@ -23,11 +25,13 @@ from urllib.parse import urljoin, urlparse
 import requests
 import trafilatura
 from bs4 import BeautifulSoup
+from PIL import Image
 
 from common import (
-    NEW_URLS_FILE,
+    NEW_POSTS_FILE,
     WORK_DIR,
     load_state,
+    normalize_state,
     save_state,
     slugify,
     use_utf8_stdout,
@@ -86,7 +90,6 @@ def download_image(img_url: str, base_url: str, images_dir: Path) -> str | None:
         print(f"    ! image download failed {abs_url}: {exc}")
         return None
 
-    # Build a stable filename from the URL hash + a sensible extension.
     digest = hashlib.sha1(abs_url.encode("utf-8")).hexdigest()[:12]
     ext = Path(parsed.path).suffix.lower()
     if not ext or len(ext) > 5:
@@ -94,9 +97,25 @@ def download_image(img_url: str, base_url: str, images_dir: Path) -> str | None:
             resp.headers.get("Content-Type", "").split(";")[0].strip()
         ) or ".img"
     images_dir.mkdir(parents=True, exist_ok=True)
-    filename = f"{digest}{ext}"
-    (images_dir / filename).write_bytes(resp.content)
-    return f"images/{filename}"
+
+    # Convert raster images to grayscale PNG for the e-ink reading look (and a
+    # smaller file). Formats Pillow can't decode (e.g. SVG) are kept as-is —
+    # WeasyPrint renders those and skips anything it can't read.
+    try:
+        image = Image.open(io.BytesIO(resp.content))
+        if image.mode in ("RGBA", "LA", "P"):
+            rgba = image.convert("RGBA")
+            white = Image.new("RGBA", rgba.size, (255, 255, 255, 255))
+            image = Image.alpha_composite(white, rgba).convert("L")
+        else:
+            image = image.convert("L")
+        filename = f"{digest}.png"
+        image.save(images_dir / filename, "PNG", optimize=True)
+        return f"images/{filename}"
+    except Exception:  # noqa: BLE001 - non-raster/undecodable -> keep original
+        filename = f"{digest}{ext}"
+        (images_dir / filename).write_bytes(resp.content)
+        return f"images/{filename}"
 
 
 def localize_images(markdown: str, base_url: str, post_dir: Path) -> str:
@@ -153,32 +172,33 @@ def extract_one(url: str, post_dir: Path) -> dict | None:
     return meta
 
 
-def read_new_urls() -> list[str]:
-    if not Path(NEW_URLS_FILE).exists():
+def read_candidates() -> list[dict]:
+    if not Path(NEW_POSTS_FILE).exists():
         return []
-    return [
-        line.strip()
-        for line in Path(NEW_URLS_FILE).read_text(encoding="utf-8-sig").splitlines()
-        if line.strip()
-    ]
+    text = Path(NEW_POSTS_FILE).read_text(encoding="utf-8-sig").strip()
+    return json.loads(text) if text else []
 
 
 def main() -> None:
     use_utf8_stdout()
-    urls = read_new_urls()
-    if not urls:
-        print("No new URLs to extract.")
+    candidates = read_candidates()
+    if not candidates:
+        print("No candidate posts to extract.")
         MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
         MANIFEST_FILE.write_text("[]\n", encoding="utf-8")
         return
 
-    state = load_state()
+    state = normalize_state(load_state())
     manifest: list[dict] = []
     used_slugs: set[str] = set()
+    # Highest extracted-post timestamp per blog source, to advance baselines.
+    source_max_ts: dict[str, str] = {}
 
-    for url in urls:
+    for cand in candidates:
+        url = cand["url"]
         print(f"Extracting {url}")
-        base_slug = slugify(urlparse(url).path.rsplit("/", 1)[-1] or urlparse(url).netloc)
+        last_segment = urlparse(url).path.strip("/").rsplit("/", 1)[-1]
+        base_slug = slugify(last_segment or urlparse(url).netloc)
         slug = base_slug
         i = 2
         while slug in used_slugs:
@@ -188,21 +208,37 @@ def main() -> None:
 
         meta = extract_one(url, WORK_DIR / slug)
         if meta is None:
-            # Do not record failures in seen.json — retry on the next run.
+            # Do not record failures — retry on the next run.
             continue
         manifest.append(meta)
-        state[url] = {
+        state["posts"][url] = {
             "title": meta["title"],
             "slug": meta["slug"],
             "date_processed": meta["date_processed"],
+            "source": cand.get("source"),
         }
+
+        if cand.get("source_type") == "blog":
+            source = cand["source"]
+            srec = state["sources"].setdefault(source, {})
+            if cand.get("feed"):
+                srec["feed"] = cand["feed"]
+            ts = cand.get("ts")
+            if ts and ts > source_max_ts.get(source, ""):
+                source_max_ts[source] = ts
         print(f"  -> {meta['title']!r} ({slug})")
+
+    # Advance each blog's baseline to the newest post we actually extracted.
+    for source, ts in source_max_ts.items():
+        srec = state["sources"].setdefault(source, {})
+        if ts > (srec.get("baseline") or ""):
+            srec["baseline"] = ts
 
     save_state(state)
     MANIFEST_FILE.write_text(
         json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
-    print(f"Extracted {len(manifest)} of {len(urls)} new post(s).")
+    print(f"Extracted {len(manifest)} of {len(candidates)} candidate post(s).")
 
 
 if __name__ == "__main__":

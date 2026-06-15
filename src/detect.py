@@ -1,30 +1,108 @@
-"""Detect blog-post URLs in urls.txt that have not been processed yet.
+"""Decide which blog posts to turn into PDFs on this run.
 
-Writes the new URLs (one per line) to work/new_urls.txt and, when running in
-GitHub Actions, sets the step output `has_new` (true/false) via $GITHUB_OUTPUT.
+For each source line in urls.txt:
+  - 'post' sources (single article URLs) are candidates if never processed.
+  - 'blog' sources have their feed discovered (and cached in state). Then:
+      * first time we see the blog (no baseline) -> take only the LATEST post,
+        which also establishes the baseline once it's extracted;
+      * afterwards -> take every post newer than the stored baseline.
 
-Exit code is always 0; downstream steps gate on `has_new`.
+Candidates are written to work/new_posts.json for extract.py. Discovered feed
+URLs are cached back into state immediately (cheap and idempotent). The
+per-blog baseline and processed-post records are advanced by extract.py only
+after a post is successfully extracted, so failures are retried.
+
+Sets GitHub Actions step outputs has_new (true/false) and count.
 """
 from __future__ import annotations
 
+import json
 import os
-from pathlib import Path
 
-from common import NEW_URLS_FILE, WORK_DIR, load_state, read_urls, use_utf8_stdout
+import feeds
+from common import (
+    NEW_POSTS_FILE,
+    WORK_DIR,
+    load_state,
+    normalize_state,
+    parse_iso,
+    read_urls,
+    save_state,
+    use_utf8_stdout,
+)
 
 
-def find_new_urls() -> list[str]:
-    urls = read_urls()
-    state = load_state()
-    seen = set(state.keys())
-    # Preserve urls.txt order; de-duplicate while keeping first occurrence.
-    new: list[str] = []
-    emitted: set[str] = set()
-    for url in urls:
-        if url not in seen and url not in emitted:
-            new.append(url)
-            emitted.add(url)
-    return new
+def _iso(ts) -> str | None:
+    return ts.isoformat() if ts else None
+
+
+def find_candidates(state: dict, sess) -> list[dict]:
+    posts_seen = state["posts"]
+    sources_state = state["sources"]
+    candidates: list[dict] = []
+
+    for line in read_urls():
+        # A line may pin an explicit feed:  <source-url> | <feed-url>
+        src, _, feed_override = (part.strip() for part in line.partition("|"))
+
+        if not feed_override and feeds.classify(src) == "post":
+            if src in posts_seen:
+                print(f"[post] already processed: {src}")
+                continue
+            print(f"[post] NEW single post: {src}")
+            candidates.append(
+                {"url": src, "title": None, "source": src,
+                 "source_type": "post", "feed": None, "ts": None}
+            )
+            continue
+
+        # Blog source: use the pinned feed, the cached one, or auto-discover.
+        srec = sources_state.setdefault(src, {})
+        feed = feed_override or srec.get("feed") or feeds.discover_feed(src, sess)
+        if not feed:
+            print(f"[blog] !! no feed found: {src}")
+            continue
+        srec["feed"] = feed
+
+        entries = feeds.feed_entries(feed, sess)
+        if not entries:
+            print(f"[blog] !! feed empty: {feed}")
+            continue
+
+        baseline = parse_iso(srec.get("baseline"))
+        if baseline is None:
+            # First time: take only the latest post.
+            latest = entries[0]
+            if latest["url"] in posts_seen:
+                print(f"[blog] first run, latest already seen: {src}")
+                continue
+            print(f"[blog] first run, latest post: {latest['url']}")
+            candidates.append(
+                {"url": latest["url"], "title": latest["title"], "source": src,
+                 "source_type": "blog", "feed": feed, "ts": _iso(latest["ts"])}
+            )
+            continue
+
+        # Subsequent runs: every post newer than the baseline.
+        new_for_blog = 0
+        for i, entry in enumerate(entries):
+            if entry["url"] in posts_seen:
+                continue
+            if entry["ts"] is not None:
+                if entry["ts"] <= baseline:
+                    continue
+            elif i != 0:
+                # No date on this entry: only trust the newest one to avoid
+                # re-ingesting an entire backlog from an undated feed.
+                continue
+            candidates.append(
+                {"url": entry["url"], "title": entry["title"], "source": src,
+                 "source_type": "blog", "feed": feed, "ts": _iso(entry["ts"])}
+            )
+            new_for_blog += 1
+        print(f"[blog] {new_for_blog} new post(s) since baseline: {src}")
+
+    return candidates
 
 
 def set_github_output(name: str, value: str) -> None:
@@ -36,23 +114,21 @@ def set_github_output(name: str, value: str) -> None:
 
 def main() -> None:
     use_utf8_stdout()
-    new_urls = find_new_urls()
+    state = normalize_state(load_state())
+    sess = feeds.make_session()
+
+    candidates = find_candidates(state, sess)
 
     WORK_DIR.mkdir(parents=True, exist_ok=True)
-    Path(NEW_URLS_FILE).write_text(
-        "\n".join(new_urls) + ("\n" if new_urls else ""), encoding="utf-8"
+    NEW_POSTS_FILE.write_text(
+        json.dumps(candidates, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
+    # Persist any feed URLs discovered this run (baselines come later).
+    save_state(state)
 
-    has_new = "true" if new_urls else "false"
-    set_github_output("has_new", has_new)
-    set_github_output("count", str(len(new_urls)))
-
-    if new_urls:
-        print(f"Found {len(new_urls)} new post(s):")
-        for url in new_urls:
-            print(f"  - {url}")
-    else:
-        print("No new posts. Nothing to do.")
+    set_github_output("has_new", "true" if candidates else "false")
+    set_github_output("count", str(len(candidates)))
+    print(f"\n{len(candidates)} post(s) to extract this run.")
 
 
 if __name__ == "__main__":

@@ -1,6 +1,85 @@
-# Blog post URLs — one per line.
-# Lines starting with '#' and blank lines are ignored.
-# Add a URL here and the pipeline will turn the new post into a PDF on its next run.
+# Blog sources — one per line. Blank lines and lines starting with '#' are ignored.
 #
-# Example:
-# https://example.com/blog/my-first-post
+# Each line is either a blog home/section page (its RSS/Atom feed is
+# auto-discovered) or a single post URL (that one article is rendered).
+#
+# To pin a specific feed (skip auto-discovery), append "| <feed-url>":
+#   https://example.com/  | https://example.com/blog/feed/
+#
+# Grouped by a feed-discovery probe run on 2026-06-15.
+
+# ============================================================
+#  FEED SOURCES — RSS/Atom feed auto-discovered (40)
+# ============================================================
+https://0xdf.gitlab.io/
+https://rastamouse.me/
+https://adsecurity.org/
+https://posts.specterops.io/  | https://specterops.io/feed/
+https://blog.xpnsec.com/
+https://blog.smallsec.ca/
+https://akijosberryblog.wordpress.com/
+https://shenaniganslabs.io/
+https://www.harmj0y.net/blog/
+https://blog.ropnop.com/
+https://krbtgt.pw/
+https://lsdsecdaemon.com/
+https://beta.hackndo.com/
+https://decoder.cloud/
+https://tyranidslair.blogspot.com/
+https://www.atredis.com/blog/
+https://itm4n.github.io/
+https://enigma0x3.net/
+https://www.martinvigo.com/
+https://m0chan.github.io/
+https://blog.netspi.com/
+https://secret.club/
+https://adepts.of0x.cc/
+https://dazzyddos.github.io/
+https://googleprojectzero.blogspot.com/
+https://www.ctus.io/
+https://jlajara.gitlab.io/
+https://amonsec.net/posts/
+https://tij.me/
+https://labs.watchtowr.com/
+https://blog.badsectorlabs.com/
+https://badoption.eu/blogs/
+https://elliotonsecurity.com/
+https://code-white.com/blog/
+https://dirkjanm.io/
+https://kyjonin.blogspot.com/
+https://blog.p1.gs/
+https://www.elttam.com/blog/
+https://www.wietzebeukema.nl/blog/
+https://blog.trailofbits.com/
+
+# ============================================================
+#  DIRECT POST URLs — no feed, a specific article to render (6)
+# ============================================================
+https://michael-eder.net/post/2018/native_rdp_pass_the_hash/
+https://0metasecurity.com/post-oscp-series-part-5-persistence-techniques-and-desired-state-control/
+https://www.arneswinnen.net/2017/06/authentication-bypass-on-ubers-sso-via-subdomain-takeover/
+https://samy.pl/poisontap/
+https://github.com/OmerYa/Invisi-Shell
+https://iwantmore.pizza/posts/amsi.html
+
+# ============================================================
+#  FEEDLESS / dead — no feed found. Commented out so runs stay
+#  fast. Uncomment to probe again (some may be transient,
+#  others are defunct). (16)
+# ============================================================
+# https://blog.quickbreach.io/                        # rebranded -> caffeinatedsecurity, dead
+# https://offsec.provadys.com/                         # HTTP 410 Gone
+# https://labs.mwrinfosecurity.com/                    # defunct (became F-Secure Labs)
+# https://blogs.technet.microsoft.com/secguide/        # retired Microsoft TechNet blog
+# https://blog.kedeshur.com/security/                  # 404
+# https://www.mdsec.co.uk/knowledge-centre/insights/   # listing page, no feed
+# https://ruuand.github.io/
+# https://infocon.org/
+# https://blog.skullsecurity.org/
+# https://nafiez.github.io/
+# https://www.jomar.fr/
+# https://suspicious.actor/
+# https://pierrekim.github.io/
+# https://eversinc33.com/
+# https://hacktrails.com/
+# https://securitytitles.com/
