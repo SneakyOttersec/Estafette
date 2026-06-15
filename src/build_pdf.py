@@ -243,7 +243,8 @@ def build_html(manifest: list[dict], run_date: str, tag_slug: str) -> str:
             f'<section class="chapter" id="{pid}">'
             f'<div class="chapter-head"><h1>{title}</h1>'
             f'<p class="source">{url}</p>'
-            f'<p class="tags">{tag_bits}</p></div>\n{fragment}\n</section>'
+            f'<p class="tags">{tag_bits}</p></div>\n'
+            f'<div class="postbody">{fragment}</div>\n</section>'
         )
         toc_items.append(f'<li><a href="#{pid}">{title}</a></li>')
 
@@ -275,14 +276,45 @@ def build_html(manifest: list[dict], run_date: str, tag_slug: str) -> str:
     )
 
 
+# Layout presets, selectable via the PDF_LAYOUT env var. The base STYLESHEET is
+# the roomy single-column reading layout; these override sizes/columns. Default
+# is "compact" (single column, smaller). "twocol" is the dense Paged-Out look.
+LAYOUTS = {
+    "comfortable": "",
+    "compact": """
+@page { margin: 14mm 13mm 15mm 13mm; }
+body { font-size: 9.5pt; line-height: 1.36; }
+.chapter-head h1 { font-size: 17pt; }
+h2 { font-size: 12.5pt; } h3 { font-size: 11pt; }
+pre { font-size: 7.6pt; } code { font-size: 8.4pt; }
+.cover .title { font-size: 26pt; }
+""",
+    "twocol": """
+@page { margin: 12mm 11mm 14mm 11mm; }
+body { font-size: 8.6pt; line-height: 1.3; }
+.chapter-head h1 { font-size: 15pt; }
+h2 { font-size: 11.5pt; } h3 { font-size: 10.5pt; }
+pre { font-size: 7pt; } code { font-size: 7.8pt; }
+.cover .title { font-size: 26pt; }
+/* Post body flows in two columns; the chapter title/source span full width. */
+.postbody { column-count: 2; column-gap: 6mm; }
+.postbody h2, .postbody h3 { break-after: avoid; }
+/* Let wide code blocks and tables span both columns so they don't wrap hard. */
+.postbody pre, .postbody table { column-span: all; }
+""",
+}
+
+
 def render_pdf(output: Path) -> None:
     # Imported lazily so the HTML step can run on machines without WeasyPrint's
     # native libraries; CI (and a configured local box) has them.
     from weasyprint import CSS, HTML
     from weasyprint.text.fonts import FontConfiguration
 
+    layout = os.environ.get("PDF_LAYOUT", "twocol")
+    style = STYLESHEET + LAYOUTS.get(layout, "")
     font_config = FontConfiguration()
-    css = CSS(string=font_face_css() + STYLESHEET, font_config=font_config)
+    css = CSS(string=font_face_css() + style, font_config=font_config)
     HTML(filename=str(MASTER_HTML)).write_pdf(
         str(output), stylesheets=[css], font_config=font_config
     )
@@ -315,9 +347,12 @@ def main() -> None:
     WORK_DIR.mkdir(parents=True, exist_ok=True)
     DIST_DIR.mkdir(parents=True, exist_ok=True)
 
+    only = os.environ.get("PDF_ONLY_TAG")  # build a single tag (for previews)
     built: list[str] = []
     try:
         for tag_slug, posts in group_by_tag(manifest).items():
+            if only and tag_slug != only:
+                continue
             MASTER_HTML.write_text(
                 build_html(posts, run_date, tag_slug), encoding="utf-8"
             )
