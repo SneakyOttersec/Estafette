@@ -32,7 +32,10 @@
       "feed": "https://shenaniganslabs.io/feed.xml",
       "baseline": "2023-01-25T00:00:00+00:00"
     },
-    "https://www.harmj0y.net/blog/": {},
+    "https://www.harmj0y.net/blog/": {
+      "feed": "https://blog.harmj0y.net/feed/",
+      "baseline": "2021-06-17T14:56:53+00:00"
+    },
     "https://blog.ropnop.com/": {
       "feed": "https://blog.ropnop.com/index.xml",
       "baseline": "2020-10-03T00:00:00+00:00"
@@ -156,6 +159,69 @@
     "https://blog.trailofbits.com/": {
       "feed": "https://blog.trailofbits.com/index.xml",
       "baseline": "2026-06-12T11:00:00+00:00"
+    },
+    "https://www.trustedsec.com/blog/": {
+      "feed": "https://trustedsec.com/feed.rss",
+      "baseline": "2026-06-12T04:00:00+00:00"
+    },
+    "https://www.outflank.nl/blog/": {
+      "feed": "https://www.outflank.nl/blog/feed/"
+    },
+    "https://s3cur3th1ssh1t.github.io/": {
+      "feed": "https://s3cur3th1ssh1t.github.io/feed.xml",
+      "baseline": "2025-07-08T00:00:00+00:00"
+    },
+    "https://bohops.com/": {
+      "feed": "https://bohops.com/feed/",
+      "baseline": "2023-11-27T12:51:30+00:00"
+    },
+    "https://www.praetorian.com/blog/": {
+      "feed": "https://www.praetorian.com/feed/",
+      "baseline": "2026-06-09T19:14:27+00:00"
+    },
+    "https://mez0.cc/": {
+      "feed": "https://mez0.cc/rss.xml",
+      "baseline": "2026-05-19T00:00:00+00:00"
+    },
+    "https://pre.empt.blog/": {
+      "feed": "https://pre.empt.blog/rss.xml",
+      "baseline": "2025-06-16T00:00:00+00:00"
+    },
+    "https://www.blackhillsinfosec.com/blog/": {
+      "feed": "https://www.blackhillsinfosec.com/blog/feed/",
+      "baseline": "2026-06-10T14:00:00+00:00"
+    },
+    "https://rhinosecuritylabs.com/blog/": {
+      "feed": "https://rhinosecuritylabs.com/blog/feed/",
+      "baseline": "2025-08-27T17:03:12+00:00"
+    },
+    "https://blog.orange.tw/": {
+      "feed": "https://blog.orange.tw/atom.xml",
+      "baseline": "2025-08-27T03:00:00+00:00"
+    },
+    "https://devco.re/blog/": {
+      "feed": "https://devco.re/rss",
+      "baseline": "2025-12-29T16:00:00+00:00"
+    },
+    "https://j00ru.vexillium.org/": {
+      "feed": "https://j00ru.vexillium.org/feed/",
+      "baseline": "2018-07-18T11:23:25+00:00"
+    },
+    "https://www.hexacorn.com/blog/": {
+      "feed": "https://www.hexacorn.com/blog/feed/",
+      "baseline": "2026-06-07T00:41:46+00:00"
+    },
+    "https://blog.deeb.ch/": {
+      "feed": "https://blog.deeb.ch/feed.xml",
+      "baseline": "2026-04-24T07:31:16+00:00"
+    },
+    "https://0xrick.github.io/": {
+      "feed": "https://0xrick.github.io/feed.xml",
+      "baseline": "2021-10-29T01:00:00+00:00"
+    },
+    "https://tldrsec.com/": {
+      "feed": "https://rss.beehiiv.com/feeds/xgTKUmMmUm.xml",
+      "baseline": "2026-06-11T14:30:00+00:00"
     }
   },
   "posts": {
@@ -410,6 +476,108 @@
       "slug": "invisi-shell",
       "date_processed": "2026-06-15",
       "source": "https://github.com/OmerYa/Invisi-Shell"
+    },
+    "https://blog.harmj0y.net/activedirectory/certified-pre-owned/": {
+      "title": "Certified Pre-Owned",
+      "slug": "certified-pre-owned",
+      "date_processed": "2026-06-15",
+      "source": "https://www.harmj0y.net/blog/"
+    },
+    "https://trustedsec.com/blog/js-tap-v3-endpoint-post-exploitation-with-javascript-implants": {
+      "title": "JS-Tap v3: Endpoint Post-Exploitation With JavaScript Implants",
+      "slug": "js-tap-v3-endpoint-post-exploitation-with-javascript-implants",
+      "date_processed": "2026-06-15",
+      "source": "https://www.trustedsec.com/blog/"
+    },
+    "https://s3cur3th1ssh1t.github.io/Revisiting_Cross_Session_Activation_Attacks/": {
+      "title": "Revisiting Cross Session Activation Attacks",
+      "slug": "revisiting_cross_session_activation_attacks",
+      "date_processed": "2026-06-15",
+      "source": "https://s3cur3th1ssh1t.github.io/"
+    },
+    "https://bohops.com/2023/11/27/abusing-net-core-clr-diagnostic-features-cve-2023-33127/": {
+      "title": "Abusing .NET Core CLR Diagnostic Features (+ CVE-2023-33127)",
+      "slug": "abusing-net-core-clr-diagnostic-features-cve-2023-33127",
+      "date_processed": "2026-06-15",
+      "source": "https://bohops.com/"
+    },
+    "https://www.praetorian.com/blog/virtualized-loader-centurion/": {
+      "title": "Centurion: Bring Your Own Execution Environment",
+      "slug": "virtualized-loader-centurion",
+      "date_processed": "2026-06-15",
+      "source": "https://www.praetorian.com/blog/"
+    },
+    "https://mez0.cc/posts/cdst-agentic-workflows": {
+      "title": "Coverage-Driven Sustained Testing (CDST): Agentic Workflows",
+      "slug": "cdst-agentic-workflows",
+      "date_processed": "2026-06-15",
+      "source": "https://mez0.cc/"
+    },
+    "https://pre.empt.blog/posts/static-data-exploration/": {
+      "title": "Static Data Exploration of Malware and Goodware Samples",
+      "slug": "static-data-exploration",
+      "date_processed": "2026-06-15",
+      "source": "https://pre.empt.blog/"
+    },
+    "https://www.blackhillsinfosec.com/the-art-of-the-badge/": {
+      "title": "The Art of the Badge: A Hard Truth About Physical Security - Black Hills Information Security, Inc.",
+      "slug": "the-art-of-the-badge",
+      "date_processed": "2026-06-15",
+      "source": "https://www.blackhillsinfosec.com/blog/"
+    },
+    "https://rhinosecuritylabs.com/research/referral-beware-your-rewards-are-mine-part-1/": {
+      "title": "Referral Beware, Your Rewards are Mine (Part 1)",
+      "slug": "referral-beware-your-rewards-are-mine-part-1",
+      "date_processed": "2026-06-15",
+      "source": "https://rhinosecuritylabs.com/blog/"
+    },
+    "https://portswigger.net/research": {
+      "title": "Web Security Research Papers - PortSwigger Research",
+      "slug": "research",
+      "date_processed": "2026-06-15",
+      "source": "https://portswigger.net/research"
+    },
+    "https://blog.orange.tw/posts/2025-08-the-art-of-php-ch/": {
+      "title": "(繁中) The Art of PHP — My CTF Journey and Untold Stories!",
+      "slug": "2025-08-the-art-of-php-ch",
+      "date_processed": "2026-06-15",
+      "source": "https://blog.orange.tw/"
+    },
+    "https://devco.re/blog/2025/12/30/9th-internship-program-recruit/": {
+      "title": "DEVCORE 2026 第九屆實習生計畫 | DEVCORE 戴夫寇爾",
+      "slug": "9th-internship-program-recruit",
+      "date_processed": "2026-06-15",
+      "source": "https://devco.re/blog/"
+    },
+    "https://j00ru.vexillium.org/2018/07/exploiting-a-windows-10-pagedpool-off-by-one/": {
+      "title": "Exploiting a Windows 10 PagedPool off-by-one overflow (WCTF 2018)",
+      "slug": "exploiting-a-windows-10-pagedpool-off-by-one",
+      "date_processed": "2026-06-15",
+      "source": "https://j00ru.vexillium.org/"
+    },
+    "https://www.hexacorn.com/blog/2026/06/07/little-secret-of-msconfig-exe/": {
+      "title": "little secret of msconfig.exe",
+      "slug": "little-secret-of-msconfig-exe",
+      "date_processed": "2026-06-15",
+      "source": "https://www.hexacorn.com/blog/"
+    },
+    "https://blog.deeb.ch/posts/defender-introspection/": {
+      "title": "Defender Introspection",
+      "slug": "defender-introspection",
+      "date_processed": "2026-06-15",
+      "source": "https://blog.deeb.ch/"
+    },
+    "https://0xrick.github.io/win-internals/pe8/": {
+      "title": "A dive into the PE file format - LAB 1: Writing a PE Parser",
+      "slug": "pe8",
+      "date_processed": "2026-06-15",
+      "source": "https://0xrick.github.io/"
+    },
+    "https://tldrsec.com/p/tldr-sec-332": {
+      "title": "[tl;dr sec] #332 - I've Joined OpenAI, fwd:cloudsec, AWS Well Architected Supply Chain Security",
+      "slug": "tldr-sec-332",
+      "date_processed": "2026-06-15",
+      "source": "https://tldrsec.com/"
     }
   }
 }
