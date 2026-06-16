@@ -74,6 +74,27 @@ https://blog.deeb.ch/ | tag=research | sub=edr,telemetry,maldev,windows
 https://0xrick.github.io/ | tag=ctf | sub=htb,web,privesc
 https://tldrsec.com/ | tag=general | sub=news,appsec,newsletter
 
+# --- added 2026-06-16 (suggested set; feeds verified) ---
+https://klezvirus.github.io/ | tag=red-team | sub=maldev,evasion,edr
+https://csandker.io/ | tag=red-team | sub=ad,windows,com
+https://0xpat.github.io/ | tag=red-team | sub=maldev,evasion,windows
+https://blog.zsec.uk/ | tag=red-team | sub=web,tooling,red-team
+https://www.zerodayinitiative.com/blog | tag=research | sub=exploit-dev,n-day,browser
+https://h0mbre.github.io/ | tag=research | sub=fuzzing,exploit-dev,windows
+https://connormcgarr.github.io/ | tag=research | sub=exploit-dev,windows,reversing
+https://securelist.com/ | tag=research | sub=malware,apt,threat-intel
+https://research.checkpoint.com/ | tag=research | sub=malware,reversing,threat-intel
+https://www.sentinelone.com/labs/ | feed=https://www.sentinelone.com/feed/?post_type=labs | tag=research | sub=malware,reversing,threat-intel
+https://blog.talosintelligence.com/ | tag=research | sub=malware,threat-intel,n-day
+https://unit42.paloaltonetworks.com/ | tag=research | sub=malware,apt,threat-intel
+https://maxkersten.nl/ | tag=research | sub=malware,reversing
+https://embracethered.com/blog/ | tag=research | sub=ai,prompt-injection,llm
+https://blog.includesecurity.com/ | tag=pentest | sub=web,mobile,appsec
+https://spaceraccoon.dev/ | tag=pentest | sub=web,bug-bounty,mobile
+https://jorianwoltjer.com/ | tag=pentest | sub=web,bug-bounty,xss
+https://www.hackingarticles.in/ | tag=pentest | sub=ad,privesc,tooling
+https://www.schneier.com/ | tag=general | sub=crypto,policy,news
+
 # ============================================================
 #  DIRECT POST URLs — no feed, a specific article to render (6)
 # ============================================================
@@ -111,3 +132,5 @@ https://iwantmore.pizza/posts/amsi.html | tag=red-team | sub=amsi,evasion,window
 # https://research.nccgroup.com/                       # research: reversing,crypto,hardware
 # https://www.assetnote.io/resources                   # research: web,n-day,attack-surface
 # https://www.snowscan.io/                             # ctf: htb,ad,web
+# --- added 2026-06-16: no feed found (WAF serves HTML at /feed/); pin feed= to use ---
+# https://www.tarlogic.com/blog/                       # red-team: ad,kerberos,c2
