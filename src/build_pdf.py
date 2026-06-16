@@ -3,7 +3,8 @@
 Pipeline: each post's Markdown -> HTML fragment (Pandoc), assembled into one
 HTML document with a cover, a table of contents and per-post "chapters", then
 rendered to PDF by WeasyPrint. The layout targets the Kindle Scribe reading
-area (157x210 mm) with a warm-paper background, the Literata reading serif
+area (150x200 mm, just inside the 157.5x210 mm screen) with a warm-paper
+background, the Literata reading serif
 (bundled, justified + hyphenated), running headers, and page numbers.
 
 Output: dist/<YYYY-MM-DD>.pdf. Sets the GitHub Actions step output pdf_path.
@@ -83,7 +84,10 @@ def font_face_css() -> str:
 
 STYLESHEET = """
 @page {
-    size: 157mm 210mm;            /* Kindle Scribe reading area */
+    /* Slightly inside the Scribe's full screen (157.5x210mm) so the reader
+       shows the page edge-to-edge without scaling-clip eating the running
+       header/footer. Keeps the device's exact 0.75 aspect ratio (1860/2480). */
+    size: 150mm 200mm;
     margin: 18mm 17mm 20mm 17mm;
     @top-center {
         content: string(chaptitle, first-except);
