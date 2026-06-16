@@ -82,7 +82,7 @@
     },
     "https://blog.netspi.com/": {
       "feed": "https://www.netspi.com/feed/",
-      "baseline": "2026-06-15T17:52:12+00:00"
+      "baseline": "2026-06-16T14:44:13+00:00"
     },
     "https://secret.club/": {
       "feed": "https://secret.club/feed.xml",
@@ -295,6 +295,65 @@
     "https://www.schneier.com/": {
       "feed": "https://www.schneier.com/feed/",
       "baseline": "2026-06-16T11:03:31+00:00"
+    },
+    "https://thedfirreport.com/": {
+      "feed": "https://thedfirreport.com/feed/",
+      "baseline": "2026-05-11T14:05:04+00:00"
+    },
+    "https://www.volexity.com/blog/": {
+      "feed": "https://www.volexity.com/feed/",
+      "baseline": "2026-06-04T20:23:55+00:00"
+    },
+    "https://redcanary.com/blog/": {
+      "feed": "https://redcanary.com/blog/feed/",
+      "baseline": "2026-06-11T13:09:00+00:00"
+    },
+    "https://www.elastic.co/security-labs": {
+      "feed": "https://www.elastic.co/security-labs/feed/",
+      "baseline": "2026-06-02T00:00:00+00:00"
+    },
+    "https://www.huntress.com/blog": {
+      "feed": "https://www.huntress.com/blog/rss.xml",
+      "baseline": "2026-06-10T14:00:00+00:00"
+    },
+    "https://www.welivesecurity.com/en/": {
+      "feed": "https://www.welivesecurity.com/en/feed/",
+      "baseline": "2026-06-15T08:55:00+00:00"
+    },
+    "https://blog.fox-it.com/": {
+      "feed": "https://blog.fox-it.com/feed/",
+      "baseline": "2026-05-22T14:55:58+00:00"
+    },
+    "https://blog.doyensec.com/": {
+      "feed": "https://blog.doyensec.com/atom.xml",
+      "baseline": "2026-05-26T22:00:00+00:00"
+    },
+    "https://blog.intigriti.com/": {
+      "feed": "https://blog.intigriti.com/feed/",
+      "baseline": "2026-06-11T00:00:00+00:00"
+    },
+    "https://positive.security/blog": {
+      "feed": "https://positive.security/blog/rss.xml",
+      "baseline": "2025-05-07T15:30:00+00:00"
+    },
+    "https://sensepost.com/blog/": {
+      "feed": "https://sensepost.com/rss.xml",
+      "baseline": "2026-06-04T09:34:57+00:00"
+    },
+    "https://labs.jumpsec.com/": {
+      "feed": "https://labs.jumpsec.com/feed.xml",
+      "baseline": "2025-12-18T20:26:00+00:00"
+    },
+    "https://www.pentestpartners.com/security-blog/": {
+      "feed": "https://www.pentestpartners.com/feed/",
+      "baseline": "2026-06-12T14:39:31+00:00"
+    },
+    "https://blog.compass-security.com/": {
+      "feed": "https://blog.compass-security.com/feed/",
+      "baseline": "2026-06-09T07:00:00+00:00"
+    },
+    "https://www.arneswinnen.net/": {
+      "feed": "https://www.arneswinnen.net/feed/"
     }
   },
   "posts": {
@@ -765,6 +824,96 @@
       "slug": "jq-for-hackers",
       "date_processed": "2026-06-16",
       "source": "https://www.trustedsec.com/blog/"
+    },
+    "https://www.netspi.com/blog/executive-blog/ciso-perspectives/beyond-the-hype-what-regulated-industries-need-to-know-before-trusting-ai-security-tooling/": {
+      "title": "Beyond the Hype: What Regulated Industries Need to Know Before Trusting AI Security Tooling",
+      "slug": "beyond-the-hype-what-regulated-industries-need-to-know-before-trusting-ai-security-tooling",
+      "date_processed": "2026-06-16",
+      "source": "https://blog.netspi.com/"
+    },
+    "https://thedfirreport.com/2026/05/11/flash-alert-etherrat-and-tuktuk-c2-end-in-the-gentleman-ransomware/": {
+      "title": "Flash Alert: EtherRat and TukTuk C2 End in The Gentleman Ransomware - The DFIR Report",
+      "slug": "flash-alert-etherrat-and-tuktuk-c2-end-in-the-gentleman-ransomware",
+      "date_processed": "2026-06-16",
+      "source": "https://thedfirreport.com/"
+    },
+    "https://www.volexity.com/blog/2026/06/04/verdantbamboo-just-another-brickstorm-in-the-firewall/": {
+      "title": "VerdantBamboo: Just Another BRICKSTORM in the Firewall",
+      "slug": "verdantbamboo-just-another-brickstorm-in-the-firewall",
+      "date_processed": "2026-06-16",
+      "source": "https://www.volexity.com/blog/"
+    },
+    "https://redcanary.com/blog/threat-detection/threat-hunting-scaled/": {
+      "title": "How threat hunting evolves at scale | Red Canary",
+      "slug": "threat-hunting-scaled",
+      "date_processed": "2026-06-16",
+      "source": "https://redcanary.com/blog/"
+    },
+    "https://www.elastic.co/security-labs/elastic-security-google-threat-intelligence": {
+      "title": "Google Threat Intelligence in Elastic Security — Elastic Security Labs",
+      "slug": "elastic-security-google-threat-intelligence",
+      "date_processed": "2026-06-16",
+      "source": "https://www.elastic.co/security-labs"
+    },
+    "https://www.huntress.com/blog/deceptive-installers-macos-infostealers": {
+      "title": "Deceptive Installers: How Fake Apps Target macOS | Huntress",
+      "slug": "deceptive-installers-macos-infostealers",
+      "date_processed": "2026-06-16",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.welivesecurity.com/en/cybercrime/eviltokens-phishing-doesnt-steal-password/": {
+      "title": "EvilTokens: A phishing attack that doesn’t steal your password",
+      "slug": "eviltokens-phishing-doesnt-steal-password",
+      "date_processed": "2026-06-16",
+      "source": "https://www.welivesecurity.com/en/"
+    },
+    "https://blog.fox-it.com/2026/05/22/remotepe-the-lazarus-rat-that-lives-in-memory/": {
+      "title": "RemotePE: The Lazarus RAT that lives in memory",
+      "slug": "remotepe-the-lazarus-rat-that-lives-in-memory",
+      "date_processed": "2026-06-16",
+      "source": "https://blog.fox-it.com/"
+    },
+    "https://blog.doyensec.com/2026/05/27/aikido-xbow.html": {
+      "title": "Comparing AI Application Security Testing Platforms",
+      "slug": "aikido-xbowhtml",
+      "date_processed": "2026-06-16",
+      "source": "https://blog.doyensec.com/"
+    },
+    "https://www.intigriti.com/blog/business-insights/securing-the-uncharted-territories-of-ai-systems-a-discussion-with-leo-racanelli": {
+      "title": "Securing the uncharted territories of AI systems. A discussion with Leo Racanelli",
+      "slug": "securing-the-uncharted-territories-of-ai-systems-a-discussion-with-leo-racanelli",
+      "date_processed": "2026-06-16",
+      "source": "https://blog.intigriti.com/"
+    },
+    "https://positive.security/blog/lodash-ramda-underscore-vulnerabilities": {
+      "title": "Vulnerabilities in the hidden magic of Lodash, Ramda and Underscore | Positive Security",
+      "slug": "lodash-ramda-underscore-vulnerabilities",
+      "date_processed": "2026-06-16",
+      "source": "https://positive.security/blog"
+    },
+    "https://sensepost.com/blog/2026/mobile-device-interception-with-mikrotik/": {
+      "title": "Mobile device interception with MikroTik",
+      "slug": "mobile-device-interception-with-mikrotik",
+      "date_processed": "2026-06-16",
+      "source": "https://sensepost.com/blog/"
+    },
+    "https://labs.jumpsec.com/tokenflare-serverless-AiTM-phishing-in-under-60-seconds/": {
+      "title": "TokenFlare: Serverless AiTM Phishing in Under 60 Seconds",
+      "slug": "tokenflare-serverless-aitm-phishing-in-under-60-seconds",
+      "date_processed": "2026-06-16",
+      "source": "https://labs.jumpsec.com/"
+    },
+    "https://www.pentestpartners.com/security-blog/ptp-cyber-fest-2026-built-for-people-to-get-involved/": {
+      "title": "PTP Cyber Fest 2026. Built for people to get involved | Pen Test Partners",
+      "slug": "ptp-cyber-fest-2026-built-for-people-to-get-involved",
+      "date_processed": "2026-06-16",
+      "source": "https://www.pentestpartners.com/security-blog/"
+    },
+    "https://blog.compass-security.com/2026/06/entra-agent-id-from-a-security-perspective/": {
+      "title": "Entra Agent ID from a Security Perspective",
+      "slug": "entra-agent-id-from-a-security-perspective",
+      "date_processed": "2026-06-16",
+      "source": "https://blog.compass-security.com/"
     }
   }
 }
