@@ -354,6 +354,22 @@
     },
     "https://www.arneswinnen.net/": {
       "feed": "https://www.arneswinnen.net/feed/"
+    },
+    "https://swarm.ptsecurity.com/": {
+      "feed": "https://swarm.ptsecurity.com/feed/",
+      "baseline": "2026-06-05T11:18:23+00:00"
+    },
+    "https://research.openanalysis.net/": {
+      "feed": "https://research.openanalysis.net/feed.xml",
+      "baseline": "2026-04-13T05:00:00+00:00"
+    },
+    "https://aadinternals.com/": {
+      "feed": "https://aadinternals.com/index.xml",
+      "baseline": "2025-11-19T00:00:00+00:00"
+    },
+    "https://thisweekin4n6.com/": {
+      "feed": "https://thisweekin4n6.com/feed/",
+      "baseline": "2026-06-14T12:18:49+00:00"
     }
   },
   "posts": {
@@ -914,6 +930,30 @@
       "slug": "entra-agent-id-from-a-security-perspective",
       "date_processed": "2026-06-16",
       "source": "https://blog.compass-security.com/"
+    },
+    "https://swarm.ptsecurity.com/the-click-that-shouldnt-have-worked-rce-via-clickjacking-in-internet-explorer/": {
+      "title": "The Click that shouldn’t have worked: RCE via clickjacking in Internet Explorer",
+      "slug": "the-click-that-shouldnt-have-worked-rce-via-clickjacking-in-internet-explorer",
+      "date_processed": "2026-06-16",
+      "source": "https://swarm.ptsecurity.com/"
+    },
+    "https://research.openanalysis.net/jitterdropper/dropper/rust/srdi/donut/pixeldrain/2026/04/13/jitterdropper.html": {
+      "title": "JitterDropper",
+      "slug": "jitterdropperhtml",
+      "date_processed": "2026-06-16",
+      "source": "https://research.openanalysis.net/"
+    },
+    "https://aadinternals.com/privacy/": {
+      "title": "Terms of Service and Privacy Statement",
+      "slug": "privacy",
+      "date_processed": "2026-06-16",
+      "source": "https://aadinternals.com/"
+    },
+    "https://thisweekin4n6.com/2026/06/14/week-24-2026/": {
+      "title": "Week 24 – 2026",
+      "slug": "week-24-2026",
+      "date_processed": "2026-06-16",
+      "source": "https://thisweekin4n6.com/"
     }
   }
 }
