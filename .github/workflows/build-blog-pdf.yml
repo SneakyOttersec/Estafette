@@ -2,8 +2,8 @@ name: Build blog PDF and upload to Drive
 
 on:
   schedule:
-    # Daily at 06:00 UTC. Adjust as you like.
-    - cron: "0 6 * * *"
+    # Mondays at 05:00 UTC. (GitHub cron is always UTC; adjust for local time.)
+    - cron: "0 5 * * 1"
   workflow_dispatch: {}
   push:
     branches: [main]
