@@ -95,15 +95,37 @@ https://jorianwoltjer.com/ | tag=pentest | sub=web,bug-bounty,xss
 https://www.hackingarticles.in/ | tag=pentest | sub=ad,privesc,tooling
 https://www.schneier.com/ | tag=general | sub=crypto,policy,news
 
+# --- added 2026-06-16 (suggested set #2; feeds verified, pinned) ---
+# threat-intel / DFIR / detection
+https://thedfirreport.com/ | feed=https://thedfirreport.com/feed/ | tag=research | sub=dfir,ransomware,threat-intel
+https://www.volexity.com/blog/ | feed=https://www.volexity.com/feed/ | tag=research | sub=apt,threat-intel,dfir
+https://redcanary.com/blog/ | feed=https://redcanary.com/blog/feed/ | tag=research | sub=detection,threat-intel,edr
+https://www.elastic.co/security-labs | feed=https://www.elastic.co/security-labs/feed/ | tag=research | sub=malware,detection,reversing
+https://www.huntress.com/blog | feed=https://www.huntress.com/blog/rss.xml | tag=research | sub=dfir,threat-intel,edr
+https://www.welivesecurity.com/en/ | feed=https://www.welivesecurity.com/en/feed/ | tag=research | sub=malware,apt,threat-intel
+https://blog.fox-it.com/ | feed=https://blog.fox-it.com/feed/ | tag=research | sub=reversing,threat-intel,dfir
+# web / appsec / bug-bounty
+https://blog.doyensec.com/ | feed=https://blog.doyensec.com/atom.xml | tag=research | sub=web,appsec,exploit-dev
+https://blog.intigriti.com/ | feed=https://blog.intigriti.com/feed/ | tag=pentest | sub=web,bug-bounty,xss
+https://positive.security/blog | feed=https://positive.security/blog/rss.xml | tag=research | sub=web,exploit-dev
+# red-team / pentest
+https://sensepost.com/blog/ | feed=https://sensepost.com/rss.xml | tag=red-team | sub=tooling,web,research
+https://labs.jumpsec.com/ | feed=https://labs.jumpsec.com/feed.xml | tag=red-team | sub=ad,evasion,tooling
+https://www.pentestpartners.com/security-blog/ | feed=https://www.pentestpartners.com/feed/ | tag=pentest | sub=iot,hardware,web
+https://blog.compass-security.com/ | feed=https://blog.compass-security.com/feed/ | tag=pentest | sub=web,ad,network
+
 # ============================================================
-#  DIRECT POST URLs — no feed, a specific article to render (6)
+#  (was: DIRECT POST URLs) — single-post support removed. Entries that have a
+#  feed are now feed-based blog sources; feedless ones are commented out below.
 # ============================================================
-https://michael-eder.net/post/2018/native_rdp_pass_the_hash/ | tag=red-team | sub=ad,pass-the-hash,lateral-movement
-https://0metasecurity.com/post-oscp-series-part-5-persistence-techniques-and-desired-state-control/ | tag=pentest | sub=oscp,persistence,windows
-https://www.arneswinnen.net/2017/06/authentication-bypass-on-ubers-sso-via-subdomain-takeover/ | tag=pentest | sub=web,bug-bounty,subdomain-takeover
-https://samy.pl/poisontap/ | tag=research | sub=hardware,usb,network
-https://github.com/OmerYa/Invisi-Shell | tag=red-team | sub=evasion,amsi,powershell
-https://iwantmore.pizza/posts/amsi.html | tag=red-team | sub=amsi,evasion,windows
+https://www.arneswinnen.net/ | feed=https://www.arneswinnen.net/feed/ | tag=pentest | sub=web,bug-bounty,subdomain-takeover
+
+# --- no RSS feed found (probed 2026-06-16); can't be ingested feed-first ---
+# https://michael-eder.net/                  # red-team: ad,pass-the-hash — no feed published
+# https://0metasecurity.com/                 # pentest: oscp,persistence — no feed
+# https://samy.pl/                           # research: hardware,usb — hand-built static site, no feed
+# https://github.com/OmerYa/Invisi-Shell     # red-team: evasion,amsi — code repo, not a blog
+# https://iwantmore.pizza/                   # red-team: amsi,evasion — no feed published
 
 # ============================================================
 #  FEEDLESS / dead — no feed found. Commented out so runs stay fast.
