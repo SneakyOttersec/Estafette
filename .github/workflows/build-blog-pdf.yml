@@ -71,17 +71,27 @@ jobs:
         if: steps.detect.outputs.has_new == 'true'
         run: python src/build_pdf.py
 
+      # Reflowable companion to the PDF. continue-on-error so an EPUB hiccup
+      # never blocks the PDF build, upload, or artifact below.
+      - name: Build EPUB
+        id: build_epub
+        if: steps.detect.outputs.has_new == 'true'
+        continue-on-error: true
+        run: python src/build_epub.py
+
       # Skipped automatically until the GDRIVE_* OAuth secrets are configured.
-      - name: Upload PDFs to Google Drive
+      - name: Upload PDFs and EPUBs to Google Drive
         if: steps.detect.outputs.has_new == 'true' && env.GDRIVE_REFRESH_TOKEN != ''
         run: python src/upload_drive.py
 
-      - name: Upload PDF as workflow artifact
+      - name: Upload PDFs and EPUBs as workflow artifact
         if: steps.detect.outputs.has_new == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: blog-pdf
-          path: dist/*.pdf
+          name: blog-files
+          path: |
+            dist/*.pdf
+            dist/*.epub
           if-no-files-found: ignore
 
       - name: Commit updated state

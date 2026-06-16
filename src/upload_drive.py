@@ -1,4 +1,4 @@
-"""Upload the generated PDFs to a Google Drive folder via OAuth (user creds).
+"""Upload the generated PDFs and EPUBs to a Google Drive folder via OAuth (user creds).
 
 Why OAuth and not a service account: a personal Gmail account has no Shared
 Drive, and files created by a service account are owned by the (quota-less)
@@ -13,7 +13,7 @@ Auth (set as GitHub Actions secrets / env vars):
 Destination: a folder named GDRIVE_FOLDER_NAME (default "BLOG_INFOSEC_NEWS"),
 created in the user's My Drive on first run and reused afterwards.
 
-Each PDF in dist/ is uploaded by name; if a file with that name already exists
+Each file in dist/ is uploaded by name; if a file with that name already exists
 in the folder its content is updated (so re-running the same day overwrites that
 day's file rather than duplicating it).
 """
@@ -35,6 +35,7 @@ SCOPES = ["https://www.googleapis.com/auth/drive.file"]
 TOKEN_URI = "https://oauth2.googleapis.com/token"
 FOLDER_MIME = "application/vnd.google-apps.folder"
 DEFAULT_FOLDER = "BLOG_INFOSEC_NEWS"
+MIME_BY_SUFFIX = {".pdf": "application/pdf", ".epub": "application/epub+zip"}
 
 
 def load_credentials() -> Credentials:
@@ -98,7 +99,8 @@ def find_file(service, folder_id: str, name: str) -> str | None:
 
 
 def upload_file(service, folder_id: str, path: Path) -> None:
-    media = MediaFileUpload(str(path), mimetype="application/pdf", resumable=True)
+    mimetype = MIME_BY_SUFFIX.get(path.suffix.lower(), "application/octet-stream")
+    media = MediaFileUpload(str(path), mimetype=mimetype, resumable=True)
     existing = find_file(service, folder_id, path.name)
     if existing:
         service.files().update(fileId=existing, media_body=media).execute()
@@ -114,9 +116,11 @@ def upload_file(service, folder_id: str, path: Path) -> None:
 
 def main() -> None:
     use_utf8_stdout()
-    pdfs = sorted(DIST_DIR.glob("*.pdf"))
-    if not pdfs:
-        print("No PDFs in dist/ to upload.")
+    files = sorted(
+        p for p in DIST_DIR.glob("*") if p.suffix.lower() in MIME_BY_SUFFIX
+    )
+    if not files:
+        print("No PDFs or EPUBs in dist/ to upload.")
         return
 
     creds = load_credentials()
@@ -125,10 +129,10 @@ def main() -> None:
     folder_name = os.environ.get("GDRIVE_FOLDER_NAME", DEFAULT_FOLDER)
     folder_id = ensure_folder(service, folder_name)
 
-    for pdf in pdfs:
-        upload_file(service, folder_id, pdf)
+    for path in files:
+        upload_file(service, folder_id, path)
 
-    print(f"Uploaded {len(pdfs)} file(s) to Drive folder {folder_name!r}.")
+    print(f"Uploaded {len(files)} file(s) to Drive folder {folder_name!r}.")
 
 
 if __name__ == "__main__":
