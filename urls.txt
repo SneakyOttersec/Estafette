@@ -114,6 +114,12 @@ https://labs.jumpsec.com/ | feed=https://labs.jumpsec.com/feed.xml | tag=red-tea
 https://www.pentestpartners.com/security-blog/ | feed=https://www.pentestpartners.com/feed/ | tag=pentest | sub=iot,hardware,web
 https://blog.compass-security.com/ | feed=https://blog.compass-security.com/feed/ | tag=pentest | sub=web,ad,network
 
+# --- added 2026-06-16 (suggested set #3, curated; feeds verified, pinned) ---
+https://swarm.ptsecurity.com/ | feed=https://swarm.ptsecurity.com/feed/ | tag=research | sub=web,exploit-dev
+https://research.openanalysis.net/ | feed=https://research.openanalysis.net/feed.xml | tag=research | sub=malware,reversing
+https://aadinternals.com/ | feed=https://aadinternals.com/index.xml | tag=red-team | sub=entra,azure,ad
+https://thisweekin4n6.com/ | feed=https://thisweekin4n6.com/feed/ | tag=research | sub=dfir,forensics,news
+
 # ============================================================
 #  (was: DIRECT POST URLs) — single-post support removed. Entries that have a
 #  feed are now feed-based blog sources; feedless ones are commented out below.
