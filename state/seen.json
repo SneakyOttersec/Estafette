@@ -222,6 +222,78 @@
     "https://tldrsec.com/": {
       "feed": "https://rss.beehiiv.com/feeds/xgTKUmMmUm.xml",
       "baseline": "2026-06-11T14:30:00+00:00"
+    },
+    "https://klezvirus.github.io/": {
+      "feed": "https://klezvirus.github.io/feed.xml",
+      "baseline": "2026-03-16T09:00:00+00:00"
+    },
+    "https://csandker.io/": {
+      "feed": "https://csandker.io/feed.xml",
+      "baseline": "2023-05-17T08:00:00+00:00"
+    },
+    "https://0xpat.github.io/": {
+      "feed": "https://0xpat.github.io/feed.xml",
+      "baseline": "2021-06-23T00:00:00+00:00"
+    },
+    "https://blog.zsec.uk/": {},
+    "https://www.zerodayinitiative.com/blog": {
+      "feed": "https://www.thezdi.com/blog?format=rss",
+      "baseline": "2026-06-09T18:12:18+00:00"
+    },
+    "https://h0mbre.github.io/": {
+      "feed": "https://h0mbre.github.io/feed.xml",
+      "baseline": "2025-10-13T00:00:00+00:00"
+    },
+    "https://connormcgarr.github.io/": {
+      "feed": "https://connormcgarr.github.io/feed.xml",
+      "baseline": "2026-01-16T00:00:00+00:00"
+    },
+    "https://securelist.com/": {
+      "feed": "https://securelist.com/feed/",
+      "baseline": "2026-06-16T09:00:11+00:00"
+    },
+    "https://research.checkpoint.com/": {
+      "feed": "https://research.checkpoint.com/feed/"
+    },
+    "https://www.sentinelone.com/labs/": {
+      "feed": "https://www.sentinelone.com/feed/?post_type=labs",
+      "baseline": "2026-06-11T13:00:59+00:00"
+    },
+    "https://blog.talosintelligence.com/": {
+      "feed": "https://blog.talosintelligence.com/rss/",
+      "baseline": "2026-06-11T18:00:49+00:00"
+    },
+    "https://unit42.paloaltonetworks.com/": {
+      "feed": "https://unit42.paloaltonetworks.com/feed/",
+      "baseline": "2026-06-16T10:00:29+00:00"
+    },
+    "https://maxkersten.nl/": {
+      "feed": "https://maxkersten.nl/feed/",
+      "baseline": "2026-06-14T10:40:24+00:00"
+    },
+    "https://embracethered.com/blog/": {
+      "feed": "https://embracethered.com/blog/index.xml",
+      "baseline": "2026-05-04T13:00:00+00:00"
+    },
+    "https://blog.includesecurity.com/": {
+      "feed": "https://blog.includesecurity.com/feed/",
+      "baseline": "2026-06-05T16:01:11+00:00"
+    },
+    "https://spaceraccoon.dev/": {
+      "feed": "https://spaceraccoon.dev/feed.xml",
+      "baseline": "2026-05-24T00:00:00+00:00"
+    },
+    "https://jorianwoltjer.com/": {
+      "feed": "https://jorianwoltjer.com/blog/rss.xml",
+      "baseline": "2026-05-28T07:07:24+00:00"
+    },
+    "https://www.hackingarticles.in/": {
+      "feed": "https://www.hackingarticles.in/feed/",
+      "baseline": "2026-06-13T21:01:21+00:00"
+    },
+    "https://www.schneier.com/": {
+      "feed": "https://www.schneier.com/feed/",
+      "baseline": "2026-06-16T11:03:31+00:00"
     }
   },
   "posts": {
@@ -578,6 +650,108 @@
       "slug": "invisi-shell",
       "date_processed": "2026-06-15",
       "source": "https://github.com/OmerYa/Invisi-Shell"
+    },
+    "https://klezvirus.github.io/posts/Byoud/": {
+      "title": "Fantastic unwind information and where to find them",
+      "slug": "byoud",
+      "date_processed": "2026-06-16",
+      "source": "https://klezvirus.github.io/"
+    },
+    "https://csandker.io//2023/05/17/Active-Directory-Spotlight-Attacking-The-Microsoft-Configuration-Manager.html": {
+      "title": "Active Directory Spotlight: Attacking Microsoft's Configuration Manager (SCCM/MECM)",
+      "slug": "active-directory-spotlight-attacking-the-microsoft-configuration-managerhtml",
+      "date_processed": "2026-06-16",
+      "source": "https://csandker.io/"
+    },
+    "https://0xpat.github.io/Vuln_discovery_Java/": {
+      "title": "Vulnerability discovery in Java applications",
+      "slug": "vuln_discovery_java",
+      "date_processed": "2026-06-16",
+      "source": "https://0xpat.github.io/"
+    },
+    "https://www.thezdi.com/blog/2026/6/9/the-june-2026-security-update-review": {
+      "title": "Zero Day Initiative — The June 2026 Security Update Review",
+      "slug": "the-june-2026-security-update-review",
+      "date_processed": "2026-06-16",
+      "source": "https://www.zerodayinitiative.com/blog"
+    },
+    "https://h0mbre.github.io/Lucid_Dreams_2/": {
+      "title": "Lucid Dreams II: Harness Development",
+      "slug": "lucid_dreams_2",
+      "date_processed": "2026-06-16",
+      "source": "https://h0mbre.github.io/"
+    },
+    "https://connormcgarr.github.io/securitytrace-etw-ppl/": {
+      "title": "Windows Internals: Check Your Privilege - The Curious Case of ETW’s SecurityTrace Flag",
+      "slug": "securitytrace-etw-ppl",
+      "date_processed": "2026-06-16",
+      "source": "https://connormcgarr.github.io/"
+    },
+    "https://securelist.com/dozens-of-malicious-wallpapers-found-on-steam-workshop/120186/": {
+      "title": "Gamers beware: malicious wallpapers on Steam found stealing accounts",
+      "slug": "120186",
+      "date_processed": "2026-06-16",
+      "source": "https://securelist.com/"
+    },
+    "https://www.sentinelone.com/labs/labscon25-replay-keynote-steps-to-an-ecology-of-cyber/": {
+      "title": "LABScon25 Replay | Keynote: Steps to an Ecology of Cyber",
+      "slug": "labscon25-replay-keynote-steps-to-an-ecology-of-cyber",
+      "date_processed": "2026-06-16",
+      "source": "https://www.sentinelone.com/labs/"
+    },
+    "https://blog.talosintelligence.com/a-tale-of-two-eras/": {
+      "title": "A tale of two eras",
+      "slug": "a-tale-of-two-eras",
+      "date_processed": "2026-06-16",
+      "source": "https://blog.talosintelligence.com/"
+    },
+    "https://unit42.paloaltonetworks.com/hijacking-vertex-ai-model/": {
+      "title": "Pickle in the Middle – Hijacking Vertex AI Model Uploads for Cross-Tenant RCE",
+      "slug": "hijacking-vertex-ai-model",
+      "date_processed": "2026-06-16",
+      "source": "https://unit42.paloaltonetworks.com/"
+    },
+    "https://maxkersten.nl/2026/06/14/my-impression-of-orangecon-2026/": {
+      "title": "My impression of OrangeCon 2026",
+      "slug": "my-impression-of-orangecon-2026",
+      "date_processed": "2026-06-16",
+      "source": "https://maxkersten.nl/"
+    },
+    "https://embracethered.com/blog/posts/2026/defcon-talk-copirate-365/": {
+      "title": "Copirate 365 at DEF CON: Plundering in the Depths of Microsoft Copilot (CVE-2026-24299) · Embrace The Red",
+      "slug": "defcon-talk-copirate-365",
+      "date_processed": "2026-06-16",
+      "source": "https://embracethered.com/blog/"
+    },
+    "https://blog.includesecurity.com/2026/06/the-smart-tv-in-your-livingroom-is-a-node-in-the-aiscraping-economy/": {
+      "title": "The Smart TV in Your LivingRoom Is a Node in the AIScraping Economy - Include Security Research Blog",
+      "slug": "the-smart-tv-in-your-livingroom-is-a-node-in-the-aiscraping-economy",
+      "date_processed": "2026-06-16",
+      "source": "https://blog.includesecurity.com/"
+    },
+    "https://spaceraccoon.dev/negative-days-vulnerability-spoiler-alert/": {
+      "title": "Negative-Days with Vulnerability Spoiler Alert: Three Months Later",
+      "slug": "negative-days-vulnerability-spoiler-alert",
+      "date_processed": "2026-06-16",
+      "source": "https://spaceraccoon.dev/"
+    },
+    "https://jorianwoltjer.com/blog/p/stories/finding-xss-on-shazzer": {
+      "title": "Finding XSS on Shazzer (literally) | Jorian Woltjer",
+      "slug": "finding-xss-on-shazzer",
+      "date_processed": "2026-06-16",
+      "source": "https://jorianwoltjer.com/"
+    },
+    "https://www.hackingarticles.in/automating-penetration-testing-with-claude-ai/": {
+      "title": "Automated Penetration Testing with Claude AI",
+      "slug": "automating-penetration-testing-with-claude-ai",
+      "date_processed": "2026-06-16",
+      "source": "https://www.hackingarticles.in/"
+    },
+    "https://www.schneier.com/blog/archives/2026/06/flock-cameras-are-being-used-for-stalking.html": {
+      "title": "Flock Cameras Are Being Used for Stalking - Schneier on Security",
+      "slug": "flock-cameras-are-being-used-for-stalkinghtml",
+      "date_processed": "2026-06-16",
+      "source": "https://www.schneier.com/"
     }
   }
 }
