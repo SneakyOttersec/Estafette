@@ -162,7 +162,7 @@
     },
     "https://www.trustedsec.com/blog/": {
       "feed": "https://trustedsec.com/feed.rss",
-      "baseline": "2026-06-12T04:00:00+00:00"
+      "baseline": "2026-06-16T04:00:00+00:00"
     },
     "https://www.outflank.nl/blog/": {
       "feed": "https://www.outflank.nl/blog/feed/"
@@ -759,6 +759,12 @@
       "slug": "15th-june-threat-intelligence-report",
       "date_processed": "2026-06-16",
       "source": "https://research.checkpoint.com/"
+    },
+    "https://trustedsec.com/blog/jq-for-hackers": {
+      "title": "JQ for Hackers",
+      "slug": "jq-for-hackers",
+      "date_processed": "2026-06-16",
+      "source": "https://www.trustedsec.com/blog/"
     }
   }
 }
