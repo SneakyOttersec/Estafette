@@ -253,7 +253,8 @@
       "baseline": "2026-06-16T09:00:11+00:00"
     },
     "https://research.checkpoint.com/": {
-      "feed": "https://research.checkpoint.com/feed/"
+      "feed": "https://research.checkpoint.com/feed/",
+      "baseline": "2026-06-15T13:40:44+00:00"
     },
     "https://www.sentinelone.com/labs/": {
       "feed": "https://www.sentinelone.com/feed/?post_type=labs",
@@ -752,6 +753,12 @@
       "slug": "flock-cameras-are-being-used-for-stalkinghtml",
       "date_processed": "2026-06-16",
       "source": "https://www.schneier.com/"
+    },
+    "https://research.checkpoint.com/2026/15th-june-threat-intelligence-report/": {
+      "title": "15th June – Threat Intelligence Report - Check Point Research",
+      "slug": "15th-june-threat-intelligence-report",
+      "date_processed": "2026-06-16",
+      "source": "https://research.checkpoint.com/"
     }
   }
 }
