@@ -14,7 +14,7 @@
     },
     "https://posts.specterops.io/": {
       "feed": "https://specterops.io/feed/",
-      "baseline": "2026-06-11T16:00:00+00:00"
+      "baseline": "2026-06-16T16:00:00+00:00"
     },
     "https://blog.xpnsec.com/": {
       "feed": "https://blog.xpnsec.com/rss.xml",
@@ -177,7 +177,7 @@
     },
     "https://www.praetorian.com/blog/": {
       "feed": "https://www.praetorian.com/feed/",
-      "baseline": "2026-06-09T19:14:27+00:00"
+      "baseline": "2026-06-16T15:15:41+00:00"
     },
     "https://mez0.cc/": {
       "feed": "https://mez0.cc/rss.xml",
@@ -294,7 +294,7 @@
     },
     "https://www.schneier.com/": {
       "feed": "https://www.schneier.com/feed/",
-      "baseline": "2026-06-16T11:03:31+00:00"
+      "baseline": "2026-06-17T11:04:04+00:00"
     },
     "https://thedfirreport.com/": {
       "feed": "https://thedfirreport.com/feed/",
@@ -318,7 +318,7 @@
     },
     "https://www.welivesecurity.com/en/": {
       "feed": "https://www.welivesecurity.com/en/feed/",
-      "baseline": "2026-06-15T08:55:00+00:00"
+      "baseline": "2026-06-16T08:54:04+00:00"
     },
     "https://blog.fox-it.com/": {
       "feed": "https://blog.fox-it.com/feed/",
@@ -326,11 +326,11 @@
     },
     "https://blog.doyensec.com/": {
       "feed": "https://blog.doyensec.com/atom.xml",
-      "baseline": "2026-05-26T22:00:00+00:00"
+      "baseline": "2026-06-16T22:00:00+00:00"
     },
     "https://blog.intigriti.com/": {
       "feed": "https://blog.intigriti.com/feed/",
-      "baseline": "2026-06-11T00:00:00+00:00"
+      "baseline": "2026-06-17T00:00:00+00:00"
     },
     "https://positive.security/blog": {
       "feed": "https://positive.security/blog/rss.xml",
@@ -361,7 +361,7 @@
     },
     "https://research.openanalysis.net/": {
       "feed": "https://research.openanalysis.net/feed.xml",
-      "baseline": "2026-04-13T05:00:00+00:00"
+      "baseline": "2026-06-16T00:00:00+00:00"
     },
     "https://aadinternals.com/": {
       "feed": "https://aadinternals.com/index.xml",
@@ -370,6 +370,315 @@
     "https://thisweekin4n6.com/": {
       "feed": "https://thisweekin4n6.com/feed/",
       "baseline": "2026-06-14T12:18:49+00:00"
+    },
+    "https://cocomelonc.github.io/": {
+      "feed": "https://cocomelonc.github.io/feed.xml",
+      "baseline": "2026-06-17T00:00:00+00:00"
+    },
+    "https://modexp.wordpress.com/": {
+      "feed": "https://modexp.wordpress.com/feed/",
+      "baseline": "2024-09-16T14:32:33+00:00"
+    },
+    "https://ethicalchaos.dev/": {
+      "feed": "https://ethicalchaos.dev/feed/",
+      "baseline": "2022-04-17T16:30:25+00:00"
+    },
+    "https://trickster0.github.io/": {
+      "feed": "https://trickster0.github.io/feed.xml",
+      "baseline": "2025-06-05T16:00:00+00:00"
+    },
+    "https://shells.systems/": {
+      "feed": "https://shells.systems/feed/",
+      "baseline": "2026-05-02T16:56:50+00:00"
+    },
+    "https://riccardoancarani.github.io/": {
+      "feed": "https://riccardoancarani.github.io/feed.xml",
+      "baseline": "2023-11-07T08:00:00+00:00"
+    },
+    "https://vanmieghem.io/blog/": {
+      "feed": "https://vanmieghem.io/feed.xml",
+      "baseline": "2023-04-18T00:00:00+00:00"
+    },
+    "https://luemmelsec.github.io/": {
+      "feed": "https://luemmelsec.github.io/feed.xml",
+      "baseline": "2025-10-04T00:00:00+00:00"
+    },
+    "https://passthehashbrowns.github.io/": {
+      "feed": "https://passthehashbrowns.github.io/feed.xml",
+      "baseline": "2023-03-20T00:00:00+00:00"
+    },
+    "https://icyguider.github.io/": {
+      "feed": "https://icyguider.github.io/feed.xml",
+      "baseline": "2022-05-19T00:00:00+00:00"
+    },
+    "https://www.naksyn.com/": {
+      "feed": "https://www.naksyn.com/atom.xml",
+      "baseline": "2024-07-02T04:00:00+00:00"
+    },
+    "https://whiteknightlabs.com/blog/": {
+      "feed": "https://whiteknightlabs.com/feed/",
+      "baseline": "2026-06-15T13:58:42+00:00"
+    },
+    "https://0xsp.com/": {
+      "feed": "https://0xsp.com/feed/"
+    },
+    "https://ricardojoserf.github.io/": {
+      "feed": "https://ricardojoserf.github.io/feed.xml",
+      "baseline": "2026-05-04T00:00:00+00:00"
+    },
+    "https://oddvar.moe/": {
+      "feed": "https://oddvar.moe/feed/",
+      "baseline": "2025-07-03T13:00:22+00:00"
+    },
+    "https://5pider.net/blog": {
+      "feed": "https://5pider.net/blog/rss.xml",
+      "baseline": "2024-01-27T00:00:00+00:00"
+    },
+    "https://dr4k0nia.github.io/": {
+      "feed": "https://dr4k0nia.github.io/feed.xml",
+      "baseline": "2023-05-22T13:27:24+00:00"
+    },
+    "https://adnanthekhan.com/": {
+      "feed": "https://adnanthekhan.com/rss.xml",
+      "baseline": "2026-03-03T00:00:00+00:00"
+    },
+    "https://cedowens.medium.com/": {
+      "feed": "https://medium.com/feed/@cedowens",
+      "baseline": "2023-08-04T20:56:50+00:00"
+    },
+    "https://blog.quarkslab.com/": {
+      "feed": "https://blog.quarkslab.com/feeds/all.atom.xml",
+      "baseline": "2026-06-08T22:00:00+00:00"
+    },
+    "https://doar-e.github.io/": {
+      "feed": "https://doar-e.github.io/feeds/atom.xml",
+      "baseline": "2023-05-05T15:00:00+00:00"
+    },
+    "https://blog.exodusintel.com/": {
+      "feed": "https://blog.exodusintel.com/feed/",
+      "baseline": "2026-06-15T15:44:54+00:00"
+    },
+    "https://www.willsroot.io/": {
+      "feed": "https://www.willsroot.io/feeds/posts/default",
+      "baseline": "2025-09-14T07:30:00+00:00"
+    },
+    "https://blog.ret2.io/": {
+      "feed": "https://blog.ret2.io/feed.xml",
+      "baseline": "2025-06-11T10:00:00+00:00"
+    },
+    "https://windows-internals.com/pages/internals-blog/": {
+      "feed": "https://windows-internals.com/feed/",
+      "baseline": "2026-04-23T16:49:19+00:00"
+    },
+    "https://revers.engineering/": {
+      "feed": "https://revers.engineering/feed/",
+      "baseline": "2026-04-03T21:46:24+00:00"
+    },
+    "https://theevilbit.github.io/": {
+      "feed": "https://theevilbit.github.io/index.xml",
+      "baseline": "2026-05-21T00:00:00+00:00"
+    },
+    "https://jhftss.github.io/": {
+      "feed": "https://jhftss.github.io/feed.xml",
+      "baseline": "2025-12-31T00:00:00+00:00"
+    },
+    "https://blog.impalabs.com/": {
+      "feed": "https://blog.impalabs.com/feed.xml",
+      "baseline": "2023-09-19T00:00:00+00:00"
+    },
+    "https://alephsecurity.com/": {
+      "feed": "https://alephsecurity.com/feed.xml",
+      "baseline": "2024-03-07T00:00:00+00:00"
+    },
+    "https://zeta-two.com/": {
+      "feed": "https://zeta-two.com/feed.xml",
+      "baseline": "2023-01-07T11:00:00+00:00"
+    },
+    "https://x-c3ll.github.io/": {
+      "feed": "https://x-c3ll.github.io/atom.xml",
+      "baseline": "2026-06-14T10:00:00+00:00"
+    },
+    "https://www.n4r1b.com/": {
+      "feed": "https://n4r1b.com/index.xml",
+      "baseline": "2023-03-04T00:00:00+00:00"
+    },
+    "https://blog.slowerzs.net/": {
+      "feed": "https://blog.slowerzs.net/posts/index.xml",
+      "baseline": "2025-03-19T17:04:08+00:00"
+    },
+    "https://zolutal.github.io/": {
+      "feed": "https://zolutal.github.io/feed.xml",
+      "baseline": "2026-02-10T00:00:00+00:00"
+    },
+    "https://ulexec.github.io/": {
+      "feed": "https://ulexec.github.io/index.xml",
+      "baseline": "2025-03-01T00:00:00+00:00"
+    },
+    "https://jmpesp.me/": {
+      "feed": "https://jmpesp.me/rss/"
+    },
+    "https://blog.washi.dev/": {
+      "feed": "https://blog.washi.dev/feed.xml",
+      "baseline": "2026-05-30T00:00:00+00:00"
+    },
+    "https://m417z.com/": {
+      "feed": "https://m417z.com/feed.xml",
+      "baseline": "2024-02-12T00:00:00+00:00"
+    },
+    "https://ctf.re/": {
+      "feed": "https://ctf.re/feed.xml",
+      "baseline": "2024-03-26T00:00:00+00:00"
+    },
+    "https://blog.es3n1n.eu/": {
+      "feed": "https://blog.es3n1n.eu/index.xml",
+      "baseline": "2025-05-08T00:00:00+00:00"
+    },
+    "https://summoning.team/blog/": {
+      "feed": "https://summoning.team/blog/index.xml",
+      "baseline": "2025-10-06T03:10:36+00:00"
+    },
+    "https://gergelykalman.com/": {
+      "feed": "https://gergelykalman.com/feeds/all.atom.xml",
+      "baseline": "2025-03-23T23:00:00+00:00"
+    },
+    "https://vulncheck.com/blog": {
+      "feed": "https://vulncheck.com/feed/blog/atom.xml"
+    },
+    "https://labs.bishopfox.com/tech-blog": {
+      "feed": "https://labs.bishopfox.com/tech-blog/rss.xml",
+      "baseline": "2026-06-16T13:00:00+00:00"
+    },
+    "https://blog.isosceles.com/": {
+      "feed": "https://blog.isosceles.com/rss/",
+      "baseline": "2024-08-23T16:10:46+00:00"
+    },
+    "https://flatt.tech/research/": {
+      "feed": "https://flatt.tech/research/index.xml",
+      "baseline": "2026-06-01T00:00:00+00:00"
+    },
+    "https://blog.didierstevens.com/": {
+      "feed": "https://blog.didierstevens.com/feed/",
+      "baseline": "2026-06-01T07:33:01+00:00"
+    },
+    "https://security.googleblog.com/": {
+      "feed": "https://security.googleblog.com/atom.xml"
+    },
+    "https://www.darknavy.org/blog/": {
+      "feed": "https://www.darknavy.org/blog/index.xml",
+      "baseline": "2026-06-09T05:43:59+00:00"
+    },
+    "https://snoolie.gay/blog/": {
+      "feed": "https://snoolie.gay/blog/rss.xml"
+    },
+    "https://swapcontext.blogspot.com/": {
+      "feed": "https://swapcontext.blogspot.com/feeds/posts/default"
+    },
+    "https://billdemirkapi.me/": {
+      "feed": "https://billdemirkapi.me/rss/",
+      "baseline": "2024-09-27T05:19:00+00:00"
+    },
+    "https://mksben.l0.cm/": {
+      "feed": "https://mksben.l0.cm/feeds/posts/default",
+      "baseline": "2021-11-28T08:58:00+00:00"
+    },
+    "https://jub0bs.com/posts/": {
+      "feed": "https://jub0bs.com/posts/index.xml",
+      "baseline": "2025-05-29T07:00:00+00:00"
+    },
+    "https://labs.detectify.com/": {
+      "feed": "https://labs.detectify.com/feed/",
+      "baseline": "2026-05-04T09:45:39+00:00"
+    },
+    "https://blog.assetnote.io/": {
+      "feed": "https://blog.assetnote.io/feed.xml",
+      "baseline": "2024-01-18T13:00:00+00:00"
+    },
+    "https://brutecat.com/": {
+      "feed": "https://brutecat.com/rss.xml",
+      "baseline": "2026-06-11T00:00:00+00:00"
+    },
+    "https://blog.amberwolf.com/": {
+      "feed": "https://blog.amberwolf.com/index.xml",
+      "baseline": "2026-04-09T00:00:00+00:00"
+    },
+    "https://palant.info/articles/": {
+      "feed": "https://palant.info/articles/index.xml",
+      "baseline": "2026-02-03T10:55:20+00:00"
+    },
+    "https://www.shielder.com/blog/": {
+      "feed": "https://www.shielder.com/blog/index.xml",
+      "baseline": "2026-04-30T13:30:00+00:00"
+    },
+    "https://certitude.consulting/blog/en/": {
+      "feed": "https://certitude.consulting/blog/en/feed/",
+      "baseline": "2026-06-03T09:30:00+00:00"
+    },
+    "https://dfir.ch/posts/": {
+      "feed": "https://dfir.ch/posts/index.xml",
+      "baseline": "2026-06-15T08:03:20+00:00"
+    },
+    "https://mgreen27.github.io/": {
+      "feed": "https://dfir.au/index.xml",
+      "baseline": "2025-04-15T00:00:00+00:00"
+    },
+    "https://themittenmac.com/blog/": {
+      "feed": "https://themittenmac.com/feed/",
+      "baseline": "2023-12-18T16:19:38+00:00"
+    },
+    "https://pberba.github.io/security/": {
+      "feed": "https://pberba.github.io/feed.xml",
+      "baseline": "2026-02-21T00:00:00+00:00"
+    },
+    "https://www.mac4n6.com/": {
+      "feed": "http://www.mac4n6.com/blog?format=rss",
+      "baseline": "2025-03-18T13:21:41+00:00"
+    },
+    "https://blog.nviso.eu/": {
+      "feed": "https://blog.nviso.eu/feed/",
+      "baseline": "2026-06-17T08:49:40+00:00"
+    },
+    "https://pentestlab.blog/": {
+      "feed": "https://pentestlab.blog/feed/",
+      "baseline": "2024-08-20T07:00:00+00:00"
+    },
+    "https://blog.scrt.ch/": {
+      "feed": "https://blog.scrt.ch/feed/",
+      "baseline": "2026-04-21T12:47:26+00:00"
+    },
+    "https://labs.nettitude.com/new": {
+      "feed": "https://labs.nettitude.com/feed/",
+      "baseline": "2024-09-18T13:29:21+00:00"
+    },
+    "https://blog.syss.com/": {
+      "feed": "https://blog.syss.com/feed.xml",
+      "baseline": "2026-04-14T08:00:00+00:00"
+    },
+    "https://www.x41-dsec.de/lab/advisories/": {
+      "feed": "https://x41-dsec.de/feed.xml",
+      "baseline": "2026-05-22T00:00:00+00:00"
+    },
+    "https://www.n00py.io/": {
+      "feed": "https://www.n00py.io/feed/",
+      "baseline": "2025-04-21T08:56:09+00:00"
+    },
+    "https://www.evilsocket.net/": {
+      "feed": "https://www.evilsocket.net/atom.xml",
+      "baseline": "2026-04-01T22:00:00+00:00"
+    },
+    "https://www.malwaretech.com/": {
+      "feed": "https://www.malwaretech.com/feed.xml"
+    },
+    "https://denniskniep.github.io/": {
+      "feed": "https://denniskniep.github.io/index.xml",
+      "baseline": "2025-11-12T11:00:00+00:00"
+    },
+    "https://www.wiz.io/blog": {
+      "feed": "https://www.wiz.io/blog/rss.xml",
+      "baseline": "2026-06-16T10:53:02+00:00"
+    },
+    "https://blog.christophetd.fr/": {
+      "feed": "https://blog.christophetd.fr/feed/",
+      "baseline": "2024-11-28T23:59:27+00:00"
     }
   },
   "posts": {
@@ -954,6 +1263,486 @@
       "slug": "week-24-2026",
       "date_processed": "2026-06-16",
       "source": "https://thisweekin4n6.com/"
+    },
+    "https://specterops.io/blog/2026/06/16/mythic-embarking-on-the-open-seas-containerized-payload-delivery-for-kubernetes-assessments/": {
+      "title": "Mythic Embarking on the Open Seas: Containerized Payload Delivery for Kubernetes Assessments",
+      "slug": "mythic-embarking-on-the-open-seas-containerized-payload-delivery-for-kubernetes-assessments",
+      "date_processed": "2026-06-17",
+      "source": "https://posts.specterops.io/"
+    },
+    "https://www.praetorian.com/blog/sharing-is-caring-smb-secret-scanning-with-sulla/": {
+      "title": "Sharing is Caring: SMB Secret Scanning with Sulla",
+      "slug": "sharing-is-caring-smb-secret-scanning-with-sulla",
+      "date_processed": "2026-06-17",
+      "source": "https://www.praetorian.com/blog/"
+    },
+    "https://www.schneier.com/blog/archives/2026/06/ai-use-by-the-us-government.html": {
+      "title": "AI Use by the US Government - Schneier on Security",
+      "slug": "ai-use-by-the-us-governmenthtml",
+      "date_processed": "2026-06-17",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.welivesecurity.com/en/eset-research/fishmongers-arsenal-upgraded-sprysocks-windows/": {
+      "title": "FishMonger’s arsenal upgraded: SprySOCKS for Windows",
+      "slug": "fishmongers-arsenal-upgraded-sprysocks-windows",
+      "date_processed": "2026-06-17",
+      "source": "https://www.welivesecurity.com/en/"
+    },
+    "https://blog.doyensec.com/2026/06/17/session-switcher.html": {
+      "title": "Introducing Session Switcher. Swap Burp Sessions with One Click!",
+      "slug": "session-switcherhtml",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.doyensec.com/"
+    },
+    "https://www.intigriti.com/blog/business-insights/using-ai-the-smart-way-interview-with-cristian-zot-cristivlad25": {
+      "title": "Using AI the smart way. Interview with Cristian Zot (CristiVlad25)",
+      "slug": "using-ai-the-smart-way-interview-with-cristian-zot-cristivlad25",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.intigriti.com/"
+    },
+    "https://www.intigriti.com/researchers/blog/hacker-spotlight/using-ai-the-smart-way-interview-with-hacker-cristian-zot-cristivlad25": {
+      "title": "Using AI the smart way. Interview with Cristian Zot (CristiVlad25)",
+      "slug": "using-ai-the-smart-way-interview-with-hacker-cristian-zot-cristivlad25",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.intigriti.com/"
+    },
+    "https://research.openanalysis.net/claude/codex/hacking/ai%20hacking/llm/redteam/policy%20violation/2026/06/16/compromised-claude-hacking.html": {
+      "title": "Captured Logs Reveal Hackers Using Claude and Codex to Breach Companies",
+      "slug": "compromised-claude-hackinghtml",
+      "date_processed": "2026-06-17",
+      "source": "https://research.openanalysis.net/"
+    },
+    "https://cocomelonc.github.io/linux/2026/06/17/linux-hacking-11.html": {
+      "title": "Linux hacking part 11: GOT/PLT hijacking. Simple C example.",
+      "slug": "linux-hacking-11html",
+      "date_processed": "2026-06-17",
+      "source": "https://cocomelonc.github.io/"
+    },
+    "https://modexp.wordpress.com/2024/09/16/windows_arm64/": {
+      "title": "Shellcode: Windows on ARM64 / AArch64",
+      "slug": "windows_arm64",
+      "date_processed": "2026-06-17",
+      "source": "https://modexp.wordpress.com/"
+    },
+    "https://ethicalchaos.dev/2022/04/17/in-process-patchless-amsi-bypass/?utm_source=rss&utm_medium=rss&utm_campaign=in-process-patchless-amsi-bypass": {
+      "title": "In-Process Patchless AMSI Bypass - Ethical Chaos",
+      "slug": "in-process-patchless-amsi-bypass",
+      "date_processed": "2026-06-17",
+      "source": "https://ethicalchaos.dev/"
+    },
+    "https://trickster0.github.io/posts/Primitive-Injection/": {
+      "title": "Primitive Injection - Breaking the Status Quo",
+      "slug": "primitive-injection",
+      "date_processed": "2026-06-17",
+      "source": "https://trickster0.github.io/"
+    },
+    "https://shells.systems/chaining-isc-dhcp-server-features-for-unauthenticated-root-remote-code-execution/": {
+      "title": "Chaining ISC DHCP Server Features for Unauthenticated Remote Root Code Execution",
+      "slug": "chaining-isc-dhcp-server-features-for-unauthenticated-root-remote-code-execution",
+      "date_processed": "2026-06-17",
+      "source": "https://shells.systems/"
+    },
+    "https://riccardoancarani.github.io/2023-11-07-attacking-an-edr-part-3/": {
+      "title": "Attacking an EDR - Part 3",
+      "slug": "2023-11-07-attacking-an-edr-part-3",
+      "date_processed": "2026-06-17",
+      "source": "https://riccardoancarani.github.io/"
+    },
+    "https://vanmieghem.io/process-injection-evading-edr-in-2023/": {
+      "title": "Process injection in 2023, evading leading EDRs",
+      "slug": "process-injection-evading-edr-in-2023",
+      "date_processed": "2026-06-17",
+      "source": "https://vanmieghem.io/blog/"
+    },
+    "https://luemmelsec.github.io/Whos-a-good-boy/": {
+      "title": "Who's a good boy?",
+      "slug": "whos-a-good-boy",
+      "date_processed": "2026-06-17",
+      "source": "https://luemmelsec.github.io/"
+    },
+    "https://passthehashbrowns.github.io/using-frida-for-rapid-detection-testing": {
+      "title": "Using Frida for rapid detection testing",
+      "slug": "using-frida-for-rapid-detection-testing",
+      "date_processed": "2026-06-17",
+      "source": "https://passthehashbrowns.github.io/"
+    },
+    "https://icyguider.github.io/2022/05/19/NoFix-LPE-Using-KrbRelay-With-Shadow-Credentials.html": {
+      "title": "No-Fix Local Privilege Escalation Using KrbRelay With Shadow Credentials",
+      "slug": "nofix-lpe-using-krbrelay-with-shadow-credentialshtml",
+      "date_processed": "2026-06-17",
+      "source": "https://icyguider.github.io/"
+    },
+    "https://www.naksyn.com/cobalt%20strike/2024/07/02/raising-beacons-without-UDRLs-teaching-how-to-sleep.html": {
+      "title": "Raising Beacons without UDRLs and Teaching them How to Sleep",
+      "slug": "raising-beacons-without-udrls-teaching-how-to-sleephtml",
+      "date_processed": "2026-06-17",
+      "source": "https://www.naksyn.com/"
+    },
+    "https://whiteknightlabs.com/2026/06/15/harnessing-the-power-of-cobalt-strike-profiles-for-edr-evasion-part-3/": {
+      "title": "Harnessing the Power of Cobalt Strike Profiles for EDR Evasion – Part 3 | White Knight Labs",
+      "slug": "harnessing-the-power-of-cobalt-strike-profiles-for-edr-evasion-part-3",
+      "date_processed": "2026-06-17",
+      "source": "https://whiteknightlabs.com/blog/"
+    },
+    "https://ricardojoserf.github.io/bacnetscan/": {
+      "title": "BACnet-scan - Tool for BACnet/IP and BACnet/SC discovery",
+      "slug": "bacnetscan",
+      "date_processed": "2026-06-17",
+      "source": "https://ricardojoserf.github.io/"
+    },
+    "https://oddvar.moe/2025/07/03/applocker-bypass-on-lenovo-machines-the-curious-case-of-mfgstat-zip/": {
+      "title": "Applocker bypass on Lenovo machines – The curious case of MFGSTAT.zip",
+      "slug": "applocker-bypass-on-lenovo-machines-the-curious-case-of-mfgstat-zip",
+      "date_processed": "2026-06-17",
+      "source": "https://oddvar.moe/"
+    },
+    "https://5pider.net/blog/2024/01/27/modern-shellcode-implant-design": {
+      "title": "Modern implant design: position independent malware development | 5pider.net",
+      "slug": "modern-shellcode-implant-design",
+      "date_processed": "2026-06-17",
+      "source": "https://5pider.net/blog"
+    },
+    "https://dr4k0nia.github.io/posts/NixImports-a-NET-loader-using-HInvoke/": {
+      "title": "NixImports a .NET loader using HInvoke",
+      "slug": "niximports-a-net-loader-using-hinvoke",
+      "date_processed": "2026-06-17",
+      "source": "https://dr4k0nia.github.io/"
+    },
+    "https://adnanthekhan.com/posts/angular-compromise-through-dev-infra/": {
+      "title": "Turning Almost Nothing into a Supply Chain Compromise of Angular with GitHub Actions Cache Poisoning | Adnan Khan - Security Research",
+      "slug": "angular-compromise-through-dev-infra",
+      "date_processed": "2026-06-17",
+      "source": "https://adnanthekhan.com/"
+    },
+    "https://cedowens.medium.com/what-to-expect-when-youre-expecting-purple-team-edition-c6879655fe1?source=rss-fd791048dac0------2": {
+      "title": "What To Expect When You’re “Expecting” — Purple Team Edition",
+      "slug": "what-to-expect-when-youre-expecting-purple-team-edition-c6879655fe1",
+      "date_processed": "2026-06-17",
+      "source": "https://cedowens.medium.com/"
+    },
+    "http://blog.quarkslab.com/extending-llvms-bolt-based-binary-analyser-to-validate-stack-variable-initialisation.html": {
+      "title": "Extending LLVM's BOLT-based Binary Analyser to Validate Stack Variable Initialisation",
+      "slug": "extending-llvms-bolt-based-binary-analyser-to-validate-stack-variable-initialisationhtml",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.quarkslab.com/"
+    },
+    "https://doar-e.github.io/blog/2023/05/05/competing-in-pwn2own-ics-2022-miami-exploiting-a-zero-click-remote-memory-corruption-in-iconics-genesis64/": {
+      "title": "Competing in Pwn2Own ICS 2022 Miami: Exploiting a zero click remote memory corruption in ICONICS Genesis64",
+      "slug": "competing-in-pwn2own-ics-2022-miami-exploiting-a-zero-click-remote-memory-corruption-in-iconics-genesis64",
+      "date_processed": "2026-06-17",
+      "source": "https://doar-e.github.io/"
+    },
+    "https://blog.exodusintel.com/2026/06/15/zombie-cotables-resurrecting-freed-memory-to-escape-virtualbox/": {
+      "title": "Zombie COTables: Resurrecting Freed Memory to Escape VirtualBox - Exodus Intelligence",
+      "slug": "zombie-cotables-resurrecting-freed-memory-to-escape-virtualbox",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.exodusintel.com/"
+    },
+    "https://www.willsroot.io/2025/09/ksmbd-0-click.html": {
+      "title": "Eternal-Tux: Crafting a Linux Kernel KSMBD 0-Click RCE Exploit from N-Days",
+      "slug": "ksmbd-0-clickhtml",
+      "date_processed": "2026-06-17",
+      "source": "https://www.willsroot.io/"
+    },
+    "https://blog.ret2.io/2025/06/11/pwn2own-soho-2024-sonos-exploit/": {
+      "title": "Streaming Zero-Fi Shells to Your Smart Speaker",
+      "slug": "pwn2own-soho-2024-sonos-exploit",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.ret2.io/"
+    },
+    "https://windows-internals.com/goodbye-secure-pool-hello-kdp-pool/?utm_source=rss&utm_medium=rss&utm_campaign=goodbye-secure-pool-hello-kdp-pool": {
+      "title": "Goodbye Secure Pool, Hello KDP Pool",
+      "slug": "goodbye-secure-pool-hello-kdp-pool",
+      "date_processed": "2026-06-17",
+      "source": "https://windows-internals.com/pages/internals-blog/"
+    },
+    "https://revers.engineering/applied-re-crude-te-for-control-flow-tracing/": {
+      "title": "Applied Reverse Engineering: Crude T&E for Control-Flow Tracing - Reverse Engineering",
+      "slug": "applied-re-crude-te-for-control-flow-tracing",
+      "date_processed": "2026-06-17",
+      "source": "https://revers.engineering/"
+    },
+    "https://theevilbit.github.io/talks/": {
+      "title": "Talks and Workshops",
+      "slug": "talks",
+      "date_processed": "2026-06-17",
+      "source": "https://theevilbit.github.io/"
+    },
+    "https://jhftss.github.io/CVE-2025-43530/": {
+      "title": "CVE-2025-43530: Exploiting a private API for VoiceOver",
+      "slug": "cve-2025-43530",
+      "date_processed": "2026-06-17",
+      "source": "https://jhftss.github.io/"
+    },
+    "https://blog.impalabs.com/2309_advisory_huawei_trustzone_block-chain.html": {
+      "title": "Huawei TrustZone Block_Chain TA Vulnerabilities",
+      "slug": "2309_advisory_huawei_trustzone_block-chainhtml",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.impalabs.com/"
+    },
+    "https://alephsecurity.com/2024/03/07/kontrol-lux-lock-2/": {
+      "title": "Say Friend and Enter: Digitally lockpicking an advanced smart lock (Part 2: discovered vulnerabilities)",
+      "slug": "kontrol-lux-lock-2",
+      "date_processed": "2026-06-17",
+      "source": "https://alephsecurity.com/"
+    },
+    "https://zeta-two.com/ctf/2023/01/07/sans-holidayhack-2022/": {
+      "title": "SANS Holiday Hack Challange 2022: Writeup",
+      "slug": "sans-holidayhack-2022",
+      "date_processed": "2026-06-17",
+      "source": "https://zeta-two.com/"
+    },
+    "https://x-c3ll.github.io/posts/Cronicas_del_Red_Team/": {
+      "title": "I wrote a book (in Spanish) called Cronicas del Red Team",
+      "slug": "cronicas_del_red_team",
+      "date_processed": "2026-06-17",
+      "source": "https://x-c3ll.github.io/"
+    },
+    "https://n4r1b.com/posts/2023/03/the-intersection-of-apples-usb-lower-filter-and-iphone-wpd-integration/": {
+      "title": "The Intersection of Apple's USB Lower Filter and iPhone-WPD Integration",
+      "slug": "the-intersection-of-apples-usb-lower-filter-and-iphone-wpd-integration",
+      "date_processed": "2026-06-17",
+      "source": "https://www.n4r1b.com/"
+    },
+    "https://blog.slowerzs.net/posts/keyjumper/": {
+      "title": "Code reuse in the age of kCET and HVCI",
+      "slug": "keyjumper",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.slowerzs.net/"
+    },
+    "https://zolutal.github.io/two-shot-kernel-shellcode/": {
+      "title": "Revisiting Two-Shot Kernel Shellcode Execution From Control Flow Hijacking",
+      "slug": "two-shot-kernel-shellcode",
+      "date_processed": "2026-06-17",
+      "source": "https://zolutal.github.io/"
+    },
+    "https://ulexec.github.io/post/2025-03-01-codeauditing/": {
+      "title": "Notes on C/C++ Code Auditing",
+      "slug": "2025-03-01-codeauditing",
+      "date_processed": "2026-06-17",
+      "source": "https://ulexec.github.io/"
+    },
+    "https://blog.washi.dev/posts/custom-attributes-and-why-they-suck/": {
+      "title": "Why Custom Attributes in .NET give me Nightmares",
+      "slug": "custom-attributes-and-why-they-suck",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.washi.dev/"
+    },
+    "https://m417z.com/When-is-it-generally-safe-to-CreateRemoteThread/": {
+      "title": "When is it generally safe to CreateRemoteThread?",
+      "slug": "when-is-it-generally-safe-to-createremotethread",
+      "date_processed": "2026-06-17",
+      "source": "https://m417z.com/"
+    },
+    "https://ctf.re//kernel/pcie/tutorial/dma/mmio/tlp/2024/03/26/pcie-part-2/": {
+      "title": "PCIe Part 2 - All About Memory: MMIO, DMA, TLPs, and more!",
+      "slug": "pcie-part-2",
+      "date_processed": "2026-06-17",
+      "source": "https://ctf.re/"
+    },
+    "http://blog.es3n1n.eu/posts/how-i-ruined-my-vacation/": {
+      "title": "How I ruined my vacation by reverse engineering WSC",
+      "slug": "how-i-ruined-my-vacation",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.es3n1n.eu/"
+    },
+    "https://summoning.team/blog/well-well-well.-its-another-day.-oracle-e-business-suite-pre-auth-rce-chain-cve-2025-61882/": {
+      "title": "Summoning Team",
+      "slug": "well-well-well-its-another-day-oracle-e-business-suite-pre-auth-rce-chain-cve-2025-61882",
+      "date_processed": "2026-06-17",
+      "source": "https://summoning.team/blog/"
+    },
+    "https://gergelykalman.com/corrections-regarding-rename.html": {
+      "title": "Corrections regarding rename()",
+      "slug": "corrections-regarding-renamehtml",
+      "date_processed": "2026-06-17",
+      "source": "https://gergelykalman.com/"
+    },
+    "https://bishopfox.com/blog/a-crash-not-a-shell-solarwinds-serev-u-cve-2026-28318": {
+      "title": "A Crash, Not a Shell: SolarWinds Serve-U CVE-2026-28318",
+      "slug": "a-crash-not-a-shell-solarwinds-serev-u-cve-2026-28318",
+      "date_processed": "2026-06-17",
+      "source": "https://labs.bishopfox.com/tech-blog"
+    },
+    "https://blog.isosceles.com/openssh-backdoors/": {
+      "title": "OpenSSH Backdoors",
+      "slug": "openssh-backdoors",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.isosceles.com/"
+    },
+    "https://flatt.tech/research/posts/poisoning-claude-code-one-github-issue-to-break-the-supply-chain/": {
+      "title": "Poisoning Claude Code: One GitHub Issue to Break the Supply Chain",
+      "slug": "poisoning-claude-code-one-github-issue-to-break-the-supply-chain",
+      "date_processed": "2026-06-17",
+      "source": "https://flatt.tech/research/"
+    },
+    "https://blog.didierstevens.com/2026/06/01/overview-of-content-published-in-may-11/": {
+      "title": "Overview of Content Published in May",
+      "slug": "overview-of-content-published-in-may-11",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.didierstevens.com/"
+    },
+    "https://www.darknavy.org/blog/deepsec_chasing_mythos_with_open_source_llms/": {
+      "title": "deepsec: Chasing Mythos with Open-Source LLMs",
+      "slug": "deepsec_chasing_mythos_with_open_source_llms",
+      "date_processed": "2026-06-17",
+      "source": "https://www.darknavy.org/blog/"
+    },
+    "https://billdemirkapi.me/leveraging-big-data-for-vulnerability-discovery-at-scale/": {
+      "title": "Secrets and Shadows: Leveraging Big Data for Vulnerability Discovery at Scale",
+      "slug": "leveraging-big-data-for-vulnerability-discovery-at-scale",
+      "date_processed": "2026-06-17",
+      "source": "https://billdemirkapi.me/"
+    },
+    "https://mksben.l0.cm/2021/11/css-exfiltration-svg-font.html": {
+      "title": "Data Exfiltration via CSS + SVG Font",
+      "slug": "css-exfiltration-svg-fonthtml",
+      "date_processed": "2026-06-17",
+      "source": "https://mksben.l0.cm/"
+    },
+    "https://jub0bs.com/posts/2025-05-29-pure-vs-impure-iterators-in-go/": {
+      "title": "Pure vs. impure iterators in Go",
+      "slug": "2025-05-29-pure-vs-impure-iterators-in-go",
+      "date_processed": "2026-06-17",
+      "source": "https://jub0bs.com/posts/"
+    },
+    "https://labs.detectify.com/crowdsource-community/crowdsource-awards-2025-celebrating-our-community-of-elite-ethical-hackers/": {
+      "title": "Crowdsource Awards 2025: Celebrating our community of elite ethical hackers",
+      "slug": "crowdsource-awards-2025-celebrating-our-community-of-elite-ethical-hackers",
+      "date_processed": "2026-06-17",
+      "source": "https://labs.detectify.com/"
+    },
+    "https://blog.assetnote.io/2024/01/19/ivanti-pulse-connect-secure-auth-bypass-rce/": {
+      "title": "High Signal Detection and Exploitation of Ivanti's Pulse Connect Secure Auth Bypass & RCE",
+      "slug": "ivanti-pulse-connect-secure-auth-bypass-rce",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.assetnote.io/"
+    },
+    "https://brutecat.com/articles/hacking-google-with-ai": {
+      "title": "Hacking Google with A.I. for $500,000",
+      "slug": "hacking-google-with-ai",
+      "date_processed": "2026-06-17",
+      "source": "https://brutecat.com/"
+    },
+    "https://blog.amberwolf.com/blog/2026/april/next-next-system/": {
+      "title": "Next, Next, SYSTEM: Exploiting NSIS installer bugs to escalate privileges in Zscaler Client Connector",
+      "slug": "next-next-system",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.amberwolf.com/"
+    },
+    "https://palant.info/2026/02/03/supporting-waylands-xdg-activation-protocol-with-gtk/glib/": {
+      "title": "Supporting Waylandâs XDG activation protocol with Gtk/Glib",
+      "slug": "glib",
+      "date_processed": "2026-06-17",
+      "source": "https://palant.info/articles/"
+    },
+    "https://www.shielder.com/blog/2026/04/inspektor-gadget-security-audit/": {
+      "title": "Shielder - Inspektor Gadget Security Audit",
+      "slug": "inspektor-gadget-security-audit",
+      "date_processed": "2026-06-17",
+      "source": "https://www.shielder.com/blog/"
+    },
+    "https://certitude.consulting/blog/en/conference-talk-the-human-factor-cybersecuritys-weakest-link-or-most-adaptive-defense/": {
+      "title": "Conference Talk „The Human Factor. Cybersecurity’s Weakest Link or Most Adaptive Defense?”",
+      "slug": "conference-talk-the-human-factor-cybersecuritys-weakest-link-or-most-adaptive-defense",
+      "date_processed": "2026-06-17",
+      "source": "https://certitude.consulting/blog/en/"
+    },
+    "https://dfir.ch/posts/deno/": {
+      "title": "Anatomy of a Deno-Based Proxy & RAT | dfir.ch",
+      "slug": "deno",
+      "date_processed": "2026-06-17",
+      "source": "https://dfir.ch/posts/"
+    },
+    "https://dfir.au/projects/mcp-velociraptor/": {
+      "title": "MCP Velociraptor",
+      "slug": "mcp-velociraptor",
+      "date_processed": "2026-06-17",
+      "source": "https://mgreen27.github.io/"
+    },
+    "https://themittenmac.com/threat-hunting-pids-within-apples-es-api/?utm_source=rss&utm_medium=rss&utm_campaign=threat-hunting-pids-within-apples-es-api": {
+      "title": "Threat Hunting Pids Within Apple’s Endpoint Security API",
+      "slug": "threat-hunting-pids-within-apples-es-api",
+      "date_processed": "2026-06-17",
+      "source": "https://themittenmac.com/blog/"
+    },
+    "https://pberba.github.io/security/2026/02/21/aemonitor/": {
+      "title": "AEMonitor: Monitoring Apple Events for Malware Analysis and Detection",
+      "slug": "aemonitor",
+      "date_processed": "2026-06-17",
+      "source": "https://pberba.github.io/security/"
+    },
+    "http://www.mac4n6.com/blog/2025/3/18/new-presentation-using-apple-intelligence-ai-data-in-investigations": {
+      "title": "New Presentation - Using Apple Intelligence (AI) Data in Investigations — mac4n6.com",
+      "slug": "new-presentation-using-apple-intelligence-ai-data-in-investigations",
+      "date_processed": "2026-06-17",
+      "source": "https://www.mac4n6.com/"
+    },
+    "https://blog.nviso.eu/2026/06/17/reducing-microsoft-sentinel-costs-without-compromising-detection-part-1-the-summary-rules-quest/": {
+      "title": "Reduce Microsoft Sentinel Costs with Summary Rules",
+      "slug": "reducing-microsoft-sentinel-costs-without-compromising-detection-part-1-the-summary-rules-quest",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.nviso.eu/"
+    },
+    "https://pentestlab.blog/2024/08/20/web-browser-stored-credentials/": {
+      "title": "Web Browser Stored Credentials",
+      "slug": "web-browser-stored-credentials",
+      "date_processed": "2026-06-17",
+      "source": "https://pentestlab.blog/"
+    },
+    "https://blog.scrt.ch/2026/04/21/from-a-regular-red-team-exercise-to-developing-a-custom-c2-channel-over-ms-teams/": {
+      "title": "From a Regular Red Team Exercise to Developing a Custom C2 Channel over MS Teams",
+      "slug": "from-a-regular-red-team-exercise-to-developing-a-custom-c2-channel-over-ms-teams",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.scrt.ch/"
+    },
+    "https://labs.nettitude.com/blog/binary-ninja-plugin-fix-stomped-imports/": {
+      "title": "Binary Ninja Plugin",
+      "slug": "binary-ninja-plugin-fix-stomped-imports",
+      "date_processed": "2026-06-17",
+      "source": "https://labs.nettitude.com/new"
+    },
+    "https://blog.syss.com/posts/wcfproxy/": {
+      "title": "Intercepting WCF Traffic with wcfproxy",
+      "slug": "wcfproxy",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.syss.com/"
+    },
+    "https://x41-dsec.de/lab/advisories/x41-2026-002-starlette/": {
+      "title": "Advisory X41-2026-002: Request Host Header not Validated in Starlette",
+      "slug": "x41-2026-002-starlette",
+      "date_processed": "2026-06-17",
+      "source": "https://www.x41-dsec.de/lab/advisories/"
+    },
+    "https://www.n00py.io/2025/04/identifying-new-attack-paths-via-password-analysis/": {
+      "title": "Identifying New Attack Paths via Password Analysis",
+      "slug": "identifying-new-attack-paths-via-password-analysis",
+      "date_processed": "2026-06-17",
+      "source": "https://www.n00py.io/"
+    },
+    "https://www.evilsocket.net/2026/04/02/Mongoose-Preauth-Remote-Code-Execution-and-mTLS-Bypass/": {
+      "title": "Mongoose: Preauth RCE and mTLS Bypass on Millions of Devices | evilsocket",
+      "slug": "mongoose-preauth-remote-code-execution-and-mtls-bypass",
+      "date_processed": "2026-06-17",
+      "source": "https://www.evilsocket.net/"
+    },
+    "https://denniskniep.github.io/posts/15-conf-talk-heise-summit/": {
+      "title": "Talk at Heise IT Summit 2025: Regaining digital sovereignty using the example of digital identities",
+      "slug": "15-conf-talk-heise-summit",
+      "date_processed": "2026-06-17",
+      "source": "https://denniskniep.github.io/"
+    },
+    "https://www.wiz.io/blog/exposure-management-dashboard": {
+      "title": "Wiz Exposure Management Dashboard: Your CTEM Command Center | Wiz Blog",
+      "slug": "exposure-management-dashboard",
+      "date_processed": "2026-06-17",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://blog.christophetd.fr/pkce-aws-sso/": {
+      "title": "The New PKCE Authentication in AWS SSO Brings Hope (Mostly) - Christophe Tafani-Dereeper",
+      "slug": "pkce-aws-sso",
+      "date_processed": "2026-06-17",
+      "source": "https://blog.christophetd.fr/"
     }
   }
 }
