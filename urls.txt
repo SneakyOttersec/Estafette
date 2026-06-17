@@ -3,18 +3,18 @@
 # Grammar (fields after the URL are optional, '|'-separated, order-free):
 #   <url> | feed=<feed-url> | tag=<main-tag> | sub=<comma,separated,subtags>
 #
-#   tag = one of: red-team | pentest | ctf | research | general
+#   tag = one of: red-team | pentest | vuln-dev | threat-intel | general
 #         -> the pipeline builds ONE PDF per main tag, with the tag shown inside.
 #   feed = pin a specific feed (skip auto-discovery).
 #   sub  = free-form topic tags (web, cloud, azure, ad, evasion, ...).
 #
-# A line is a blog home/section page (feed auto-discovered) or a single post URL.
-# Classified by a content probe on 2026-06-15.
+# A line is a blog home/section page; its RSS/Atom feed is auto-discovered.
+# Tags rebalanced 2026-06-16 (research split into vuln-dev + threat-intel).
 
 # ============================================================
 #  FEED SOURCES — RSS/Atom feed auto-discovered (57)
 # ============================================================
-https://0xdf.gitlab.io/ | tag=ctf | sub=htb,web,ad,privesc
+https://0xdf.gitlab.io/ | tag=red-team | sub=htb,web,ad,privesc
 https://rastamouse.me/ | tag=red-team | sub=c2,cobalt-strike,evasion,maldev
 https://adsecurity.org/ | tag=red-team | sub=ad,kerberos,windows
 https://posts.specterops.io/ | feed=https://specterops.io/feed/ | tag=red-team | sub=ad,bloodhound,azure,c2
@@ -28,32 +28,32 @@ https://krbtgt.pw/ | tag=red-team | sub=ad,kerberos
 https://lsdsecdaemon.com/ | tag=pentest | sub=wireless,wifi,network
 https://beta.hackndo.com/ | tag=red-team | sub=ad,kerberos,windows
 https://decoder.cloud/ | tag=pentest | sub=windows,privesc
-https://tyranidslair.blogspot.com/ | tag=research | sub=windows,com,reversing,privesc
-https://www.atredis.com/blog/ | tag=research | sub=hardware,web,embedded
-https://itm4n.github.io/ | tag=pentest | sub=windows,privesc,exploit-dev
+https://tyranidslair.blogspot.com/ | tag=vuln-dev | sub=windows,com,reversing,privesc
+https://www.atredis.com/blog/ | tag=vuln-dev | sub=hardware,web,embedded
+https://itm4n.github.io/ | tag=vuln-dev | sub=windows,privesc,exploit-dev
 https://enigma0x3.net/ | tag=red-team | sub=windows,evasion,privesc
 https://www.martinvigo.com/ | tag=pentest | sub=mobile,osint,web
 https://m0chan.github.io/ | tag=red-team | sub=ad,windows,web
-https://blog.netspi.com/ | tag=pentest | sub=cloud,azure,web,ad
-https://secret.club/ | tag=research | sub=reversing,exploit-dev,anti-cheat
+https://blog.netspi.com/ | tag=red-team | sub=cloud,azure,web,ad
+https://secret.club/ | tag=vuln-dev | sub=reversing,exploit-dev,anti-cheat
 https://adepts.of0x.cc/ | tag=red-team | sub=maldev,evasion,windows
 https://dazzyddos.github.io/ | tag=red-team | sub=evasion,edr,amsi,maldev,windows
-https://googleprojectzero.blogspot.com/ | tag=research | sub=exploit-dev,browser,mobile,fuzzing
+https://googleprojectzero.blogspot.com/ | tag=vuln-dev | sub=exploit-dev,browser,mobile,fuzzing
 https://www.ctus.io/ | tag=pentest | sub=cve,web,network
 https://jlajara.gitlab.io/ | tag=pentest | sub=web,xss,bug-bounty
-https://amonsec.net/posts/ | tag=research | sub=windows,exploit-dev,maldev,evasion
+https://amonsec.net/posts/ | tag=red-team | sub=windows,exploit-dev,maldev,evasion
 https://tij.me/ | tag=red-team | sub=web,tooling,evasion
-https://labs.watchtowr.com/ | tag=research | sub=web,exploit-dev,n-day
+https://labs.watchtowr.com/ | tag=vuln-dev | sub=web,exploit-dev,n-day
 https://blog.badsectorlabs.com/ | tag=general | sub=news,red-team,tooling
-https://badoption.eu/blogs/ | tag=red-team | sub=cloud,azure,web
-https://elliotonsecurity.com/ | tag=research | sub=windows,exploit-dev,reversing
-https://code-white.com/blog/ | tag=research | sub=java,deserialization,exploit-dev,ad
+https://badoption.eu/blogs/ | tag=pentest | sub=cloud,azure,web
+https://elliotonsecurity.com/ | tag=vuln-dev | sub=windows,exploit-dev,reversing
+https://code-white.com/blog/ | tag=red-team | sub=java,deserialization,exploit-dev,ad
 https://dirkjanm.io/ | tag=red-team | sub=azure,entra,ad,cloud
-https://kyjonin.blogspot.com/ | tag=red-team | sub=windows,com,detection
-https://blog.p1.gs/ | tag=ctf | sub=ctf,web
-https://www.elttam.com/blog/ | tag=research | sub=web,exploit-dev,crypto
+https://kyjonin.blogspot.com/ | tag=threat-intel | sub=windows,com,detection
+https://blog.p1.gs/ | tag=pentest | sub=ctf,web
+https://www.elttam.com/blog/ | tag=vuln-dev | sub=web,exploit-dev,crypto
 https://www.wietzebeukema.nl/blog/ | tag=red-team | sub=windows,lolbin,dll-hijack
-https://blog.trailofbits.com/ | tag=research | sub=appsec,crypto,fuzzing,blockchain
+https://blog.trailofbits.com/ | tag=vuln-dev | sub=appsec,crypto,fuzzing,blockchain
 
 # --- added 2026-06-15 (suggested set) ---
 https://www.trustedsec.com/blog/ | tag=red-team | sub=ad,tooling,windows
@@ -63,62 +63,62 @@ https://bohops.com/ | tag=red-team | sub=windows,lolbin,evasion
 https://www.praetorian.com/blog/ | tag=red-team | sub=cloud,ad,web
 https://mez0.cc/ | tag=red-team | sub=maldev,c2,ai,evasion
 https://pre.empt.blog/ | tag=red-team | sub=c2,maldev,evasion,edr
-https://www.blackhillsinfosec.com/blog/ | tag=pentest | sub=tooling,ad,web
+https://www.blackhillsinfosec.com/blog/ | tag=red-team | sub=tooling,ad,web
 https://rhinosecuritylabs.com/blog/ | tag=pentest | sub=cloud,aws,web
-https://portswigger.net/research | tag=research | sub=web,appsec
-https://blog.orange.tw/ | tag=research | sub=web,exploit-dev
-https://devco.re/blog/ | tag=research | sub=web,exploit-dev
-https://j00ru.vexillium.org/ | tag=research | sub=windows,fuzzing,exploit-dev
-https://www.hexacorn.com/blog/ | tag=research | sub=windows,persistence,dfir
-https://blog.deeb.ch/ | tag=research | sub=edr,telemetry,maldev,windows
-https://0xrick.github.io/ | tag=ctf | sub=htb,web,privesc
+https://portswigger.net/research | tag=pentest | sub=web,appsec
+https://blog.orange.tw/ | tag=vuln-dev | sub=web,exploit-dev
+https://devco.re/blog/ | tag=vuln-dev | sub=web,exploit-dev
+https://j00ru.vexillium.org/ | tag=vuln-dev | sub=windows,fuzzing,exploit-dev
+https://www.hexacorn.com/blog/ | tag=red-team | sub=windows,persistence,dfir
+https://blog.deeb.ch/ | tag=red-team | sub=edr,telemetry,maldev,windows
+https://0xrick.github.io/ | tag=pentest | sub=htb,web,privesc
 https://tldrsec.com/ | tag=general | sub=news,appsec,newsletter
 
 # --- added 2026-06-16 (suggested set; feeds verified) ---
 https://klezvirus.github.io/ | tag=red-team | sub=maldev,evasion,edr
 https://csandker.io/ | tag=red-team | sub=ad,windows,com
 https://0xpat.github.io/ | tag=red-team | sub=maldev,evasion,windows
-https://blog.zsec.uk/ | tag=red-team | sub=web,tooling,red-team
-https://www.zerodayinitiative.com/blog | tag=research | sub=exploit-dev,n-day,browser
-https://h0mbre.github.io/ | tag=research | sub=fuzzing,exploit-dev,windows
-https://connormcgarr.github.io/ | tag=research | sub=exploit-dev,windows,reversing
-https://securelist.com/ | tag=research | sub=malware,apt,threat-intel
-https://research.checkpoint.com/ | tag=research | sub=malware,reversing,threat-intel
-https://www.sentinelone.com/labs/ | feed=https://www.sentinelone.com/feed/?post_type=labs | tag=research | sub=malware,reversing,threat-intel
-https://blog.talosintelligence.com/ | tag=research | sub=malware,threat-intel,n-day
-https://unit42.paloaltonetworks.com/ | tag=research | sub=malware,apt,threat-intel
-https://maxkersten.nl/ | tag=research | sub=malware,reversing
-https://embracethered.com/blog/ | tag=research | sub=ai,prompt-injection,llm
+https://blog.zsec.uk/ | tag=pentest | sub=web,tooling,red-team
+https://www.zerodayinitiative.com/blog | tag=vuln-dev | sub=exploit-dev,n-day,browser
+https://h0mbre.github.io/ | tag=vuln-dev | sub=fuzzing,exploit-dev,windows
+https://connormcgarr.github.io/ | tag=vuln-dev | sub=exploit-dev,windows,reversing
+https://securelist.com/ | tag=threat-intel | sub=malware,apt,threat-intel
+https://research.checkpoint.com/ | tag=threat-intel | sub=malware,reversing,threat-intel
+https://www.sentinelone.com/labs/ | feed=https://www.sentinelone.com/feed/?post_type=labs | tag=threat-intel | sub=malware,reversing,threat-intel
+https://blog.talosintelligence.com/ | tag=threat-intel | sub=malware,threat-intel,n-day
+https://unit42.paloaltonetworks.com/ | tag=threat-intel | sub=malware,apt,threat-intel
+https://maxkersten.nl/ | tag=threat-intel | sub=malware,reversing
+https://embracethered.com/blog/ | tag=pentest | sub=ai,prompt-injection,llm
 https://blog.includesecurity.com/ | tag=pentest | sub=web,mobile,appsec
 https://spaceraccoon.dev/ | tag=pentest | sub=web,bug-bounty,mobile
 https://jorianwoltjer.com/ | tag=pentest | sub=web,bug-bounty,xss
-https://www.hackingarticles.in/ | tag=pentest | sub=ad,privesc,tooling
+https://www.hackingarticles.in/ | tag=red-team | sub=ad,privesc,tooling
 https://www.schneier.com/ | tag=general | sub=crypto,policy,news
 
 # --- added 2026-06-16 (suggested set #2; feeds verified, pinned) ---
 # threat-intel / DFIR / detection
-https://thedfirreport.com/ | feed=https://thedfirreport.com/feed/ | tag=research | sub=dfir,ransomware,threat-intel
-https://www.volexity.com/blog/ | feed=https://www.volexity.com/feed/ | tag=research | sub=apt,threat-intel,dfir
-https://redcanary.com/blog/ | feed=https://redcanary.com/blog/feed/ | tag=research | sub=detection,threat-intel,edr
-https://www.elastic.co/security-labs | feed=https://www.elastic.co/security-labs/feed/ | tag=research | sub=malware,detection,reversing
-https://www.huntress.com/blog | feed=https://www.huntress.com/blog/rss.xml | tag=research | sub=dfir,threat-intel,edr
-https://www.welivesecurity.com/en/ | feed=https://www.welivesecurity.com/en/feed/ | tag=research | sub=malware,apt,threat-intel
-https://blog.fox-it.com/ | feed=https://blog.fox-it.com/feed/ | tag=research | sub=reversing,threat-intel,dfir
+https://thedfirreport.com/ | feed=https://thedfirreport.com/feed/ | tag=threat-intel | sub=dfir,ransomware,threat-intel
+https://www.volexity.com/blog/ | feed=https://www.volexity.com/feed/ | tag=threat-intel | sub=apt,threat-intel,dfir
+https://redcanary.com/blog/ | feed=https://redcanary.com/blog/feed/ | tag=threat-intel | sub=detection,threat-intel,edr
+https://www.elastic.co/security-labs | feed=https://www.elastic.co/security-labs/feed/ | tag=threat-intel | sub=malware,detection,reversing
+https://www.huntress.com/blog | feed=https://www.huntress.com/blog/rss.xml | tag=threat-intel | sub=dfir,threat-intel,edr
+https://www.welivesecurity.com/en/ | feed=https://www.welivesecurity.com/en/feed/ | tag=threat-intel | sub=malware,apt,threat-intel
+https://blog.fox-it.com/ | feed=https://blog.fox-it.com/feed/ | tag=threat-intel | sub=reversing,threat-intel,dfir
 # web / appsec / bug-bounty
-https://blog.doyensec.com/ | feed=https://blog.doyensec.com/atom.xml | tag=research | sub=web,appsec,exploit-dev
+https://blog.doyensec.com/ | feed=https://blog.doyensec.com/atom.xml | tag=vuln-dev | sub=web,appsec,exploit-dev
 https://blog.intigriti.com/ | feed=https://blog.intigriti.com/feed/ | tag=pentest | sub=web,bug-bounty,xss
-https://positive.security/blog | feed=https://positive.security/blog/rss.xml | tag=research | sub=web,exploit-dev
+https://positive.security/blog | feed=https://positive.security/blog/rss.xml | tag=vuln-dev | sub=web,exploit-dev
 # red-team / pentest
-https://sensepost.com/blog/ | feed=https://sensepost.com/rss.xml | tag=red-team | sub=tooling,web,research
+https://sensepost.com/blog/ | feed=https://sensepost.com/rss.xml | tag=pentest | sub=tooling,web,research
 https://labs.jumpsec.com/ | feed=https://labs.jumpsec.com/feed.xml | tag=red-team | sub=ad,evasion,tooling
-https://www.pentestpartners.com/security-blog/ | feed=https://www.pentestpartners.com/feed/ | tag=pentest | sub=iot,hardware,web
-https://blog.compass-security.com/ | feed=https://blog.compass-security.com/feed/ | tag=pentest | sub=web,ad,network
+https://www.pentestpartners.com/security-blog/ | feed=https://www.pentestpartners.com/feed/ | tag=vuln-dev | sub=iot,hardware,web
+https://blog.compass-security.com/ | feed=https://blog.compass-security.com/feed/ | tag=red-team | sub=web,ad,network
 
 # --- added 2026-06-16 (suggested set #3, curated; feeds verified, pinned) ---
-https://swarm.ptsecurity.com/ | feed=https://swarm.ptsecurity.com/feed/ | tag=research | sub=web,exploit-dev
-https://research.openanalysis.net/ | feed=https://research.openanalysis.net/feed.xml | tag=research | sub=malware,reversing
+https://swarm.ptsecurity.com/ | feed=https://swarm.ptsecurity.com/feed/ | tag=vuln-dev | sub=web,exploit-dev
+https://research.openanalysis.net/ | feed=https://research.openanalysis.net/feed.xml | tag=threat-intel | sub=malware,reversing
 https://aadinternals.com/ | feed=https://aadinternals.com/index.xml | tag=red-team | sub=entra,azure,ad
-https://thisweekin4n6.com/ | feed=https://thisweekin4n6.com/feed/ | tag=research | sub=dfir,forensics,news
+https://thisweekin4n6.com/ | feed=https://thisweekin4n6.com/feed/ | tag=threat-intel | sub=dfir,forensics,news
 
 # ============================================================
 ### BAD SECTOR LABS WEEKLY NEWS ####
@@ -139,78 +139,78 @@ https://passthehashbrowns.github.io/ | feed=https://passthehashbrowns.github.io/
 https://icyguider.github.io/ | feed=https://icyguider.github.io/feed.xml | tag=red-team | sub=evasion,maldev
 https://www.naksyn.com/ | feed=https://www.naksyn.com/atom.xml | tag=red-team | sub=maldev,evasion,python
 https://whiteknightlabs.com/blog/ | feed=https://whiteknightlabs.com/feed/ | tag=red-team | sub=maldev,evasion,edr
-https://0xsp.com/ | feed=https://0xsp.com/feed/ | tag=red-team | sub=tooling,privesc
+https://0xsp.com/ | feed=https://0xsp.com/feed/ | tag=pentest | sub=tooling,privesc
 https://ricardojoserf.github.io/ | feed=https://ricardojoserf.github.io/feed.xml | tag=red-team | sub=ad,tooling,evasion
 https://oddvar.moe/ | feed=https://oddvar.moe/feed/ | tag=red-team | sub=lolbin,persistence,windows
 https://5pider.net/blog | feed=https://5pider.net/blog/rss.xml | tag=red-team | sub=c2,maldev
 https://dr4k0nia.github.io/ | feed=https://dr4k0nia.github.io/feed.xml | tag=red-team | sub=dotnet,maldev
-https://adnanthekhan.com/ | feed=https://adnanthekhan.com/rss.xml | tag=red-team | sub=cicd,cloud,tooling
+https://adnanthekhan.com/ | feed=https://adnanthekhan.com/rss.xml | tag=pentest | sub=cicd,cloud,tooling
 https://cedowens.medium.com/ | feed=https://medium.com/feed/@cedowens | tag=red-team | sub=macos,evasion
 # --- research / exploit-dev / reversing / internals ---
-https://blog.quarkslab.com/ | feed=https://blog.quarkslab.com/feeds/all.atom.xml | tag=research | sub=reversing,exploit-dev,crypto
-https://doar-e.github.io/ | feed=https://doar-e.github.io/feeds/atom.xml | tag=research | sub=exploit-dev,reversing
-https://blog.exodusintel.com/ | feed=https://blog.exodusintel.com/feed/ | tag=research | sub=exploit-dev,n-day
-https://www.willsroot.io/ | feed=https://www.willsroot.io/feeds/posts/default | tag=research | sub=kernel,exploit-dev,ctf
-https://blog.ret2.io/ | feed=https://blog.ret2.io/feed.xml | tag=research | sub=exploit-dev,ctf,browser
-https://windows-internals.com/pages/internals-blog/ | feed=https://windows-internals.com/feed/ | tag=research | sub=windows,reversing,internals
-https://revers.engineering/ | feed=https://revers.engineering/feed/ | tag=research | sub=windows,kernel,reversing
-https://theevilbit.github.io/ | feed=https://theevilbit.github.io/index.xml | tag=research | sub=macos,exploit-dev
-https://jhftss.github.io/ | feed=https://jhftss.github.io/feed.xml | tag=research | sub=macos,reversing
-https://blog.impalabs.com/ | feed=https://blog.impalabs.com/feed.xml | tag=research | sub=mobile,reversing,exploit-dev
-https://alephsecurity.com/ | feed=https://alephsecurity.com/feed.xml | tag=research | sub=android,mobile,exploit-dev
-https://zeta-two.com/ | feed=https://zeta-two.com/feed.xml | tag=research | sub=exploit-dev,reversing
-https://x-c3ll.github.io/ | feed=https://x-c3ll.github.io/atom.xml | tag=research | sub=exploit-dev,web
-https://www.n4r1b.com/ | feed=https://n4r1b.com/index.xml | tag=research | sub=windows,drivers,reversing
-https://blog.slowerzs.net/ | feed=https://blog.slowerzs.net/posts/index.xml | tag=research | sub=windows,reversing
-https://zolutal.github.io/ | feed=https://zolutal.github.io/feed.xml | tag=research | sub=kernel,heap,exploit-dev
-https://ulexec.github.io/ | feed=https://ulexec.github.io/index.xml | tag=research | sub=linux,reversing,maldev
-https://jmpesp.me/ | feed=https://jmpesp.me/rss/ | tag=research | sub=exploit-dev,fuzzing
-https://blog.washi.dev/ | feed=https://blog.washi.dev/feed.xml | tag=research | sub=dotnet,reversing
-https://m417z.com/ | feed=https://m417z.com/feed.xml | tag=research | sub=windows,reversing
-https://ctf.re/ | feed=https://ctf.re/feed.xml | tag=research | sub=reversing,exploit-dev
-https://blog.es3n1n.eu/ | feed=https://blog.es3n1n.eu/index.xml | tag=research | sub=reversing,windows
-https://summoning.team/blog/ | feed=https://summoning.team/blog/index.xml | tag=research | sub=exploit-dev,kernel
-https://gergelykalman.com/ | feed=https://gergelykalman.com/feeds/all.atom.xml | tag=research | sub=linux,exploit-dev
-https://vulncheck.com/blog | feed=https://vulncheck.com/feed/blog/atom.xml | tag=research | sub=n-day,exploit-dev
-https://labs.bishopfox.com/tech-blog | feed=https://labs.bishopfox.com/tech-blog/rss.xml | tag=research | sub=tooling,web,exploit-dev
-https://blog.isosceles.com/ | feed=https://blog.isosceles.com/rss/ | tag=research | sub=exploit-dev,web,browser
-https://flatt.tech/research/ | feed=https://flatt.tech/research/index.xml | tag=research | sub=web,exploit-dev
-https://blog.didierstevens.com/ | feed=https://blog.didierstevens.com/feed/ | tag=research | sub=tooling,maldev,dfir
-https://security.googleblog.com/ | feed=https://security.googleblog.com/atom.xml | tag=research | sub=android,exploit-dev,news
-https://www.darknavy.org/blog/ | feed=https://www.darknavy.org/blog/index.xml | tag=research | sub=reversing,exploit-dev
-https://snoolie.gay/blog/ | feed=https://snoolie.gay/blog/rss.xml | tag=research | sub=apple,reversing
-https://swapcontext.blogspot.com/ | feed=https://swapcontext.blogspot.com/feeds/posts/default | tag=research | sub=windows,exploit-dev
-https://billdemirkapi.me/ | feed=https://billdemirkapi.me/rss/ | tag=research | sub=windows,reversing
+https://blog.quarkslab.com/ | feed=https://blog.quarkslab.com/feeds/all.atom.xml | tag=vuln-dev | sub=reversing,exploit-dev,crypto
+https://doar-e.github.io/ | feed=https://doar-e.github.io/feeds/atom.xml | tag=vuln-dev | sub=exploit-dev,reversing
+https://blog.exodusintel.com/ | feed=https://blog.exodusintel.com/feed/ | tag=vuln-dev | sub=exploit-dev,n-day
+https://www.willsroot.io/ | feed=https://www.willsroot.io/feeds/posts/default | tag=vuln-dev | sub=kernel,exploit-dev,ctf
+https://blog.ret2.io/ | feed=https://blog.ret2.io/feed.xml | tag=vuln-dev | sub=exploit-dev,ctf,browser
+https://windows-internals.com/pages/internals-blog/ | feed=https://windows-internals.com/feed/ | tag=vuln-dev | sub=windows,reversing,internals
+https://revers.engineering/ | feed=https://revers.engineering/feed/ | tag=vuln-dev | sub=windows,kernel,reversing
+https://theevilbit.github.io/ | feed=https://theevilbit.github.io/index.xml | tag=vuln-dev | sub=macos,exploit-dev
+https://jhftss.github.io/ | feed=https://jhftss.github.io/feed.xml | tag=vuln-dev | sub=macos,reversing
+https://blog.impalabs.com/ | feed=https://blog.impalabs.com/feed.xml | tag=vuln-dev | sub=mobile,reversing,exploit-dev
+https://alephsecurity.com/ | feed=https://alephsecurity.com/feed.xml | tag=vuln-dev | sub=android,mobile,exploit-dev
+https://zeta-two.com/ | feed=https://zeta-two.com/feed.xml | tag=vuln-dev | sub=exploit-dev,reversing
+https://x-c3ll.github.io/ | feed=https://x-c3ll.github.io/atom.xml | tag=vuln-dev | sub=exploit-dev,web
+https://www.n4r1b.com/ | feed=https://n4r1b.com/index.xml | tag=vuln-dev | sub=windows,drivers,reversing
+https://blog.slowerzs.net/ | feed=https://blog.slowerzs.net/posts/index.xml | tag=vuln-dev | sub=windows,reversing
+https://zolutal.github.io/ | feed=https://zolutal.github.io/feed.xml | tag=vuln-dev | sub=kernel,heap,exploit-dev
+https://ulexec.github.io/ | feed=https://ulexec.github.io/index.xml | tag=red-team | sub=linux,reversing,maldev
+https://jmpesp.me/ | feed=https://jmpesp.me/rss/ | tag=vuln-dev | sub=exploit-dev,fuzzing
+https://blog.washi.dev/ | feed=https://blog.washi.dev/feed.xml | tag=vuln-dev | sub=dotnet,reversing
+https://m417z.com/ | feed=https://m417z.com/feed.xml | tag=vuln-dev | sub=windows,reversing
+https://ctf.re/ | feed=https://ctf.re/feed.xml | tag=vuln-dev | sub=reversing,exploit-dev
+https://blog.es3n1n.eu/ | feed=https://blog.es3n1n.eu/index.xml | tag=vuln-dev | sub=reversing,windows
+https://summoning.team/blog/ | feed=https://summoning.team/blog/index.xml | tag=vuln-dev | sub=exploit-dev,kernel
+https://gergelykalman.com/ | feed=https://gergelykalman.com/feeds/all.atom.xml | tag=vuln-dev | sub=linux,exploit-dev
+https://vulncheck.com/blog | feed=https://vulncheck.com/feed/blog/atom.xml | tag=vuln-dev | sub=n-day,exploit-dev
+https://labs.bishopfox.com/tech-blog | feed=https://labs.bishopfox.com/tech-blog/rss.xml | tag=vuln-dev | sub=tooling,web,exploit-dev
+https://blog.isosceles.com/ | feed=https://blog.isosceles.com/rss/ | tag=vuln-dev | sub=exploit-dev,web,browser
+https://flatt.tech/research/ | feed=https://flatt.tech/research/index.xml | tag=vuln-dev | sub=web,exploit-dev
+https://blog.didierstevens.com/ | feed=https://blog.didierstevens.com/feed/ | tag=red-team | sub=tooling,maldev,dfir
+https://security.googleblog.com/ | feed=https://security.googleblog.com/atom.xml | tag=general | sub=android,exploit-dev,news
+https://www.darknavy.org/blog/ | feed=https://www.darknavy.org/blog/index.xml | tag=vuln-dev | sub=reversing,exploit-dev
+https://snoolie.gay/blog/ | feed=https://snoolie.gay/blog/rss.xml | tag=vuln-dev | sub=apple,reversing
+https://swapcontext.blogspot.com/ | feed=https://swapcontext.blogspot.com/feeds/posts/default | tag=vuln-dev | sub=windows,exploit-dev
+https://billdemirkapi.me/ | feed=https://billdemirkapi.me/rss/ | tag=vuln-dev | sub=windows,reversing
 # --- web / appsec / bug-bounty ---
-https://mksben.l0.cm/ | feed=https://mksben.l0.cm/feeds/posts/default | tag=research | sub=web,xss
-https://jub0bs.com/posts/ | feed=https://jub0bs.com/posts/index.xml | tag=research | sub=web,cors
-https://labs.detectify.com/ | feed=https://labs.detectify.com/feed/ | tag=research | sub=web,appsec
-https://blog.assetnote.io/ | feed=https://blog.assetnote.io/feed.xml | tag=research | sub=web,n-day,attack-surface
+https://mksben.l0.cm/ | feed=https://mksben.l0.cm/feeds/posts/default | tag=pentest | sub=web,xss
+https://jub0bs.com/posts/ | feed=https://jub0bs.com/posts/index.xml | tag=pentest | sub=web,cors
+https://labs.detectify.com/ | feed=https://labs.detectify.com/feed/ | tag=pentest | sub=web,appsec
+https://blog.assetnote.io/ | feed=https://blog.assetnote.io/feed.xml | tag=vuln-dev | sub=web,n-day,attack-surface
 https://brutecat.com/ | feed=https://brutecat.com/rss.xml | tag=pentest | sub=web,bug-bounty
-https://blog.amberwolf.com/ | feed=https://blog.amberwolf.com/index.xml | tag=research | sub=web,n-day,vpn
-https://palant.info/articles/ | feed=https://palant.info/articles/index.xml | tag=research | sub=browser,web,extensions
-https://www.shielder.com/blog/ | feed=https://www.shielder.com/blog/index.xml | tag=research | sub=web,exploit-dev
-https://certitude.consulting/blog/en/ | feed=https://certitude.consulting/blog/en/feed/ | tag=research | sub=web,appsec
+https://blog.amberwolf.com/ | feed=https://blog.amberwolf.com/index.xml | tag=vuln-dev | sub=web,n-day,vpn
+https://palant.info/articles/ | feed=https://palant.info/articles/index.xml | tag=vuln-dev | sub=browser,web,extensions
+https://www.shielder.com/blog/ | feed=https://www.shielder.com/blog/index.xml | tag=vuln-dev | sub=web,exploit-dev
+https://certitude.consulting/blog/en/ | feed=https://certitude.consulting/blog/en/feed/ | tag=pentest | sub=web,appsec
 # --- dfir / forensics / detection ---
-https://dfir.ch/posts/ | feed=https://dfir.ch/posts/index.xml | tag=research | sub=dfir,forensics
-https://mgreen27.github.io/ | feed=https://dfir.au/index.xml | tag=research | sub=dfir,velociraptor,detection
-https://themittenmac.com/blog/ | feed=https://themittenmac.com/feed/ | tag=research | sub=dfir,macos
-https://pberba.github.io/security/ | feed=https://pberba.github.io/feed.xml | tag=research | sub=dfir,detection,linux
-https://www.mac4n6.com/ | feed=http://www.mac4n6.com/blog?format=rss | tag=research | sub=dfir,macos,forensics
-https://blog.nviso.eu/ | feed=https://blog.nviso.eu/feed/ | tag=research | sub=dfir,detection,maldev
+https://dfir.ch/posts/ | feed=https://dfir.ch/posts/index.xml | tag=threat-intel | sub=dfir,forensics
+https://mgreen27.github.io/ | feed=https://dfir.au/index.xml | tag=threat-intel | sub=dfir,velociraptor,detection
+https://themittenmac.com/blog/ | feed=https://themittenmac.com/feed/ | tag=threat-intel | sub=dfir,macos
+https://pberba.github.io/security/ | feed=https://pberba.github.io/feed.xml | tag=threat-intel | sub=dfir,detection,linux
+https://www.mac4n6.com/ | feed=http://www.mac4n6.com/blog?format=rss | tag=threat-intel | sub=dfir,macos,forensics
+https://blog.nviso.eu/ | feed=https://blog.nviso.eu/feed/ | tag=red-team | sub=dfir,detection,maldev
 # --- pentest / corporate labs ---
-https://pentestlab.blog/ | feed=https://pentestlab.blog/feed/ | tag=pentest | sub=privesc,persistence,ad
-https://blog.scrt.ch/ | feed=https://blog.scrt.ch/feed/ | tag=pentest | sub=ad,web,network
-https://labs.nettitude.com/new | feed=https://labs.nettitude.com/feed/ | tag=pentest | sub=ad,web,tooling
-https://blog.syss.com/ | feed=https://blog.syss.com/feed.xml | tag=pentest | sub=web,hardware,ad
-https://www.x41-dsec.de/lab/advisories/ | feed=https://x41-dsec.de/feed.xml | tag=research | sub=exploit-dev,crypto,audit
-https://www.n00py.io/ | feed=https://www.n00py.io/feed/ | tag=pentest | sub=ad,web,tooling
+https://pentestlab.blog/ | feed=https://pentestlab.blog/feed/ | tag=red-team | sub=privesc,persistence,ad
+https://blog.scrt.ch/ | feed=https://blog.scrt.ch/feed/ | tag=red-team | sub=ad,web,network
+https://labs.nettitude.com/new | feed=https://labs.nettitude.com/feed/ | tag=red-team | sub=ad,web,tooling
+https://blog.syss.com/ | feed=https://blog.syss.com/feed.xml | tag=red-team | sub=web,hardware,ad
+https://www.x41-dsec.de/lab/advisories/ | feed=https://x41-dsec.de/feed.xml | tag=vuln-dev | sub=exploit-dev,crypto,audit
+https://www.n00py.io/ | feed=https://www.n00py.io/feed/ | tag=red-team | sub=ad,web,tooling
 # --- misc high-signal ---
-https://www.evilsocket.net/ | feed=https://www.evilsocket.net/atom.xml | tag=research | sub=tooling,ai,maldev
-https://www.malwaretech.com/ | feed=https://www.malwaretech.com/feed.xml | tag=research | sub=malware,reversing
-https://denniskniep.github.io/ | feed=https://denniskniep.github.io/index.xml | tag=research | sub=containers,kubernetes,ad
-https://www.wiz.io/blog | feed=https://www.wiz.io/blog/rss.xml | tag=research | sub=cloud,kubernetes
-https://blog.christophetd.fr/ | feed=https://blog.christophetd.fr/feed/ | tag=research | sub=cloud,aws,detection
+https://www.evilsocket.net/ | feed=https://www.evilsocket.net/atom.xml | tag=red-team | sub=tooling,ai,maldev
+https://www.malwaretech.com/ | feed=https://www.malwaretech.com/feed.xml | tag=threat-intel | sub=malware,reversing
+https://denniskniep.github.io/ | feed=https://denniskniep.github.io/index.xml | tag=red-team | sub=containers,kubernetes,ad
+https://www.wiz.io/blog | feed=https://www.wiz.io/blog/rss.xml | tag=pentest | sub=cloud,kubernetes
+https://blog.christophetd.fr/ | feed=https://blog.christophetd.fr/feed/ | tag=threat-intel | sub=cloud,aws,detection
 
 # ============================================================
 #  (was: DIRECT POST URLs) — single-post support removed. Entries that have a
