@@ -250,7 +250,7 @@
     },
     "https://securelist.com/": {
       "feed": "https://securelist.com/feed/",
-      "baseline": "2026-06-16T09:00:11+00:00"
+      "baseline": "2026-06-22T10:00:38+00:00"
     },
     "https://research.checkpoint.com/": {
       "feed": "https://research.checkpoint.com/feed/",
@@ -1975,6 +1975,12 @@
       "slug": "red-agent-pov-series",
       "date_processed": "2026-06-22",
       "source": "https://www.wiz.io/blog"
+    },
+    "https://securelist.com/whatsapp-vbs-rmm-campaign/120290/": {
+      "title": "An unknown actor distributes malicious VBS scripts via WhatsApp",
+      "slug": "120290",
+      "date_processed": "2026-06-22",
+      "source": "https://securelist.com/"
     }
   }
 }
