@@ -2,7 +2,7 @@
   "sources": {
     "https://0xdf.gitlab.io/": {
       "feed": "https://0xdf.gitlab.io/feed.xml",
-      "baseline": "2026-06-20T13:45:00+00:00"
+      "baseline": "2026-06-13T13:45:00+00:00"
     },
     "https://rastamouse.me/": {
       "feed": "https://rastamouse.me/rss/",
@@ -14,7 +14,7 @@
     },
     "https://posts.specterops.io/": {
       "feed": "https://specterops.io/feed/",
-      "baseline": "2026-06-18T16:30:00+00:00"
+      "baseline": "2026-06-16T16:00:00+00:00"
     },
     "https://blog.xpnsec.com/": {
       "feed": "https://blog.xpnsec.com/rss.xml",
@@ -82,7 +82,7 @@
     },
     "https://blog.netspi.com/": {
       "feed": "https://www.netspi.com/feed/",
-      "baseline": "2026-06-22T05:01:00+00:00"
+      "baseline": "2026-06-16T14:44:13+00:00"
     },
     "https://secret.club/": {
       "feed": "https://secret.club/feed.xml",
@@ -102,7 +102,7 @@
     },
     "https://www.ctus.io/": {
       "feed": "https://thecontractor.io/rss/",
-      "baseline": "2026-06-20T21:01:50+00:00"
+      "baseline": "2026-05-26T14:52:52+00:00"
     },
     "https://jlajara.gitlab.io/": {
       "feed": "https://jlajara.gitlab.io/feed.xml",
@@ -150,7 +150,7 @@
     },
     "https://www.elttam.com/blog/": {
       "feed": "https://www.elttam.com/blog/rss.xml",
-      "baseline": "2026-06-22T05:25:12+00:00"
+      "baseline": "2026-06-10T03:21:26+00:00"
     },
     "https://www.wietzebeukema.nl/blog/": {
       "feed": "https://www.wietzebeukema.nl/blog/feed.xml",
@@ -162,7 +162,7 @@
     },
     "https://www.trustedsec.com/blog/": {
       "feed": "https://trustedsec.com/feed.rss",
-      "baseline": "2026-06-18T04:00:00+00:00"
+      "baseline": "2026-06-16T04:00:00+00:00"
     },
     "https://www.outflank.nl/blog/": {
       "feed": "https://www.outflank.nl/blog/feed/"
@@ -177,7 +177,7 @@
     },
     "https://www.praetorian.com/blog/": {
       "feed": "https://www.praetorian.com/feed/",
-      "baseline": "2026-06-19T01:55:33+00:00"
+      "baseline": "2026-06-16T15:15:41+00:00"
     },
     "https://mez0.cc/": {
       "feed": "https://mez0.cc/rss.xml",
@@ -221,7 +221,7 @@
     },
     "https://tldrsec.com/": {
       "feed": "https://rss.beehiiv.com/feeds/xgTKUmMmUm.xml",
-      "baseline": "2026-06-18T14:30:00+00:00"
+      "baseline": "2026-06-11T14:30:00+00:00"
     },
     "https://klezvirus.github.io/": {
       "feed": "https://klezvirus.github.io/feed.xml",
@@ -254,7 +254,7 @@
     },
     "https://research.checkpoint.com/": {
       "feed": "https://research.checkpoint.com/feed/",
-      "baseline": "2026-06-17T13:38:55+00:00"
+      "baseline": "2026-06-15T13:40:44+00:00"
     },
     "https://www.sentinelone.com/labs/": {
       "feed": "https://www.sentinelone.com/feed/?post_type=labs",
@@ -262,11 +262,11 @@
     },
     "https://blog.talosintelligence.com/": {
       "feed": "https://blog.talosintelligence.com/rss/",
-      "baseline": "2026-06-18T18:00:24+00:00"
+      "baseline": "2026-06-11T18:00:49+00:00"
     },
     "https://unit42.paloaltonetworks.com/": {
       "feed": "https://unit42.paloaltonetworks.com/feed/",
-      "baseline": "2026-06-20T02:05:33+00:00"
+      "baseline": "2026-06-16T10:00:29+00:00"
     },
     "https://maxkersten.nl/": {
       "feed": "https://maxkersten.nl/feed/",
@@ -290,11 +290,11 @@
     },
     "https://www.hackingarticles.in/": {
       "feed": "https://www.hackingarticles.in/feed/",
-      "baseline": "2026-06-21T15:49:08+00:00"
+      "baseline": "2026-06-13T21:01:21+00:00"
     },
     "https://www.schneier.com/": {
       "feed": "https://www.schneier.com/feed/",
-      "baseline": "2026-06-19T21:03:48+00:00"
+      "baseline": "2026-06-17T11:04:04+00:00"
     },
     "https://thedfirreport.com/": {
       "feed": "https://thedfirreport.com/feed/",
@@ -306,11 +306,11 @@
     },
     "https://redcanary.com/blog/": {
       "feed": "https://redcanary.com/blog/feed/",
-      "baseline": "2026-06-18T17:49:20+00:00"
+      "baseline": "2026-06-11T13:09:00+00:00"
     },
     "https://www.elastic.co/security-labs": {
       "feed": "https://www.elastic.co/security-labs/feed/",
-      "baseline": "2026-06-19T00:00:00+00:00"
+      "baseline": "2026-06-02T00:00:00+00:00"
     },
     "https://www.huntress.com/blog": {
       "feed": "https://www.huntress.com/blog/rss.xml",
@@ -318,7 +318,7 @@
     },
     "https://www.welivesecurity.com/en/": {
       "feed": "https://www.welivesecurity.com/en/feed/",
-      "baseline": "2026-06-18T09:46:32+00:00"
+      "baseline": "2026-06-16T08:54:04+00:00"
     },
     "https://blog.fox-it.com/": {
       "feed": "https://blog.fox-it.com/feed/",
@@ -369,7 +369,7 @@
     },
     "https://thisweekin4n6.com/": {
       "feed": "https://thisweekin4n6.com/feed/",
-      "baseline": "2026-06-21T11:31:58+00:00"
+      "baseline": "2026-06-14T12:18:49+00:00"
     },
     "https://cocomelonc.github.io/": {
       "feed": "https://cocomelonc.github.io/feed.xml",
@@ -420,8 +420,7 @@
       "baseline": "2026-06-15T13:58:42+00:00"
     },
     "https://0xsp.com/": {
-      "feed": "https://0xsp.com/feed/",
-      "baseline": "2026-06-02T11:39:43+00:00"
+      "feed": "https://0xsp.com/feed/"
     },
     "https://ricardojoserf.github.io/": {
       "feed": "https://ricardojoserf.github.io/feed.xml",
@@ -449,7 +448,7 @@
     },
     "https://blog.quarkslab.com/": {
       "feed": "https://blog.quarkslab.com/feeds/all.atom.xml",
-      "baseline": "2026-06-17T22:00:00+00:00"
+      "baseline": "2026-06-08T22:00:00+00:00"
     },
     "https://doar-e.github.io/": {
       "feed": "https://doar-e.github.io/feeds/atom.xml",
@@ -543,8 +542,7 @@
       "baseline": "2025-03-23T23:00:00+00:00"
     },
     "https://vulncheck.com/blog": {
-      "feed": "https://vulncheck.com/feed/blog/atom.xml",
-      "baseline": "2026-06-12T00:00:00+00:00"
+      "feed": "https://vulncheck.com/feed/blog/atom.xml"
     },
     "https://labs.bishopfox.com/tech-blog": {
       "feed": "https://labs.bishopfox.com/tech-blog/rss.xml",
@@ -563,8 +561,7 @@
       "baseline": "2026-06-01T07:33:01+00:00"
     },
     "https://security.googleblog.com/": {
-      "feed": "https://security.googleblog.com/atom.xml",
-      "baseline": "2026-04-23T21:38:00+00:00"
+      "feed": "https://security.googleblog.com/atom.xml"
     },
     "https://www.darknavy.org/blog/": {
       "feed": "https://www.darknavy.org/blog/index.xml",
@@ -574,8 +571,7 @@
       "feed": "https://snoolie.gay/blog/rss.xml"
     },
     "https://swapcontext.blogspot.com/": {
-      "feed": "https://swapcontext.blogspot.com/feeds/posts/default",
-      "baseline": "2022-03-01T08:12:00+00:00"
+      "feed": "https://swapcontext.blogspot.com/feeds/posts/default"
     },
     "https://billdemirkapi.me/": {
       "feed": "https://billdemirkapi.me/rss/",
@@ -619,7 +615,7 @@
     },
     "https://dfir.ch/posts/": {
       "feed": "https://dfir.ch/posts/index.xml",
-      "baseline": "2026-06-21T23:03:20+00:00"
+      "baseline": "2026-06-15T08:03:20+00:00"
     },
     "https://mgreen27.github.io/": {
       "feed": "https://dfir.au/index.xml",
@@ -639,7 +635,7 @@
     },
     "https://blog.nviso.eu/": {
       "feed": "https://blog.nviso.eu/feed/",
-      "baseline": "2026-06-18T15:17:35+00:00"
+      "baseline": "2026-06-17T08:49:40+00:00"
     },
     "https://pentestlab.blog/": {
       "feed": "https://pentestlab.blog/feed/",
@@ -655,7 +651,7 @@
     },
     "https://blog.syss.com/": {
       "feed": "https://blog.syss.com/feed.xml",
-      "baseline": "2026-06-18T05:00:00+00:00"
+      "baseline": "2026-04-14T08:00:00+00:00"
     },
     "https://www.x41-dsec.de/lab/advisories/": {
       "feed": "https://x41-dsec.de/feed.xml",
@@ -678,7 +674,7 @@
     },
     "https://www.wiz.io/blog": {
       "feed": "https://www.wiz.io/blog/rss.xml",
-      "baseline": "2026-06-18T12:52:21+00:00"
+      "baseline": "2026-06-16T10:53:02+00:00"
     },
     "https://blog.christophetd.fr/": {
       "feed": "https://blog.christophetd.fr/feed/",
@@ -1747,234 +1743,6 @@
       "slug": "pkce-aws-sso",
       "date_processed": "2026-06-17",
       "source": "https://blog.christophetd.fr/"
-    },
-    "https://0xdf.gitlab.io/2026/06/20/htb-nanocorp.html": {
-      "title": "HTB: NanoCorp",
-      "slug": "htb-nanocorphtml",
-      "date_processed": "2026-06-22",
-      "source": "https://0xdf.gitlab.io/"
-    },
-    "https://specterops.io/blog/2026/06/18/bloodhound-mcp-one-year-later-what-i-learned-about-mcps-models-and-context/": {
-      "title": "BloodHound MCP, One Year Later: What I Learned About MCPs, Models, and Context",
-      "slug": "bloodhound-mcp-one-year-later-what-i-learned-about-mcps-models-and-context",
-      "date_processed": "2026-06-22",
-      "source": "https://posts.specterops.io/"
-    },
-    "https://www.netspi.com/blog/technical-blog/cloud-pentesting/bypassing-microsoft-entra-conditional-access-policies-via-nested-app-authentication/": {
-      "title": "Bypassing Microsoft Entra Conditional Access Policies via Nested App Authentication - NetSPI Tech Blog",
-      "slug": "bypassing-microsoft-entra-conditional-access-policies-via-nested-app-authentication",
-      "date_processed": "2026-06-22",
-      "source": "https://blog.netspi.com/"
-    },
-    "https://www.netspi.com/blog/technical-blog/social-engineering/im-just-asking-questions-social-engineering-as-a-reporter/": {
-      "title": "I'm Just Asking Questions: Social Engineering as a Reporter | NetSPI",
-      "slug": "im-just-asking-questions-social-engineering-as-a-reporter",
-      "date_processed": "2026-06-22",
-      "source": "https://blog.netspi.com/"
-    },
-    "https://thecontractor.io/ms-surface-eop-system/": {
-      "title": "Surface Pro - EoP",
-      "slug": "ms-surface-eop-system",
-      "date_processed": "2026-06-22",
-      "source": "https://www.ctus.io/"
-    },
-    "https://www.elttam.com/blog/exploiting-auth0-defaults-in-xss-attacks": {
-      "title": "Exploiting Auth0 Defaults in XSS Attacks - elttam",
-      "slug": "exploiting-auth0-defaults-in-xss-attacks",
-      "date_processed": "2026-06-22",
-      "source": "https://www.elttam.com/blog/"
-    },
-    "https://trustedsec.com/blog/modern-web-application-content-discovery": {
-      "title": "Modern Web Application Content Discovery",
-      "slug": "modern-web-application-content-discovery",
-      "date_processed": "2026-06-22",
-      "source": "https://www.trustedsec.com/blog/"
-    },
-    "https://www.praetorian.com/blog/wasmforge-csharp-ghostpack-edr-evasion/": {
-      "title": "GhostPack Necromancy: Reforging C# Tools with WasmForge",
-      "slug": "wasmforge-csharp-ghostpack-edr-evasion",
-      "date_processed": "2026-06-22",
-      "source": "https://www.praetorian.com/blog/"
-    },
-    "https://www.praetorian.com/blog/ai-vulnerability-research-freebsd-kernel/": {
-      "title": "FreeBSoD: Leveraging Language Models to Find and Exploit Kernel Bugs (Part 1 of 2)",
-      "slug": "ai-vulnerability-research-freebsd-kernel",
-      "date_processed": "2026-06-22",
-      "source": "https://www.praetorian.com/blog/"
-    },
-    "https://tldrsec.com/p/tldr-sec-333": {
-      "title": "[tl;dr sec] #333 - Perplexity's Bumblebee, Evading Cloud Logging, AI Vuln Hunting Spec",
-      "slug": "tldr-sec-333",
-      "date_processed": "2026-06-22",
-      "source": "https://tldrsec.com/"
-    },
-    "https://research.checkpoint.com/2026/from-stars-to-upvotes-fake-reputation-fueling-a-crypto-clipboard-hijacker/": {
-      "title": "From Stars to Upvotes: Fake Reputation Fueling a Crypto Clipboard Hijacker - Check Point Research",
-      "slug": "from-stars-to-upvotes-fake-reputation-fueling-a-crypto-clipboard-hijacker",
-      "date_processed": "2026-06-22",
-      "source": "https://research.checkpoint.com/"
-    },
-    "https://blog.talosintelligence.com/close-encounters-of-the-human-kind/": {
-      "title": "Close Encounters of the Human Kind",
-      "slug": "close-encounters-of-the-human-kind",
-      "date_processed": "2026-06-22",
-      "source": "https://blog.talosintelligence.com/"
-    },
-    "https://blog.talosintelligence.com/scripting-the-disassembler/": {
-      "title": "Scripting the disassembler: Local agentic reverse engineering through vbdec’s live COM object model",
-      "slug": "scripting-the-disassembler",
-      "date_processed": "2026-06-22",
-      "source": "https://blog.talosintelligence.com/"
-    },
-    "https://unit42.paloaltonetworks.com/large-scale-credential-attacks/": {
-      "title": "Threat Brief: Mitigating Large-Scale Credential Attacks",
-      "slug": "large-scale-credential-attacks",
-      "date_processed": "2026-06-22",
-      "source": "https://unit42.paloaltonetworks.com/"
-    },
-    "https://www.hackingarticles.in/ai-powered-active-directory-pentesting-with-claude-hexstrike-ai-netexec/": {
-      "title": "AI-Powered Active Directory Pentesting with Claude, HexStrike AI & NetExec",
-      "slug": "ai-powered-active-directory-pentesting-with-claude-hexstrike-ai-netexec",
-      "date_processed": "2026-06-22",
-      "source": "https://www.hackingarticles.in/"
-    },
-    "https://www.hackingarticles.in/bloodhound-mcp-automating-active-directory-analysis-with-ai/": {
-      "title": "BloodHound MCP: Automating Active Directory Analysis with AI",
-      "slug": "bloodhound-mcp-automating-active-directory-analysis-with-ai",
-      "date_processed": "2026-06-22",
-      "source": "https://www.hackingarticles.in/"
-    },
-    "https://www.hackingarticles.in/a-detailed-guide-on-villain-c2-framework/": {
-      "title": "A Detailed Guide on Villain C2 Framework",
-      "slug": "a-detailed-guide-on-villain-c2-framework",
-      "date_processed": "2026-06-22",
-      "source": "https://www.hackingarticles.in/"
-    },
-    "https://www.schneier.com/blog/archives/2026/06/friday-squid-blogging-victims-of-unregulated-squid-fishing.html": {
-      "title": "Friday Squid Blogging: Victims of Unregulated Squid Fishing - Schneier on Security",
-      "slug": "friday-squid-blogging-victims-of-unregulated-squid-fishinghtml",
-      "date_processed": "2026-06-22",
-      "source": "https://www.schneier.com/"
-    },
-    "https://www.schneier.com/blog/archives/2026/06/anthropics-fable-and-the-state-of-ai.html": {
-      "title": "Anthropic's Fable and the State of AI - Schneier on Security",
-      "slug": "anthropics-fable-and-the-state-of-aihtml",
-      "date_processed": "2026-06-22",
-      "source": "https://www.schneier.com/"
-    },
-    "https://www.schneier.com/blog/archives/2026/06/embedding-forbidden-text-in-spyware-to-discourage-ai-analysis.html": {
-      "title": "Embedding Forbidden Text in Spyware to Discourage AI Analysis - Schneier on Security",
-      "slug": "embedding-forbidden-text-in-spyware-to-discourage-ai-analysishtml",
-      "date_processed": "2026-06-22",
-      "source": "https://www.schneier.com/"
-    },
-    "https://redcanary.com/blog/threat-intelligence/intelligence-insights-june-2026/": {
-      "title": "Intelligence Insights: June 2026 | Red Canary",
-      "slug": "intelligence-insights-june-2026",
-      "date_processed": "2026-06-22",
-      "source": "https://redcanary.com/blog/"
-    },
-    "https://redcanary.com/blog/security-operations/rmm-detection/": {
-      "title": "The dual-use dilemma: Rethinking detection for remote access tool abuse | Red Canary",
-      "slug": "rmm-detection",
-      "date_processed": "2026-06-22",
-      "source": "https://redcanary.com/blog/"
-    },
-    "https://www.elastic.co/security-labs/aad-graph-activity-logs-threat-detection": {
-      "title": "Azure AD Graph Activity Logs: detecting directory enumeration — Elastic Security Labs",
-      "slug": "aad-graph-activity-logs-threat-detection",
-      "date_processed": "2026-06-22",
-      "source": "https://www.elastic.co/security-labs"
-    },
-    "https://www.elastic.co/security-labs/oxloader-malware-loader-infostealer": {
-      "title": "OXLOADER: new loader evading detection to drop infostealer — Elastic Security Labs",
-      "slug": "oxloader-malware-loader-infostealer",
-      "date_processed": "2026-06-22",
-      "source": "https://www.elastic.co/security-labs"
-    },
-    "https://www.welivesecurity.com/en/eset-research/killing-me-gently-inside-gentlemens-edr-killer-framework/": {
-      "title": "Killing me gently: Inside Gentlemen’s EDR killer framework",
-      "slug": "killing-me-gently-inside-gentlemens-edr-killer-framework",
-      "date_processed": "2026-06-22",
-      "source": "https://www.welivesecurity.com/en/"
-    },
-    "https://www.welivesecurity.com/en/critical-infrastructure/protecting-legacy-ot-systems-modern-threats/": {
-      "title": "Cybersecurity for the long haul: Protecting legacy OT systems",
-      "slug": "protecting-legacy-ot-systems-modern-threats",
-      "date_processed": "2026-06-22",
-      "source": "https://www.welivesecurity.com/en/"
-    },
-    "https://thisweekin4n6.com/2026/06/21/week-25-2026/": {
-      "title": "Week 25 – 2026",
-      "slug": "week-25-2026",
-      "date_processed": "2026-06-22",
-      "source": "https://thisweekin4n6.com/"
-    },
-    "https://0xsp.com/security%20research%20%20development%20srd/aether-memory-forensics-and-threat-hunting-tool/?utm_source=rss&utm_medium=rss&utm_campaign=aether-memory-forensics-and-threat-hunting-tool": {
-      "title": "Aether: memory forensics and threat hunting tool - 0xsp SRD - Security Research & Development",
-      "slug": "aether-memory-forensics-and-threat-hunting-tool",
-      "date_processed": "2026-06-22",
-      "source": "https://0xsp.com/"
-    },
-    "http://blog.quarkslab.com/black-box-probing-a-security-analysis-of-xiaomis-mja1-secure-chip.html": {
-      "title": "Black Box Probing: a Security Analysis of Xiaomi's MJA1 Secure Chip",
-      "slug": "black-box-probing-a-security-analysis-of-xiaomis-mja1-secure-chiphtml",
-      "date_processed": "2026-06-22",
-      "source": "https://blog.quarkslab.com/"
-    },
-    "https://www.vulncheck.com/blog/meowproject": {
-      "title": "From Canary Intelligence to C2 - Mapping an Attack Fleet with Target Intelligence | Blog | VulnCheck",
-      "slug": "meowproject",
-      "date_processed": "2026-06-22",
-      "source": "https://vulncheck.com/blog"
-    },
-    "http://security.googleblog.com/2026/04/ai-threats-in-wild-current-state-of.html": {
-      "title": "AI threats in the wild: The current state of prompt injections on the web",
-      "slug": "ai-threats-in-wild-current-state-ofhtml",
-      "date_processed": "2026-06-22",
-      "source": "https://security.googleblog.com/"
-    },
-    "https://swapcontext.blogspot.com/2022/03/blog-post.html": {
-      "title": "~",
-      "slug": "blog-posthtml",
-      "date_processed": "2026-06-22",
-      "source": "https://swapcontext.blogspot.com/"
-    },
-    "https://dfir.ch/posts/fantastic_passwords_linux/": {
-      "title": "Fantastic clear-text passwords and where to collect them (Part 1 - Linux) | dfir.ch",
-      "slug": "fantastic_passwords_linux",
-      "date_processed": "2026-06-22",
-      "source": "https://dfir.ch/posts/"
-    },
-    "https://blog.nviso.eu/2026/06/18/the-road-to-post-quantum-readiness-part-1/": {
-      "title": "Post-Quantum Readiness: Why Organizations Must Act Now",
-      "slug": "the-road-to-post-quantum-readiness-part-1",
-      "date_processed": "2026-06-22",
-      "source": "https://blog.nviso.eu/"
-    },
-    "https://blog.syss.com/posts/turnado/": {
-      "title": "TURN! - What could possibly go wrong?",
-      "slug": "turnado",
-      "date_processed": "2026-06-22",
-      "source": "https://blog.syss.com/"
-    },
-    "https://www.wiz.io/blog/ai-executive-order-cybersecurity": {
-      "title": "What the AI Executive Order Means for Cyber Defense | Wiz | Wiz Blog",
-      "slug": "ai-executive-order-cybersecurity",
-      "date_processed": "2026-06-22",
-      "source": "https://www.wiz.io/blog"
-    },
-    "https://www.wiz.io/blog/red-agent-pov-ssrf": {
-      "title": "The Red Agent POV: How it Reasoned its Way to SSRF | Wiz Blog",
-      "slug": "red-agent-pov-ssrf",
-      "date_processed": "2026-06-22",
-      "source": "https://www.wiz.io/blog"
-    },
-    "https://www.wiz.io/blog/red-agent-pov-series": {
-      "title": "Introducing the Red Agent POV Series | Wiz Blog",
-      "slug": "red-agent-pov-series",
-      "date_processed": "2026-06-22",
-      "source": "https://www.wiz.io/blog"
     }
   }
 }
