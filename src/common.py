@@ -85,8 +85,7 @@ def parse_iso(value: str | None) -> dt.datetime | None:
 # Main content tags -> display names used on the per-tag PDF covers.
 # Order here sets the PDF build order (see group_by_tag).
 TAG_DISPLAY = {
-    "red-team": "Red Team",
-    "pentest": "Pentest",
+    "offensive": "Offensive (Red Team / Pentest)",
     "vuln-dev": "Vuln Dev / Reversing",
     "threat-intel": "Threat Intel / DFIR",
     "general": "General",

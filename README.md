@@ -98,7 +98,7 @@ Fields after the URL are optional, `|`-separated, and order-free:
 
 | Field | Meaning |
 | --- | --- |
-| `tag`  | One of `red-team`, `pentest`, `vuln-dev`, `threat-intel`, `general`. The pipeline builds **one PDF per tag**. Defaults to `general`. |
+| `tag`  | One of `offensive`, `vuln-dev`, `threat-intel`, `general`. The pipeline builds **one PDF per tag**. Defaults to `general`. |
 | `feed` | Pin a specific feed URL (skips auto-discovery). Useful for sites where discovery fails or that are bot-blocked. |
 | `sub`  | Free-form topic tags (`web`, `cloud`, `ad`, `evasion`, …) shown on the cover and per post. |
 
