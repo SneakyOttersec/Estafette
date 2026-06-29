@@ -128,10 +128,6 @@
       "feed": "https://elliotonsecurity.com/rss.xml",
       "baseline": "2023-12-06T00:00:00+00:00"
     },
-    "https://code-white.com/blog/": {
-      "feed": "https://code-white.com/index.xml",
-      "baseline": "2026-03-25T00:00:00+00:00"
-    },
     "https://dirkjanm.io/": {
       "feed": "https://dirkjanm.io/feed.xml",
       "baseline": "2025-09-17T13:00:57+00:00"
@@ -873,12 +869,6 @@
       "slug": "what-is-loader-lock",
       "date_processed": "2026-06-15",
       "source": "https://elliotonsecurity.com/"
-    },
-    "https://code-white.com/public-vulnerability-list/#cryptographic-oracle-to-partial-authentication-bypass-in-smartermail": {
-      "title": "CODE WHITE | Public Vulnerability List",
-      "slug": "public-vulnerability-list",
-      "date_processed": "2026-06-15",
-      "source": "https://code-white.com/blog/"
     },
     "https://dirkjanm.io/obtaining-global-admin-in-every-entra-id-tenant-with-actor-tokens/": {
       "title": "One Token to rule them all - obtaining Global Admin in every Entra ID tenant via Actor tokens",

@@ -12,7 +12,7 @@
 # Tags rebalanced 2026-06-16; red-team + pentest merged into one 'offensive' PDF.
 
 # ============================================================
-#  FEED SOURCES — RSS/Atom feed auto-discovered (56)
+#  FEED SOURCES — RSS/Atom feed auto-discovered (55)
 # ============================================================
 https://rastamouse.me/ | tag=offensive | sub=c2,cobalt-strike,evasion,maldev
 https://adsecurity.org/ | tag=offensive | sub=ad,kerberos,windows
@@ -46,7 +46,6 @@ https://labs.watchtowr.com/ | tag=vuln-dev | sub=web,exploit-dev,n-day
 https://blog.badsectorlabs.com/ | tag=general | sub=news,red-team,tooling
 https://badoption.eu/blogs/ | tag=offensive | sub=cloud,azure,web
 https://elliotonsecurity.com/ | tag=vuln-dev | sub=windows,exploit-dev,reversing
-https://code-white.com/blog/ | tag=offensive | sub=java,deserialization,exploit-dev,ad
 https://dirkjanm.io/ | tag=offensive | sub=azure,entra,ad,cloud
 https://kyjonin.blogspot.com/ | tag=threat-intel | sub=windows,com,detection
 https://blog.p1.gs/ | tag=offensive | sub=ctf,web
