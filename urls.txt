@@ -12,9 +12,8 @@
 # Tags rebalanced 2026-06-16; red-team + pentest merged into one 'offensive' PDF.
 
 # ============================================================
-#  FEED SOURCES — RSS/Atom feed auto-discovered (57)
+#  FEED SOURCES — RSS/Atom feed auto-discovered (56)
 # ============================================================
-https://0xdf.gitlab.io/ | tag=offensive | sub=htb,web,ad,privesc
 https://rastamouse.me/ | tag=offensive | sub=c2,cobalt-strike,evasion,maldev
 https://adsecurity.org/ | tag=offensive | sub=ad,kerberos,windows
 https://posts.specterops.io/ | feed=https://specterops.io/feed/ | tag=offensive | sub=ad,bloodhound,azure,c2

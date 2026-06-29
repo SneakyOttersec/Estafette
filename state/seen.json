@@ -1,9 +1,5 @@
 {
   "sources": {
-    "https://0xdf.gitlab.io/": {
-      "feed": "https://0xdf.gitlab.io/feed.xml",
-      "baseline": "2026-06-20T13:45:00+00:00"
-    },
     "https://rastamouse.me/": {
       "feed": "https://rastamouse.me/rss/",
       "baseline": "2026-06-05T12:03:42+00:00"
@@ -686,12 +682,6 @@
     }
   },
   "posts": {
-    "https://0xdf.gitlab.io/2026/06/13/htb-variatype.html": {
-      "title": "HTB: VariaType",
-      "slug": "htb-variatypehtml",
-      "date_processed": "2026-06-15",
-      "source": "https://0xdf.gitlab.io/"
-    },
     "https://rastamouse.me/bof-cocktails-in-cobalt-strike/": {
       "title": "BOF Cocktails in Cobalt Strike",
       "slug": "bof-cocktails-in-cobalt-strike",
@@ -1747,12 +1737,6 @@
       "slug": "pkce-aws-sso",
       "date_processed": "2026-06-17",
       "source": "https://blog.christophetd.fr/"
-    },
-    "https://0xdf.gitlab.io/2026/06/20/htb-nanocorp.html": {
-      "title": "HTB: NanoCorp",
-      "slug": "htb-nanocorphtml",
-      "date_processed": "2026-06-22",
-      "source": "https://0xdf.gitlab.io/"
     },
     "https://specterops.io/blog/2026/06/18/bloodhound-mcp-one-year-later-what-i-learned-about-mcps-models-and-context/": {
       "title": "BloodHound MCP, One Year Later: What I Learned About MCPs, Models, and Context",
