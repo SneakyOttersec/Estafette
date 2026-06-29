@@ -294,7 +294,7 @@
     },
     "https://www.schneier.com/": {
       "feed": "https://www.schneier.com/feed/",
-      "baseline": "2026-06-26T20:57:04+00:00"
+      "baseline": "2026-06-29T10:55:33+00:00"
     },
     "https://thedfirreport.com/": {
       "feed": "https://thedfirreport.com/feed/",
@@ -678,7 +678,7 @@
     },
     "https://www.wiz.io/blog": {
       "feed": "https://www.wiz.io/blog/rss.xml",
-      "baseline": "2026-06-26T12:00:01+00:00"
+      "baseline": "2026-06-29T11:00:00+00:00"
     },
     "https://blog.christophetd.fr/": {
       "feed": "https://blog.christophetd.fr/feed/",
@@ -2399,6 +2399,24 @@
     "https://www.wiz.io/blog/wiz-runtime-sensor-for-your-windows-environment": {
       "title": "Cloud-native Security for your Windows environment: Announcing the Wiz Runtime Sensor for Windows | Wiz Blog",
       "slug": "wiz-runtime-sensor-for-your-windows-environment",
+      "date_processed": "2026-06-29",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://www.schneier.com/blog/archives/2026/06/robot-police-officers.html": {
+      "title": "Robot Police Officers - Schneier on Security",
+      "slug": "robot-police-officershtml",
+      "date_processed": "2026-06-29",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.wiz.io/blog/wiz-xm-securing-public-sector-hybrid-environments": {
+      "title": "Securing Public Sector Hybrid Environments with Wiz XM | Wiz Blog",
+      "slug": "wiz-xm-securing-public-sector-hybrid-environments",
+      "date_processed": "2026-06-29",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://www.wiz.io/blog/red-agent-pov-bola": {
+      "title": "The Red Agent POV: Exploiting Broken Object-Level Authorization in an Airline GraphQL API | Wiz Blog",
+      "slug": "red-agent-pov-bola",
       "date_processed": "2026-06-29",
       "source": "https://www.wiz.io/blog"
     }
