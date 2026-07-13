@@ -2,7 +2,7 @@
   "sources": {
     "https://rastamouse.me/": {
       "feed": "https://rastamouse.me/rss/",
-      "baseline": "2026-06-05T12:03:42+00:00"
+      "baseline": "2026-07-06T20:29:30+00:00"
     },
     "https://adsecurity.org/": {
       "feed": "https://adsecurity.org/?feed=rss2",
@@ -10,7 +10,7 @@
     },
     "https://posts.specterops.io/": {
       "feed": "https://specterops.io/feed/",
-      "baseline": "2026-06-29T21:03:43+00:00"
+      "baseline": "2026-07-09T16:00:00+00:00"
     },
     "https://blog.xpnsec.com/": {
       "feed": "https://blog.xpnsec.com/rss.xml",
@@ -78,7 +78,7 @@
     },
     "https://blog.netspi.com/": {
       "feed": "https://www.netspi.com/feed/",
-      "baseline": "2026-06-22T05:01:00+00:00"
+      "baseline": "2026-07-08T12:50:00+00:00"
     },
     "https://secret.club/": {
       "feed": "https://secret.club/feed.xml",
@@ -150,11 +150,11 @@
     },
     "https://blog.trailofbits.com/": {
       "feed": "https://blog.trailofbits.com/index.xml",
-      "baseline": "2026-07-02T11:00:00+00:00"
+      "baseline": "2026-07-08T11:00:00+00:00"
     },
     "https://www.trustedsec.com/blog/": {
       "feed": "https://trustedsec.com/feed.rss",
-      "baseline": "2026-07-02T04:00:00+00:00"
+      "baseline": "2026-07-09T04:00:00+00:00"
     },
     "https://www.outflank.nl/blog/": {
       "feed": "https://www.outflank.nl/blog/feed/"
@@ -169,11 +169,11 @@
     },
     "https://www.praetorian.com/blog/": {
       "feed": "https://www.praetorian.com/feed/",
-      "baseline": "2026-07-02T17:41:38+00:00"
+      "baseline": "2026-07-10T20:27:03+00:00"
     },
     "https://mez0.cc/": {
       "feed": "https://mez0.cc/rss.xml",
-      "baseline": "2026-05-19T00:00:00+00:00"
+      "baseline": "2026-07-09T00:00:00+00:00"
     },
     "https://pre.empt.blog/": {
       "feed": "https://pre.empt.blog/rss.xml",
@@ -181,7 +181,7 @@
     },
     "https://www.blackhillsinfosec.com/blog/": {
       "feed": "https://www.blackhillsinfosec.com/blog/feed/",
-      "baseline": "2026-07-01T14:00:00+00:00"
+      "baseline": "2026-07-08T14:00:00+00:00"
     },
     "https://rhinosecuritylabs.com/blog/": {
       "feed": "https://rhinosecuritylabs.com/blog/feed/",
@@ -193,7 +193,7 @@
     },
     "https://devco.re/blog/": {
       "feed": "https://devco.re/rss",
-      "baseline": "2025-12-29T16:00:00+00:00"
+      "baseline": "2026-07-08T00:00:00+00:00"
     },
     "https://j00ru.vexillium.org/": {
       "feed": "https://j00ru.vexillium.org/feed/",
@@ -213,7 +213,7 @@
     },
     "https://tldrsec.com/": {
       "feed": "https://rss.beehiiv.com/feeds/xgTKUmMmUm.xml",
-      "baseline": "2026-07-02T19:24:47+00:00"
+      "baseline": "2026-07-09T14:30:00+00:00"
     },
     "https://klezvirus.github.io/": {
       "feed": "https://klezvirus.github.io/feed.xml",
@@ -230,7 +230,7 @@
     "https://blog.zsec.uk/": {},
     "https://www.zerodayinitiative.com/blog": {
       "feed": "https://www.thezdi.com/blog?format=rss",
-      "baseline": "2026-07-01T15:03:53+00:00"
+      "baseline": "2026-07-10T14:00:00+00:00"
     },
     "https://h0mbre.github.io/": {
       "feed": "https://h0mbre.github.io/feed.xml",
@@ -242,23 +242,23 @@
     },
     "https://securelist.com/": {
       "feed": "https://securelist.com/feed/",
-      "baseline": "2026-07-03T10:00:33+00:00"
+      "baseline": "2026-07-07T10:00:11+00:00"
     },
     "https://research.checkpoint.com/": {
       "feed": "https://research.checkpoint.com/feed/",
-      "baseline": "2026-07-01T11:29:38+00:00"
+      "baseline": "2026-07-06T12:25:02+00:00"
     },
     "https://www.sentinelone.com/labs/": {
       "feed": "https://www.sentinelone.com/feed/?post_type=labs",
-      "baseline": "2026-07-02T13:00:02+00:00"
+      "baseline": "2026-07-09T12:55:00+00:00"
     },
     "https://blog.talosintelligence.com/": {
       "feed": "https://blog.talosintelligence.com/rss/",
-      "baseline": "2026-07-02T18:00:34+00:00"
+      "baseline": "2026-07-09T18:52:29+00:00"
     },
     "https://unit42.paloaltonetworks.com/": {
       "feed": "https://unit42.paloaltonetworks.com/feed/",
-      "baseline": "2026-07-02T22:00:39+00:00"
+      "baseline": "2026-07-10T22:00:39+00:00"
     },
     "https://maxkersten.nl/": {
       "feed": "https://maxkersten.nl/feed/",
@@ -282,11 +282,11 @@
     },
     "https://www.hackingarticles.in/": {
       "feed": "https://www.hackingarticles.in/feed/",
-      "baseline": "2026-06-30T13:11:13+00:00"
+      "baseline": "2026-07-08T17:15:48+00:00"
     },
     "https://www.schneier.com/": {
       "feed": "https://www.schneier.com/feed/",
-      "baseline": "2026-07-03T11:15:25+00:00"
+      "baseline": "2026-07-10T21:07:13+00:00"
     },
     "https://thedfirreport.com/": {
       "feed": "https://thedfirreport.com/feed/",
@@ -302,15 +302,15 @@
     },
     "https://www.elastic.co/security-labs": {
       "feed": "https://www.elastic.co/security-labs/feed/",
-      "baseline": "2026-07-02T00:00:00+00:00"
+      "baseline": "2026-07-08T00:00:00+00:00"
     },
     "https://www.huntress.com/blog": {
       "feed": "https://www.huntress.com/blog/rss.xml",
-      "baseline": "2026-06-30T13:00:00+00:00"
+      "baseline": "2026-07-09T20:00:00+00:00"
     },
     "https://www.welivesecurity.com/en/": {
       "feed": "https://www.welivesecurity.com/en/feed/",
-      "baseline": "2026-07-03T12:36:41+00:00"
+      "baseline": "2026-07-08T08:45:00+00:00"
     },
     "https://blog.fox-it.com/": {
       "feed": "https://blog.fox-it.com/feed/",
@@ -330,7 +330,7 @@
     },
     "https://sensepost.com/blog/": {
       "feed": "https://sensepost.com/rss.xml",
-      "baseline": "2026-06-04T09:34:57+00:00"
+      "baseline": "2026-07-06T15:11:53+00:00"
     },
     "https://labs.jumpsec.com/": {
       "feed": "https://labs.jumpsec.com/feed.xml",
@@ -338,18 +338,18 @@
     },
     "https://www.pentestpartners.com/security-blog/": {
       "feed": "https://www.pentestpartners.com/feed/",
-      "baseline": "2026-07-03T12:31:26+00:00"
+      "baseline": "2026-07-10T08:56:40+00:00"
     },
     "https://blog.compass-security.com/": {
       "feed": "https://blog.compass-security.com/feed/",
-      "baseline": "2026-06-26T06:40:05+00:00"
+      "baseline": "2026-07-07T07:00:00+00:00"
     },
     "https://www.arneswinnen.net/": {
       "feed": "https://www.arneswinnen.net/feed/"
     },
     "https://swarm.ptsecurity.com/": {
       "feed": "https://swarm.ptsecurity.com/feed/",
-      "baseline": "2026-06-05T11:18:23+00:00"
+      "baseline": "2026-07-06T11:06:09+00:00"
     },
     "https://research.openanalysis.net/": {
       "feed": "https://research.openanalysis.net/feed.xml",
@@ -361,7 +361,7 @@
     },
     "https://thisweekin4n6.com/": {
       "feed": "https://thisweekin4n6.com/feed/",
-      "baseline": "2026-07-05T11:30:59+00:00"
+      "baseline": "2026-07-12T07:34:46+00:00"
     },
     "https://cocomelonc.github.io/": {
       "feed": "https://cocomelonc.github.io/feed.xml",
@@ -409,7 +409,7 @@
     },
     "https://whiteknightlabs.com/blog/": {
       "feed": "https://whiteknightlabs.com/feed/",
-      "baseline": "2026-06-15T13:58:42+00:00"
+      "baseline": "2026-07-06T18:51:47+00:00"
     },
     "https://0xsp.com/": {
       "feed": "https://0xsp.com/feed/",
@@ -441,7 +441,7 @@
     },
     "https://blog.quarkslab.com/": {
       "feed": "https://blog.quarkslab.com/feeds/all.atom.xml",
-      "baseline": "2026-06-17T22:00:00+00:00"
+      "baseline": "2026-07-05T22:00:00+00:00"
     },
     "https://doar-e.github.io/": {
       "feed": "https://doar-e.github.io/feeds/atom.xml",
@@ -449,7 +449,7 @@
     },
     "https://blog.exodusintel.com/": {
       "feed": "https://blog.exodusintel.com/feed/",
-      "baseline": "2026-06-22T15:59:57+00:00"
+      "baseline": "2026-07-06T15:32:55+00:00"
     },
     "https://www.willsroot.io/": {
       "feed": "https://www.willsroot.io/feeds/posts/default",
@@ -461,7 +461,7 @@
     },
     "https://windows-internals.com/pages/internals-blog/": {
       "feed": "https://windows-internals.com/feed/",
-      "baseline": "2026-04-23T16:49:19+00:00"
+      "baseline": "2026-07-09T17:34:05+00:00"
     },
     "https://revers.engineering/": {
       "feed": "https://revers.engineering/feed/",
@@ -532,7 +532,7 @@
     },
     "https://gergelykalman.com/": {
       "feed": "https://gergelykalman.com/feeds/all.atom.xml",
-      "baseline": "2025-03-23T23:00:00+00:00"
+      "baseline": "2026-07-10T22:00:00+00:00"
     },
     "https://vulncheck.com/blog": {
       "feed": "https://vulncheck.com/feed/blog/atom.xml",
@@ -595,7 +595,7 @@
     },
     "https://blog.amberwolf.com/": {
       "feed": "https://blog.amberwolf.com/index.xml",
-      "baseline": "2026-06-23T00:00:00+00:00"
+      "baseline": "2026-07-10T09:00:00+00:00"
     },
     "https://palant.info/articles/": {
       "feed": "https://palant.info/articles/index.xml",
@@ -631,7 +631,7 @@
     },
     "https://blog.nviso.eu/": {
       "feed": "https://blog.nviso.eu/feed/",
-      "baseline": "2026-07-01T15:11:11+00:00"
+      "baseline": "2026-07-07T09:00:41+00:00"
     },
     "https://pentestlab.blog/": {
       "feed": "https://pentestlab.blog/feed/",
@@ -670,7 +670,7 @@
     },
     "https://www.wiz.io/blog": {
       "feed": "https://www.wiz.io/blog/rss.xml",
-      "baseline": "2026-07-02T11:00:00+00:00"
+      "baseline": "2026-07-09T16:20:08+00:00"
     },
     "https://blog.christophetd.fr/": {
       "feed": "https://blog.christophetd.fr/feed/",
@@ -2722,6 +2722,402 @@
       "title": "Bridging the Visibility Gap: A Unified Security Operating Model for Hybrid Cloud Teams | Wiz Blog",
       "slug": "sensor-wls-for-on-prem",
       "date_processed": "2026-07-06",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://rastamouse.me/cpl-hook-chains/": {
+      "title": "Hook Chains (how I built Crystal Kit incorrectly*)",
+      "slug": "cpl-hook-chains",
+      "date_processed": "2026-07-13",
+      "source": "https://rastamouse.me/"
+    },
+    "https://specterops.io/blog/2026/07/09/finding-socks-with-proxywatch/": {
+      "title": "Finding SOCKS with Proxywatch",
+      "slug": "finding-socks-with-proxywatch",
+      "date_processed": "2026-07-13",
+      "source": "https://posts.specterops.io/"
+    },
+    "https://specterops.io/blog/2026/07/08/building-a-mental-model-for-kubernetes-security-research/": {
+      "title": "Building a Mental Model for Kubernetes Security Research",
+      "slug": "building-a-mental-model-for-kubernetes-security-research",
+      "date_processed": "2026-07-13",
+      "source": "https://posts.specterops.io/"
+    },
+    "https://specterops.io/blog/2026/07/07/how-to-set-red-team-objectives-that-produce-value/": {
+      "title": "How to Set Red Team Objectives that Produce Value",
+      "slug": "how-to-set-red-team-objectives-that-produce-value",
+      "date_processed": "2026-07-13",
+      "source": "https://posts.specterops.io/"
+    },
+    "https://www.netspi.com/blog/executive-blog/netspi-updates/confidence-over-noise-introducing-continuous-ai-findings-validation/": {
+      "title": "Confidence Over Noise: Introducing Continuous AI Findings Validation",
+      "slug": "confidence-over-noise-introducing-continuous-ai-findings-validation",
+      "date_processed": "2026-07-13",
+      "source": "https://blog.netspi.com/"
+    },
+    "https://blog.trailofbits.com/2026/07/08/mutation-testing-comes-to-daml/": {
+      "title": "Mutation testing comes to DAML",
+      "slug": "mutation-testing-comes-to-daml",
+      "date_processed": "2026-07-13",
+      "source": "https://blog.trailofbits.com/"
+    },
+    "https://trustedsec.com/blog/vulnify-giving-your-agents-a-cve-brain": {
+      "title": "Vulnify: Giving Your Agents a CVE Brain",
+      "slug": "vulnify-giving-your-agents-a-cve-brain",
+      "date_processed": "2026-07-13",
+      "source": "https://www.trustedsec.com/blog/"
+    },
+    "https://trustedsec.com/blog/welcoming-obfusgit": {
+      "title": "Training AI Data | Python Tool | TrustedSec",
+      "slug": "welcoming-obfusgit",
+      "date_processed": "2026-07-13",
+      "source": "https://www.trustedsec.com/blog/"
+    },
+    "https://www.praetorian.com/blog/ble-testing-caeruleus/": {
+      "title": "Bluetooth Low Energy Security Testing, Consolidated: Introducing Caeruleus",
+      "slug": "ble-testing-caeruleus",
+      "date_processed": "2026-07-13",
+      "source": "https://www.praetorian.com/blog/"
+    },
+    "https://www.praetorian.com/blog/llm-kernel-exploit-development/": {
+      "title": "FreeBSoD: Leveraging Language Models to Find and Exploit Kernel Bugs (Part 2 of 2)",
+      "slug": "llm-kernel-exploit-development",
+      "date_processed": "2026-07-13",
+      "source": "https://www.praetorian.com/blog/"
+    },
+    "https://mez0.cc/posts/vulnify": {
+      "title": "Vulnify: Giving Your Agents a CVE Brain",
+      "slug": "vulnify",
+      "date_processed": "2026-07-13",
+      "source": "https://mez0.cc/"
+    },
+    "https://www.blackhillsinfosec.com/the-goldilocks-zone/": {
+      "title": "Finding the \"Goldilocks\" Zone: A Practical Approach to Alert Triage - Black Hills Information Security, Inc.",
+      "slug": "the-goldilocks-zone",
+      "date_processed": "2026-07-13",
+      "source": "https://www.blackhillsinfosec.com/blog/"
+    },
+    "https://devco.re/blog/2026/07/08/10th-internship-program-recruit/": {
+      "title": "DEVCORE 2026 第十屆實習生計畫 | DEVCORE 戴夫寇爾",
+      "slug": "10th-internship-program-recruit",
+      "date_processed": "2026-07-13",
+      "source": "https://devco.re/blog/"
+    },
+    "https://tldrsec.com/p/tldr-sec-336": {
+      "title": "[tl;dr sec] #336 - Autonomous Vulnerability Hunting, GuardDog 3.0, Are Bug Bounties Cooked?",
+      "slug": "tldr-sec-336",
+      "date_processed": "2026-07-13",
+      "source": "https://tldrsec.com/"
+    },
+    "https://www.thezdi.com/blog/2026/7/9/cve-2026-47291-remote-code-execution-in-the-windows-httpsys": {
+      "title": "Zero Day Initiative — CVE-2026-47291: Remote Code Execution in the Windows HTTP.sys",
+      "slug": "cve-2026-47291-remote-code-execution-in-the-windows-httpsys",
+      "date_processed": "2026-07-13",
+      "source": "https://www.zerodayinitiative.com/blog"
+    },
+    "https://securelist.com/industrial-threat-report-q1-2026/120643/": {
+      "title": "Threat landscape for industrial automation systems. Q1 2026",
+      "slug": "120643",
+      "date_processed": "2026-07-13",
+      "source": "https://securelist.com/"
+    },
+    "https://securelist.com/microsoft-device-code-phishing-attack/120350/": {
+      "title": "When checking the URL isn't enough: phishing via the Microsoft identity platform",
+      "slug": "120350",
+      "date_processed": "2026-07-13",
+      "source": "https://securelist.com/"
+    },
+    "https://research.checkpoint.com/2026/cavern-manticore-exposing-iran-linked-modular-c2-framework/": {
+      "title": "Cavern Manticore: Exposing Iran-Linked Modular C2 Framework - Check Point Research",
+      "slug": "cavern-manticore-exposing-iran-linked-modular-c2-framework",
+      "date_processed": "2026-07-13",
+      "source": "https://research.checkpoint.com/"
+    },
+    "https://research.checkpoint.com/2026/6th-july-threat-intelligence-report-2/": {
+      "title": "6th July – Threat Intelligence Report - Check Point Research",
+      "slug": "6th-july-threat-intelligence-report-2",
+      "date_processed": "2026-07-13",
+      "source": "https://research.checkpoint.com/"
+    },
+    "https://www.sentinelone.com/labs/one-target-china-india-espionage-converge-on-pakistani-law-enforcement/": {
+      "title": "One Target, Two Flags | Rival Espionage Actors Converge On Pakistani Law Enforcement",
+      "slug": "one-target-china-india-espionage-converge-on-pakistani-law-enforcement",
+      "date_processed": "2026-07-13",
+      "source": "https://www.sentinelone.com/labs/"
+    },
+    "https://blog.talosintelligence.com/wolfssl-vulnerabilities/": {
+      "title": "WolfSSL, GeoVision, VTK vulnerabilities",
+      "slug": "wolfssl-vulnerabilities",
+      "date_processed": "2026-07-13",
+      "source": "https://blog.talosintelligence.com/"
+    },
+    "https://blog.talosintelligence.com/winning-54-of-the-time/": {
+      "title": "Winning 54% of the time",
+      "slug": "winning-54-of-the-time",
+      "date_processed": "2026-07-13",
+      "source": "https://blog.talosintelligence.com/"
+    },
+    "https://blog.talosintelligence.com/uat-7810/": {
+      "title": "UAT-7810 continues building ORB networks using new malware",
+      "slug": "uat-7810",
+      "date_processed": "2026-07-13",
+      "source": "https://blog.talosintelligence.com/"
+    },
+    "https://unit42.paloaltonetworks.com/the-gentlemen-ransomware/": {
+      "title": "No Manners Here: The Ruthless Rise of The Gentlemen Ransomware",
+      "slug": "the-gentlemen-ransomware",
+      "date_processed": "2026-07-13",
+      "source": "https://unit42.paloaltonetworks.com/"
+    },
+    "https://unit42.paloaltonetworks.com/vidar-stealer-xmrig-miner-campaign-analysis/": {
+      "title": "Vidar Stealer Unmasked: Code Signing Abuse, Go Loaders and File Inflation",
+      "slug": "vidar-stealer-xmrig-miner-campaign-analysis",
+      "date_processed": "2026-07-13",
+      "source": "https://unit42.paloaltonetworks.com/"
+    },
+    "https://www.hackingarticles.in/windows-privilege-escalation-sedebugprivilege/": {
+      "title": "Windows Privilege Escalation: SeDebugPrivilege",
+      "slug": "windows-privilege-escalation-sedebugprivilege",
+      "date_processed": "2026-07-13",
+      "source": "https://www.hackingarticles.in/"
+    },
+    "https://www.hackingarticles.in/wireless-pentesting-with-claude-using-the-aircrack-mcp-server/": {
+      "title": "Wireless Pentesting with Claude Using the Aircrack MCP Server",
+      "slug": "wireless-pentesting-with-claude-using-the-aircrack-mcp-server",
+      "date_processed": "2026-07-13",
+      "source": "https://www.hackingarticles.in/"
+    },
+    "https://www.schneier.com/blog/archives/2026/07/friday-squid-blogging-squidbleed-vulnerability.html": {
+      "title": "Friday Squid Blogging: \"Squidbleed\" Vulnerability - Schneier on Security",
+      "slug": "friday-squid-blogging-squidbleed-vulnerabilityhtml",
+      "date_processed": "2026-07-13",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/07/ai-surveillance-and-social-progress.html": {
+      "title": "AI Surveillance and Social Progress - Schneier on Security",
+      "slug": "ai-surveillance-and-social-progresshtml",
+      "date_processed": "2026-07-13",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/07/the-language-of-ai-could-change-how-humans-speak.html": {
+      "title": "The Language of AI Could Change How Humans Speak - Schneier on Security",
+      "slug": "the-language-of-ai-could-change-how-humans-speakhtml",
+      "date_processed": "2026-07-13",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/07/cybersecurity-and-the-gap-between-skill-and-ability.html": {
+      "title": "Cybersecurity and the Gap Between Skill and Ability - Schneier on Security",
+      "slug": "cybersecurity-and-the-gap-between-skill-and-abilityhtml",
+      "date_processed": "2026-07-13",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/07/google-is-suing-chinese-scammers-who-are-using-gemini.html": {
+      "title": "Google Is Suing Chinese Scammers Who Are Using Gemini - Schneier on Security",
+      "slug": "google-is-suing-chinese-scammers-who-are-using-geminihtml",
+      "date_processed": "2026-07-13",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/07/france-to-stop-certifying-non-quantum-safe-encryption.html": {
+      "title": "France to Stop Certifying Non-Quantum-Safe Encryption - Schneier on Security",
+      "slug": "france-to-stop-certifying-non-quantum-safe-encryptionhtml",
+      "date_processed": "2026-07-13",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.elastic.co/security-labs/mexican-banking-fraud-scmbanker-ref6045": {
+      "title": "REF6045: Mexican banking fraud toolkit with signs of AI-assisted development — Elastic Security Labs",
+      "slug": "mexican-banking-fraud-scmbanker-ref6045",
+      "date_processed": "2026-07-13",
+      "source": "https://www.elastic.co/security-labs"
+    },
+    "https://www.huntress.com/blog/what-is-a-security-awareness-training-program": {
+      "title": "Reduce Human Risk | Build a Strong Security Awareness Training Program | Huntress",
+      "slug": "what-is-a-security-awareness-training-program",
+      "date_processed": "2026-07-13",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/conditional-access-misconfigurations": {
+      "title": "Conditional Access Misconfigurations Exposed 55 Orgs with MFA On | Huntress",
+      "slug": "conditional-access-misconfigurations",
+      "date_processed": "2026-07-13",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/citrixbleed-2-dragonforce-ransomware": {
+      "title": "CitrixBleed 2 (CVE-2025-5777) 7Steps to Dragonforce Ransomware | Huntress",
+      "slug": "citrixbleed-2-dragonforce-ransomware",
+      "date_processed": "2026-07-13",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/ai-coded-malware-vibe-coding-active-directory": {
+      "title": "AI-Coded Malware | Analyzing Vibe-Coded AD Enumeration | Huntress",
+      "slug": "ai-coded-malware-vibe-coding-active-directory",
+      "date_processed": "2026-07-13",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/lotl-abuse-warning-signs": {
+      "title": "LoTL Abuse: How to Spot It vs. Normal Admin Activity | Huntress",
+      "slug": "lotl-abuse-warning-signs",
+      "date_processed": "2026-07-13",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/meta-business-manager-phishing": {
+      "title": "Meta Phishers Abuse Business Account Manager Service | Huntress",
+      "slug": "meta-business-manager-phishing",
+      "date_processed": "2026-07-13",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/cybersecurity-lessons-taylor-swift-wedding": {
+      "title": "5 Cybersecurity Lessons From Taylor & Travis’s Wedding | Huntress",
+      "slug": "cybersecurity-lessons-taylor-swift-wedding",
+      "date_processed": "2026-07-13",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/ai-arms-race-in-recruiting": {
+      "title": "AI Arms Race in Recruiting | Huntress",
+      "slug": "ai-arms-race-in-recruiting",
+      "date_processed": "2026-07-13",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/dangers-of-storing-unencrypted-passwords": {
+      "title": "Plain Text Passwords: The Risks of Storing Them | Huntress",
+      "slug": "dangers-of-storing-unencrypted-passwords",
+      "date_processed": "2026-07-13",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/cloud-application-security": {
+      "title": "Guide to Cloud Application Security: Must-Knows and No-No’s | Huntress",
+      "slug": "cloud-application-security",
+      "date_processed": "2026-07-13",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/canada-localized-managed-phishing": {
+      "title": "Celebrating Canada Day with Localized Managed Phishing | Huntress",
+      "slug": "canada-localized-managed-phishing",
+      "date_processed": "2026-07-13",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/how-huntress-addresses-lateral-movement": {
+      "title": "Lateral Movement Attack: Techniques, Detection & Prevention | Huntress",
+      "slug": "how-huntress-addresses-lateral-movement",
+      "date_processed": "2026-07-13",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/how-the-raas-business-model-actually-works": {
+      "title": "How the RaaS Business Model Actually Works | Huntress",
+      "slug": "how-the-raas-business-model-actually-works",
+      "date_processed": "2026-07-13",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/lshiy-password-spray-attack": {
+      "title": "No (Bad) CAP: Inside an Ongoing LSHIY Password Spray Attack | Huntress",
+      "slug": "lshiy-password-spray-attack",
+      "date_processed": "2026-07-13",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.welivesecurity.com/en/eset-research/eset-threat-report-h1-2026/": {
+      "title": "ESET Threat Report H1 2026",
+      "slug": "eset-threat-report-h1-2026",
+      "date_processed": "2026-07-13",
+      "source": "https://www.welivesecurity.com/en/"
+    },
+    "https://sensepost.com/blog/2026/process-parameter-poisoning/": {
+      "title": "Process Parameter Poisoning",
+      "slug": "process-parameter-poisoning",
+      "date_processed": "2026-07-13",
+      "source": "https://sensepost.com/blog/"
+    },
+    "https://www.pentestpartners.com/security-blog/flying-with-the-flipper-zero/": {
+      "title": "Flying with the Flipper Zero | Pen Test Partners",
+      "slug": "flying-with-the-flipper-zero",
+      "date_processed": "2026-07-13",
+      "source": "https://www.pentestpartners.com/security-blog/"
+    },
+    "https://blog.compass-security.com/2026/07/cyber-resilience-act-part-ii/": {
+      "title": "Cyber Resilience Act – Part II",
+      "slug": "cyber-resilience-act-part-ii",
+      "date_processed": "2026-07-13",
+      "source": "https://blog.compass-security.com/"
+    },
+    "https://swarm.ptsecurity.com/hack-the-elephant-one-bite-at-a-time-nul-byte-sql-injection-in-pdo_firebird-and-null-pointer-dereference-in-pdo-pgsql/": {
+      "title": "Hack the Elephant One Bite at a Time: NUL byte SQL Injection in pdo_firebird and NULL Pointer Dereference in PDO via pdo_pgsql",
+      "slug": "hack-the-elephant-one-bite-at-a-time-nul-byte-sql-injection-in-pdo_firebird-and-null-pointer-dereference-in-pdo-pgsql",
+      "date_processed": "2026-07-13",
+      "source": "https://swarm.ptsecurity.com/"
+    },
+    "https://thisweekin4n6.com/2026/07/12/week-28-2026/": {
+      "title": "Week 28 – 2026",
+      "slug": "week-28-2026",
+      "date_processed": "2026-07-13",
+      "source": "https://thisweekin4n6.com/"
+    },
+    "https://whiteknightlabs.com/2026/07/06/introduction-to-tokenizers-in-llms/": {
+      "title": "Introduction to Tokenizers in LLMs | White Knight Labs",
+      "slug": "introduction-to-tokenizers-in-llms",
+      "date_processed": "2026-07-13",
+      "source": "https://whiteknightlabs.com/blog/"
+    },
+    "http://blog.quarkslab.com/cortex-security-audit.html": {
+      "title": "Cortex Security Audit",
+      "slug": "cortex-security-audithtml",
+      "date_processed": "2026-07-13",
+      "source": "https://blog.quarkslab.com/"
+    },
+    "https://blog.exodusintel.com/2026/07/06/microsoft-windows-installer-folder-delete-privilege-escalation/": {
+      "title": "Microsoft Windows Installer Folder Delete Privilege Escalation - Exodus Intelligence",
+      "slug": "microsoft-windows-installer-folder-delete-privilege-escalation",
+      "date_processed": "2026-07-13",
+      "source": "https://blog.exodusintel.com/"
+    },
+    "https://windows-internals.com/random-windows-things-part-1-previousmode-mitigation/?utm_source=rss&utm_medium=rss&utm_campaign=random-windows-things-part-1-previousmode-mitigation": {
+      "title": "Random Windows Things Part 1: PreviousMode Mitigation",
+      "slug": "random-windows-things-part-1-previousmode-mitigation",
+      "date_processed": "2026-07-13",
+      "source": "https://windows-internals.com/pages/internals-blog/"
+    },
+    "https://gergelykalman.com/CVE-2024-40842-xprotectremediatordubrobber-infoleak-on-macos.html": {
+      "title": "XProtectRemediatorDubRobber infoleak on macOS (CVE-2024-40842)",
+      "slug": "cve-2024-40842-xprotectremediatordubrobber-infoleak-on-macoshtml",
+      "date_processed": "2026-07-13",
+      "source": "https://gergelykalman.com/"
+    },
+    "https://gergelykalman.com/state-of-the-apple-security-bounty-program.html": {
+      "title": "State of the Apple Security Bounty program",
+      "slug": "state-of-the-apple-security-bounty-programhtml",
+      "date_processed": "2026-07-13",
+      "source": "https://gergelykalman.com/"
+    },
+    "https://blog.amberwolf.com/blog/2026/july/dell-bios-passwords-weak-xor-encryption-allows-recovery-from-spi-flash-cve-2026-40639/": {
+      "title": "Dell BIOS Passwords: Weak XOR Encryption Allows Recovery from SPI Flash (CVE-2026-40639)",
+      "slug": "dell-bios-passwords-weak-xor-encryption-allows-recovery-from-spi-flash-cve-2026-40639",
+      "date_processed": "2026-07-13",
+      "source": "https://blog.amberwolf.com/"
+    },
+    "https://blog.nviso.eu/2026/07/07/reducing-microsoft-sentinel-costs-without-compromising-detection-part-2-the-firewall-quest/": {
+      "title": "Reduce Sentinel Firewall Log Costs with Summary Rules",
+      "slug": "reducing-microsoft-sentinel-costs-without-compromising-detection-part-2-the-firewall-quest",
+      "date_processed": "2026-07-13",
+      "source": "https://blog.nviso.eu/"
+    },
+    "https://www.wiz.io/blog/how-prodsec-uses-wiz": {
+      "title": "Wiz ProdSec Team's Cloud Security Playbook | Wiz Blog",
+      "slug": "how-prodsec-uses-wiz",
+      "date_processed": "2026-07-13",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://www.wiz.io/blog/verizon-dbir-2026-ai-cloud-security": {
+      "title": "Wiz in the Verizon DBIR: AI Risk & Cloud Security Trends | Wiz Blog",
+      "slug": "verizon-dbir-2026-ai-cloud-security",
+      "date_processed": "2026-07-13",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://www.wiz.io/blog/ghostapproval-a-trust-boundary-gap-in-ai-coding-assistants": {
+      "title": "GhostApproval: AI Coding Assistant Trust Boundary Flaw | Wiz Blog",
+      "slug": "ghostapproval-a-trust-boundary-gap-in-ai-coding-assistants",
+      "date_processed": "2026-07-13",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://www.wiz.io/blog/wiz-asm-auto-recon": {
+      "title": "Wiz ASM for any environment, any risk, everywhere | Wiz Blog",
+      "slug": "wiz-asm-auto-recon",
+      "date_processed": "2026-07-13",
       "source": "https://www.wiz.io/blog"
     }
   }
