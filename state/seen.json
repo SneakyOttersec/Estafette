@@ -2,7 +2,7 @@
   "sources": {
     "https://rastamouse.me/": {
       "feed": "https://rastamouse.me/rss/",
-      "baseline": "2026-07-06T20:29:30+00:00"
+      "baseline": "2026-07-17T16:08:50+00:00"
     },
     "https://adsecurity.org/": {
       "feed": "https://adsecurity.org/?feed=rss2",
@@ -10,7 +10,7 @@
     },
     "https://posts.specterops.io/": {
       "feed": "https://specterops.io/feed/",
-      "baseline": "2026-07-09T16:00:00+00:00"
+      "baseline": "2026-07-15T19:54:30+00:00"
     },
     "https://blog.xpnsec.com/": {
       "feed": "https://blog.xpnsec.com/rss.xml",
@@ -78,7 +78,7 @@
     },
     "https://blog.netspi.com/": {
       "feed": "https://www.netspi.com/feed/",
-      "baseline": "2026-07-08T12:50:00+00:00"
+      "baseline": "2026-07-15T07:40:14+00:00"
     },
     "https://secret.club/": {
       "feed": "https://secret.club/feed.xml",
@@ -150,11 +150,11 @@
     },
     "https://blog.trailofbits.com/": {
       "feed": "https://blog.trailofbits.com/index.xml",
-      "baseline": "2026-07-08T11:00:00+00:00"
+      "baseline": "2026-07-13T11:00:00+00:00"
     },
     "https://www.trustedsec.com/blog/": {
       "feed": "https://trustedsec.com/feed.rss",
-      "baseline": "2026-07-09T04:00:00+00:00"
+      "baseline": "2026-07-16T04:00:00+00:00"
     },
     "https://www.outflank.nl/blog/": {
       "feed": "https://www.outflank.nl/blog/feed/"
@@ -181,7 +181,7 @@
     },
     "https://www.blackhillsinfosec.com/blog/": {
       "feed": "https://www.blackhillsinfosec.com/blog/feed/",
-      "baseline": "2026-07-08T14:00:00+00:00"
+      "baseline": "2026-07-15T14:00:00+00:00"
     },
     "https://rhinosecuritylabs.com/blog/": {
       "feed": "https://rhinosecuritylabs.com/blog/feed/",
@@ -205,7 +205,7 @@
     },
     "https://blog.deeb.ch/": {
       "feed": "https://blog.deeb.ch/feed.xml",
-      "baseline": "2026-06-26T12:43:58+00:00"
+      "baseline": "2026-06-28T08:30:26+00:00"
     },
     "https://0xrick.github.io/": {
       "feed": "https://0xrick.github.io/feed.xml",
@@ -213,7 +213,7 @@
     },
     "https://tldrsec.com/": {
       "feed": "https://rss.beehiiv.com/feeds/xgTKUmMmUm.xml",
-      "baseline": "2026-07-09T14:30:00+00:00"
+      "baseline": "2026-07-16T14:30:00+00:00"
     },
     "https://klezvirus.github.io/": {
       "feed": "https://klezvirus.github.io/feed.xml",
@@ -227,10 +227,12 @@
       "feed": "https://0xpat.github.io/feed.xml",
       "baseline": "2021-06-23T00:00:00+00:00"
     },
-    "https://blog.zsec.uk/": {},
+    "https://blog.zsec.uk/": {
+      "feed": "https://blog.zsec.uk/rss/"
+    },
     "https://www.zerodayinitiative.com/blog": {
       "feed": "https://www.thezdi.com/blog?format=rss",
-      "baseline": "2026-07-10T14:00:00+00:00"
+      "baseline": "2026-07-14T17:56:54+00:00"
     },
     "https://h0mbre.github.io/": {
       "feed": "https://h0mbre.github.io/feed.xml",
@@ -242,11 +244,11 @@
     },
     "https://securelist.com/": {
       "feed": "https://securelist.com/feed/",
-      "baseline": "2026-07-07T10:00:11+00:00"
+      "baseline": "2026-07-16T13:05:56+00:00"
     },
     "https://research.checkpoint.com/": {
       "feed": "https://research.checkpoint.com/feed/",
-      "baseline": "2026-07-06T12:25:02+00:00"
+      "baseline": "2026-07-14T00:51:31+00:00"
     },
     "https://www.sentinelone.com/labs/": {
       "feed": "https://www.sentinelone.com/feed/?post_type=labs",
@@ -254,11 +256,11 @@
     },
     "https://blog.talosintelligence.com/": {
       "feed": "https://blog.talosintelligence.com/rss/",
-      "baseline": "2026-07-09T18:52:29+00:00"
+      "baseline": "2026-07-16T18:00:50+00:00"
     },
     "https://unit42.paloaltonetworks.com/": {
       "feed": "https://unit42.paloaltonetworks.com/feed/",
-      "baseline": "2026-07-10T22:00:39+00:00"
+      "baseline": "2026-07-17T10:00:24+00:00"
     },
     "https://maxkersten.nl/": {
       "feed": "https://maxkersten.nl/feed/",
@@ -266,7 +268,7 @@
     },
     "https://embracethered.com/blog/": {
       "feed": "https://embracethered.com/blog/index.xml",
-      "baseline": "2026-06-25T12:20:58+00:00"
+      "baseline": "2026-07-20T01:00:00+00:00"
     },
     "https://blog.includesecurity.com/": {
       "feed": "https://blog.includesecurity.com/feed/",
@@ -282,11 +284,11 @@
     },
     "https://www.hackingarticles.in/": {
       "feed": "https://www.hackingarticles.in/feed/",
-      "baseline": "2026-07-08T17:15:48+00:00"
+      "baseline": "2026-07-15T13:03:26+00:00"
     },
     "https://www.schneier.com/": {
       "feed": "https://www.schneier.com/feed/",
-      "baseline": "2026-07-10T21:07:13+00:00"
+      "baseline": "2026-07-17T21:01:37+00:00"
     },
     "https://thedfirreport.com/": {
       "feed": "https://thedfirreport.com/feed/",
@@ -294,7 +296,7 @@
     },
     "https://www.volexity.com/blog/": {
       "feed": "https://www.volexity.com/feed/",
-      "baseline": "2026-06-04T20:23:55+00:00"
+      "baseline": "2026-07-17T22:10:37+00:00"
     },
     "https://redcanary.com/blog/": {
       "feed": "https://redcanary.com/blog/feed/",
@@ -302,15 +304,15 @@
     },
     "https://www.elastic.co/security-labs": {
       "feed": "https://www.elastic.co/security-labs/feed/",
-      "baseline": "2026-07-08T00:00:00+00:00"
+      "baseline": "2026-07-18T00:00:00+00:00"
     },
     "https://www.huntress.com/blog": {
       "feed": "https://www.huntress.com/blog/rss.xml",
-      "baseline": "2026-07-09T20:00:00+00:00"
+      "baseline": "2026-07-13T15:00:00+00:00"
     },
     "https://www.welivesecurity.com/en/": {
       "feed": "https://www.welivesecurity.com/en/feed/",
-      "baseline": "2026-07-08T08:45:00+00:00"
+      "baseline": "2026-07-14T08:53:00+00:00"
     },
     "https://blog.fox-it.com/": {
       "feed": "https://blog.fox-it.com/feed/",
@@ -330,7 +332,7 @@
     },
     "https://sensepost.com/blog/": {
       "feed": "https://sensepost.com/rss.xml",
-      "baseline": "2026-07-06T15:11:53+00:00"
+      "baseline": "2026-07-08T06:15:40+00:00"
     },
     "https://labs.jumpsec.com/": {
       "feed": "https://labs.jumpsec.com/feed.xml",
@@ -361,11 +363,11 @@
     },
     "https://thisweekin4n6.com/": {
       "feed": "https://thisweekin4n6.com/feed/",
-      "baseline": "2026-07-12T07:34:46+00:00"
+      "baseline": "2026-07-19T11:18:57+00:00"
     },
     "https://cocomelonc.github.io/": {
       "feed": "https://cocomelonc.github.io/feed.xml",
-      "baseline": "2026-07-02T00:00:00+00:00"
+      "baseline": "2026-07-16T02:00:00+00:00"
     },
     "https://modexp.wordpress.com/": {
       "feed": "https://modexp.wordpress.com/feed/",
@@ -540,7 +542,7 @@
     },
     "https://labs.bishopfox.com/tech-blog": {
       "feed": "https://labs.bishopfox.com/tech-blog/rss.xml",
-      "baseline": "2026-06-16T13:00:00+00:00"
+      "baseline": "2026-07-17T13:00:00+00:00"
     },
     "https://blog.isosceles.com/": {
       "feed": "https://blog.isosceles.com/rss/",
@@ -647,11 +649,11 @@
     },
     "https://blog.syss.com/": {
       "feed": "https://blog.syss.com/feed.xml",
-      "baseline": "2026-06-18T05:00:00+00:00"
+      "baseline": "2026-07-14T05:00:00+00:00"
     },
     "https://www.x41-dsec.de/lab/advisories/": {
       "feed": "https://x41-dsec.de/feed.xml",
-      "baseline": "2026-05-22T00:00:00+00:00"
+      "baseline": "2026-07-14T00:00:00+00:00"
     },
     "https://www.n00py.io/": {
       "feed": "https://www.n00py.io/feed/",
@@ -670,7 +672,7 @@
     },
     "https://www.wiz.io/blog": {
       "feed": "https://www.wiz.io/blog/rss.xml",
-      "baseline": "2026-07-09T16:20:08+00:00"
+      "baseline": "2026-07-15T13:33:42+00:00"
     },
     "https://blog.christophetd.fr/": {
       "feed": "https://blog.christophetd.fr/feed/",
@@ -3118,6 +3120,324 @@
       "title": "Wiz ASM for any environment, any risk, everywhere | Wiz Blog",
       "slug": "wiz-asm-auto-recon",
       "date_processed": "2026-07-13",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://rastamouse.me/crystal-palace-user-intrinsics/": {
+      "title": "Crystal Palace User Intrinsics",
+      "slug": "crystal-palace-user-intrinsics",
+      "date_processed": "2026-07-20",
+      "source": "https://rastamouse.me/"
+    },
+    "https://specterops.io/blog/2026/07/15/why-least-privilege-fails-in-real-environments/": {
+      "title": "Why \"Least Privilege\" Fails in Real Environments",
+      "slug": "why-least-privilege-fails-in-real-environments",
+      "date_processed": "2026-07-20",
+      "source": "https://posts.specterops.io/"
+    },
+    "https://specterops.io/blog/2026/07/15/there-and-back-again-an-operators-guide-on-ntlm-relaying-egress/": {
+      "title": "There and Back Again: An Operators Guide on NTLM Relaying Egress",
+      "slug": "there-and-back-again-an-operators-guide-on-ntlm-relaying-egress",
+      "date_processed": "2026-07-20",
+      "source": "https://posts.specterops.io/"
+    },
+    "https://www.netspi.com/blog/technical-blog/network-pentesting/adpathfinder-opengraph-attack-path-mapping-in-bloodhound-ce/": {
+      "title": "ADPathFinder: OpenGraph Attack Path Mapping in BloodHound CE",
+      "slug": "adpathfinder-opengraph-attack-path-mapping-in-bloodhound-ce",
+      "date_processed": "2026-07-20",
+      "source": "https://blog.netspi.com/"
+    },
+    "https://blog.trailofbits.com/2026/07/13/rust-proof-your-code-with-our-new-testing-handbook-chapter/": {
+      "title": "Rust-proof your code with our new Testing Handbook chapter",
+      "slug": "rust-proof-your-code-with-our-new-testing-handbook-chapter",
+      "date_processed": "2026-07-20",
+      "source": "https://blog.trailofbits.com/"
+    },
+    "https://trustedsec.com/blog/cmmc-is-not-cancelled": {
+      "title": "CMMC is (Not) Cancelled",
+      "slug": "cmmc-is-not-cancelled",
+      "date_processed": "2026-07-20",
+      "source": "https://www.trustedsec.com/blog/"
+    },
+    "https://trustedsec.com/blog/pandoras-container-part-1-unpacking-azure-container-security": {
+      "title": "Pandora’s Container Part 1: Unpacking Azure Container Security",
+      "slug": "pandoras-container-part-1-unpacking-azure-container-security",
+      "date_processed": "2026-07-20",
+      "source": "https://www.trustedsec.com/blog/"
+    },
+    "https://www.blackhillsinfosec.com/kape-cheatsheet/": {
+      "title": "KAPE 101: A Kroll Artifact Parser and Extractor Cheatsheet - Black Hills Information Security, Inc.",
+      "slug": "kape-cheatsheet",
+      "date_processed": "2026-07-20",
+      "source": "https://www.blackhillsinfosec.com/blog/"
+    },
+    "https://blog.deeb.ch/posts/defender-ai-introspection/": {
+      "title": "Defender Internals - AI Assisted EDR Introspection",
+      "slug": "defender-ai-introspection",
+      "date_processed": "2026-07-20",
+      "source": "https://blog.deeb.ch/"
+    },
+    "https://tldrsec.com/p/tldr-sec-337": {
+      "title": "[tl;dr sec] #337 - Harnessing Harnesses, Generate Decoy Environments, Bug Bounty Singularity",
+      "slug": "tldr-sec-337",
+      "date_processed": "2026-07-20",
+      "source": "https://tldrsec.com/"
+    },
+    "https://www.thezdi.com/blog/2026/7/14/the-july-2026-security-update-review": {
+      "title": "Zero Day Initiative — The July 2026 Security Update Review",
+      "slug": "the-july-2026-security-update-review",
+      "date_processed": "2026-07-20",
+      "source": "https://www.zerodayinitiative.com/blog"
+    },
+    "https://securelist.com/tr/hellonet-vipnet/120700/": {
+      "title": "HelloNet campaign: a threat via the ViPNet update system",
+      "slug": "120700",
+      "date_processed": "2026-07-20",
+      "source": "https://securelist.com/"
+    },
+    "https://securelist.com/goserpent-backdoor-in-southeast-asia/120687/": {
+      "title": "GoSerpent backdoor attacks in Southeast Asia",
+      "slug": "120687",
+      "date_processed": "2026-07-20",
+      "source": "https://securelist.com/"
+    },
+    "https://securelist.com/okobot-framework-targets-cryptocurrency-wallets/120660/": {
+      "title": "OkoBot framework infection chain",
+      "slug": "120660",
+      "date_processed": "2026-07-20",
+      "source": "https://securelist.com/"
+    },
+    "https://research.checkpoint.com/2026/ai-security-report-2026/": {
+      "title": "AI Security Report 2026 - Check Point Research",
+      "slug": "ai-security-report-2026",
+      "date_processed": "2026-07-20",
+      "source": "https://research.checkpoint.com/"
+    },
+    "https://research.checkpoint.com/2026/13th-july-threat-intelligence-report/": {
+      "title": "13th July – Threat Intelligence Report - Check Point Research",
+      "slug": "13th-july-threat-intelligence-report",
+      "date_processed": "2026-07-20",
+      "source": "https://research.checkpoint.com/"
+    },
+    "https://blog.talosintelligence.com/begun-the-patch-wars-have/": {
+      "title": "Begun, the Patch Wars have",
+      "slug": "begun-the-patch-wars-have",
+      "date_processed": "2026-07-20",
+      "source": "https://blog.talosintelligence.com/"
+    },
+    "https://blog.talosintelligence.com/the-hunters-paradox-is-it-time-to-embrace-automated-threat-hunting/": {
+      "title": "The Hunter's Paradox: Is it time to embrace automated threat hunting?",
+      "slug": "the-hunters-paradox-is-it-time-to-embrace-automated-threat-hunting",
+      "date_processed": "2026-07-20",
+      "source": "https://blog.talosintelligence.com/"
+    },
+    "https://blog.talosintelligence.com/uat-11795-deploys-novel-starland-rat-and-bespoke-wldr-c2-implant-in-financially-motivated-campaign/": {
+      "title": "UAT-11795 deploys novel Starland RAT and bespoke WLDR C2 implant in financially motivated campaign",
+      "slug": "uat-11795-deploys-novel-starland-rat-and-bespoke-wldr-c2-implant-in-financially-motivated-campaign",
+      "date_processed": "2026-07-20",
+      "source": "https://blog.talosintelligence.com/"
+    },
+    "https://blog.talosintelligence.com/microsoft-patch-tuesday-july-2026/": {
+      "title": "Microsoft Patch Tuesday for July 2026 — Snort rules and prominent vulnerabilities",
+      "slug": "microsoft-patch-tuesday-july-2026",
+      "date_processed": "2026-07-20",
+      "source": "https://blog.talosintelligence.com/"
+    },
+    "https://blog.talosintelligence.com/video-where-protection-starts-cisco-talos-intelligence-integrations/": {
+      "title": "[Video] Where protection starts: Cisco Talos Intelligence Integrations",
+      "slug": "video-where-protection-starts-cisco-talos-intelligence-integrations",
+      "date_processed": "2026-07-20",
+      "source": "https://blog.talosintelligence.com/"
+    },
+    "https://blog.talosintelligence.com/the-serpents-tongue-luring-the-python-out-of-its-den/": {
+      "title": "The serpent’s tongue: Luring the Python out of its den",
+      "slug": "the-serpents-tongue-luring-the-python-out-of-its-den",
+      "date_processed": "2026-07-20",
+      "source": "https://blog.talosintelligence.com/"
+    },
+    "https://unit42.paloaltonetworks.com/siemens-rox-ii-zero-day-vulnerabilities/": {
+      "title": "Three Steps to the Terminal: A Siemens ROX II Zero-Day Trilogy",
+      "slug": "siemens-rox-ii-zero-day-vulnerabilities",
+      "date_processed": "2026-07-20",
+      "source": "https://unit42.paloaltonetworks.com/"
+    },
+    "https://unit42.paloaltonetworks.com/ai-incident-response-report/": {
+      "title": "AI, Automation and Attacks: Unpacking the Unit 42 2026 Global Incident Response Report",
+      "slug": "ai-incident-response-report",
+      "date_processed": "2026-07-20",
+      "source": "https://unit42.paloaltonetworks.com/"
+    },
+    "https://unit42.paloaltonetworks.com/monitoring-npm-supply-chain-attacks/": {
+      "title": "The npm Threat Landscape: Attack Surface and Mitigations (Updated July 15)",
+      "slug": "monitoring-npm-supply-chain-attacks",
+      "date_processed": "2026-07-20",
+      "source": "https://unit42.paloaltonetworks.com/"
+    },
+    "https://unit42.paloaltonetworks.com/tuxbot-v3-evolution-iot-botnet/": {
+      "title": "TuxBot v3: Inside an IoT Botnet Framework With LLM-Assisted Development",
+      "slug": "tuxbot-v3-evolution-iot-botnet",
+      "date_processed": "2026-07-20",
+      "source": "https://unit42.paloaltonetworks.com/"
+    },
+    "https://embracethered.com/blog/posts/2026/ai-intrusion-are-now-real/": {
+      "title": "Autonomous AI Intrusions Are Here: Lessons from the Hugging Face Compromise · Embrace The Red",
+      "slug": "ai-intrusion-are-now-real",
+      "date_processed": "2026-07-20",
+      "source": "https://embracethered.com/blog/"
+    },
+    "https://embracethered.com/blog/posts/2026/macos-terminal-dillma-dns-exfil-ansi-escape-code-fix/": {
+      "title": "From Indirect Prompt Injection to DNS Exfiltration in macOS Terminal · Embrace The Red",
+      "slug": "macos-terminal-dillma-dns-exfil-ansi-escape-code-fix",
+      "date_processed": "2026-07-20",
+      "source": "https://embracethered.com/blog/"
+    },
+    "https://www.hackingarticles.in/windows-privilege-escalation-setcbprivilege/": {
+      "title": "Windows Privilege Escalation: SeTcbPrivilege",
+      "slug": "windows-privilege-escalation-setcbprivilege",
+      "date_processed": "2026-07-20",
+      "source": "https://www.hackingarticles.in/"
+    },
+    "https://www.hackingarticles.in/windows-privilege-escalation-setakeownershipprivilege/": {
+      "title": "Windows Privilege Escalation: SeTakeOwnershipPrivilege",
+      "slug": "windows-privilege-escalation-setakeownershipprivilege",
+      "date_processed": "2026-07-20",
+      "source": "https://www.hackingarticles.in/"
+    },
+    "https://www.schneier.com/blog/archives/2026/07/friday-squid-blogging-squid-washing-up-on-cape-cod-beach.html": {
+      "title": "Friday Squid Blogging: Squid Washing Up on Cape Cod Beach - Schneier on Security",
+      "slug": "friday-squid-blogging-squid-washing-up-on-cape-cod-beachhtml",
+      "date_processed": "2026-07-20",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/07/details-of-alan-turings-voice-encryption-system.html": {
+      "title": "Details of Alan Turing's Voice Encryption System - Schneier on Security",
+      "slug": "details-of-alan-turings-voice-encryption-systemhtml",
+      "date_processed": "2026-07-20",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/07/protecting-privacy-in-an-ai-era.html": {
+      "title": "Protecting Privacy in an AI Era - Schneier on Security",
+      "slug": "protecting-privacy-in-an-ai-erahtml",
+      "date_processed": "2026-07-20",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/07/a-video-screen-that-is-also-a-camera.html": {
+      "title": "A Video Screen That Is Also a Camera - Schneier on Security",
+      "slug": "a-video-screen-that-is-also-a-camerahtml",
+      "date_processed": "2026-07-20",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/07/upcoming-speaking-engagements-58.html": {
+      "title": "Upcoming Speaking Engagements - Schneier on Security",
+      "slug": "upcoming-speaking-engagements-58html",
+      "date_processed": "2026-07-20",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/07/vulnerability-in-fifas-network.html": {
+      "title": "Vulnerability in FIFA's Network - Schneier on Security",
+      "slug": "vulnerability-in-fifas-networkhtml",
+      "date_processed": "2026-07-20",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/07/ai-data-centers-and-the-concentration-of-wealth.html": {
+      "title": "AI Data Centers and the Concentration of Wealth - Schneier on Security",
+      "slug": "ai-data-centers-and-the-concentration-of-wealthhtml",
+      "date_processed": "2026-07-20",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.volexity.com/blog/2026/07/17/proxying-to-compromise-sonicwall-secure-mobile-access-0-day-exploitation/": {
+      "title": "Proxying to Compromise: SonicWall Secure Mobile Access 0-day Exploitation",
+      "slug": "proxying-to-compromise-sonicwall-secure-mobile-access-0-day-exploitation",
+      "date_processed": "2026-07-20",
+      "source": "https://www.volexity.com/blog/"
+    },
+    "https://www.elastic.co/security-labs/contagious-interview-malware-svg-steganography": {
+      "title": "Contagious Interview malware in SVG images: DPRK campaign — Elastic Security Labs",
+      "slug": "contagious-interview-malware-svg-steganography",
+      "date_processed": "2026-07-20",
+      "source": "https://www.elastic.co/security-labs"
+    },
+    "https://www.elastic.co/security-labs/telepuz-maas-malware-clickfix": {
+      "title": "TELEPUZ: a modular MaaS malware spreading via CLICKFIX-VIDAR chains — Elastic Security Labs",
+      "slug": "telepuz-maas-malware-clickfix",
+      "date_processed": "2026-07-20",
+      "source": "https://www.elastic.co/security-labs"
+    },
+    "https://www.huntress.com/blog/patch-management-strategy": {
+      "title": "Effective Patch Management Strategies: 7 Best Practices | Huntress",
+      "slug": "patch-management-strategy",
+      "date_processed": "2026-07-20",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/sql-injection-attacker-persistence": {
+      "title": "Threat Actors Achieve Persistence After SQL Injection | Huntress",
+      "slug": "sql-injection-attacker-persistence",
+      "date_processed": "2026-07-20",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/system-hardening-checklist": {
+      "title": "Guide to System Hardening: Checklist & Best Practices [2026] | Huntress",
+      "slug": "system-hardening-checklist",
+      "date_processed": "2026-07-20",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.welivesecurity.com/en/eset-research/forgotten-uefi-shims-undermining-secure-boot/": {
+      "title": "Forgotten UEFI shims undermining Secure Boot",
+      "slug": "forgotten-uefi-shims-undermining-secure-boot",
+      "date_processed": "2026-07-20",
+      "source": "https://www.welivesecurity.com/en/"
+    },
+    "https://sensepost.com/blog/2026/senseposts-2026-artwork/": {
+      "title": "SensePostâs 2026 Artwork",
+      "slug": "senseposts-2026-artwork",
+      "date_processed": "2026-07-20",
+      "source": "https://sensepost.com/blog/"
+    },
+    "https://thisweekin4n6.com/2026/07/19/week-29-2026/": {
+      "title": "Week 29 – 2026",
+      "slug": "week-29-2026",
+      "date_processed": "2026-07-20",
+      "source": "https://thisweekin4n6.com/"
+    },
+    "https://cocomelonc.github.io/malware/2026/07/16/malware-tricks-60.html": {
+      "title": "Malware development trick 60: Function stomping (remote process). Simple C example",
+      "slug": "malware-tricks-60html",
+      "date_processed": "2026-07-20",
+      "source": "https://cocomelonc.github.io/"
+    },
+    "https://bishopfox.com/blog/using-mcp-agents-for-penetration-testing": {
+      "title": "Using MCP Agents for Penetration Testing",
+      "slug": "using-mcp-agents-for-penetration-testing",
+      "date_processed": "2026-07-20",
+      "source": "https://labs.bishopfox.com/tech-blog"
+    },
+    "https://blog.syss.com/posts/bluetooth-realying/": {
+      "title": "Bluetooth Relaying Attacks",
+      "slug": "bluetooth-realying",
+      "date_processed": "2026-07-20",
+      "source": "https://blog.syss.com/"
+    },
+    "https://x41-dsec.de/news/2026/07/14/routinator/": {
+      "title": "X41 Audited NLnet Labs Routinator",
+      "slug": "routinator",
+      "date_processed": "2026-07-20",
+      "source": "https://www.x41-dsec.de/lab/advisories/"
+    },
+    "https://www.wiz.io/blog/red-agent-pov-business-logic": {
+      "title": "The Red Agent POV: The One Boolean That Broke a B2B Platform’s Credit System | Wiz Blog",
+      "slug": "red-agent-pov-business-logic",
+      "date_processed": "2026-07-20",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://www.wiz.io/blog/m-red-team-asyncapi-supply-chain-compromise-via-github-actions": {
+      "title": "AsyncAPI Supply Chain Compromise via GitHub Actions | Wiz Blog",
+      "slug": "m-red-team-asyncapi-supply-chain-compromise-via-github-actions",
+      "date_processed": "2026-07-20",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://www.wiz.io/blog/iac-coverage-security-dashboard": {
+      "title": "Why IaC Coverage Belongs on Your Security Dashboard | Wiz Blog",
+      "slug": "iac-coverage-security-dashboard",
+      "date_processed": "2026-07-20",
       "source": "https://www.wiz.io/blog"
     }
   }
