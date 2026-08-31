@@ -10,7 +10,7 @@
     },
     "https://posts.specterops.io/": {
       "feed": "https://specterops.io/feed/",
-      "baseline": "2026-08-19T16:00:00+00:00"
+      "baseline": "2026-08-27T17:45:18+00:00"
     },
     "https://blog.xpnsec.com/": {
       "feed": "https://blog.xpnsec.com/rss.xml",
@@ -142,7 +142,7 @@
     },
     "https://www.elttam.com/blog/": {
       "feed": "https://www.elttam.com/blog/rss.xml",
-      "baseline": "2026-08-14T04:34:33+00:00"
+      "baseline": "2026-08-26T05:22:07+00:00"
     },
     "https://www.wietzebeukema.nl/blog/": {
       "feed": "https://www.wietzebeukema.nl/blog/feed.xml",
@@ -150,18 +150,18 @@
     },
     "https://blog.trailofbits.com/": {
       "feed": "https://blog.trailofbits.com/index.xml",
-      "baseline": "2026-08-11T17:30:00+00:00"
+      "baseline": "2026-08-26T11:00:00+00:00"
     },
     "https://www.trustedsec.com/blog/": {
       "feed": "https://trustedsec.com/feed.rss",
-      "baseline": "2026-08-18T04:00:00+00:00"
+      "baseline": "2026-08-25T04:00:00+00:00"
     },
     "https://www.outflank.nl/blog/": {
       "feed": "https://www.outflank.nl/blog/feed/"
     },
     "https://s3cur3th1ssh1t.github.io/": {
       "feed": "https://s3cur3th1ssh1t.github.io/feed.xml",
-      "baseline": "2025-07-08T00:00:00+00:00"
+      "baseline": "2026-08-02T00:00:00+00:00"
     },
     "https://bohops.com/": {
       "feed": "https://bohops.com/feed/",
@@ -213,7 +213,7 @@
     },
     "https://tldrsec.com/": {
       "feed": "https://rss.beehiiv.com/feeds/xgTKUmMmUm.xml",
-      "baseline": "2026-08-20T14:30:00+00:00"
+      "baseline": "2026-08-27T14:30:00+00:00"
     },
     "https://klezvirus.github.io/": {
       "feed": "https://klezvirus.github.io/feed.xml",
@@ -244,11 +244,11 @@
     },
     "https://securelist.com/": {
       "feed": "https://securelist.com/feed/",
-      "baseline": "2026-08-21T08:00:29+00:00"
+      "baseline": "2026-08-31T10:00:21+00:00"
     },
     "https://research.checkpoint.com/": {
       "feed": "https://research.checkpoint.com/feed/",
-      "baseline": "2026-08-20T13:07:13+00:00"
+      "baseline": "2026-08-24T14:07:53+00:00"
     },
     "https://www.sentinelone.com/labs/": {
       "feed": "https://www.sentinelone.com/feed/?post_type=labs",
@@ -256,11 +256,11 @@
     },
     "https://blog.talosintelligence.com/": {
       "feed": "https://blog.talosintelligence.com/rss/",
-      "baseline": "2026-08-20T18:00:18+00:00"
+      "baseline": "2026-08-27T18:00:24+00:00"
     },
     "https://unit42.paloaltonetworks.com/": {
       "feed": "https://unit42.paloaltonetworks.com/feed/",
-      "baseline": "2026-08-21T23:00:21+00:00"
+      "baseline": "2026-08-31T10:00:36+00:00"
     },
     "https://maxkersten.nl/": {
       "feed": "https://maxkersten.nl/feed/",
@@ -268,7 +268,7 @@
     },
     "https://embracethered.com/blog/": {
       "feed": "https://embracethered.com/blog/index.xml",
-      "baseline": "2026-08-17T03:06:29+00:00"
+      "baseline": "2026-08-27T04:00:00+00:00"
     },
     "https://blog.includesecurity.com/": {
       "feed": "https://blog.includesecurity.com/feed/",
@@ -288,7 +288,7 @@
     },
     "https://www.schneier.com/": {
       "feed": "https://www.schneier.com/feed/",
-      "baseline": "2026-08-21T21:07:20+00:00"
+      "baseline": "2026-08-31T11:03:40+00:00"
     },
     "https://thedfirreport.com/": {
       "feed": "https://thedfirreport.com/feed/",
@@ -308,11 +308,11 @@
     },
     "https://www.huntress.com/blog": {
       "feed": "https://www.huntress.com/blog/rss.xml",
-      "baseline": "2026-08-17T04:00:00+00:00"
+      "baseline": "2026-08-28T16:00:00+00:00"
     },
     "https://www.welivesecurity.com/en/": {
       "feed": "https://www.welivesecurity.com/en/feed/",
-      "baseline": "2026-08-17T09:00:00+00:00"
+      "baseline": "2026-08-27T09:00:00+00:00"
     },
     "https://blog.fox-it.com/": {
       "feed": "https://blog.fox-it.com/feed/",
@@ -324,7 +324,7 @@
     },
     "https://blog.intigriti.com/": {
       "feed": "https://blog.intigriti.com/feed/",
-      "baseline": "2026-08-20T00:00:00+00:00"
+      "baseline": "2026-08-28T00:00:00+00:00"
     },
     "https://positive.security/blog": {
       "feed": "https://positive.security/blog/rss.xml",
@@ -340,11 +340,11 @@
     },
     "https://www.pentestpartners.com/security-blog/": {
       "feed": "https://www.pentestpartners.com/feed/",
-      "baseline": "2026-08-21T11:13:30+00:00"
+      "baseline": "2026-08-26T10:28:00+00:00"
     },
     "https://blog.compass-security.com/": {
       "feed": "https://blog.compass-security.com/feed/",
-      "baseline": "2026-08-04T07:00:00+00:00"
+      "baseline": "2026-08-25T07:00:00+00:00"
     },
     "https://www.arneswinnen.net/": {
       "feed": "https://www.arneswinnen.net/feed/"
@@ -363,11 +363,11 @@
     },
     "https://thisweekin4n6.com/": {
       "feed": "https://thisweekin4n6.com/feed/",
-      "baseline": "2026-08-23T12:11:24+00:00"
+      "baseline": "2026-08-30T05:00:36+00:00"
     },
     "https://cocomelonc.github.io/": {
       "feed": "https://cocomelonc.github.io/feed.xml",
-      "baseline": "2026-08-01T03:00:00+00:00"
+      "baseline": "2026-08-25T01:00:00+00:00"
     },
     "https://modexp.wordpress.com/": {
       "feed": "https://modexp.wordpress.com/feed/",
@@ -538,7 +538,7 @@
     },
     "https://vulncheck.com/blog": {
       "feed": "https://vulncheck.com/feed/blog/atom.xml",
-      "baseline": "2026-08-20T00:00:00+00:00"
+      "baseline": "2026-08-28T00:00:00+00:00"
     },
     "https://labs.bishopfox.com/tech-blog": {
       "feed": "https://labs.bishopfox.com/tech-blog/rss.xml",
@@ -597,7 +597,7 @@
     },
     "https://blog.amberwolf.com/": {
       "feed": "https://blog.amberwolf.com/index.xml",
-      "baseline": "2026-08-20T23:00:00+00:00"
+      "baseline": "2026-08-26T23:00:00+00:00"
     },
     "https://palant.info/articles/": {
       "feed": "https://palant.info/articles/index.xml",
@@ -672,7 +672,7 @@
     },
     "https://www.wiz.io/blog": {
       "feed": "https://www.wiz.io/blog/rss.xml",
-      "baseline": "2026-08-20T15:56:39+00:00"
+      "baseline": "2026-08-27T16:33:16+00:00"
     },
     "https://blog.christophetd.fr/": {
       "feed": "https://blog.christophetd.fr/feed/",
@@ -5304,6 +5304,378 @@
       "title": "The Closed Loop Remediation Playbook with Wiz | Wiz Blog",
       "slug": "wiz-remediation-playbook",
       "date_processed": "2026-08-24",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://specterops.io/blog/2026/08/27/specterops-openai-collective-cyber-defense/": {
+      "title": "Why SpecterOps Signed OpenAI's Call for Collective Cyber Defense",
+      "slug": "specterops-openai-collective-cyber-defense",
+      "date_processed": "2026-08-31",
+      "source": "https://posts.specterops.io/"
+    },
+    "https://specterops.io/blog/2026/08/27/cleartext-credential-recovery-servicenow/": {
+      "title": "Cleartext Credential Recovery in ServiceNow",
+      "slug": "cleartext-credential-recovery-servicenow",
+      "date_processed": "2026-08-31",
+      "source": "https://posts.specterops.io/"
+    },
+    "https://www.elttam.com/blog/ruby-marshal-kick-off-gadgets": {
+      "title": "Ruby Marshal Kick-off Gadgets - elttam",
+      "slug": "ruby-marshal-kick-off-gadgets",
+      "date_processed": "2026-08-31",
+      "source": "https://www.elttam.com/blog/"
+    },
+    "https://blog.trailofbits.com/2026/08/26/vms-wont-contain-cyber-capable-agents/": {
+      "title": "VMs won't contain cyber-capable agents",
+      "slug": "vms-wont-contain-cyber-capable-agents",
+      "date_processed": "2026-08-31",
+      "source": "https://blog.trailofbits.com/"
+    },
+    "https://blog.trailofbits.com/2026/08/25/state-divergence-enables-unauthorized-access/": {
+      "title": "State divergence enables unauthorized access",
+      "slug": "state-divergence-enables-unauthorized-access",
+      "date_processed": "2026-08-31",
+      "source": "https://blog.trailofbits.com/"
+    },
+    "https://trustedsec.com/blog/spoonmap-grows-up-findings-local-llm-detection-and-a-whole-lot-less-waiting": {
+      "title": "SpooNMAP Grows Up: Findings, Local LLM Detection, and a Whole Lot…",
+      "slug": "spoonmap-grows-up-findings-local-llm-detection-and-a-whole-lot-less-waiting",
+      "date_processed": "2026-08-31",
+      "source": "https://www.trustedsec.com/blog/"
+    },
+    "https://s3cur3th1ssh1t.github.io/The_Risk_of_Fine_Tuned_Open_Weight_Models/": {
+      "title": "The Risk of Fine-Tuned Open-Weight Models",
+      "slug": "the_risk_of_fine_tuned_open_weight_models",
+      "date_processed": "2026-08-31",
+      "source": "https://s3cur3th1ssh1t.github.io/"
+    },
+    "https://s3cur3th1ssh1t.github.io/RustPack_Features/": {
+      "title": "RustPack Features & Use Cases",
+      "slug": "rustpack_features",
+      "date_processed": "2026-08-31",
+      "source": "https://s3cur3th1ssh1t.github.io/"
+    },
+    "https://s3cur3th1ssh1t.github.io/The_429_Microsoft_Graph_Mystery/": {
+      "title": "The 429 Microsoft Graph Mystery",
+      "slug": "the_429_microsoft_graph_mystery",
+      "date_processed": "2026-08-31",
+      "source": "https://s3cur3th1ssh1t.github.io/"
+    },
+    "https://s3cur3th1ssh1t.github.io/Introduction_to_RustPack/": {
+      "title": "Introduction to RustPack",
+      "slug": "introduction_to_rustpack",
+      "date_processed": "2026-08-31",
+      "source": "https://s3cur3th1ssh1t.github.io/"
+    },
+    "https://tldrsec.com/p/tldr-sec-343": {
+      "title": "[tl;dr sec] #343 - Hugging Face Technical Report, AWSHound, OWASP Agentic Skills Top 10",
+      "slug": "tldr-sec-343",
+      "date_processed": "2026-08-31",
+      "source": "https://tldrsec.com/"
+    },
+    "https://securelist.com/valleyrat-backdoor-adware/121175/": {
+      "title": "ValleyRAT is spreading disguised as adware",
+      "slug": "121175",
+      "date_processed": "2026-08-31",
+      "source": "https://securelist.com/"
+    },
+    "https://securelist.com/industrial-threat-report-q2-2026/121159/": {
+      "title": "Threat landscape for industrial automation systems. Q2 2026",
+      "slug": "121159",
+      "date_processed": "2026-08-31",
+      "source": "https://securelist.com/"
+    },
+    "https://securelist.com/vulnerabilities-and-exploits-in-q2-2026/121091/": {
+      "title": "Analyzing the vulnerability landscape in Q2 2026",
+      "slug": "121091",
+      "date_processed": "2026-08-31",
+      "source": "https://securelist.com/"
+    },
+    "https://research.checkpoint.com/2026/24th-august-threat-intelligence-report/": {
+      "title": "24th August – Threat Intelligence Report - Check Point Research",
+      "slug": "24th-august-threat-intelligence-report",
+      "date_processed": "2026-08-31",
+      "source": "https://research.checkpoint.com/"
+    },
+    "https://blog.talosintelligence.com/sorry-i-cant-help-with-that-how-your-guardrails-might-become-the-attackers-best-friend/": {
+      "title": "“Sorry, I can’t help with that”: How your guardrails might become the attacker’s best friend",
+      "slug": "sorry-i-cant-help-with-that-how-your-guardrails-might-become-the-attackers-best-friend",
+      "date_processed": "2026-08-31",
+      "source": "https://blog.talosintelligence.com/"
+    },
+    "https://blog.talosintelligence.com/javascript-obfuscation-from-party-trick-to-phishing-kit/": {
+      "title": "JavaScript obfuscation: From party trick to phishing kit",
+      "slug": "javascript-obfuscation-from-party-trick-to-phishing-kit",
+      "date_processed": "2026-08-31",
+      "source": "https://blog.talosintelligence.com/"
+    },
+    "https://blog.talosintelligence.com/choose-your-fighter-balancing-competing-requirements-to-select-models-for-your-ai-soc/": {
+      "title": "Choose your fighter: Balancing competing requirements to select models for your AI SOC",
+      "slug": "choose-your-fighter-balancing-competing-requirements-to-select-models-for-your-ai-soc",
+      "date_processed": "2026-08-31",
+      "source": "https://blog.talosintelligence.com/"
+    },
+    "https://blog.talosintelligence.com/the-safety-penalty-reclaiming-operational-sovereignty-in-the-age-of-ai/": {
+      "title": "The safety penalty: Reclaiming operational sovereignty in the age of AI",
+      "slug": "the-safety-penalty-reclaiming-operational-sovereignty-in-the-age-of-ai",
+      "date_processed": "2026-08-31",
+      "source": "https://blog.talosintelligence.com/"
+    },
+    "https://unit42.paloaltonetworks.com/spring-ring-voice-phishing-campaigns/": {
+      "title": "Spring Ring: An Inside Look at Voice Phishing Campaigns in Microsoft Teams",
+      "slug": "spring-ring-voice-phishing-campaigns",
+      "date_processed": "2026-08-31",
+      "source": "https://unit42.paloaltonetworks.com/"
+    },
+    "https://unit42.paloaltonetworks.com/perturbation-probing-llm-safety/": {
+      "title": "Perturbation Probing: A New Diagnostic for the Fragility of LLM Safety",
+      "slug": "perturbation-probing-llm-safety",
+      "date_processed": "2026-08-31",
+      "source": "https://unit42.paloaltonetworks.com/"
+    },
+    "https://unit42.paloaltonetworks.com/ai-enabled-malware-analysis/": {
+      "title": "The State of AI-Enabled Malware August 2026: From Brand Abuse to Agentic Execution",
+      "slug": "ai-enabled-malware-analysis",
+      "date_processed": "2026-08-31",
+      "source": "https://unit42.paloaltonetworks.com/"
+    },
+    "https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/": {
+      "title": "Breaking Claude Code Opus 5 Auto Mode · Embrace The Red",
+      "slug": "breaking-claude-code-opus-5-and-automode",
+      "date_processed": "2026-08-31",
+      "source": "https://embracethered.com/blog/"
+    },
+    "https://www.schneier.com/blog/archives/2026/08/hiding-prompt-injection-in-legal-filing.html": {
+      "title": "Hiding Prompt Injection in Legal Filing - Schneier on Security",
+      "slug": "hiding-prompt-injection-in-legal-filinghtml",
+      "date_processed": "2026-08-31",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/08/friday-squid-blogging-truckload-of-squid-spills-in-rhode-island.html": {
+      "title": "Friday Squid Blogging: Truckload of Squid Spills in Rhode Island - Schneier on Security",
+      "slug": "friday-squid-blogging-truckload-of-squid-spills-in-rhode-islandhtml",
+      "date_processed": "2026-08-31",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/08/ai-doesnt-mean-the-end-of-mathematics-at-least-not-yet.html": {
+      "title": "AI Doesn't Mean the End of Mathematics—at Least Not Yet - Schneier on Security",
+      "slug": "ai-doesnt-mean-the-end-of-mathematics-at-least-not-yethtml",
+      "date_processed": "2026-08-31",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/08/llm-based-social-engineering-scams.html": {
+      "title": "LLM-Based Social Engineering Scams - Schneier on Security",
+      "slug": "llm-based-social-engineering-scamshtml",
+      "date_processed": "2026-08-31",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/08/spyware-for-babies.html": {
+      "title": "Spyware for Babies - Schneier on Security",
+      "slug": "spyware-for-babieshtml",
+      "date_processed": "2026-08-31",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/08/black-hat-state-of-security-vendors.html": {
+      "title": "Black Hat State of Security Vendors - Schneier on Security",
+      "slug": "black-hat-state-of-security-vendorshtml",
+      "date_processed": "2026-08-31",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/08/criminal-deception-in-silicon-valley.html": {
+      "title": "Criminal Deception in Silicon Valley - Schneier on Security",
+      "slug": "criminal-deception-in-silicon-valleyhtml",
+      "date_processed": "2026-08-31",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.huntress.com/blog/teach-yourself-to-phish-the-strategy-behind-phishing-simulations": {
+      "title": "Teach Yourself to Phish | Huntress",
+      "slug": "teach-yourself-to-phish-the-strategy-behind-phishing-simulations",
+      "date_processed": "2026-08-31",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/a-beginners-guide-to-phishing-simulation-training-for-employees": {
+      "title": "A Beginner’s Guide to Phishing Simulation Training for Employees | Huntress",
+      "slug": "a-beginners-guide-to-phishing-simulation-training-for-employees",
+      "date_processed": "2026-08-31",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/papercut-actively-exploited": {
+      "title": "PaperCut Zero-Day: Active Exploitation and Pre-Auth RCE | Huntress",
+      "slug": "papercut-actively-exploited",
+      "date_processed": "2026-08-31",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/managed-itdr-dashboard-redesigned": {
+      "title": "New Huntress Managed ITDR Dashboard: Faster Identity Investigations | Huntress",
+      "slug": "managed-itdr-dashboard-redesigned",
+      "date_processed": "2026-08-31",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/retail-cybersecurity-anz-five-decisions": {
+      "title": "Retail Cybersecurity in ANZ: Five Decisions That Keep Trading | Huntress",
+      "slug": "retail-cybersecurity-anz-five-decisions",
+      "date_processed": "2026-08-31",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/ai-attack-surface": {
+      "title": "The AI Attack Surface: How Threat Actors Abuse Trusted AI Platforms | Huntress",
+      "slug": "ai-attack-surface",
+      "date_processed": "2026-08-31",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/huntress-dprk-remote-worker-investigation": {
+      "title": "Insights into Suspected DPRK Workers | Huntress",
+      "slug": "huntress-dprk-remote-worker-investigation",
+      "date_processed": "2026-08-31",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/good-identity-hardening": {
+      "title": "What Good Identity Hardening Looks Like | Huntress",
+      "slug": "good-identity-hardening",
+      "date_processed": "2026-08-31",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/security-incident-investigations-partner-view": {
+      "title": "New View for Security Incident Investigations | Huntress",
+      "slug": "security-incident-investigations-partner-view",
+      "date_processed": "2026-08-31",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/account-takeover-what-it-is-and-how-to-protect-against-it": {
+      "title": "What Is Account Takeover Fraud? A Comprehensive Guide | Huntress",
+      "slug": "account-takeover-what-it-is-and-how-to-protect-against-it",
+      "date_processed": "2026-08-31",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/rmm-abuse-trusted-tools-untrusted-hands": {
+      "title": "RMM Abuse: How Attackers Exploit Remote Access Tools | Huntress",
+      "slug": "rmm-abuse-trusted-tools-untrusted-hands",
+      "date_processed": "2026-08-31",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/defcon-phishing-google-doc-malware": {
+      "title": "Post-DEF CON Phishing Uses Malicious Google Doc to Deliver Malware | Huntress",
+      "slug": "defcon-phishing-google-doc-malware",
+      "date_processed": "2026-08-31",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/delegating-work-to-ai": {
+      "title": "A Detection Engineer's Guide for Delegating Work to AI | Huntress",
+      "slug": "delegating-work-to-ai",
+      "date_processed": "2026-08-31",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.welivesecurity.com/en/privacy/ai-powered-osint-why-everyone-viable-target-fraud/": {
+      "title": "AI-powered OSINT: Why everyone is a viable target for fraud",
+      "slug": "ai-powered-osint-why-everyone-viable-target-fraud",
+      "date_processed": "2026-08-31",
+      "source": "https://www.welivesecurity.com/en/"
+    },
+    "https://www.intigriti.com/researchers/blog/bug-bytes/intigriti-bug-bytes-239-august-2026": {
+      "title": "Intigriti Bug Bytes #239 - August 2026 🚀",
+      "slug": "intigriti-bug-bytes-239-august-2026",
+      "date_processed": "2026-08-31",
+      "source": "https://blog.intigriti.com/"
+    },
+    "https://www.intigriti.com/blog/business-insights/interview-with-ryan-bonner-roll4combatus": {
+      "title": "When fear no longer holds you back. Interview with Ryan Bonner (Roll4CombatUS)",
+      "slug": "interview-with-ryan-bonner-roll4combatus",
+      "date_processed": "2026-08-31",
+      "source": "https://blog.intigriti.com/"
+    },
+    "https://www.intigriti.com/researchers/blog/hacker-spotlight/interview-with-ryan-bonner-aka-roll4combatus": {
+      "title": "When fear no longer holds you back. Interview with Ryan Bonner (Roll4CombatUS)",
+      "slug": "interview-with-ryan-bonner-aka-roll4combatus",
+      "date_processed": "2026-08-31",
+      "source": "https://blog.intigriti.com/"
+    },
+    "https://www.pentestpartners.com/security-blog/estate-planning-of-credentials/": {
+      "title": "Estate planning of credentials | Pen Test Partners",
+      "slug": "estate-planning-of-credentials",
+      "date_processed": "2026-08-31",
+      "source": "https://www.pentestpartners.com/security-blog/"
+    },
+    "https://www.pentestpartners.com/security-blog/one-ssid-to-rule-them-all/": {
+      "title": "One SSID To Rule Them All | Pen Test Partners",
+      "slug": "one-ssid-to-rule-them-all",
+      "date_processed": "2026-08-31",
+      "source": "https://www.pentestpartners.com/security-blog/"
+    },
+    "https://blog.compass-security.com/2026/08/a-note-on-pentesting-passkeys/": {
+      "title": "A Note on Pentesting Passkeys",
+      "slug": "a-note-on-pentesting-passkeys",
+      "date_processed": "2026-08-31",
+      "source": "https://blog.compass-security.com/"
+    },
+    "https://thisweekin4n6.com/2026/08/30/week-35-2026/": {
+      "title": "Week 35 – 2026",
+      "slug": "week-35-2026",
+      "date_processed": "2026-08-31",
+      "source": "https://thisweekin4n6.com/"
+    },
+    "https://cocomelonc.github.io/malware/2026/08/25/malware-tricks-64.html": {
+      "title": "Malware development trick 64: PE file bloating and overlay data. Simple C example",
+      "slug": "malware-tricks-64html",
+      "date_processed": "2026-08-31",
+      "source": "https://cocomelonc.github.io/"
+    },
+    "https://cocomelonc.github.io/malware/2026/08/24/malware-tricks-63.html": {
+      "title": "Malware development trick 63: modifying PE version metadata and icon. Simple C example",
+      "slug": "malware-tricks-63html",
+      "date_processed": "2026-08-31",
+      "source": "https://cocomelonc.github.io/"
+    },
+    "https://www.vulncheck.com/blog/pwning-the-ai-stack": {
+      "title": "Same Target, Different Playbooks: Two Attackers, Two Different Paths to Pwning the AI Stack | Blog | VulnCheck",
+      "slug": "pwning-the-ai-stack",
+      "date_processed": "2026-08-31",
+      "source": "https://vulncheck.com/blog"
+    },
+    "https://www.vulncheck.com/blog/zbt-darklantern-speakingstone": {
+      "title": "Chinese Implants in the Supply Chain | Blog | VulnCheck",
+      "slug": "zbt-darklantern-speakingstone",
+      "date_processed": "2026-08-31",
+      "source": "https://vulncheck.com/blog"
+    },
+    "https://www.vulncheck.com/blog/cve-2026-63520-sharepoint-unsafe-type-rce": {
+      "title": "Exploiting SharePoint: CVE-2026-55040 and CVE-2026-63520 RCE Chain | Blog | VulnCheck",
+      "slug": "cve-2026-63520-sharepoint-unsafe-type-rce",
+      "date_processed": "2026-08-31",
+      "source": "https://vulncheck.com/blog"
+    },
+    "https://blog.amberwolf.com/blog/2026/august/sonicwall-gms-unauthenticated-rce-and-encrypted-password-hash-extraction/": {
+      "title": "SonicWall GMS - Unauthenticated RCE and Encrypted Password Hash Extraction (CVE-2026-66145)",
+      "slug": "sonicwall-gms-unauthenticated-rce-and-encrypted-password-hash-extraction",
+      "date_processed": "2026-08-31",
+      "source": "https://blog.amberwolf.com/"
+    },
+    "https://www.wiz.io/blog/ai-infrastructure-honeypot": {
+      "title": "Attacks on AI Infrastructure: 90-Day Honeypot Telemetry | Wiz Blog",
+      "slug": "ai-infrastructure-honeypot",
+      "date_processed": "2026-08-31",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://www.wiz.io/blog/bucket-scanner-to-context-engine": {
+      "title": "AI-Powered Data Classification for Cloud Storage | Wiz | Wiz Blog",
+      "slug": "bucket-scanner-to-context-engine",
+      "date_processed": "2026-08-31",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://www.wiz.io/blog/vcs-dfir-threat-hunting-github-gitlab-azure-devops": {
+      "title": "Version Control DFIR: a Cheatsheet to GitHub, GitLab, Bitbucket, and Azure DevOps | Wiz Blog",
+      "slug": "vcs-dfir-threat-hunting-github-gitlab-azure-devops",
+      "date_processed": "2026-08-31",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://www.wiz.io/blog/cost-attribution-with-the-wiz-service-catalog": {
+      "title": "Cloud and AI Cost Attribution with the Wiz Service Catalog | Wiz Blog",
+      "slug": "cost-attribution-with-the-wiz-service-catalog",
+      "date_processed": "2026-08-31",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://www.wiz.io/blog/cloud-risk-report-2026": {
+      "title": "Report Recap: State of Cloud Risk 2026 | Wiz Blog",
+      "slug": "cloud-risk-report-2026",
+      "date_processed": "2026-08-31",
       "source": "https://www.wiz.io/blog"
     }
   }
