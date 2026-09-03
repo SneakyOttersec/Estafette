@@ -33,6 +33,7 @@ jobs:
         run: envsubst '$ESTAFETTE_API_URL' < site/config.template.js > site/config.js
 
       - name: Configure Pages
+        # The repository's Pages publishing source is configured as GitHub Actions.
         uses: actions/configure-pages@v6
 
       - name: Upload Pages artifact
