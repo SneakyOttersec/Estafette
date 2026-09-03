@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="A weekly, e-reader-friendly security digest delivered directly to your Google Drive."
+    >
+    <title>Estafette — Ottersec</title>
+    <link rel="icon" href="https://sneakyottersec.github.io/images/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <script src="config.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="content">
+      <header id="header">
+        <a class="brand" href="./" aria-label="Estafette home">
+          <span id="logo" aria-hidden="true"></span>
+          <span id="title">Estafette</span>
+        </a>
+        <nav id="nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="#about">Home</a></li>
+            <li><a href="#how-it-works">How it works</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <section id="about" aria-labelledby="intro-title">
+          <p class="eyebrow">WEEKLY / SECURITY / PDF</p>
+          <h1 id="intro-title">Security reading, relayed to your Drive.</h1>
+          <p class="lede">
+            Estafette gathers new posts from selected security blogs and builds a
+            clean, e-reader-friendly PDF every week. Connect Google Drive once;
+            each new edition lands in your own <code>Estafette</code> folder.
+          </p>
+
+          <div id="connection" class="connection" aria-live="polite">
+            <a id="connect-drive" class="action" href="#" aria-disabled="true">
+              Connect my Google Drive <span aria-hidden="true">→</span>
+            </a>
+            <p id="connection-note" class="muted">
+              The app only requests access to files and folders it creates.
+            </p>
+          </div>
+        </section>
+
+        <section id="how-it-works" aria-labelledby="how-title">
+          <h2 id="how-title">How it works</h2>
+          <ol class="process-list">
+            <li>
+              <span class="meta">01</span>
+              <span><strong>Connect Drive.</strong> Approve the limited Google Drive permission.</span>
+            </li>
+            <li>
+              <span class="meta">02</span>
+              <span><strong>Folder created.</strong> Estafette creates its own folder in your Drive.</span>
+            </li>
+            <li>
+              <span class="meta">03</span>
+              <span><strong>Read weekly.</strong> New PDFs are published directly into that folder.</span>
+            </li>
+          </ol>
+        </section>
+
+        <section id="permissions" aria-labelledby="permissions-title">
+          <h2 id="permissions-title">A deliberately small permission</h2>
+          <p>
+            Estafette uses Google&rsquo;s <code>drive.file</code> permission. It cannot
+            browse or change unrelated files in your Drive. Disconnecting stops
+            future delivery; PDFs already delivered remain yours.
+          </p>
+          <p>
+            <a id="disconnect-drive" href="#" aria-disabled="true">Disconnect Estafette</a>
+            <span class="separator" aria-hidden="true"> / </span>
+            <a href="privacy.html">Read the privacy note</a>
+          </p>
+        </section>
+      </main>
+
+      <footer id="footer">
+        <div>Copyright &copy; <span id="year">2026</span> ottersec</div>
+        <nav aria-label="Footer navigation">
+          <ul>
+            <li><a href="https://sneakyottersec.github.io/">Ottersec Blog</a></li>
+            <li><a href="https://github.com/SneakyOttersec/Estafette">Source</a></li>
+          </ul>
+        </nav>
+      </footer>
+    </div>
+  </body>
+</html>

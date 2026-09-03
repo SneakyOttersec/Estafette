@@ -1,4 +1,4 @@
-name: Build blog PDF and upload to Drive
+name: Build and distribute weekly blog PDF
 
 on:
   schedule:
@@ -13,6 +13,7 @@ on:
 # Allow the workflow to commit the updated state/seen.json back to the repo.
 permissions:
   contents: write
+  id-token: write
 
 concurrency:
   group: build-blog-pdf
@@ -21,14 +22,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # Drive upload is optional: it runs only once these secrets are set.
-    # Until then the pipeline still builds the PDF and exposes it as an artifact.
     env:
-      # Google Drive OAuth (user credentials). Set as repo secrets to enable upload.
-      GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
-      GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
-      GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
-      GDRIVE_FOLDER_NAME: BLOG_INFOSEC_NEWS
       # PDF layout: compact (smaller single-column) | twocol (Paged-Out) | comfortable
       PDF_LAYOUT: compact
     steps:
@@ -71,13 +65,39 @@ jobs:
         if: steps.detect.outputs.has_new == 'true'
         run: python src/build_pdf.py
 
-      # Skipped automatically until the GDRIVE_* OAuth secrets are configured.
-      # Non-fatal: a dead/expired refresh token shouldn't fail the build, since
-      # the PDF is still published as a workflow artifact below.
-      - name: Upload PDFs to Google Drive
-        if: steps.detect.outputs.has_new == 'true' && env.GDRIVE_REFRESH_TOKEN != ''
-        continue-on-error: true
-        run: python src/upload_drive.py
+      # Workload Identity Federation keeps Google Cloud service-account keys out
+      # of GitHub. These steps remain disabled until the documented repository
+      # variables are configured, so forks can still build PDF artifacts alone.
+      - name: Authenticate to Google Cloud
+        if: steps.detect.outputs.has_new == 'true' && vars.GCP_WORKLOAD_IDENTITY_PROVIDER != ''
+        uses: google-github-actions/auth@v3
+        with:
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+
+      - name: Load distribution secrets
+        id: distribution_secrets
+        if: steps.detect.outputs.has_new == 'true' && vars.GCP_WORKLOAD_IDENTITY_PROVIDER != ''
+        uses: google-github-actions/get-secretmanager-secrets@v3
+        with:
+          secrets: |-
+            oauth_client_id:${{ vars.GCP_PROJECT_ID }}/estafette-google-oauth-client-id
+            oauth_client_secret:${{ vars.GCP_PROJECT_ID }}/estafette-google-oauth-client-secret
+            token_encryption_key:${{ vars.GCP_PROJECT_ID }}/estafette-token-encryption-key
+
+      - name: Install Drive distributor dependencies
+        if: steps.detect.outputs.has_new == 'true' && vars.GCP_WORKLOAD_IDENTITY_PROVIDER != ''
+        run: pip install -r backend/requirements.txt
+
+      - name: Distribute PDFs to registered Google Drives
+        if: steps.detect.outputs.has_new == 'true' && vars.GCP_WORKLOAD_IDENTITY_PROVIDER != ''
+        env:
+          GOOGLE_CLOUD_PROJECT: ${{ vars.GCP_PROJECT_ID }}
+          GOOGLE_OAUTH_CLIENT_ID: ${{ steps.distribution_secrets.outputs.oauth_client_id }}
+          GOOGLE_OAUTH_CLIENT_SECRET: ${{ steps.distribution_secrets.outputs.oauth_client_secret }}
+          TOKEN_ENCRYPTION_KEY: ${{ steps.distribution_secrets.outputs.token_encryption_key }}
+        run: python backend/distribute.py
 
       - name: Upload PDF as workflow artifact
         if: steps.detect.outputs.has_new == 'true'

@@ -1,0 +1,47 @@
+name: Deploy Estafette registration backend
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+
+      - name: Deploy registration service
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v3
+        with:
+          service: estafette-registration
+          region: ${{ vars.GCP_REGION }}
+          source: ./backend
+          flags: >-
+            --allow-unauthenticated
+            --service-account=${{ vars.GCP_RUNTIME_SERVICE_ACCOUNT }}
+          env_vars: |-
+            GOOGLE_CLOUD_PROJECT=${{ vars.GCP_PROJECT_ID }}
+            GOOGLE_OAUTH_REDIRECT_URI=${{ vars.GOOGLE_OAUTH_REDIRECT_URI }}
+            PUBLIC_SITE_URL=https://sneakyottersec.github.io/Estafette/
+            FIRESTORE_COLLECTION=estafette_registrations
+            DRIVE_FOLDER_NAME=Estafette
+          secrets: |-
+            GOOGLE_OAUTH_CLIENT_ID=estafette-google-oauth-client-id:latest
+            GOOGLE_OAUTH_CLIENT_SECRET=estafette-google-oauth-client-secret:latest
+            TOKEN_ENCRYPTION_KEY=estafette-token-encryption-key:latest
+            SESSION_SECRET=estafette-session-secret:latest
+
+      - name: Show service URL
+        run: echo "Cloud Run service deployed to ${{ steps.deploy.outputs.url }}"

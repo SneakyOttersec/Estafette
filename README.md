@@ -1,9 +1,9 @@
-# Blog → PDF → Google Drive
+# Estafette — security blogs → PDF → your Google Drive
 
-An automated pipeline that monitors a list of blog sources, detects new posts,
-extracts their content (text + images), renders an e-reader-friendly PDF of
-**only the new post(s)**, and (optionally) uploads it to Google Drive. If a run
-finds nothing new, it does nothing.
+An automated pipeline and opt-in web app that monitor a list of security blogs,
+detect new posts, render an e-reader-friendly PDF of **only the new post(s)**,
+and deliver each weekly edition into an `Estafette` folder owned by every
+registered Google Drive user. If a run finds nothing new, it does nothing.
 
 It's built to read on a **Kindle Scribe** (the PDF page size and grayscale
 images are tuned for e-ink), but the output is a normal PDF that reads fine
@@ -11,15 +11,14 @@ anywhere.
 
 ---
 
-## Deploy your own copy
+## Deploy the PDF builder
 
 The GitHub Actions workflow
 ([`.github/workflows/build-blog-pdf.yml`](.github/workflows/build-blog-pdf.yml))
-ships with the repo, so there is nothing to install or host — **forking the repo
-and enabling Actions *is* the deployment.** GitHub runs it on their hosted
-runners. You can run it with **zero Google setup**: without Drive secrets the
-pipeline still builds the PDFs and attaches them to each run as a downloadable
-artifact (Drive upload is optional on top).
+ships with the repo. Forking the repo and enabling Actions deploys the builder
+on GitHub-hosted runners. Without the optional web application configuration,
+the pipeline still builds the PDFs and attaches them to each run as a
+downloadable artifact.
 
 Step by step, in the GitHub web UI:
 
@@ -37,15 +36,15 @@ Step by step, in the GitHub web UI:
    [Configuring sources](#configuring-sources)) and **commit/push to the default
    branch** (`main`).
 5. **Watch the first run.** That push triggers the workflow — open **Actions →
-   Build blog PDF and upload to Drive**. When it finishes, download the PDFs
+   Build and distribute weekly blog PDF**. When it finishes, download the PDFs
    from the run's **Artifacts** section (`blog-pdf`).
-6. **(Optional) Send to Google Drive.** Add the three secrets from
-   [Google Drive upload](#optional-google-drive-upload); from then on every run
-   drops the PDFs into a Drive folder automatically.
+6. **(Optional) Enable per-user Drive delivery.** Deploy the registration page,
+   OAuth backend, and Firestore registry using the
+   [Drive app deployment guide](docs/DRIVE_APP_DEPLOYMENT.md).
 
 After deployment it runs three ways: **on the schedule** (default: Mondays
 05:00 UTC), on **every push to `urls.txt`**, and **on demand** via
-**Actions → Build blog PDF and upload to Drive → Run workflow**.
+**Actions → Build and distribute weekly blog PDF → Run workflow**.
 
 > **Scheduling caveats:** cron runs only fire from the repo's **default branch**,
 > and GitHub may pause schedules on repos with no recent activity (push or a
@@ -72,8 +71,9 @@ On a schedule (and on every push to `urls.txt`), GitHub Actions runs four steps:
    first-line-indented justified/hyphenated paragraphs, and running headers.
    The page is **150×200 mm** — just inside the Kindle Scribe screen so the
    reader shows it edge-to-edge without clipping the header/footer.
-4. **`src/upload_drive.py`** — *(only if Drive secrets are set)* uploads the
-   PDFs to a Drive folder (default `BLOG_INFOSEC_NEWS`, created automatically).
+4. **`backend/distribute.py`** — *(when the Drive app is configured)* loads the
+   active encrypted registrations and uploads the PDFs into each user's own
+   app-created `Estafette` folder.
 
 The workflow then commits the updated `state/seen.json` back to the repo so
 baselines and processed posts persist between runs.
@@ -130,38 +130,24 @@ or set it locally (`PDF_LAYOUT=twocol python src/build_pdf.py`).
 
 ---
 
-## (Optional) Google Drive upload
+## Google Drive registration app
 
-A personal Gmail can't use a service account for Drive uploads (service-account
-files have no storage quota, and Gmail has no Shared Drive). So the pipeline
-uses **your own** Google credentials via OAuth — uploads are owned by you and
-use your storage.
+The static frontend in `site/` matches the visual language of the
+[Ottersec Blog](https://sneakyottersec.github.io/): JetBrains Mono, its compact
+48-rem layout, and the same charcoal, off-white, muted green, and red palette.
 
-1. **Google Cloud Console** (<https://console.cloud.google.com>):
-   - Enable the **Google Drive API**.
-   - **OAuth consent screen**: User type *External*; add your Google account
-     under **Test users**.
-   - **Credentials → Create credentials → OAuth client ID → Desktop app**;
-     download the JSON.
-2. **Get a refresh token** (one time, locally — opens a browser):
-   ```bash
-   pip install google-auth-oauthlib
-   python scripts/get_gdrive_token.py path/to/client_secret.json
-   ```
-   It prints `GDRIVE_CLIENT_ID`, `GDRIVE_CLIENT_SECRET`, `GDRIVE_REFRESH_TOKEN`.
-3. **GitHub secrets** — Repo → *Settings → Secrets and variables → Actions*:
+Users connect through a Cloud Run OAuth callback. The app requests Google's
+narrow `drive.file` scope, creates a user-owned `Estafette` folder, and stores
+the refresh grant encrypted in Firestore. The weekly workflow builds the PDF
+once, then writes it into every registered folder. It never needs permission to
+browse unrelated Drive files, and it sends no email.
 
-   | Secret | Value |
-   | --- | --- |
-   | `GDRIVE_CLIENT_ID` | from step 2 |
-   | `GDRIVE_CLIENT_SECRET` | from step 2 |
-   | `GDRIVE_REFRESH_TOKEN` | from step 2 |
+See [Deploy the Google Drive delivery app](docs/DRIVE_APP_DEPLOYMENT.md) for the
+complete Google Cloud, OAuth, Secret Manager, Workload Identity Federation,
+Cloud Run, and GitHub Pages setup.
 
-Once those are set, the upload step activates automatically (it's skipped until
-then) and drops the PDFs into a `BLOG_INFOSEC_NEWS` folder in your Drive,
-updating that day's file in place on re-runs. The folder name is configurable
-via the `GDRIVE_FOLDER_NAME` env in the workflow. The workflow uses the built-in
-`GITHUB_TOKEN` to commit state back (`contents: write`, already set).
+The older `src/upload_drive.py` utility remains available for a single personal
+Drive, but the scheduled web-app flow uses the per-user backend distributor.
 
 ---
 
@@ -186,15 +172,11 @@ python src/detect.py        # discovers feeds, writes work/new_posts.json
 python src/extract.py       # writes work/<slug>/article.md + images
 python src/build_pdf.py     # writes dist/<TAG>_<DD_MM_YYYY>.pdf
 
-# To test the Drive upload locally, export the same OAuth values the workflow uses:
-export GDRIVE_CLIENT_ID=...
-export GDRIVE_CLIENT_SECRET=...
-export GDRIVE_REFRESH_TOKEN=...
-export GDRIVE_FOLDER_NAME=BLOG_INFOSEC_NEWS   # optional; this is the default
-python src/upload_drive.py
+# To test multi-user distribution locally, authenticate Application Default
+# Credentials and export the backend values documented in the deployment guide:
+PYTHONPATH=backend python backend/distribute.py --dist dist
 ```
 
-> On Windows PowerShell, use `$env:GDRIVE_CLIENT_ID = "..."` etc.
 > `src/detect.py` and `src/extract.py` don't need WeasyPrint, so they run
 > anywhere; only `src/build_pdf.py` needs the native libraries.
 

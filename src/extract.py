@@ -43,6 +43,12 @@ USER_AGENT = (
 )
 REQUEST_TIMEOUT = 30
 MANIFEST_FILE = WORK_DIR / "manifest.json"
+NETSPI_HOSTS = {"netspi.com", "www.netspi.com"}
+INLINE_ASSET_ORIGIN = "https://estafette.invalid/"
+INLINE_ASSET_RE = re.compile(
+    rf"{re.escape(INLINE_ASSET_ORIGIN)}inline-(?P<digest>[0-9a-f]{{12}})\.png"
+)
+RAW_SVG_RE = re.compile(r"<svg\b.*?</svg\s*>", re.IGNORECASE | re.DOTALL)
 
 # Matches Markdown images:  ![alt](url "title")
 # Capture everything inside the parens so URLs containing spaces (e.g. GitHub
@@ -77,6 +83,88 @@ def extract_title(html: str, url: str) -> str:
     # Fall back to the last meaningful path segment.
     path = urlparse(url).path.rstrip("/")
     return path.rsplit("/", 1)[-1].replace("-", " ").title() or url
+
+
+def prepare_html(html: str, url: str, post_dir: Path) -> str:
+    """Apply source-specific cleanup before article extraction.
+
+    NetSPI keeps its related-post cards inside the page's ``<main>`` element,
+    which makes them look like article content to generic readability
+    extractors. Its actual post body has a stable ``.main-content .main``
+    wrapper. Keep only that wrapper—NetSPI's generic feature artwork resembles
+    broken placeholders in a text-first PDF—and turn inline SVG diagrams into
+    local image assets so they survive Trafilatura's Markdown conversion.
+    """
+    if (urlparse(url).hostname or "").lower() not in NETSPI_HOSTS:
+        return html
+
+    # BeautifulSoup's HTML parser lowercases case-sensitive SVG names such as
+    # viewBox, clipPath and gradientUnits. Index the original SVG markup by its
+    # normalized representation so local assets can use the untouched source.
+    raw_svgs: dict[str, list[str]] = {}
+    for match in RAW_SVG_RE.finditer(html):
+        raw_svg = match.group(0)
+        normalized = BeautifulSoup(raw_svg, "lxml").find("svg")
+        if normalized is not None:
+            raw_svgs.setdefault(str(normalized), []).append(raw_svg)
+
+    page = BeautifulSoup(html, "lxml")
+    article = page.select_one(".main-content .main")
+    if article is None:
+        return html
+
+    scoped = BeautifulSoup(
+        f"<html><body><article>{article}</article></body></html>",
+        "lxml",
+    )
+
+    for svg in scoped.find_all("svg"):
+        # Keep article diagrams, but ignore SVG controls such as lightbox and
+        # link icons. Those controls are not reading content.
+        if svg.find_parent(["a", "button"]) is not None:
+            continue
+        normalized_svg = str(svg)
+        originals = raw_svgs.get(normalized_svg)
+        svg_text = originals.pop(0) if originals else normalized_svg
+        opening_tag = svg_text[: svg_text.find(">")]
+        if not re.search(r"\sxmlns\s*=", opening_tag, re.IGNORECASE):
+            svg_text = re.sub(
+                r"<svg\b",
+                '<svg xmlns="http://www.w3.org/2000/svg"',
+                svg_text,
+                count=1,
+                flags=re.IGNORECASE,
+            )
+        digest = hashlib.sha1(svg_text.encode("utf-8")).hexdigest()[:12]
+        filename = f"inline-{digest}.svg"
+        images_dir = post_dir / "images"
+        images_dir.mkdir(parents=True, exist_ok=True)
+        (images_dir / filename).write_text(svg_text, encoding="utf-8")
+
+        title = svg.find("title")
+        alt = (
+            title.get_text(" ", strip=True)
+            if title is not None
+            else svg.get("aria-label", "Inline diagram")
+        )
+        # Trafilatura deliberately drops .svg image references. Give the local
+        # asset a private, PNG-looking extraction URL, then restore its actual
+        # relative SVG path in the resulting Markdown.
+        replacement = scoped.new_tag(
+            "img",
+            src=f"{INLINE_ASSET_ORIGIN}inline-{digest}.png",
+            alt=alt or "Inline diagram",
+        )
+        svg.replace_with(replacement)
+
+    return str(scoped)
+
+
+def restore_inline_assets(markdown: str) -> str:
+    """Restore private extraction URLs to their materialized SVG paths."""
+    return INLINE_ASSET_RE.sub(
+        lambda match: f"images/inline-{match.group('digest')}.svg", markdown
+    )
 
 
 def download_image(img_url: str, base_url: str, images_dir: Path) -> str | None:
@@ -132,6 +220,11 @@ def localize_images(markdown: str, base_url: str, post_dir: Path) -> str:
         inside = match.group("inside").strip()
         title_match = _IMG_TITLE_RE.match(inside)
         url = title_match.group("url").strip() if title_match else inside
+        # Assets materialized during HTML cleanup are already local. Leaving
+        # the relative path intact lets build_pdf.reroot_images() scope it to
+        # this post later.
+        if url.startswith("images/"):
+            return match.group(0)
         if url not in cache:
             cache[url] = download_image(url, base_url, images_dir)
         local = cache[url]
@@ -149,6 +242,8 @@ def extract_one(url: str, post_dir: Path) -> dict | None:
     if html is None:
         return None
 
+    title = extract_title(html, url)
+    html = prepare_html(html, url, post_dir)
     markdown = trafilatura.extract(
         html,
         url=url,
@@ -161,7 +256,7 @@ def extract_one(url: str, post_dir: Path) -> dict | None:
         print(f"  ! no extractable content for {url}")
         return None
 
-    title = extract_title(html, url)
+    markdown = restore_inline_assets(markdown)
     markdown = localize_images(markdown, url, post_dir)
 
     post_dir.mkdir(parents=True, exist_ok=True)

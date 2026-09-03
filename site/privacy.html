@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="How Estafette handles Google Drive access and account data.">
+    <title>Privacy — Estafette</title>
+    <link rel="icon" href="https://sneakyottersec.github.io/images/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <script src="config.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="content">
+      <header id="header">
+        <a class="brand" href="./" aria-label="Estafette home">
+          <span id="logo" aria-hidden="true"></span>
+          <span id="title">Estafette</span>
+        </a>
+        <nav id="nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="./">Home</a></li>
+            <li><a href="privacy.html" aria-current="page">Privacy</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <article>
+          <header>
+            <h1>Privacy</h1>
+            <p class="meta">Last updated: 2026-09-03</p>
+          </header>
+
+          <h2>What Estafette stores</h2>
+          <p>
+            To deliver weekly PDFs, Estafette stores your Google account&rsquo;s stable
+            identifier, the ID of the Drive folder created for you, your connection
+            status, delivery status, and an encrypted OAuth refresh token. Your token
+            is never placed in GitHub Pages, GitHub Actions artifacts, or this repository.
+          </p>
+
+          <h2>Google Drive access</h2>
+          <p>
+            The application requests the narrow <code>drive.file</code> scope. This
+            permits Estafette to create its delivery folder and manage the PDFs it
+            creates there; it does not grant access to unrelated Drive content.
+          </p>
+
+          <h2>Disconnecting</h2>
+          <p>
+            Disconnecting revokes the stored authorization and removes the registration
+            record. Files already delivered are not deleted from your Drive. You may
+            also revoke Estafette from your Google Account&rsquo;s connected-app settings.
+          </p>
+
+          <h2>Retention and contact</h2>
+          <p>
+            Registration data is retained while your connection remains active and is
+            removed when you disconnect. Before public launch, replace this paragraph
+            with the operator&rsquo;s legal identity, contact address, retention policy,
+            and any other notices required in the countries where the service operates.
+          </p>
+        </article>
+      </main>
+
+      <footer id="footer">
+        <div>Copyright &copy; <span id="year">2026</span> ottersec</div>
+        <nav aria-label="Footer navigation">
+          <ul>
+            <li><a href="./">Home</a></li>
+            <li><a href="https://sneakyottersec.github.io/">Ottersec Blog</a></li>
+          </ul>
+        </nav>
+      </footer>
+    </div>
+  </body>
+</html>

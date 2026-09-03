@@ -340,6 +340,17 @@ def group_by_tag(manifest: list[dict]) -> dict[str, list[dict]]:
     return {t: groups[t] for t in ordered if t in groups}
 
 
+def resolve_run_day() -> dt.date:
+    """Return today's UTC date, or an explicit date for historical rebuilds."""
+    override = os.environ.get("PDF_RUN_DATE")
+    if override:
+        try:
+            return dt.date.fromisoformat(override)
+        except ValueError as exc:
+            raise ValueError("PDF_RUN_DATE must use YYYY-MM-DD format") from exc
+    return dt.datetime.now(dt.timezone.utc).date()
+
+
 def main() -> None:
     use_utf8_stdout()
     manifest = load_manifest()
@@ -347,9 +358,9 @@ def main() -> None:
         print("No posts in manifest — nothing to build.")
         return
 
-    now = dt.datetime.now(dt.timezone.utc)
-    run_date = now.strftime("%Y-%m-%d")       # ISO, shown on the cover
-    file_date = now.strftime("%d_%m_%Y")      # DD_MM_YYYY, used in the filename
+    run_day = resolve_run_day()
+    run_date = run_day.strftime("%Y-%m-%d")  # ISO, shown on the cover
+    file_date = run_day.strftime("%d_%m_%Y")  # DD_MM_YYYY, used in the filename
     WORK_DIR.mkdir(parents=True, exist_ok=True)
     DIST_DIR.mkdir(parents=True, exist_ok=True)
 

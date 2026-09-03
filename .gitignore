@@ -8,6 +8,7 @@ service_account.json
 client_secret*.json
 token.json
 .env
+gha-creds-*.json
 
 # Python
 __pycache__/
