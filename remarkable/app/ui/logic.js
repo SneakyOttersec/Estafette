@@ -35,6 +35,14 @@ function filterCategory(articles, category, toReadMap, likeMap, deletedMap, nowV
     return ordered.filter(function(article) { return article.category === category })
 }
 
+function filterTitle(articles, query) {
+    var needle = String(query || "").trim().toLowerCase()
+    if (!needle) return (articles || []).slice()
+    return (articles || []).filter(function(article) {
+        return String(article.title || "").toLowerCase().indexOf(needle) >= 0
+    })
+}
+
 function categoryCount(articles, category, toReadMap, likeMap, deletedMap, nowValue) {
     return filterCategory(
         articles, category, toReadMap, likeMap, deletedMap, nowValue
@@ -146,6 +154,7 @@ function transition(state, event) {
 if (typeof module !== "undefined") {
     module.exports = {
         newestFirst: newestFirst, filterCategory: filterCategory,
+        filterTitle: filterTitle,
         categoryCount: categoryCount, categoryLabel: categoryLabel,
         flaggedCount: flaggedCount, unreadCount: unreadCount,
         normalizeTextSize: normalizeTextSize,

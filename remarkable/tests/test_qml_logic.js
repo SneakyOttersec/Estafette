@@ -9,9 +9,9 @@ vm.runInContext(source, context)
 const logic = context.module.exports
 
 const articles = [
-  { id: "old", category: "general", published_at: "2026-09-01T00:00:00Z" },
-  { id: "new", category: "offensive", published_at: "2026-09-04T00:00:00Z" },
-  { id: "fallback", category: "general", first_seen_at: "2026-09-03T00:00:00Z" }
+  { id: "old", title: "Security Engineering Notes", category: "general", published_at: "2026-09-01T00:00:00Z" },
+  { id: "new", title: "Breaking the Perimeter", category: "offensive", published_at: "2026-09-04T00:00:00Z" },
+  { id: "fallback", title: "Weekly Security Review", category: "general", first_seen_at: "2026-09-03T00:00:00Z" }
 ]
 assert.deepStrictEqual(Array.from(logic.newestFirst(articles), x => x.id), ["new", "fallback", "old"])
 assert.deepStrictEqual(Array.from(logic.filterCategory(articles, "general"), x => x.id), ["fallback", "old"])
@@ -19,6 +19,10 @@ assert.deepStrictEqual(Array.from(logic.filterCategory(articles, "news", {}, {},
 assert.deepStrictEqual(Array.from(logic.filterCategory(articles, "to-read", { fallback: true }), x => x.id), ["fallback"])
 assert.deepStrictEqual(Array.from(logic.filterCategory(articles, "liked", {}, { old: true, new: true }), x => x.id), ["new", "old"])
 assert.deepStrictEqual(Array.from(logic.filterCategory(articles, "all", {}, {}, { fallback: true }), x => x.id), ["new", "old"])
+assert.deepStrictEqual(Array.from(logic.filterTitle(articles, "SECURITY"), x => x.id), ["old", "fallback"])
+assert.deepStrictEqual(Array.from(logic.filterTitle(articles, " perimeter "), x => x.id), ["new"])
+assert.deepStrictEqual(Array.from(logic.filterTitle(articles, ""), x => x.id), ["old", "new", "fallback"])
+assert.deepStrictEqual(Array.from(logic.filterTitle([{ id: "missing-title" }], "security"), x => x.id), [])
 assert.strictEqual(logic.categoryCount(articles, "all"), 3)
 assert.strictEqual(logic.categoryCount(articles, "general"), 2)
 assert.strictEqual(logic.categoryCount(articles, "news", {}, {}, {}, Date.parse("2026-09-04T00:00:00Z")), 2)

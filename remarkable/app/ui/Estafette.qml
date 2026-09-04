@@ -30,6 +30,7 @@ Rectangle {
 
     property string screen: "feed"
     property string selectedCategory: "all"
+    property string searchQuery: ""
     property string textSize: "standard"
     property var allArticles: []
     property var visibleArticles: []
@@ -187,9 +188,10 @@ Rectangle {
     }
 
     function applyCategory() {
-        visibleArticles = Logic.filterCategory(
+        var categoryArticles = Logic.filterCategory(
             allArticles, selectedCategory, toReadMap, likeMap, deletedMap
         )
+        visibleArticles = Logic.filterTitle(categoryArticles, searchQuery)
     }
 
     function chooseCategory(category) {
@@ -714,12 +716,62 @@ Rectangle {
                             anchors.leftMargin: 42
                             anchors.rightMargin: 36
                             Text {
-                                Layout.fillWidth: true
+                                Layout.preferredWidth: 210
                                 text: selectedCategory === "all" ? "Latest 100" : Logic.categoryLabel(selectedCategory)
                                 color: secondary
                                 font.family: monoFont
                                 font.bold: true
                                 font.pixelSize: 25
+                            }
+                            TextField {
+                                id: titleSearch
+                                Layout.fillWidth: true
+                                Layout.preferredHeight: 56
+                                text: root.searchQuery
+                                placeholderText: "Search article titles..."
+                                color: ink
+                                placeholderTextColor: muted
+                                selectionColor: accent
+                                selectedTextColor: paper
+                                font.family: monoFont
+                                font.pixelSize: 18
+                                leftPadding: 18
+                                rightPadding: 58
+                                selectByMouse: true
+                                inputMethodHints: Qt.ImhNoPredictiveText
+                                onTextChanged: {
+                                    root.searchQuery = text
+                                    root.applyCategory()
+                                }
+                                background: Rectangle {
+                                    color: paper
+                                    border.color: titleSearch.activeFocus ? secondary : quiet
+                                    border.width: titleSearch.activeFocus ? 2 : 1
+                                }
+
+                                Rectangle {
+                                    anchors.right: parent.right
+                                    anchors.top: parent.top
+                                    anchors.bottom: parent.bottom
+                                    width: 56
+                                    visible: titleSearch.text.length > 0
+                                    color: paper
+                                    Text {
+                                        anchors.centerIn: parent
+                                        text: "×"
+                                        color: ink
+                                        font.family: monoFont
+                                        font.pixelSize: 28
+                                    }
+                                    DisplayMethodArea {
+                                        anchors.fill: parent
+                                        displayMethod: DisplayMethodArea.Fast
+                                    }
+                                    MouseArea {
+                                        anchors.fill: parent
+                                        onClicked: titleSearch.clear()
+                                    }
+                                }
                             }
                             Text {
                                 text: visibleArticles.length + (visibleArticles.length === 1 ? " post" : " posts")
@@ -826,7 +878,7 @@ Rectangle {
                                                 font.family: monoFont
                                                 font.pixelSize: 39
                                             }
-                                            DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
+                                            DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Content }
                                             MouseArea {
                                                 anchors.fill: parent
                                                 onClicked: root.toggleFlag(feedRow.modelData.id, "liked")

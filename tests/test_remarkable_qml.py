@@ -72,6 +72,16 @@ def test_feed_has_persistent_read_later_and_like_actions():
     assert qml.count("height: 64") >= 2
 
 
+def test_feed_has_title_search_and_color_quality_for_liked_hearts():
+    qml = (ROOT / "remarkable/app/ui/Estafette.qml").read_text()
+    assert 'property string searchQuery: ""' in qml
+    assert 'placeholderText: "Search article titles..."' in qml
+    assert "Logic.filterTitle(categoryArticles, searchQuery)" in qml
+    heart = qml[qml.index('text: likeMap[modelData.id] ? "♥" : "♡"'):]
+    heart = heart[:heart.index("MouseArea")]
+    assert "displayMethod: DisplayMethodArea.Content" in heart
+
+
 def test_news_precedes_all_writings_and_delete_is_persistent():
     qml = (ROOT / "remarkable/app/ui/Estafette.qml").read_text()
     news = qml.index('{ key: "news", label: "News" }')
