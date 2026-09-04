@@ -1,4 +1,4 @@
-APP_VERSION ?= 0.1.0-beta.9
+APP_VERSION ?= 0.1.0-beta.10
 PUBLIC_ORIGIN ?= https://sneakyottersec.github.io/Estafette
 RCC ?= rcc
 BUILD := remarkable/build

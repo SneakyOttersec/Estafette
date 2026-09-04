@@ -1,6 +1,6 @@
 # Estafette reader for reMarkable Paper Pro
 
-Status: **public beta (`0.1.0-beta.9`)**. Do not publish `v1.0.0` until the
+Status: **public beta (`0.1.0-beta.10`)**. Do not publish `v1.0.0` until the
 device acceptance checklist at the end of this document passes on the target
 Paper Pro.
 

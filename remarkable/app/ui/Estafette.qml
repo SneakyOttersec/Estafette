@@ -1,7 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
-import Qt.labs.settings 1.0
+import QtCore
 import net.asivery.AppLoad 1.0
 import net.asivery.ApploadUtils
 import "logic.js" as Logic
@@ -804,7 +804,7 @@ Rectangle {
                                                 text: "◷"
                                                 color: toReadMap[modelData.id] ? accent : muted
                                                 font.family: monoFont
-                                                font.bold: toReadMap[modelData.id]
+                                                font.bold: !!toReadMap[modelData.id]
                                                 font.pixelSize: 40
                                             }
                                             DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }

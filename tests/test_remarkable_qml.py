@@ -26,7 +26,7 @@ def test_qml_has_cached_startup_persistence_offline_and_close_contracts():
     for expected in (
         "endpoint.sendMessage(100",
         "endpoint.sendMessage(101",
-        "Qt.labs.settings",
+        "import QtCore",
         "readStateJson",
         "pageStateJson",
         "toReadStateJson",
@@ -80,6 +80,7 @@ def test_news_precedes_all_writings_and_delete_is_persistent():
     assert 'text: "DELETE FROM LIST"' in qml
     assert "readingSettings.deletedStateJson = JSON.stringify(deletedMap)" in qml
     assert "root.deleteArticle(root.currentArticleId)" in qml
+    assert "font.bold: !!toReadMap[modelData.id]" in qml
 
 
 def test_new_badge_uses_the_article_publication_or_first_seen_date():
