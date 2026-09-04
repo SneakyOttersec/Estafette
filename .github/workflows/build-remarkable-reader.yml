@@ -51,7 +51,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends pandoc qt6-base-dev-tools libcairo2
-          pip install -r requirements.txt
+          pip install -r requirements.txt 'pytest>=8.2'
 
       - name: Test publisher, backend, QML, and installers
         run: |
