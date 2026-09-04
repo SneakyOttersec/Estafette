@@ -1,6 +1,6 @@
 # Estafette reader for reMarkable Paper Pro
 
-Status: **public beta (`0.1.0-beta.8`)**. Do not publish `v1.0.0` until the
+Status: **public beta (`0.1.0-beta.9`)**. Do not publish `v1.0.0` until the
 device acceptance checklist at the end of this document passes on the target
 Paper Pro.
 
@@ -118,9 +118,11 @@ cache may not exceed 512 MiB. A partial or failed run leaves the prior feed and
 all its references readable.
 
 The QML UI requests the cached feed and a refresh on startup. Its persistent
-left rail holds the All, Offensive, Vuln Dev, Threat Intel, and General filters,
-plus persistent To Read and Like views, counts, synchronization state, and the
-refresh action. Each feed headline has compact read-later and heart controls.
+left rail starts with a 72-hour News view, then holds the All, Offensive, Vuln
+Dev, Threat Intel, and General filters, plus persistent To Read and Like views,
+counts, synchronization state, and the refresh action. Each feed headline has
+compact read-later and heart controls. The article menu can persistently remove
+an entry from every on-device list without deleting the shared snapshot.
 The palette and monospaced typography mirror the Ottersec Blog theme while
 remaining e-ink friendly.
 QSettings owns read/unread state, saved page, selected category, and the

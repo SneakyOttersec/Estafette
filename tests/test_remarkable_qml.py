@@ -31,6 +31,7 @@ def test_qml_has_cached_startup_persistence_offline_and_close_contracts():
         "pageStateJson",
         "toReadStateJson",
         "likeStateJson",
+        "deletedStateJson",
         "type === 202",
         "type === 203",
         "type === 400",
@@ -69,6 +70,16 @@ def test_feed_has_persistent_read_later_and_like_actions():
     assert 'text: likeMap[modelData.id] ? "♥" : "♡"' in qml
     assert qml.count("width: 64") >= 2
     assert qml.count("height: 64") >= 2
+
+
+def test_news_precedes_all_writings_and_delete_is_persistent():
+    qml = (ROOT / "remarkable/app/ui/Estafette.qml").read_text()
+    news = qml.index('{ key: "news", label: "News" }')
+    all_writings = qml.index('{ key: "all", label: "All writings" }')
+    assert news < all_writings
+    assert 'text: "DELETE FROM LIST"' in qml
+    assert "readingSettings.deletedStateJson = JSON.stringify(deletedMap)" in qml
+    assert "root.deleteArticle(root.currentArticleId)" in qml
 
 
 def test_new_badge_uses_the_article_publication_or_first_seen_date():

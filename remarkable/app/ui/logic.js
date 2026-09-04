@@ -1,6 +1,6 @@
 .pragma library
 
-var categories = ["all", "offensive", "vuln-dev", "threat-intel", "general"]
+var categories = ["news", "all", "offensive", "vuln-dev", "threat-intel", "general"]
 
 function timestamp(article) {
     var value = article.published_at || article.first_seen_at || "1970-01-01T00:00:00Z"
@@ -16,9 +16,16 @@ function newestFirst(articles) {
     })
 }
 
-function filterCategory(articles, category, toReadMap, likeMap) {
-    var ordered = newestFirst(articles)
+function filterCategory(articles, category, toReadMap, likeMap, deletedMap, nowValue) {
+    var ordered = newestFirst(articles).filter(function(article) {
+        return !(deletedMap && deletedMap[article.id])
+    })
     if (!category || category === "all") return ordered
+    if (category === "news") {
+        return ordered.filter(function(article) {
+            return isNew(article.published_at || article.first_seen_at, nowValue)
+        })
+    }
     if (category === "to-read") {
         return ordered.filter(function(article) { return !!(toReadMap && toReadMap[article.id]) })
     }
@@ -28,13 +35,10 @@ function filterCategory(articles, category, toReadMap, likeMap) {
     return ordered.filter(function(article) { return article.category === category })
 }
 
-function categoryCount(articles, category, toReadMap, likeMap) {
-    if (!category || category === "all") return (articles || []).length
-    if (category === "to-read") return flaggedCount(articles, toReadMap)
-    if (category === "liked") return flaggedCount(articles, likeMap)
-    return (articles || []).reduce(function(total, article) {
-        return total + (article.category === category ? 1 : 0)
-    }, 0)
+function categoryCount(articles, category, toReadMap, likeMap, deletedMap, nowValue) {
+    return filterCategory(
+        articles, category, toReadMap, likeMap, deletedMap, nowValue
+    ).length
 }
 
 function flaggedCount(articles, flagMap) {
@@ -45,6 +49,7 @@ function flaggedCount(articles, flagMap) {
 
 function categoryLabel(category) {
     var labels = {
+        "news": "News",
         "offensive": "Offensive",
         "vuln-dev": "Vuln Dev",
         "threat-intel": "Threat Intel",
@@ -55,8 +60,9 @@ function categoryLabel(category) {
     return labels[category] || "All writings"
 }
 
-function unreadCount(articles, readMap) {
+function unreadCount(articles, readMap, deletedMap) {
     return (articles || []).reduce(function(total, article) {
+        if (deletedMap && deletedMap[article.id]) return total
         return total + (readMap && readMap[article.id] ? 0 : 1)
     }, 0)
 }

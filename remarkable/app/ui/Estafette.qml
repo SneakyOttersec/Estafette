@@ -37,6 +37,7 @@ Rectangle {
     property var pageMap: ({})
     property var toReadMap: ({})
     property var likeMap: ({})
+    property var deletedMap: ({})
     property var currentArticle: null
     property string currentArticleId: ""
     property string generatedAt: ""
@@ -58,6 +59,7 @@ Rectangle {
         property string pageStateJson: "{}"
         property string toReadStateJson: "{}"
         property string likeStateJson: "{}"
+        property string deletedStateJson: "{}"
     }
 
     function unloading() {
@@ -98,6 +100,7 @@ Rectangle {
         pageMap = storedMap(readingSettings.pageStateJson)
         toReadMap = storedMap(readingSettings.toReadStateJson)
         likeMap = storedMap(readingSettings.likeStateJson)
+        deletedMap = storedMap(readingSettings.deletedStateJson)
     }
 
     function setRead(id, value) {
@@ -135,6 +138,40 @@ Rectangle {
         applyCategory()
     }
 
+    function withoutKey(source, id) {
+        var replacement = {}
+        for (var key in source) {
+            if (key !== id) replacement[key] = source[key]
+        }
+        return replacement
+    }
+
+    function deleteArticle(id) {
+        if (!id) return
+        savePage()
+
+        var replacement = {}
+        for (var key in deletedMap) replacement[key] = deletedMap[key]
+        replacement[id] = true
+        deletedMap = replacement
+        toReadMap = withoutKey(toReadMap, id)
+        likeMap = withoutKey(likeMap, id)
+
+        try {
+            readingSettings.deletedStateJson = JSON.stringify(deletedMap)
+            readingSettings.toReadStateJson = JSON.stringify(toReadMap)
+            readingSettings.likeStateJson = JSON.stringify(likeMap)
+        } catch (error) {
+            // The entry remains removed in memory if settings cannot be written.
+        }
+
+        screen = "feed"
+        currentArticle = null
+        currentArticleId = ""
+        applyCategory()
+        statusText = "Removed from list"
+    }
+
     function savePage() {
         if (!currentArticleId || screen !== "article") return
         var page = Logic.pageNumber(articleFlick.contentY, articleFlick.height)
@@ -150,7 +187,9 @@ Rectangle {
     }
 
     function applyCategory() {
-        visibleArticles = Logic.filterCategory(allArticles, selectedCategory, toReadMap, likeMap)
+        visibleArticles = Logic.filterCategory(
+            allArticles, selectedCategory, toReadMap, likeMap, deletedMap
+        )
     }
 
     function chooseCategory(category) {
@@ -366,7 +405,7 @@ Rectangle {
 
                         Text {
                             visible: screen === "feed"
-                            text: Logic.unreadCount(allArticles, readMap) + " unread"
+                            text: Logic.unreadCount(allArticles, readMap, deletedMap) + " unread"
                             color: muted
                             font.family: monoFont
                             font.pixelSize: 19
@@ -469,6 +508,7 @@ Rectangle {
 
                     Repeater {
                         model: [
+                            { key: "news", label: "News" },
                             { key: "all", label: "All writings" },
                             { key: "offensive", label: "Offensive" },
                             { key: "vuln-dev", label: "Vuln Dev" },
@@ -503,7 +543,9 @@ Rectangle {
                                 anchors.right: parent.right
                                 anchors.rightMargin: 24
                                 anchors.verticalCenter: parent.verticalCenter
-                                text: Logic.categoryCount(allArticles, modelData.key, toReadMap, likeMap)
+                                text: Logic.categoryCount(
+                                    allArticles, modelData.key, toReadMap, likeMap, deletedMap
+                                )
                                 color: muted
                                 font.family: monoFont
                                 font.pixelSize: 17
@@ -565,7 +607,9 @@ Rectangle {
                                 anchors.right: parent.right
                                 anchors.rightMargin: 24
                                 anchors.verticalCenter: parent.verticalCenter
-                                text: Logic.categoryCount(allArticles, modelData.key, toReadMap, likeMap)
+                                text: Logic.categoryCount(
+                                    allArticles, modelData.key, toReadMap, likeMap, deletedMap
+                                )
                                 color: muted
                                 font.family: monoFont
                                 font.pixelSize: 17
@@ -1004,7 +1048,7 @@ Rectangle {
         id: articleMenu
         anchors.centerIn: parent
         width: 500
-        height: 228
+        height: 316
         modal: true
         padding: 0
         background: Rectangle { color: paper; border.color: ink; border.width: 2 }
@@ -1021,6 +1065,27 @@ Rectangle {
                 border.color: ink
                 Text { anchors.centerIn: parent; text: "MARK UNREAD"; color: ink; font.family: monoFont; font.pixelSize: 18 }
                 MouseArea { anchors.fill: parent; onClicked: { setRead(currentArticleId, false); articleMenu.close() } }
+            }
+            Rectangle {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 58
+                color: paper
+                border.color: accent
+                Text {
+                    anchors.centerIn: parent
+                    text: "DELETE FROM LIST"
+                    color: accent
+                    font.family: monoFont
+                    font.bold: true
+                    font.pixelSize: 18
+                }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        articleMenu.close()
+                        root.deleteArticle(root.currentArticleId)
+                    }
+                }
             }
             Text {
                 Layout.alignment: Qt.AlignHCenter
