@@ -9,7 +9,9 @@
   const year = document.querySelector("#year");
   const editionList = document.querySelector("#edition-list");
   const editionStatus = document.querySelector("#edition-status");
-  const releasesApi = "https://api.github.com/repos/SneakyOttersec/Estafette/releases?per_page=6";
+  const editionYear = document.querySelector("#edition-year");
+  const archiveTitle = document.querySelector("#archive-title");
+  const releasesApi = "https://api.github.com/repos/SneakyOttersec/Estafette/releases?per_page=100";
 
   if (year) {
     year.textContent = new Date().getFullYear().toString();
@@ -100,6 +102,7 @@
 
     card.className = "edition-card";
     card.dataset.edition = release.tag_name;
+    card.dataset.year = published.getUTCFullYear().toString();
     date.className = "edition-date";
     date.dateTime = published.toISOString().slice(0, 10);
     day.textContent = published.toLocaleDateString("en-GB", { day: "2-digit" });
@@ -118,6 +121,57 @@
     for (const asset of assets) downloads.append(createDownload(asset));
     card.append(date, copy, downloads);
     return card;
+  }
+
+  function filterArchiveByYear() {
+    if (!editionList || !editionYear) return;
+    const selectedYear = editionYear.value;
+    let visible = 0;
+
+    for (const card of editionList.querySelectorAll(".edition-card")) {
+      card.hidden = card.dataset.year !== selectedYear;
+      if (!card.hidden) visible += 1;
+    }
+
+    if (archiveTitle) archiveTitle.textContent = `${selectedYear} editions`;
+    if (editionStatus) {
+      editionStatus.textContent = visible
+        ? `${visible} edition${visible === 1 ? "" : "s"} published in ${selectedYear}.`
+        : `No editions were published in ${selectedYear}.`;
+    }
+  }
+
+  function updateEditionView() {
+    if (!editionList) return;
+    const cards = Array.from(editionList.querySelectorAll(".edition-card"));
+    const limit = Number.parseInt(editionList.dataset.limit || "0", 10);
+
+    if (limit > 0) {
+      cards.forEach((card, index) => {
+        card.hidden = index >= limit;
+      });
+    }
+
+    if (!editionYear) return;
+    const previousYear = editionYear.value;
+    const years = Array.from(new Set(cards.map((card) => card.dataset.year)))
+      .filter(Boolean)
+      .sort((left, right) => Number(right) - Number(left));
+
+    editionYear.replaceChildren();
+    for (const yearValue of years) {
+      const option = document.createElement("option");
+      option.value = yearValue;
+      option.textContent = yearValue;
+      editionYear.append(option);
+    }
+    editionYear.value = years.includes(previousYear) ? previousYear : years[0] || "";
+
+    if (!editionYear.dataset.ready) {
+      editionYear.addEventListener("change", filterArchiveByYear);
+      editionYear.dataset.ready = "true";
+    }
+    filterArchiveByYear();
   }
 
   async function loadPublishedEditions() {
@@ -149,8 +203,10 @@
       editionStatus.textContent = added
         ? "Showing the newest public releases and the original archive edition."
         : "Showing the latest available edition. New releases appear here automatically.";
+      updateEditionView();
     } catch (_error) {
       editionStatus.textContent = "Showing the latest available edition. Release updates are temporarily unavailable.";
+      updateEditionView();
     }
   }
 

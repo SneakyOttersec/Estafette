@@ -134,8 +134,10 @@ or set it locally (`PDF_LAYOUT=twocol python src/build_pdf.py`).
 
 The static frontend in `site/` has its own Estafette identity and a responsive
 download archive. The latest PDF and ZIP are available directly from the home
-page; future weekly builds publish both formats as GitHub Release assets, which
-the page discovers automatically through GitHub's public API.
+page, alongside the personal Drive-delivery panel. The **All editions** page
+groups the archive by publication year. Future weekly builds publish both
+formats as GitHub Release assets, which the pages discover automatically
+through GitHub's public API.
 
 Users connect through a Cloud Run OAuth callback. The app requests Google's
 narrow `drive.file` scope, creates a user-owned `Estafette` folder, and stores

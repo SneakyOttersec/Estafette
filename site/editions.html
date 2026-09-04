@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Browse every Estafette security-reading edition published this year.">
+    <title>All editions — Estafette</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <script src="config.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="frame header-inner">
+        <a class="brand" href="./" aria-label="Estafette home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="brand-copy">
+            <strong>Estafette</strong>
+            <small>weekly security relay</small>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="./">Home</a>
+          <a href="editions.html" aria-current="page">All editions</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="archive-main frame">
+      <header class="archive-intro">
+        <p class="section-number">Archive / Weekly</p>
+        <h1 id="archive-title">All editions</h1>
+        <p>
+          Browse every Estafette bundle published during the selected year.
+          Each edition is available as an e-reader-ready PDF and a ZIP archive.
+        </p>
+      </header>
+
+      <div class="archive-toolbar">
+        <label for="edition-year">Publication year</label>
+        <select id="edition-year" aria-controls="edition-list">
+          <option value="2026">2026</option>
+        </select>
+      </div>
+
+      <div id="edition-list" class="edition-list archive-edition-list">
+        <article class="edition-card" data-edition="offensive-2026-08-24" data-year="2026">
+          <time class="edition-date" datetime="2026-08-24">
+            <strong>24</strong>
+            <span>AUG 2026</span>
+          </time>
+          <div class="edition-copy">
+            <p class="edition-label">Archive edition</p>
+            <h3>Offensive security roundup</h3>
+            <p>A collected edition of the newest offensive-security research.</p>
+          </div>
+          <div class="download-list" aria-label="Edition downloads">
+            <a
+              href="downloads/OFFENSIVE_24_08_2026.pdf"
+              download
+              data-download-name="OFFENSIVE_24_08_2026.pdf"
+            >
+              <span><strong>PDF</strong><small>1.6 MB</small></span>
+              <b aria-hidden="true">↓</b>
+            </a>
+            <a
+              href="downloads/ESTAFETTE_24_08_2026.zip"
+              download
+              data-download-name="ESTAFETTE_24_08_2026.zip"
+            >
+              <span><strong>ZIP</strong><small>1.6 MB</small></span>
+              <b aria-hidden="true">↓</b>
+            </a>
+          </div>
+        </article>
+      </div>
+      <p id="edition-status" class="edition-status" aria-live="polite">
+        Loading the edition archive&hellip;
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="frame footer-inner">
+        <p>&copy; <span id="year">2026</span> Estafette</p>
+        <nav aria-label="Footer navigation">
+          <a href="./">Home</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="https://github.com/SneakyOttersec/Estafette">Source code</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
