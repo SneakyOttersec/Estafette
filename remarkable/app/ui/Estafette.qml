@@ -950,13 +950,6 @@ Rectangle {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
 
-                        DisplayMethodArea {
-                            anchors.fill: parent
-                            displayMethod: feedList.moving
-                                           ? DisplayMethodArea.Animate
-                                           : DisplayMethodArea.Fast
-                        }
-
                         ListView {
                             id: feedList
                             anchors.fill: parent
@@ -1231,16 +1224,6 @@ Rectangle {
                         }
                     }
 
-                    DisplayMethodArea {
-                        anchors.left: parent.left
-                        anchors.right: parent.right
-                        anchors.top: parent.top
-                        anchors.bottom: articleControls.top
-                        displayMethod: articleFlick.moving
-                                       ? DisplayMethodArea.Animate
-                                       : DisplayMethodArea.Content
-                    }
-
                     MouseArea { anchors.left: parent.left; anchors.top: parent.top; anchors.bottom: articleControls.top; width: parent.width * 0.20; onClicked: movePage(-1) }
                     MouseArea { anchors.right: parent.right; anchors.top: parent.top; anchors.bottom: articleControls.top; width: parent.width * 0.20; onClicked: movePage(1) }
 
@@ -1400,16 +1383,6 @@ Rectangle {
                 font.family: monoFont
                 font.pixelSize: 20
             }
-        }
-
-        DisplayMethodArea {
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.top: imageViewerHeader.bottom
-            anchors.bottom: imageViewerControls.top
-            displayMethod: imageZoomFlick.moving
-                           ? DisplayMethodArea.Animate
-                           : DisplayMethodArea.Content
         }
 
         Rectangle {

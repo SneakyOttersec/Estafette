@@ -1,6 +1,6 @@
 # Estafette reader for reMarkable Paper Pro
 
-Status: **public beta (`0.1.0-beta.14`)**. Do not publish `v1.0.0` until the
+Status: **public beta (`0.1.0-beta.15`)**. Do not publish `v1.0.0` until the
 device acceptance checklist at the end of this document passes on the target
 Paper Pro.
 
@@ -132,9 +132,10 @@ The palette and monospaced typography mirror the Ottersec Blog theme while
 remaining e-ink friendly. Feed and menu screens stay in the fast grayscale
 display mode. Article reading uses content-quality refresh, and tapping a valid
 cached image opens a full-screen viewer with 100–400% zoom and drag-to-pan.
-Scrollable regions switch to the animation waveform only while moving, use
-pixel-aligned updates, and cap inertial motion to roughly 75 ms so a released
-swipe cannot produce a one-second repaint tail.
+Scrollable regions keep their screen's fixed refresh mode while moving, use
+pixel-aligned updates, and cap inertial motion to roughly 75 ms. Feed scrolling
+therefore stays grayscale-fast without triggering a waveform switch, while the
+article and its image viewer remain in color content mode.
 QSettings owns read/unread state, saved page, selected category, and the
 Compact/Standard/Large type choice. This avoids the Paper Pro 3.28 image's
 missing Qt SQLite driver while keeping navigation independent from preference

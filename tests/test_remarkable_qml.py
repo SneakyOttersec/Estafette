@@ -96,7 +96,7 @@ def test_feed_is_grayscale_and_article_images_have_a_zoom_viewer():
     assert 'text: "TAP IMAGE TO ZOOM"' in qml
 
 
-def test_scrolling_uses_short_pixel_aligned_animation_refreshes():
+def test_scrolling_uses_short_pixel_aligned_fixed_refresh_modes():
     qml = (ROOT / "remarkable/app/ui/Estafette.qml").read_text()
     assert "property real scrollDeceleration: 24000" in qml
     assert "property real scrollMaximumVelocity: 1800" in qml
@@ -104,10 +104,10 @@ def test_scrolling_uses_short_pixel_aligned_animation_refreshes():
     assert qml.count("maximumFlickVelocity: root.scrollMaximumVelocity") == 4
     assert qml.count("pixelAligned: true") >= 4
     assert "cacheBuffer: height" in qml
-    assert "displayMethod: feedList.moving" in qml
-    assert "displayMethod: articleFlick.moving" in qml
-    assert "displayMethod: imageZoomFlick.moving" in qml
-    assert qml.count("DisplayMethodArea.Animate") >= 3
+    assert "displayMethod: feedList.moving" not in qml
+    assert "displayMethod: articleFlick.moving" not in qml
+    assert "displayMethod: imageZoomFlick.moving" not in qml
+    assert "DisplayMethodArea.Animate" not in qml
 
 
 def test_long_press_menu_persists_and_filters_custom_tags():
