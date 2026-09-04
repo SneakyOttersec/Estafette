@@ -143,6 +143,12 @@ function isAtEnd(position, viewport, contentHeight) {
     return maximum === 0 || Number(position || 0) >= maximum - 1
 }
 
+function clampZoom(value) {
+    var parsed = Number(value)
+    if (!isFinite(parsed)) parsed = 1
+    return Math.max(1, Math.min(4, parsed))
+}
+
 function relativeDate(value, nowValue) {
     var when = Date.parse(value || "")
     if (isNaN(when)) return "date unavailable"
@@ -200,6 +206,7 @@ if (typeof module !== "undefined") {
         normalizeTextSize: normalizeTextSize,
         fontScale: fontScale, pageTarget: pageTarget, pageNumber: pageNumber,
         positionForPage: positionForPage, isAtEnd: isAtEnd,
+        clampZoom: clampZoom,
         relativeDate: relativeDate,
         shortDate: shortDate, isNew: isNew,
         listText: listText, tableText: tableText, transition: transition

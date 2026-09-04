@@ -72,14 +72,28 @@ def test_feed_has_persistent_read_later_and_like_actions():
     assert qml.count("height: 64") >= 2
 
 
-def test_feed_has_title_search_and_color_quality_for_liked_hearts():
+def test_feed_has_title_search_and_filled_liked_hearts():
     qml = (ROOT / "remarkable/app/ui/Estafette.qml").read_text()
     assert 'property string searchQuery: ""' in qml
     assert 'placeholderText: "Search article titles..."' in qml
     assert "Logic.filterTitle(categoryArticles, searchQuery)" in qml
     heart = qml[qml.index('text: likeMap[modelData.id] ? "♥" : "♡"'):]
     heart = heart[:heart.index("MouseArea")]
-    assert "displayMethod: DisplayMethodArea.Content" in heart
+    assert "displayMethod: DisplayMethodArea.Fast" in heart
+
+
+def test_feed_is_grayscale_and_article_images_have_a_zoom_viewer():
+    qml = (ROOT / "remarkable/app/ui/Estafette.qml").read_text()
+    assert 'displayMethod: screen === "article" ? DisplayMethodArea.Content : DisplayMethodArea.Fast' in qml
+    assert "property var appRoot: root" in qml
+    assert "appRoot.openImageViewer(block.url, block.caption || \"\")" in qml
+    assert "id: imageViewer" in qml
+    assert "id: imageZoomFlick" in qml
+    assert "root.setImageZoom(root.imageZoom - 0.5)" in qml
+    assert "root.setImageZoom(root.imageZoom + 0.5)" in qml
+    assert "Logic.clampZoom(value)" in qml
+    assert 'text: "RESET"' in qml
+    assert 'text: "TAP IMAGE TO ZOOM"' in qml
 
 
 def test_long_press_menu_persists_and_filters_custom_tags():

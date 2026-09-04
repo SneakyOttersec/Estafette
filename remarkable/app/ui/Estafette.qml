@@ -43,6 +43,9 @@ Rectangle {
     property var customTagEntries: []
     property string actionArticleId: ""
     property string actionArticleTitle: ""
+    property string zoomImageSource: ""
+    property string zoomImageCaption: ""
+    property real imageZoom: 1.0
     property var currentArticle: null
     property string currentArticleId: ""
     property string generatedAt: ""
@@ -306,6 +309,49 @@ Rectangle {
         savePage()
     }
 
+    function openImageViewer(source, caption) {
+        if (!source) return
+        zoomImageSource = source
+        zoomImageCaption = caption || ""
+        imageZoom = 1.0
+        imageZoomFlick.contentX = 0
+        imageZoomFlick.contentY = 0
+        imageViewer.open()
+    }
+
+    function setImageZoom(value) {
+        var oldWidth = Math.max(1, imageZoomFlick.contentWidth)
+        var oldHeight = Math.max(1, imageZoomFlick.contentHeight)
+        var centerX = (imageZoomFlick.contentX + imageZoomFlick.width / 2) / oldWidth
+        var centerY = (imageZoomFlick.contentY + imageZoomFlick.height / 2) / oldHeight
+        imageZoom = Logic.clampZoom(value)
+        Qt.callLater(function() {
+            var maximumX = Math.max(0, imageZoomFlick.contentWidth - imageZoomFlick.width)
+            var maximumY = Math.max(0, imageZoomFlick.contentHeight - imageZoomFlick.height)
+            imageZoomFlick.contentX = Math.max(0, Math.min(
+                maximumX, centerX * imageZoomFlick.contentWidth - imageZoomFlick.width / 2
+            ))
+            imageZoomFlick.contentY = Math.max(0, Math.min(
+                maximumY, centerY * imageZoomFlick.contentHeight - imageZoomFlick.height / 2
+            ))
+        })
+    }
+
+    function resetImageZoom() {
+        imageZoom = 1.0
+        Qt.callLater(function() {
+            imageZoomFlick.contentX = 0
+            imageZoomFlick.contentY = 0
+        })
+    }
+
+    function closeImageViewer() {
+        imageViewer.close()
+        zoomImageSource = ""
+        zoomImageCaption = ""
+        imageZoom = 1.0
+    }
+
     AppLoad {
         id: endpoint
         applicationID: "estafette"
@@ -352,7 +398,7 @@ Rectangle {
 
     DisplayMethodArea {
         anchors.fill: parent
-        displayMethod: DisplayMethodArea.Content
+        displayMethod: screen === "article" ? DisplayMethodArea.Content : DisplayMethodArea.Fast
     }
 
     Rectangle {
@@ -987,7 +1033,7 @@ Rectangle {
                                                 font.family: monoFont
                                                 font.pixelSize: 39
                                             }
-                                            DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Content }
+                                            DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
                                             MouseArea {
                                                 anchors.fill: parent
                                                 onClicked: root.toggleFlag(feedRow.modelData.id, "liked")
@@ -1151,6 +1197,7 @@ Rectangle {
                                         return dividerBlock
                                     }
                                     property var block: modelData
+                                    property var appRoot: root
                                 }
                             }
                         }
@@ -1214,6 +1261,154 @@ Rectangle {
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+
+    Popup {
+        id: imageViewer
+        x: 0
+        y: 0
+        width: root.width
+        height: root.height
+        modal: true
+        padding: 0
+        closePolicy: Popup.NoAutoClose
+        background: Rectangle { color: paper }
+
+        Rectangle {
+            id: imageViewerHeader
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: parent.top
+            height: 92
+            color: paper
+            border.color: panel
+
+            Text {
+                anchors.left: parent.left
+                anchors.leftMargin: 34
+                anchors.right: imageViewerClose.left
+                anchors.rightMargin: 24
+                anchors.verticalCenter: parent.verticalCenter
+                text: zoomImageCaption || "IMAGE"
+                color: ink
+                font.family: monoFont
+                font.pixelSize: 19
+                maximumLineCount: 2
+                elide: Text.ElideRight
+                wrapMode: Text.Wrap
+            }
+            Rectangle {
+                id: imageViewerClose
+                anchors.right: parent.right
+                anchors.rightMargin: 28
+                anchors.verticalCenter: parent.verticalCenter
+                width: 150
+                height: 56
+                color: paper
+                border.color: ink
+                Text { anchors.centerIn: parent; text: "× CLOSE"; color: ink; font.family: monoFont; font.pixelSize: 18 }
+                MouseArea { anchors.fill: parent; onClicked: root.closeImageViewer() }
+                DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
+            }
+        }
+
+        Flickable {
+            id: imageZoomFlick
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: imageViewerHeader.bottom
+            anchors.bottom: imageViewerControls.top
+            anchors.margins: 24
+            clip: true
+            boundsBehavior: Flickable.StopAtBounds
+            contentWidth: Math.max(width, zoomedImage.width)
+            contentHeight: Math.max(height, zoomedImage.height)
+
+            Image {
+                id: zoomedImage
+                property real fitScale: implicitWidth > 0 && implicitHeight > 0
+                                        ? Math.min(imageZoomFlick.width / implicitWidth,
+                                                   imageZoomFlick.height / implicitHeight)
+                                        : 1
+                x: Math.max(0, (imageZoomFlick.width - width) / 2)
+                y: Math.max(0, (imageZoomFlick.height - height) / 2)
+                width: Math.max(1, implicitWidth * fitScale * root.imageZoom)
+                height: Math.max(1, implicitHeight * fitScale * root.imageZoom)
+                source: root.zoomImageSource
+                fillMode: Image.PreserveAspectFit
+                asynchronous: true
+                smooth: false
+            }
+
+            Text {
+                anchors.centerIn: parent
+                visible: zoomedImage.status === Image.Loading
+                text: "Loading image…"
+                color: muted
+                font.family: monoFont
+                font.pixelSize: 20
+            }
+            Text {
+                anchors.centerIn: parent
+                visible: zoomedImage.status === Image.Error
+                text: "[ image unavailable offline ]"
+                color: muted
+                font.family: monoFont
+                font.pixelSize: 20
+            }
+        }
+
+        Rectangle {
+            id: imageViewerControls
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            height: 104
+            color: paper
+            border.color: panel
+
+            RowLayout {
+                anchors.centerIn: parent
+                spacing: 16
+
+                Rectangle {
+                    Layout.preferredWidth: 100
+                    Layout.preferredHeight: 62
+                    color: root.imageZoom <= 1 ? panel : paper
+                    border.color: ink
+                    Text { anchors.centerIn: parent; text: "−"; color: root.imageZoom <= 1 ? muted : ink; font.family: monoFont; font.pixelSize: 32 }
+                    MouseArea { anchors.fill: parent; enabled: root.imageZoom > 1; onClicked: root.setImageZoom(root.imageZoom - 0.5) }
+                    DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
+                }
+                Text {
+                    Layout.preferredWidth: 130
+                    text: Math.round(root.imageZoom * 100) + "%"
+                    color: ink
+                    font.family: monoFont
+                    font.bold: true
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 20
+                }
+                Rectangle {
+                    Layout.preferredWidth: 100
+                    Layout.preferredHeight: 62
+                    color: root.imageZoom >= 4 ? panel : paper
+                    border.color: ink
+                    Text { anchors.centerIn: parent; text: "+"; color: root.imageZoom >= 4 ? muted : ink; font.family: monoFont; font.pixelSize: 30 }
+                    MouseArea { anchors.fill: parent; enabled: root.imageZoom < 4; onClicked: root.setImageZoom(root.imageZoom + 0.5) }
+                    DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
+                }
+                Rectangle {
+                    Layout.preferredWidth: 170
+                    Layout.preferredHeight: 62
+                    color: paper
+                    border.color: ink
+                    Text { anchors.centerIn: parent; text: "RESET"; color: ink; font.family: monoFont; font.pixelSize: 18 }
+                    MouseArea { anchors.fill: parent; onClicked: root.resetImageZoom() }
+                    DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
                 }
             }
         }
@@ -1492,6 +1687,11 @@ Rectangle {
                 fillMode: Image.PreserveAspectFit
                 asynchronous: true
                 smooth: false
+                MouseArea {
+                    anchors.fill: parent
+                    enabled: !!block.url && !block.damaged && localImage.status === Image.Ready
+                    onClicked: appRoot.openImageViewer(block.url, block.caption || "")
+                }
             }
             Rectangle {
                 width: parent.width
@@ -1511,6 +1711,17 @@ Rectangle {
                 font.pixelSize: 17 * typeScale
                 horizontalAlignment: Text.AlignHCenter
                 wrapMode: Text.Wrap
+                height: visible ? implicitHeight : 0
+            }
+            Text {
+                width: parent.width
+                visible: !!block.url && !block.damaged && localImage.status === Image.Ready
+                text: "TAP IMAGE TO ZOOM"
+                color: secondary
+                font.family: monoFont
+                font.bold: true
+                font.pixelSize: 15 * typeScale
+                horizontalAlignment: Text.AlignHCenter
                 height: visible ? implicitHeight : 0
             }
         }

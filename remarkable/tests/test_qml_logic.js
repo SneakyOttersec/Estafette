@@ -61,6 +61,10 @@ assert.strictEqual(logic.positionForPage(2, 1000, 5000), 1800)
 assert.strictEqual(logic.isAtEnd(1500, 1000, 2500), true)
 assert.strictEqual(logic.isAtEnd(1498, 1000, 2500), false)
 assert.strictEqual(logic.isAtEnd(0, 1000, 800), true)
+assert.strictEqual(logic.clampZoom(0.5), 1)
+assert.strictEqual(logic.clampZoom(2.5), 2.5)
+assert.strictEqual(logic.clampZoom(8), 4)
+assert.strictEqual(logic.clampZoom("not-a-number"), 1)
 
 let state = { screen: "empty", sync: "idle", offline: false, imageMissing: false }
 state = logic.transition(state, "cached-feed")

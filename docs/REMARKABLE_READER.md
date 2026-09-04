@@ -1,6 +1,6 @@
 # Estafette reader for reMarkable Paper Pro
 
-Status: **public beta (`0.1.0-beta.12`)**. Do not publish `v1.0.0` until the
+Status: **public beta (`0.1.0-beta.13`)**. Do not publish `v1.0.0` until the
 device acceptance checklist at the end of this document passes on the target
 Paper Pro.
 
@@ -129,7 +129,9 @@ the entry. Custom tags are persisted locally and become count-bearing filters
 in the left rail. The article menu can persistently remove
 an entry from every on-device list without deleting the shared snapshot.
 The palette and monospaced typography mirror the Ottersec Blog theme while
-remaining e-ink friendly.
+remaining e-ink friendly. Feed and menu screens stay in the fast grayscale
+display mode. Article reading uses content-quality refresh, and tapping a valid
+cached image opens a full-screen viewer with 100–400% zoom and drag-to-pan.
 QSettings owns read/unread state, saved page, selected category, and the
 Compact/Standard/Large type choice. This avoids the Paper Pro 3.28 image's
 missing Qt SQLite driver while keeping navigation independent from preference
