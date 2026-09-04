@@ -26,9 +26,11 @@ def test_qml_has_cached_startup_persistence_offline_and_close_contracts():
     for expected in (
         "endpoint.sendMessage(100",
         "endpoint.sendMessage(101",
-        "QtQuick.LocalStorage",
-        "preferences",
-        "articles",
+        "Qt.labs.settings",
+        "readStateJson",
+        "pageStateJson",
+        "toReadStateJson",
+        "likeStateJson",
         "type === 202",
         "type === 203",
         "type === 400",
@@ -38,6 +40,7 @@ def test_qml_has_cached_startup_persistence_offline_and_close_contracts():
         "DisplayMethodArea.Content",
         "DisplayMethodArea.Fast",
         "SECTIONS",
+        "SAVED",
         "Logic.categoryCount",
         'property int railWidth: 292',
         'property color paper: "#ffffff"',
@@ -47,6 +50,23 @@ def test_qml_has_cached_startup_persistence_offline_and_close_contracts():
         'property string monoFont: "monospace"',
     ):
         assert expected in qml
+
+
+def test_article_tap_navigates_before_best_effort_state_persistence():
+    qml = (ROOT / "remarkable/app/ui/Estafette.qml").read_text()
+    function = qml[qml.index("function openArticle"):qml.index("function backOrClose")]
+    assert function.index('screen = "article"') < function.index("setRead(id, true)")
+    assert "root.openArticle(feedRow.modelData.id)" in qml
+    assert "LocalStorage.openDatabaseSync" not in qml
+
+
+def test_feed_has_persistent_read_later_and_like_actions():
+    qml = (ROOT / "remarkable/app/ui/Estafette.qml").read_text()
+    assert 'key: "to-read", label: "To Read"' in qml
+    assert 'key: "liked", label: "Like"' in qml
+    assert 'root.toggleFlag(feedRow.modelData.id, "to-read")' in qml
+    assert 'root.toggleFlag(feedRow.modelData.id, "liked")' in qml
+    assert 'text: likeMap[modelData.id] ? "♥" : "♡"' in qml
 
 
 def test_shared_bicorn_icon_is_a_transparent_monochrome_mask():

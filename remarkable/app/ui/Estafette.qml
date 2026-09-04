@@ -1,7 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
-import QtQuick.LocalStorage 2.0
+import Qt.labs.settings 1.0
 import net.asivery.AppLoad 1.0
 import net.asivery.ApploadUtils
 import "logic.js" as Logic
@@ -34,6 +34,9 @@ Rectangle {
     property var allArticles: []
     property var visibleArticles: []
     property var readMap: ({})
+    property var pageMap: ({})
+    property var toReadMap: ({})
+    property var likeMap: ({})
     property var currentArticle: null
     property string currentArticleId: ""
     property string generatedAt: ""
@@ -42,80 +45,112 @@ Rectangle {
     property int syncDone: 0
     property int syncTotal: 0
     property real typeScale: Logic.fontScale(textSize)
-    property var database: null
+
+    // Paper Pro 3.28 ships the QML LocalStorage module without Qt's SQLite
+    // driver. QSettings is available on the firmware and persists these small
+    // JSON maps without making navigation depend on an optional SQL plugin.
+    Settings {
+        id: readingSettings
+        category: "Estafette"
+        property string selectedCategoryValue: "all"
+        property string textSizeValue: "standard"
+        property string readStateJson: "{}"
+        property string pageStateJson: "{}"
+        property string toReadStateJson: "{}"
+        property string likeStateJson: "{}"
+    }
 
     function unloading() {
         savePage()
     }
 
-    function db() {
-        if (database !== null) return database
-        database = LocalStorage.openDatabaseSync("Estafette", "1.0", "Estafette reading state", 1048576)
-        database.transaction(function(tx) {
-            tx.executeSql("CREATE TABLE IF NOT EXISTS preferences (key TEXT PRIMARY KEY, value TEXT NOT NULL)")
-            tx.executeSql("CREATE TABLE IF NOT EXISTS articles (id TEXT PRIMARY KEY, is_read INTEGER NOT NULL DEFAULT 0, page INTEGER NOT NULL DEFAULT 0)")
-        })
-        return database
+    function storedMap(contents) {
+        try {
+            var parsed = JSON.parse(contents || "{}")
+            if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) return parsed
+        } catch (error) {
+            // Damaged preferences must never prevent the offline reader opening.
+        }
+        return {}
     }
 
     function preference(key, fallback) {
-        var value = fallback
-        db().readTransaction(function(tx) {
-            var result = tx.executeSql("SELECT value FROM preferences WHERE key = ?", [key])
-            if (result.rows.length) value = result.rows.item(0).value
-        })
-        return value
+        try {
+            if (key === "category") return readingSettings.selectedCategoryValue || fallback
+            if (key === "text_size") return readingSettings.textSizeValue || fallback
+        } catch (error) {
+            // Keep the supplied default if platform settings are unavailable.
+        }
+        return fallback
     }
 
     function setPreference(key, value) {
-        db().transaction(function(tx) {
-            tx.executeSql("INSERT OR REPLACE INTO preferences(key, value) VALUES(?, ?)", [key, String(value)])
-        })
+        try {
+            if (key === "category") readingSettings.selectedCategoryValue = String(value)
+            else if (key === "text_size") readingSettings.textSizeValue = String(value)
+        } catch (error) {
+            // Preferences are best effort; controls and navigation remain usable.
+        }
     }
 
     function loadReadState() {
-        var values = {}
-        db().readTransaction(function(tx) {
-            var result = tx.executeSql("SELECT id, is_read FROM articles")
-            for (var index = 0; index < result.rows.length; index++) {
-                var row = result.rows.item(index)
-                values[row.id] = row.is_read === 1
-            }
-        })
-        readMap = values
+        readMap = storedMap(readingSettings.readStateJson)
+        pageMap = storedMap(readingSettings.pageStateJson)
+        toReadMap = storedMap(readingSettings.toReadStateJson)
+        likeMap = storedMap(readingSettings.likeStateJson)
     }
 
     function setRead(id, value) {
-        db().transaction(function(tx) {
-            tx.executeSql("INSERT OR IGNORE INTO articles(id, is_read, page) VALUES(?, 0, 0)", [id])
-            tx.executeSql("UPDATE articles SET is_read = ? WHERE id = ?", [value ? 1 : 0, id])
-        })
         var replacement = {}
         for (var key in readMap) replacement[key] = readMap[key]
         replacement[id] = value
         readMap = replacement
+        try {
+            readingSettings.readStateJson = JSON.stringify(replacement)
+        } catch (error) {
+            // The in-memory unread state is still valid for this session.
+        }
     }
 
     function savedPage(id) {
-        var page = 0
-        db().readTransaction(function(tx) {
-            var result = tx.executeSql("SELECT page FROM articles WHERE id = ?", [id])
-            if (result.rows.length) page = result.rows.item(0).page
-        })
-        return page
+        return Number(pageMap[id] || 0)
+    }
+
+    function toggleFlag(id, kind) {
+        var source = kind === "to-read" ? toReadMap : likeMap
+        var replacement = {}
+        for (var key in source) replacement[key] = source[key]
+        if (replacement[id]) delete replacement[id]
+        else replacement[id] = true
+
+        if (kind === "to-read") toReadMap = replacement
+        else likeMap = replacement
+
+        try {
+            if (kind === "to-read") readingSettings.toReadStateJson = JSON.stringify(replacement)
+            else readingSettings.likeStateJson = JSON.stringify(replacement)
+        } catch (error) {
+            // Favorites remain usable in memory if settings cannot be written.
+        }
+        applyCategory()
     }
 
     function savePage() {
         if (!currentArticleId || screen !== "article") return
         var page = Logic.pageNumber(articleFlick.contentY, articleFlick.height)
-        db().transaction(function(tx) {
-            tx.executeSql("INSERT OR IGNORE INTO articles(id, is_read, page) VALUES(?, 1, 0)", [currentArticleId])
-            tx.executeSql("UPDATE articles SET page = ? WHERE id = ?", [page, currentArticleId])
-        })
+        var replacement = {}
+        for (var key in pageMap) replacement[key] = pageMap[key]
+        replacement[currentArticleId] = page
+        pageMap = replacement
+        try {
+            readingSettings.pageStateJson = JSON.stringify(replacement)
+        } catch (error) {
+            // The current session can continue even if persistence is unavailable.
+        }
     }
 
     function applyCategory() {
-        visibleArticles = Logic.filterCategory(allArticles, selectedCategory)
+        visibleArticles = Logic.filterCategory(allArticles, selectedCategory, toReadMap, likeMap)
     }
 
     function chooseCategory(category) {
@@ -150,12 +185,13 @@ Rectangle {
     }
 
     function openArticle(id) {
+        if (!id) return
         savePage()
         currentArticleId = id
         currentArticle = null
-        setRead(id, true)
         screen = "article"
         statusText = "Opening cached article…"
+        setRead(id, true)
         endpoint.sendMessage(102, JSON.stringify({ id: id }))
     }
 
@@ -462,7 +498,69 @@ Rectangle {
                                 anchors.right: parent.right
                                 anchors.rightMargin: 24
                                 anchors.verticalCenter: parent.verticalCenter
-                                text: Logic.categoryCount(allArticles, modelData.key)
+                                text: Logic.categoryCount(allArticles, modelData.key, toReadMap, likeMap)
+                                color: muted
+                                font.family: monoFont
+                                font.pixelSize: 17
+                            }
+                            MouseArea { anchors.fill: parent; onClicked: chooseCategory(modelData.key) }
+                            DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
+                        }
+                    }
+
+                    Rectangle {
+                        Layout.fillWidth: true
+                        Layout.leftMargin: 28
+                        Layout.rightMargin: 28
+                        Layout.topMargin: 18
+                        Layout.bottomMargin: 18
+                        Layout.preferredHeight: 1
+                        color: quiet
+                    }
+
+                    Text {
+                        Layout.leftMargin: 30
+                        Layout.bottomMargin: 10
+                        text: "SAVED"
+                        color: muted
+                        font.family: monoFont
+                        font.pixelSize: 16
+                    }
+
+                    Repeater {
+                        model: [
+                            { key: "to-read", label: "To Read", icon: "◷" },
+                            { key: "liked", label: "Like", icon: "♡" }
+                        ]
+                        Rectangle {
+                            required property var modelData
+                            Layout.fillWidth: true
+                            Layout.preferredHeight: 76
+                            color: selectedCategory === modelData.key ? panel : softPaper
+
+                            Rectangle {
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                anchors.bottom: parent.bottom
+                                width: 5
+                                visible: selectedCategory === modelData.key
+                                color: accent
+                            }
+                            Text {
+                                anchors.left: parent.left
+                                anchors.leftMargin: 30
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: modelData.icon + "  " + modelData.label
+                                color: selectedCategory === modelData.key ? accent : ink
+                                font.family: monoFont
+                                font.bold: selectedCategory === modelData.key
+                                font.pixelSize: 20
+                            }
+                            Text {
+                                anchors.right: parent.right
+                                anchors.rightMargin: 24
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: Logic.categoryCount(allArticles, modelData.key, toReadMap, likeMap)
                                 color: muted
                                 font.family: monoFont
                                 font.pixelSize: 17
@@ -592,6 +690,7 @@ Rectangle {
                         model: visibleArticles
                         spacing: 0
                         delegate: Rectangle {
+                            id: feedRow
                             required property var modelData
                             required property int index
                             width: feedList.width
@@ -599,6 +698,7 @@ Rectangle {
                             color: paper
 
                             Row {
+                                z: 3
                                 anchors.fill: parent
                                 anchors.leftMargin: 42
                                 anchors.rightMargin: 36
@@ -635,7 +735,7 @@ Rectangle {
 
                                     Row {
                                         width: parent.width
-                                        spacing: 12
+                                        spacing: 10
                                         Rectangle {
                                             width: 11
                                             height: 11
@@ -644,8 +744,47 @@ Rectangle {
                                             color: readMap[modelData.id] ? paper : accent
                                             border.color: readMap[modelData.id] ? quiet : accent
                                         }
+                                        Rectangle {
+                                            width: 42
+                                            height: 42
+                                            color: paper
+                                            border.color: toReadMap[modelData.id] ? accent : quiet
+                                            border.width: 1
+                                            Text {
+                                                anchors.centerIn: parent
+                                                text: "◷"
+                                                color: toReadMap[modelData.id] ? accent : muted
+                                                font.family: monoFont
+                                                font.bold: toReadMap[modelData.id]
+                                                font.pixelSize: 24
+                                            }
+                                            DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
+                                            MouseArea {
+                                                anchors.fill: parent
+                                                onClicked: root.toggleFlag(feedRow.modelData.id, "to-read")
+                                            }
+                                        }
+                                        Rectangle {
+                                            width: 42
+                                            height: 42
+                                            color: paper
+                                            border.color: likeMap[modelData.id] ? accent : quiet
+                                            border.width: 1
+                                            Text {
+                                                anchors.centerIn: parent
+                                                text: likeMap[modelData.id] ? "♥" : "♡"
+                                                color: likeMap[modelData.id] ? accent : muted
+                                                font.family: monoFont
+                                                font.pixelSize: 23
+                                            }
+                                            DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
+                                            MouseArea {
+                                                anchors.fill: parent
+                                                onClicked: root.toggleFlag(feedRow.modelData.id, "liked")
+                                            }
+                                        }
                                         Text {
-                                            width: parent.width - 23
+                                            width: parent.width - 125
                                             text: modelData.title
                                             color: ink
                                             font.family: monoFont
@@ -688,7 +827,12 @@ Rectangle {
                                 height: 1
                                 color: panel
                             }
-                            MouseArea { anchors.fill: parent; onClicked: openArticle(modelData.id) }
+                            MouseArea {
+                                anchors.fill: parent
+                                z: 2
+                                enabled: !!feedRow.modelData && !!feedRow.modelData.id
+                                onClicked: root.openArticle(feedRow.modelData.id)
+                            }
                         }
 
                         Text {

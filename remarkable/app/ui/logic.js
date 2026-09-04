@@ -16,16 +16,30 @@ function newestFirst(articles) {
     })
 }
 
-function filterCategory(articles, category) {
+function filterCategory(articles, category, toReadMap, likeMap) {
     var ordered = newestFirst(articles)
     if (!category || category === "all") return ordered
+    if (category === "to-read") {
+        return ordered.filter(function(article) { return !!(toReadMap && toReadMap[article.id]) })
+    }
+    if (category === "liked") {
+        return ordered.filter(function(article) { return !!(likeMap && likeMap[article.id]) })
+    }
     return ordered.filter(function(article) { return article.category === category })
 }
 
-function categoryCount(articles, category) {
+function categoryCount(articles, category, toReadMap, likeMap) {
     if (!category || category === "all") return (articles || []).length
+    if (category === "to-read") return flaggedCount(articles, toReadMap)
+    if (category === "liked") return flaggedCount(articles, likeMap)
     return (articles || []).reduce(function(total, article) {
         return total + (article.category === category ? 1 : 0)
+    }, 0)
+}
+
+function flaggedCount(articles, flagMap) {
+    return (articles || []).reduce(function(total, article) {
+        return total + (flagMap && flagMap[article.id] ? 1 : 0)
     }, 0)
 }
 
@@ -34,7 +48,9 @@ function categoryLabel(category) {
         "offensive": "Offensive",
         "vuln-dev": "Vuln Dev",
         "threat-intel": "Threat Intel",
-        "general": "General"
+        "general": "General",
+        "to-read": "To Read",
+        "liked": "Like"
     }
     return labels[category] || "All writings"
 }
@@ -112,7 +128,8 @@ if (typeof module !== "undefined") {
     module.exports = {
         newestFirst: newestFirst, filterCategory: filterCategory,
         categoryCount: categoryCount, categoryLabel: categoryLabel,
-        unreadCount: unreadCount, normalizeTextSize: normalizeTextSize,
+        flaggedCount: flaggedCount, unreadCount: unreadCount,
+        normalizeTextSize: normalizeTextSize,
         fontScale: fontScale, pageTarget: pageTarget, pageNumber: pageNumber,
         positionForPage: positionForPage, relativeDate: relativeDate, shortDate: shortDate,
         listText: listText, tableText: tableText, transition: transition

@@ -1,6 +1,6 @@
 # Estafette reader for reMarkable Paper Pro
 
-Status: **public beta (`0.1.0-beta.5`)**. Do not publish `v1.0.0` until the
+Status: **public beta (`0.1.0-beta.6`)**. Do not publish `v1.0.0` until the
 device acceptance checklist at the end of this document passes on the target
 Paper Pro.
 
@@ -87,7 +87,7 @@ estafette/
 └── backend/entry
 ```
 
-`resources.rcc` includes the Qt Quick/Controls/LocalStorage UI. The backend is
+`resources.rcc` includes the Qt Quick/Controls/Settings UI. The backend is
 built with `CGO_ENABLED=0 GOOS=linux GOARCH=arm64`; no libraries are installed
 on the tablet. Persistent content lives at
 `/home/root/.local/share/estafette/`, outside the replaceable app directory.
@@ -116,10 +116,14 @@ all its references readable.
 
 The QML UI requests the cached feed and a refresh on startup. Its persistent
 left rail holds the All, Offensive, Vuln Dev, Threat Intel, and General filters,
-counts, synchronization state, and refresh action. The palette and monospaced
-typography mirror the Ottersec Blog theme while remaining e-ink friendly.
-LocalStorage owns read/unread state, saved page, selected category, and the
-Compact/Standard/Large type choice. Page controls move 90% of the viewport.
+plus persistent To Read and Like views, counts, synchronization state, and the
+refresh action. Each feed headline has compact read-later and heart controls.
+The palette and monospaced typography mirror the Ottersec Blog theme while
+remaining e-ink friendly.
+QSettings owns read/unread state, saved page, selected category, and the
+Compact/Standard/Large type choice. This avoids the Paper Pro 3.28 image's
+missing Qt SQLite driver while keeping navigation independent from preference
+persistence. Page controls move 90% of the viewport.
 AppLoad display-method areas request content-quality refresh for reading and
 fast refresh for controls.
 
