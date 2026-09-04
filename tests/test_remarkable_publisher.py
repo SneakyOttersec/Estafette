@@ -33,6 +33,17 @@ def entry(url, published=None, first_seen="2026-09-01T00:00:00Z", category="gene
 
 
 class SourceStateTests(TestCase):
+    def test_tablet_sources_exclude_portswigger_without_changing_source_file(self):
+        lines = [
+            "https://portswigger.net/research | tag=offensive",
+            "https://research.portswigger.net/ | tag=offensive",
+            "https://example.test/blog | tag=general",
+        ]
+        self.assertEqual(
+            rp.tablet_source_lines(lines),
+            ["https://example.test/blog | tag=general"],
+        )
+
     def test_failed_source_retains_previous_entries_without_touching_other_sources(
         self,
     ):

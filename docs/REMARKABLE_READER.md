@@ -1,6 +1,6 @@
 # Estafette reader for reMarkable Paper Pro
 
-Status: **public beta (`0.1.0-beta.7`)**. Do not publish `v1.0.0` until the
+Status: **public beta (`0.1.0-beta.8`)**. Do not publish `v1.0.0` until the
 device acceptance checklist at the end of this document passes on the target
 Paper Pro.
 
@@ -39,6 +39,9 @@ timeout. Each source record stores its recent feed entries and their first-seen
 times. If one source fails, its prior record is carried forward; a success does
 not depend on any other source. Entries are canonical-URL deduplicated and
 ordered by publication time, falling back to the stable first-seen time.
+
+The tablet publisher excludes PortSwigger and drops its prior tablet-feed state
+on the next successful snapshot. The weekly PDF source list remains unchanged.
 
 The newest extractable 100 articles are published. Previously published,
 unchanged articles and assets are copied from the prior snapshot. New Markdown

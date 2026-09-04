@@ -78,6 +78,14 @@ def test_new_badge_uses_the_article_publication_or_first_seen_date():
     assert 'text: "NEW !"' in qml
 
 
+def test_next_at_article_end_returns_to_the_feed():
+    qml = (ROOT / "remarkable/app/ui/Estafette.qml").read_text()
+    move_page = qml[qml.index("function movePage"):qml.index("AppLoad {")]
+    assert "Logic.isAtEnd(" in move_page
+    assert "backOrClose()" in move_page
+    assert '"WRITINGS ›" : "NEXT ›"' in qml
+
+
 def test_shared_bicorn_icon_is_a_transparent_monochrome_mask():
     icon_path = ROOT / "remarkable/app/icon.png"
     with Image.open(icon_path) as source:

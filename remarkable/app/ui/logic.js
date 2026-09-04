@@ -85,6 +85,11 @@ function positionForPage(page, viewport, contentHeight) {
     return Math.max(0, Math.min(maximum, Number(page || 0) * viewport * 0.9))
 }
 
+function isAtEnd(position, viewport, contentHeight) {
+    var maximum = Math.max(0, contentHeight - viewport)
+    return maximum === 0 || Number(position || 0) >= maximum - 1
+}
+
 function relativeDate(value, nowValue) {
     var when = Date.parse(value || "")
     if (isNaN(when)) return "date unavailable"
@@ -139,7 +144,8 @@ if (typeof module !== "undefined") {
         flaggedCount: flaggedCount, unreadCount: unreadCount,
         normalizeTextSize: normalizeTextSize,
         fontScale: fontScale, pageTarget: pageTarget, pageNumber: pageNumber,
-        positionForPage: positionForPage, relativeDate: relativeDate,
+        positionForPage: positionForPage, isAtEnd: isAtEnd,
+        relativeDate: relativeDate,
         shortDate: shortDate, isNew: isNew,
         listText: listText, tableText: tableText, transition: transition
     }

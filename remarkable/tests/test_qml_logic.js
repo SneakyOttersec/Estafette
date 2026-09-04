@@ -34,6 +34,9 @@ assert.strictEqual(logic.fontScale("large"), 1.22)
 assert.strictEqual(logic.pageTarget(0, 1, 1000, 3000), 900)
 assert.strictEqual(logic.pageTarget(1900, 1, 1000, 2500), 1500)
 assert.strictEqual(logic.positionForPage(2, 1000, 5000), 1800)
+assert.strictEqual(logic.isAtEnd(1500, 1000, 2500), true)
+assert.strictEqual(logic.isAtEnd(1498, 1000, 2500), false)
+assert.strictEqual(logic.isAtEnd(0, 1000, 800), true)
 
 let state = { screen: "empty", sync: "idle", offline: false, imageMissing: false }
 state = logic.transition(state, "cached-feed")

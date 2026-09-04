@@ -207,6 +207,11 @@ Rectangle {
     }
 
     function movePage(direction) {
+        if (direction > 0 && Logic.isAtEnd(
+                articleFlick.contentY, articleFlick.height, articleFlick.contentHeight)) {
+            backOrClose()
+            return
+        }
         articleFlick.contentY = Logic.pageTarget(
             articleFlick.contentY, direction, articleFlick.height, articleFlick.contentHeight
         )
@@ -977,7 +982,14 @@ Rectangle {
                                 Layout.fillHeight: true
                                 color: softPaper
                                 border.color: ink
-                                Text { anchors.centerIn: parent; text: "NEXT ›"; color: ink; font.family: monoFont; font.pixelSize: 18 }
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: Logic.isAtEnd(articleFlick.contentY, articleFlick.height, articleFlick.contentHeight)
+                                          ? "WRITINGS ›" : "NEXT ›"
+                                    color: ink
+                                    font.family: monoFont
+                                    font.pixelSize: 18
+                                }
                                 MouseArea { anchors.fill: parent; onClicked: movePage(1) }
                                 DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
                             }

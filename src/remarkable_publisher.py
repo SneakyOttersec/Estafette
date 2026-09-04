@@ -49,6 +49,7 @@ MAX_JSON_BYTES = 10 * 1024 * 1024
 MAX_IMAGE_BYTES = 40 * 1024 * 1024
 MAX_IMAGE_EDGE = 1400
 DEFAULT_ORIGIN = "https://sneakyottersec.github.io/Estafette"
+TABLET_EXCLUDED_SOURCE_HOSTS = frozenset({"portswigger.net"})
 USER_AGENT = (
     "EstafetteRemarkablePublisher/1.0 (+https://github.com/SneakyOttersec/Estafette)"
 )
@@ -134,6 +135,21 @@ def stable_id(url: str) -> str:
 def source_name(source: str) -> str:
     host = (urlparse(source).hostname or source).lower()
     return host.removeprefix("www.")
+
+
+def tablet_source_lines(lines: Iterable[str]) -> list[str]:
+    """Apply reader-only source exclusions without changing the PDF pipeline."""
+    included: list[str] = []
+    for line in lines:
+        source = parse_source_line(line)["url"]
+        host = (urlparse(source).hostname or "").lower()
+        if any(
+            host == excluded or host.endswith(f".{excluded}")
+            for excluded in TABLET_EXCLUDED_SOURCE_HOSTS
+        ):
+            continue
+        included.append(line)
+    return included
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -898,7 +914,9 @@ def main(argv: list[str] | None = None) -> int:
         previous_root = Path(previous_temp)
         state = _load_archive(args.previous_archive, previous_root)
         old_current = previous_root / CURRENT_PREFIX
-        refreshed, warnings = refresh_sources(read_urls(), state, now)
+        refreshed, warnings = refresh_sources(
+            tablet_source_lines(read_urls()), state, now
+        )
         for warning in warnings:
             print(f"  ! {warning}")
         new_snapshot = Path(new_temp) / CURRENT_PREFIX
