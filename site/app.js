@@ -103,7 +103,7 @@
     date.className = "edition-date";
     date.dateTime = published.toISOString().slice(0, 10);
     day.textContent = published.toLocaleDateString("en-GB", { day: "2-digit" });
-    monthYear.innerHTML = `${published.toLocaleDateString("en-GB", { month: "short" }).toUpperCase()}<br>${published.getUTCFullYear()}`;
+    monthYear.textContent = `${published.toLocaleDateString("en-GB", { month: "short" }).toUpperCase()} ${published.getUTCFullYear()}`;
     date.append(day, monthYear);
 
     copy.className = "edition-copy";
