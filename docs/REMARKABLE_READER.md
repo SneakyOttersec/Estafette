@@ -1,6 +1,6 @@
 # Estafette reader for reMarkable Paper Pro
 
-Status: **public beta (`0.1.0-beta.13`)**. Do not publish `v1.0.0` until the
+Status: **public beta (`0.1.0-beta.14`)**. Do not publish `v1.0.0` until the
 device acceptance checklist at the end of this document passes on the target
 Paper Pro.
 
@@ -121,8 +121,8 @@ The QML UI requests the cached feed and a refresh on startup. Its persistent
 left rail starts with a 72-hour News view, then holds the All, Offensive, Vuln
 Dev, Threat Intel, and General filters, plus persistent To Read and Like views,
 counts, synchronization state, and the refresh action. Each feed headline has
-compact read-later and heart controls; a liked heart is rendered in red using a
-color-capable content refresh. A title search at the top filters the active
+compact read-later and heart controls; a liked heart remains filled in the
+grayscale feed. A title search at the top filters the active
 section case-insensitively. Holding a feed card for two seconds opens its
 actions: assign or replace one personal custom tag, clear that tag, or delete
 the entry. Custom tags are persisted locally and become count-bearing filters
@@ -132,6 +132,9 @@ The palette and monospaced typography mirror the Ottersec Blog theme while
 remaining e-ink friendly. Feed and menu screens stay in the fast grayscale
 display mode. Article reading uses content-quality refresh, and tapping a valid
 cached image opens a full-screen viewer with 100–400% zoom and drag-to-pan.
+Scrollable regions switch to the animation waveform only while moving, use
+pixel-aligned updates, and cap inertial motion to roughly 75 ms so a released
+swipe cannot produce a one-second repaint tail.
 QSettings owns read/unread state, saved page, selected category, and the
 Compact/Standard/Large type choice. This avoids the Paper Pro 3.28 image's
 missing Qt SQLite driver while keeping navigation independent from preference

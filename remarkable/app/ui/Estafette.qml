@@ -27,6 +27,10 @@ Rectangle {
     // the generic family keeps the same rhythm with fonts already on-device.
     property string monoFont: "monospace"
     property int railWidth: 292
+    // Keep kinetic motion shorter than an e-ink refresh cycle. Qt's desktop
+    // default can continue repainting for roughly a second after release.
+    property real scrollDeceleration: 24000
+    property real scrollMaximumVelocity: 1800
 
     property string screen: "feed"
     property string selectedCategory: "all"
@@ -733,6 +737,10 @@ Rectangle {
                         Layout.preferredHeight: visible ? Math.min(4, customTagEntries.length) * 64 : 0
                         clip: true
                         interactive: customTagEntries.length > 4
+                        boundsBehavior: Flickable.StopAtBounds
+                        flickDeceleration: root.scrollDeceleration
+                        maximumFlickVelocity: root.scrollMaximumVelocity
+                        pixelAligned: true
                         model: customTagEntries
                         delegate: Rectangle {
                             required property var modelData
@@ -938,14 +946,29 @@ Rectangle {
                         Rectangle { anchors.left: parent.left; anchors.right: parent.right; anchors.bottom: parent.bottom; height: 1; color: panel }
                     }
 
-                    ListView {
-                        id: feedList
+                    Item {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
-                        clip: true
-                        model: visibleArticles
-                        spacing: 0
-                        delegate: Rectangle {
+
+                        DisplayMethodArea {
+                            anchors.fill: parent
+                            displayMethod: feedList.moving
+                                           ? DisplayMethodArea.Animate
+                                           : DisplayMethodArea.Fast
+                        }
+
+                        ListView {
+                            id: feedList
+                            anchors.fill: parent
+                            clip: true
+                            boundsBehavior: Flickable.StopAtBounds
+                            flickDeceleration: root.scrollDeceleration
+                            maximumFlickVelocity: root.scrollMaximumVelocity
+                            pixelAligned: true
+                            cacheBuffer: height
+                            model: visibleArticles
+                            spacing: 0
+                            delegate: Rectangle {
                             id: feedRow
                             required property var modelData
                             required property int index
@@ -1105,13 +1128,14 @@ Rectangle {
                             }
                         }
 
-                        Text {
-                            anchors.centerIn: parent
-                            visible: visibleArticles.length === 0
-                            text: allArticles.length ? "No writings in this section." : "No cached writings yet."
-                            color: muted
-                            font.family: monoFont
-                            font.pixelSize: 21
+                            Text {
+                                anchors.centerIn: parent
+                                visible: visibleArticles.length === 0
+                                text: allArticles.length ? "No writings in this section." : "No cached writings yet."
+                                color: muted
+                                font.family: monoFont
+                                font.pixelSize: 21
+                            }
                         }
                     }
                 }
@@ -1125,6 +1149,10 @@ Rectangle {
                         anchors.fill: parent
                         anchors.bottomMargin: 94
                         clip: true
+                        boundsBehavior: Flickable.StopAtBounds
+                        flickDeceleration: root.scrollDeceleration
+                        maximumFlickVelocity: root.scrollMaximumVelocity
+                        pixelAligned: true
                         contentWidth: width
                         contentHeight: articleColumn.height + 96
 
@@ -1201,6 +1229,16 @@ Rectangle {
                                 }
                             }
                         }
+                    }
+
+                    DisplayMethodArea {
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        anchors.top: parent.top
+                        anchors.bottom: articleControls.top
+                        displayMethod: articleFlick.moving
+                                       ? DisplayMethodArea.Animate
+                                       : DisplayMethodArea.Content
                     }
 
                     MouseArea { anchors.left: parent.left; anchors.top: parent.top; anchors.bottom: articleControls.top; width: parent.width * 0.20; onClicked: movePage(-1) }
@@ -1324,6 +1362,9 @@ Rectangle {
             anchors.margins: 24
             clip: true
             boundsBehavior: Flickable.StopAtBounds
+            flickDeceleration: root.scrollDeceleration
+            maximumFlickVelocity: root.scrollMaximumVelocity
+            pixelAligned: true
             contentWidth: Math.max(width, zoomedImage.width)
             contentHeight: Math.max(height, zoomedImage.height)
 
@@ -1359,6 +1400,16 @@ Rectangle {
                 font.family: monoFont
                 font.pixelSize: 20
             }
+        }
+
+        DisplayMethodArea {
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: imageViewerHeader.bottom
+            anchors.bottom: imageViewerControls.top
+            displayMethod: imageZoomFlick.moving
+                           ? DisplayMethodArea.Animate
+                           : DisplayMethodArea.Content
         }
 
         Rectangle {
