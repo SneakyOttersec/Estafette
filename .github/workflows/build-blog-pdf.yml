@@ -65,6 +65,11 @@ jobs:
         if: steps.detect.outputs.has_new == 'true'
         run: python src/build_pdf.py
 
+      - name: Package weekly ZIP
+        id: package
+        if: steps.detect.outputs.has_new == 'true'
+        run: python src/package_downloads.py
+
       # Workload Identity Federation keeps Google Cloud service-account keys out
       # of GitHub. These steps remain disabled until the documented repository
       # variables are configured, so forks can still build PDF artifacts alone.
@@ -99,12 +104,29 @@ jobs:
           TOKEN_ENCRYPTION_KEY: ${{ steps.distribution_secrets.outputs.token_encryption_key }}
         run: python backend/distribute.py
 
-      - name: Upload PDF as workflow artifact
+      - name: Publish PDF and ZIP downloads
+        if: steps.detect.outputs.has_new == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          release_tag="edition-${GITHUB_RUN_ID}"
+          release_title="Estafette weekly edition · $(date -u +'%Y-%m-%d')"
+          if gh release view "$release_tag" >/dev/null 2>&1; then
+            gh release upload "$release_tag" dist/*.pdf dist/*.zip --clobber
+          else
+            gh release create "$release_tag" dist/*.pdf dist/*.zip \
+              --title "$release_title" \
+              --notes "Weekly Estafette security-reading bundle. Download a PDF or the complete ZIP archive."
+          fi
+
+      - name: Upload downloads as workflow artifact
         if: steps.detect.outputs.has_new == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: blog-pdf
-          path: dist/*.pdf
+          name: weekly-edition
+          path: |
+            dist/*.pdf
+            dist/*.zip
           if-no-files-found: ignore
 
       - name: Commit updated state

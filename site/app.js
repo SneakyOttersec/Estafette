@@ -7,6 +7,9 @@
   const disconnect = document.querySelector("#disconnect-drive");
   const note = document.querySelector("#connection-note");
   const year = document.querySelector("#year");
+  const editionList = document.querySelector("#edition-list");
+  const editionStatus = document.querySelector("#edition-status");
+  const releasesApi = "https://api.github.com/repos/SneakyOttersec/Estafette/releases?per_page=6";
 
   if (year) {
     year.textContent = new Date().getFullYear().toString();
@@ -21,7 +24,7 @@
   function showStatus(message, isError) {
     if (!note) return;
     note.textContent = message;
-    note.className = isError ? "status error" : "status";
+    note.className = isError ? "connection-note status error" : "connection-note status";
   }
 
   if (apiBaseUrl) {
@@ -57,4 +60,99 @@
   if (params.has("connected") || params.has("disconnected") || params.has("error")) {
     window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
   }
+
+  function formatBytes(bytes) {
+    if (!Number.isFinite(bytes) || bytes <= 0) return "Download";
+    if (bytes < 1024 * 1024) return `${Math.ceil(bytes / 1024)} KB`;
+    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+  }
+
+  function createDownload(asset) {
+    const link = document.createElement("a");
+    const label = document.createElement("span");
+    const type = document.createElement("strong");
+    const size = document.createElement("small");
+    const arrow = document.createElement("b");
+    const extension = asset.name.split(".").pop().toUpperCase();
+
+    link.href = asset.browser_download_url;
+    link.dataset.downloadName = asset.name;
+    type.textContent = extension;
+    size.textContent = formatBytes(asset.size);
+    arrow.textContent = "↓";
+    arrow.setAttribute("aria-hidden", "true");
+    label.append(type, size);
+    link.append(label, arrow);
+    return link;
+  }
+
+  function createEdition(release, assets) {
+    const published = new Date(release.published_at || release.created_at);
+    const card = document.createElement("article");
+    const date = document.createElement("time");
+    const day = document.createElement("strong");
+    const monthYear = document.createElement("span");
+    const copy = document.createElement("div");
+    const label = document.createElement("p");
+    const title = document.createElement("h3");
+    const description = document.createElement("p");
+    const downloads = document.createElement("div");
+
+    card.className = "edition-card";
+    card.dataset.edition = release.tag_name;
+    date.className = "edition-date";
+    date.dateTime = published.toISOString().slice(0, 10);
+    day.textContent = published.toLocaleDateString("en-GB", { day: "2-digit" });
+    monthYear.innerHTML = `${published.toLocaleDateString("en-GB", { month: "short" }).toUpperCase()}<br>${published.getUTCFullYear()}`;
+    date.append(day, monthYear);
+
+    copy.className = "edition-copy";
+    label.className = "edition-label";
+    label.textContent = "Published edition";
+    title.textContent = release.name || "Estafette weekly edition";
+    description.textContent = "The latest security reading bundle, ready for download.";
+    copy.append(label, title, description);
+
+    downloads.className = "download-list";
+    downloads.setAttribute("aria-label", "Edition downloads");
+    for (const asset of assets) downloads.append(createDownload(asset));
+    card.append(date, copy, downloads);
+    return card;
+  }
+
+  async function loadPublishedEditions() {
+    if (!editionList || !editionStatus) return;
+
+    try {
+      const response = await fetch(releasesApi, {
+        headers: { Accept: "application/vnd.github+json" }
+      });
+      if (!response.ok) throw new Error(`GitHub returned ${response.status}`);
+
+      const releases = await response.json();
+      const knownNames = new Set(
+        Array.from(document.querySelectorAll("[data-download-name]"), (link) => link.dataset.downloadName)
+      );
+      let added = 0;
+
+      for (const release of releases.slice().reverse()) {
+        const assets = (release.assets || []).filter((asset) => {
+          const isDownload = /\.(pdf|zip)$/i.test(asset.name);
+          return isDownload && !knownNames.has(asset.name);
+        });
+        if (!assets.length) continue;
+        for (const asset of assets) knownNames.add(asset.name);
+        editionList.prepend(createEdition(release, assets));
+        added += 1;
+      }
+
+      editionStatus.textContent = added
+        ? "Showing the newest public releases and the original archive edition."
+        : "Showing the latest available edition. New releases appear here automatically.";
+    } catch (_error) {
+      editionStatus.textContent = "Showing the latest available edition. Release updates are temporarily unavailable.";
+    }
+  }
+
+  loadPublishedEditions();
 })();

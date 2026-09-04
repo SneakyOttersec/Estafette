@@ -132,9 +132,10 @@ or set it locally (`PDF_LAYOUT=twocol python src/build_pdf.py`).
 
 ## Google Drive registration app
 
-The static frontend in `site/` matches the visual language of the
-[Ottersec Blog](https://sneakyottersec.github.io/): JetBrains Mono, its compact
-48-rem layout, and the same charcoal, off-white, muted green, and red palette.
+The static frontend in `site/` has its own Estafette identity and a responsive
+download archive. The latest PDF and ZIP are available directly from the home
+page; future weekly builds publish both formats as GitHub Release assets, which
+the page discovers automatically through GitHub's public API.
 
 Users connect through a Cloud Run OAuth callback. The app requests Google's
 narrow `drive.file` scope, creates a user-owned `Estafette` folder, and stores
@@ -171,6 +172,7 @@ Then run the steps in order:
 python src/detect.py        # discovers feeds, writes work/new_posts.json
 python src/extract.py       # writes work/<slug>/article.md + images
 python src/build_pdf.py     # writes dist/<TAG>_<DD_MM_YYYY>.pdf
+python src/package_downloads.py  # bundles all generated PDFs into one ZIP
 
 # To test multi-user distribution locally, authenticate Application Default
 # Credentials and export the backend values documented in the deployment guide:
