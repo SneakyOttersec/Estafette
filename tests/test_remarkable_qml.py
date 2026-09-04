@@ -2,6 +2,8 @@ import shutil
 import subprocess
 from pathlib import Path
 
+from PIL import Image
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -45,3 +47,14 @@ def test_qml_has_cached_startup_persistence_offline_and_close_contracts():
         'property string monoFont: "monospace"',
     ):
         assert expected in qml
+
+
+def test_shared_bicorn_icon_is_a_transparent_monochrome_mask():
+    icon_path = ROOT / "remarkable/app/icon.png"
+    with Image.open(icon_path) as source:
+        icon = source.convert("RGBA")
+    assert icon.size == (512, 512)
+    assert icon.getpixel((0, 0))[3] == 0
+    assert icon.getpixel((256, 350)) == (0, 0, 0, 255)
+    assert icon.getchannel("A").getextrema() == (0, 255)
+    assert all(red == green == blue == 0 for red, green, blue, alpha in icon.getdata() if alpha)
