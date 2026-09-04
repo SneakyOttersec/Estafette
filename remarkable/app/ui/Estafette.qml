@@ -745,8 +745,8 @@ Rectangle {
                                             border.color: readMap[modelData.id] ? quiet : accent
                                         }
                                         Rectangle {
-                                            width: 42
-                                            height: 42
+                                            width: 64
+                                            height: 64
                                             color: paper
                                             border.color: toReadMap[modelData.id] ? accent : quiet
                                             border.width: 1
@@ -756,7 +756,7 @@ Rectangle {
                                                 color: toReadMap[modelData.id] ? accent : muted
                                                 font.family: monoFont
                                                 font.bold: toReadMap[modelData.id]
-                                                font.pixelSize: 24
+                                                font.pixelSize: 40
                                             }
                                             DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
                                             MouseArea {
@@ -765,8 +765,8 @@ Rectangle {
                                             }
                                         }
                                         Rectangle {
-                                            width: 42
-                                            height: 42
+                                            width: 64
+                                            height: 64
                                             color: paper
                                             border.color: likeMap[modelData.id] ? accent : quiet
                                             border.width: 1
@@ -775,7 +775,7 @@ Rectangle {
                                                 text: likeMap[modelData.id] ? "♥" : "♡"
                                                 color: likeMap[modelData.id] ? accent : muted
                                                 font.family: monoFont
-                                                font.pixelSize: 23
+                                                font.pixelSize: 39
                                             }
                                             DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
                                             MouseArea {
@@ -784,7 +784,7 @@ Rectangle {
                                             }
                                         }
                                         Text {
-                                            width: parent.width - 125
+                                            width: parent.width - 169
                                             text: modelData.title
                                             color: ink
                                             font.family: monoFont

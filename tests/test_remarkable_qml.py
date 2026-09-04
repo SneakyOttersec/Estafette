@@ -67,6 +67,8 @@ def test_feed_has_persistent_read_later_and_like_actions():
     assert 'root.toggleFlag(feedRow.modelData.id, "to-read")' in qml
     assert 'root.toggleFlag(feedRow.modelData.id, "liked")' in qml
     assert 'text: likeMap[modelData.id] ? "♥" : "♡"' in qml
+    assert qml.count("width: 64") >= 2
+    assert qml.count("height: 64") >= 2
 
 
 def test_shared_bicorn_icon_is_a_transparent_monochrome_mask():
