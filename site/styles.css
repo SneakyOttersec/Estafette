@@ -121,7 +121,7 @@ code {
   height: 50px;
   margin-right: 20px;
   border-radius: 5px;
-  background: var(--foreground) url("favicon.svg") center / 50px 50px no-repeat;
+  background: url("favicon.svg") center / 50px 50px no-repeat;
 }
 
 .brand-copy {

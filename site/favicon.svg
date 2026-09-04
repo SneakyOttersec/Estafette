@@ -1,10 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="7" fill="#22272a"/>
-  <g transform="rotate(-3 32 32)">
-    <path d="M13 13h38v39H13z" fill="#fafafa" stroke="#fafafa" stroke-linejoin="round" stroke-width="2"/>
-    <path d="M18 18h28v8H18z" fill="#cc2a41"/>
-    <path d="M21 20.5h22M21 23.5h22" stroke="#fafafa" stroke-width="1.5"/>
-    <path d="M18 31h12v9H18z" fill="#567c77"/>
-    <path d="M34 31h12M34 35h12M34 39h12M18 44h28M18 48h23" fill="none" stroke="#22272a" stroke-linecap="square" stroke-width="2"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Estafette bicorn hat</title>
+  <rect width="512" height="512" rx="72" fill="#f7f4ed"/>
+  <path d="M146 307 183 174q30-30 73-30t73 30l37 133Z" fill="#22272a"/>
+  <path d="M48 267q82 53 208 53t208-53q-32 91-208 121Q80 358 48 267Z" fill="#22272a"/>
+  <path d="M77 291q76 59 179 59t179-59" fill="none" stroke="#567c77" stroke-linecap="round" stroke-width="12"/>
+  <path d="m143 314-9 48 27-18 18 27 7-53Z" fill="#cc2a41"/>
+  <circle cx="166" cy="294" r="39" fill="#cc2a41"/>
+  <circle cx="166" cy="294" r="25" fill="#f7f4ed"/>
+  <circle cx="166" cy="294" r="12" fill="#567c77"/>
 </svg>
