@@ -16,7 +16,15 @@ function newestFirst(articles) {
     })
 }
 
-function filterCategory(articles, category, toReadMap, likeMap, deletedMap, nowValue) {
+function normalizeTag(value) {
+    return String(value || "").trim().replace(/\s+/g, " ").slice(0, 32)
+}
+
+function tagKey(value) {
+    return normalizeTag(value).toLowerCase()
+}
+
+function filterCategory(articles, category, toReadMap, likeMap, deletedMap, tagMap, nowValue) {
     var ordered = newestFirst(articles).filter(function(article) {
         return !(deletedMap && deletedMap[article.id])
     })
@@ -32,6 +40,12 @@ function filterCategory(articles, category, toReadMap, likeMap, deletedMap, nowV
     if (category === "liked") {
         return ordered.filter(function(article) { return !!(likeMap && likeMap[article.id]) })
     }
+    if (String(category || "").indexOf("tag:") === 0) {
+        var wantedTag = String(category).slice(4)
+        return ordered.filter(function(article) {
+            return tagKey(tagMap && tagMap[article.id]) === wantedTag
+        })
+    }
     return ordered.filter(function(article) { return article.category === category })
 }
 
@@ -43,10 +57,29 @@ function filterTitle(articles, query) {
     })
 }
 
-function categoryCount(articles, category, toReadMap, likeMap, deletedMap, nowValue) {
+function categoryCount(articles, category, toReadMap, likeMap, deletedMap, tagMap, nowValue) {
     return filterCategory(
-        articles, category, toReadMap, likeMap, deletedMap, nowValue
+        articles, category, toReadMap, likeMap, deletedMap, tagMap, nowValue
     ).length
+}
+
+function tagEntries(articles, tagMap, deletedMap) {
+    var labels = {}
+    var counts = {}
+    var items = articles || []
+    items.forEach(function(article) {
+        if (deletedMap && deletedMap[article.id]) return
+        var label = normalizeTag(tagMap && tagMap[article.id])
+        if (!label) return
+        var key = tagKey(label)
+        if (!labels[key]) labels[key] = label
+        counts[key] = (counts[key] || 0) + 1
+    })
+    return Object.keys(counts).sort(function(left, right) {
+        return labels[left].toLowerCase().localeCompare(labels[right].toLowerCase())
+    }).map(function(key) {
+        return { key: "tag:" + key, label: labels[key], count: counts[key] }
+    })
 }
 
 function flaggedCount(articles, flagMap) {
@@ -55,7 +88,13 @@ function flaggedCount(articles, flagMap) {
     }, 0)
 }
 
-function categoryLabel(category) {
+function categoryLabel(category, tags) {
+    if (String(category || "").indexOf("tag:") === 0) {
+        for (var index = 0; index < (tags || []).length; index += 1) {
+            if (tags[index].key === category) return "# " + tags[index].label
+        }
+        return "# " + String(category).slice(4)
+    }
     var labels = {
         "news": "News",
         "offensive": "Offensive",
@@ -156,6 +195,7 @@ if (typeof module !== "undefined") {
         newestFirst: newestFirst, filterCategory: filterCategory,
         filterTitle: filterTitle,
         categoryCount: categoryCount, categoryLabel: categoryLabel,
+        normalizeTag: normalizeTag, tagKey: tagKey, tagEntries: tagEntries,
         flaggedCount: flaggedCount, unreadCount: unreadCount,
         normalizeTextSize: normalizeTextSize,
         fontScale: fontScale, pageTarget: pageTarget, pageNumber: pageNumber,

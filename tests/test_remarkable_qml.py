@@ -82,6 +82,22 @@ def test_feed_has_title_search_and_color_quality_for_liked_hearts():
     assert "displayMethod: DisplayMethodArea.Content" in heart
 
 
+def test_long_press_menu_persists_and_filters_custom_tags():
+    qml = (ROOT / "remarkable/app/ui/Estafette.qml").read_text()
+    assert 'property string tagStateJson: "{}"' in qml
+    assert "pressAndHoldInterval: 2000" in qml
+    assert "root.openFeedArticleMenu(feedRow.modelData)" in qml
+    assert 'text: "ARTICLE OPTIONS"' in qml
+    assert 'placeholderText: "Add a custom tag"' in qml
+    assert 'text: "SAVE TAG"' in qml
+    assert 'text: "CLEAR TAG"' in qml
+    assert 'text: "DELETE ENTRY"' in qml
+    assert 'text: "TAGS"' in qml
+    assert "model: customTagEntries" in qml
+    assert "readingSettings.tagStateJson = JSON.stringify(replacement)" in qml
+    assert "tagMap = withoutKey(tagMap, id)" in qml
+
+
 def test_news_precedes_all_writings_and_delete_is_persistent():
     qml = (ROOT / "remarkable/app/ui/Estafette.qml").read_text()
     news = qml.index('{ key: "news", label: "News" }')

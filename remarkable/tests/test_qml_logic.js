@@ -15,7 +15,7 @@ const articles = [
 ]
 assert.deepStrictEqual(Array.from(logic.newestFirst(articles), x => x.id), ["new", "fallback", "old"])
 assert.deepStrictEqual(Array.from(logic.filterCategory(articles, "general"), x => x.id), ["fallback", "old"])
-assert.deepStrictEqual(Array.from(logic.filterCategory(articles, "news", {}, {}, {}, Date.parse("2026-09-04T00:00:00Z")), x => x.id), ["new", "fallback"])
+assert.deepStrictEqual(Array.from(logic.filterCategory(articles, "news", {}, {}, {}, {}, Date.parse("2026-09-04T00:00:00Z")), x => x.id), ["new", "fallback"])
 assert.deepStrictEqual(Array.from(logic.filterCategory(articles, "to-read", { fallback: true }), x => x.id), ["fallback"])
 assert.deepStrictEqual(Array.from(logic.filterCategory(articles, "liked", {}, { old: true, new: true }), x => x.id), ["new", "old"])
 assert.deepStrictEqual(Array.from(logic.filterCategory(articles, "all", {}, {}, { fallback: true }), x => x.id), ["new", "old"])
@@ -23,12 +23,26 @@ assert.deepStrictEqual(Array.from(logic.filterTitle(articles, "SECURITY"), x => 
 assert.deepStrictEqual(Array.from(logic.filterTitle(articles, " perimeter "), x => x.id), ["new"])
 assert.deepStrictEqual(Array.from(logic.filterTitle(articles, ""), x => x.id), ["old", "new", "fallback"])
 assert.deepStrictEqual(Array.from(logic.filterTitle([{ id: "missing-title" }], "security"), x => x.id), [])
+const tags = { old: "  Deep   Dive  ", new: "deep dive", fallback: "Later" }
+assert.strictEqual(logic.normalizeTag("  Deep   Dive  "), "Deep Dive")
+assert.strictEqual(logic.normalizeTag("123456789012345678901234567890123456"), "12345678901234567890123456789012")
+assert.strictEqual(logic.tagKey("Deep Dive"), "deep dive")
+assert.deepStrictEqual(Array.from(logic.filterCategory(articles, "tag:deep dive", {}, {}, {}, tags), x => x.id), ["new", "old"])
+assert.deepStrictEqual(Array.from(logic.filterCategory(articles, "tag:later", {}, {}, { fallback: true }, tags), x => x.id), [])
+assert.deepStrictEqual(Array.from(logic.tagEntries(articles, tags), x => [x.key, x.label, x.count]), [
+  ["tag:deep dive", "Deep Dive", 2], ["tag:later", "Later", 1]
+])
+assert.deepStrictEqual(Array.from(logic.tagEntries(articles, tags, { old: true }), x => [x.key, x.label, x.count]), [
+  ["tag:deep dive", "deep dive", 1], ["tag:later", "Later", 1]
+])
+assert.strictEqual(logic.categoryLabel("tag:deep dive", logic.tagEntries(articles, tags)), "# Deep Dive")
 assert.strictEqual(logic.categoryCount(articles, "all"), 3)
 assert.strictEqual(logic.categoryCount(articles, "general"), 2)
-assert.strictEqual(logic.categoryCount(articles, "news", {}, {}, {}, Date.parse("2026-09-04T00:00:00Z")), 2)
+assert.strictEqual(logic.categoryCount(articles, "news", {}, {}, {}, {}, Date.parse("2026-09-04T00:00:00Z")), 2)
 assert.strictEqual(logic.categoryCount(articles, "to-read", { old: true }), 1)
 assert.strictEqual(logic.categoryCount(articles, "liked", {}, { new: true }), 1)
 assert.strictEqual(logic.categoryCount(articles, "liked", {}, { old: true, new: true }, { new: true }), 1)
+assert.strictEqual(logic.categoryCount(articles, "tag:deep dive", {}, {}, {}, tags), 2)
 assert.strictEqual(logic.categoryLabel("news"), "News")
 assert.strictEqual(logic.categoryLabel("threat-intel"), "Threat Intel")
 assert.strictEqual(logic.categoryLabel("to-read"), "To Read")

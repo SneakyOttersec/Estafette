@@ -39,6 +39,10 @@ Rectangle {
     property var toReadMap: ({})
     property var likeMap: ({})
     property var deletedMap: ({})
+    property var tagMap: ({})
+    property var customTagEntries: []
+    property string actionArticleId: ""
+    property string actionArticleTitle: ""
     property var currentArticle: null
     property string currentArticleId: ""
     property string generatedAt: ""
@@ -61,6 +65,7 @@ Rectangle {
         property string toReadStateJson: "{}"
         property string likeStateJson: "{}"
         property string deletedStateJson: "{}"
+        property string tagStateJson: "{}"
     }
 
     function unloading() {
@@ -102,6 +107,8 @@ Rectangle {
         toReadMap = storedMap(readingSettings.toReadStateJson)
         likeMap = storedMap(readingSettings.likeStateJson)
         deletedMap = storedMap(readingSettings.deletedStateJson)
+        tagMap = storedMap(readingSettings.tagStateJson)
+        updateTagEntries()
     }
 
     function setRead(id, value) {
@@ -147,6 +154,42 @@ Rectangle {
         return replacement
     }
 
+    function updateTagEntries() {
+        customTagEntries = Logic.tagEntries(allArticles, tagMap, deletedMap)
+    }
+
+    function setArticleTag(id, value) {
+        if (!id) return
+        var normalized = Logic.normalizeTag(value)
+        var replacement = {}
+        for (var key in tagMap) replacement[key] = tagMap[key]
+        if (normalized) replacement[id] = normalized
+        else delete replacement[id]
+        tagMap = replacement
+        try {
+            readingSettings.tagStateJson = JSON.stringify(replacement)
+        } catch (error) {
+            // Custom tags remain usable in memory if settings cannot be written.
+        }
+        updateTagEntries()
+        applyCategory()
+        statusText = normalized ? "Tagged #" + normalized : "Custom tag cleared"
+    }
+
+    function openFeedArticleMenu(article) {
+        if (!article || !article.id) return
+        actionArticleId = article.id
+        actionArticleTitle = article.title || "Article"
+        feedTagEditor.text = tagMap[article.id] || ""
+        feedTagEditor.focus = false
+        feedArticleMenu.open()
+    }
+
+    function closeFeedArticleMenu() {
+        feedTagEditor.focus = false
+        feedArticleMenu.close()
+    }
+
     function deleteArticle(id) {
         if (!id) return
         savePage()
@@ -157,11 +200,13 @@ Rectangle {
         deletedMap = replacement
         toReadMap = withoutKey(toReadMap, id)
         likeMap = withoutKey(likeMap, id)
+        tagMap = withoutKey(tagMap, id)
 
         try {
             readingSettings.deletedStateJson = JSON.stringify(deletedMap)
             readingSettings.toReadStateJson = JSON.stringify(toReadMap)
             readingSettings.likeStateJson = JSON.stringify(likeMap)
+            readingSettings.tagStateJson = JSON.stringify(tagMap)
         } catch (error) {
             // The entry remains removed in memory if settings cannot be written.
         }
@@ -169,6 +214,7 @@ Rectangle {
         screen = "feed"
         currentArticle = null
         currentArticleId = ""
+        updateTagEntries()
         applyCategory()
         statusText = "Removed from list"
     }
@@ -189,7 +235,7 @@ Rectangle {
 
     function applyCategory() {
         var categoryArticles = Logic.filterCategory(
-            allArticles, selectedCategory, toReadMap, likeMap, deletedMap
+            allArticles, selectedCategory, toReadMap, likeMap, deletedMap, tagMap
         )
         visibleArticles = Logic.filterTitle(categoryArticles, searchQuery)
     }
@@ -209,6 +255,7 @@ Rectangle {
             var feed = JSON.parse(contents)
             allArticles = Logic.newestFirst(feed.articles || [])
             generatedAt = feed.generated_at || ""
+            updateTagEntries()
             applyCategory()
             statusText = syncing ? "Synchronizing offline library…" : "Updated " + Logic.relativeDate(generatedAt)
         } catch (error) {
@@ -546,7 +593,7 @@ Rectangle {
                                 anchors.rightMargin: 24
                                 anchors.verticalCenter: parent.verticalCenter
                                 text: Logic.categoryCount(
-                                    allArticles, modelData.key, toReadMap, likeMap, deletedMap
+                                    allArticles, modelData.key, toReadMap, likeMap, deletedMap, tagMap
                                 )
                                 color: muted
                                 font.family: monoFont
@@ -610,8 +657,70 @@ Rectangle {
                                 anchors.rightMargin: 24
                                 anchors.verticalCenter: parent.verticalCenter
                                 text: Logic.categoryCount(
-                                    allArticles, modelData.key, toReadMap, likeMap, deletedMap
+                                    allArticles, modelData.key, toReadMap, likeMap, deletedMap, tagMap
                                 )
+                                color: muted
+                                font.family: monoFont
+                                font.pixelSize: 17
+                            }
+                            MouseArea { anchors.fill: parent; onClicked: chooseCategory(modelData.key) }
+                            DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
+                        }
+                    }
+
+                    Text {
+                        visible: customTagEntries.length > 0
+                        Layout.preferredHeight: visible ? implicitHeight : 0
+                        Layout.leftMargin: 30
+                        Layout.topMargin: visible ? 20 : 0
+                        Layout.bottomMargin: visible ? 10 : 0
+                        text: "TAGS"
+                        color: muted
+                        font.family: monoFont
+                        font.pixelSize: 16
+                    }
+
+                    ListView {
+                        id: customTagList
+                        visible: customTagEntries.length > 0
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: visible ? Math.min(4, customTagEntries.length) * 64 : 0
+                        clip: true
+                        interactive: customTagEntries.length > 4
+                        model: customTagEntries
+                        delegate: Rectangle {
+                            required property var modelData
+                            width: customTagList.width
+                            height: 64
+                            color: selectedCategory === modelData.key ? panel : softPaper
+
+                            Rectangle {
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                anchors.bottom: parent.bottom
+                                width: 5
+                                visible: selectedCategory === modelData.key
+                                color: accent
+                            }
+                            Text {
+                                anchors.left: parent.left
+                                anchors.leftMargin: 30
+                                anchors.right: tagCount.left
+                                anchors.rightMargin: 8
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: "# " + modelData.label
+                                color: selectedCategory === modelData.key ? accent : ink
+                                font.family: monoFont
+                                font.bold: selectedCategory === modelData.key
+                                font.pixelSize: 18
+                                elide: Text.ElideRight
+                            }
+                            Text {
+                                id: tagCount
+                                anchors.right: parent.right
+                                anchors.rightMargin: 24
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: modelData.count
                                 color: muted
                                 font.family: monoFont
                                 font.pixelSize: 17
@@ -717,7 +826,7 @@ Rectangle {
                             anchors.rightMargin: 36
                             Text {
                                 Layout.preferredWidth: 210
-                                text: selectedCategory === "all" ? "Latest 100" : Logic.categoryLabel(selectedCategory)
+                                text: selectedCategory === "all" ? "Latest 100" : Logic.categoryLabel(selectedCategory, customTagEntries)
                                 color: secondary
                                 font.family: monoFont
                                 font.bold: true
@@ -910,7 +1019,9 @@ Rectangle {
                                     }
                                     Text {
                                         width: parent.width
-                                        text: "#" + modelData.category + ((modelData.topics || []).length ? "  ·  " + (modelData.topics || []).join("  #") : "")
+                                        text: "#" + modelData.category
+                                              + (tagMap[modelData.id] ? "  ·  CUSTOM #" + tagMap[modelData.id] : "")
+                                              + ((modelData.topics || []).length ? "  ·  " + (modelData.topics || []).join("  #") : "")
                                         color: accent
                                         font.family: monoFont
                                         font.pixelSize: 14
@@ -932,7 +1043,19 @@ Rectangle {
                                 anchors.fill: parent
                                 z: 2
                                 enabled: !!feedRow.modelData && !!feedRow.modelData.id
-                                onClicked: root.openArticle(feedRow.modelData.id)
+                                property bool menuTriggered: false
+                                onPressed: menuTriggered = false
+                                onClicked: {
+                                    if (!menuTriggered) root.openArticle(feedRow.modelData.id)
+                                    menuTriggered = false
+                                }
+                                pressAndHoldInterval: 2000
+                                onPressAndHold: function(mouse) {
+                                    menuTriggered = true
+                                    mouse.accepted = true
+                                    root.openFeedArticleMenu(feedRow.modelData)
+                                }
+                                onCanceled: menuTriggered = false
                             }
                         }
 
@@ -1092,6 +1215,115 @@ Rectangle {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    Popup {
+        id: feedArticleMenu
+        anchors.centerIn: parent
+        width: 700
+        height: 510
+        modal: true
+        padding: 0
+        background: Rectangle { color: paper; border.color: ink; border.width: 2 }
+
+        ColumnLayout {
+            anchors.fill: parent
+            anchors.margins: 26
+            spacing: 14
+
+            Text {
+                text: "ARTICLE OPTIONS"
+                color: accent
+                font.family: monoFont
+                font.bold: true
+                font.pixelSize: 25
+            }
+            Text {
+                Layout.fillWidth: true
+                text: actionArticleTitle
+                color: ink
+                font.family: monoFont
+                font.pixelSize: 18
+                maximumLineCount: 2
+                wrapMode: Text.Wrap
+                elide: Text.ElideRight
+            }
+            TextField {
+                id: feedTagEditor
+                Layout.fillWidth: true
+                Layout.preferredHeight: 62
+                placeholderText: "Add a custom tag"
+                maximumLength: 32
+                color: ink
+                placeholderTextColor: muted
+                selectionColor: accent
+                selectedTextColor: paper
+                font.family: monoFont
+                font.pixelSize: 20
+                leftPadding: 18
+                rightPadding: 18
+                inputMethodHints: Qt.ImhNoPredictiveText
+                background: Rectangle { color: paper; border.color: secondary; border.width: 2 }
+            }
+            Rectangle {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 62
+                color: softPaper
+                border.color: ink
+                Text { anchors.centerIn: parent; text: "SAVE TAG"; color: ink; font.family: monoFont; font.bold: true; font.pixelSize: 18 }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        root.setArticleTag(root.actionArticleId, feedTagEditor.text)
+                        root.closeFeedArticleMenu()
+                    }
+                }
+                DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
+            }
+            RowLayout {
+                Layout.fillWidth: true
+                spacing: 14
+                Rectangle {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 62
+                    color: paper
+                    border.color: quiet
+                    Text { anchors.centerIn: parent; text: "CLEAR TAG"; color: ink; font.family: monoFont; font.pixelSize: 18 }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            root.setArticleTag(root.actionArticleId, "")
+                            root.closeFeedArticleMenu()
+                        }
+                    }
+                    DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
+                }
+                Rectangle {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 62
+                    color: paper
+                    border.color: accent
+                    Text { anchors.centerIn: parent; text: "DELETE ENTRY"; color: accent; font.family: monoFont; font.bold: true; font.pixelSize: 18 }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            var id = root.actionArticleId
+                            root.closeFeedArticleMenu()
+                            root.deleteArticle(id)
+                        }
+                    }
+                    DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
+                }
+            }
+            Text {
+                Layout.alignment: Qt.AlignHCenter
+                text: "close"
+                color: muted
+                font.family: monoFont
+                font.pixelSize: 16
+                MouseArea { anchors.fill: parent; anchors.margins: -12; onClicked: root.closeFeedArticleMenu() }
             }
         }
     }

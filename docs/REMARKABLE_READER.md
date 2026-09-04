@@ -1,6 +1,6 @@
 # Estafette reader for reMarkable Paper Pro
 
-Status: **public beta (`0.1.0-beta.11`)**. Do not publish `v1.0.0` until the
+Status: **public beta (`0.1.0-beta.12`)**. Do not publish `v1.0.0` until the
 device acceptance checklist at the end of this document passes on the target
 Paper Pro.
 
@@ -123,7 +123,10 @@ Dev, Threat Intel, and General filters, plus persistent To Read and Like views,
 counts, synchronization state, and the refresh action. Each feed headline has
 compact read-later and heart controls; a liked heart is rendered in red using a
 color-capable content refresh. A title search at the top filters the active
-section case-insensitively. The article menu can persistently remove
+section case-insensitively. Holding a feed card for two seconds opens its
+actions: assign or replace one personal custom tag, clear that tag, or delete
+the entry. Custom tags are persisted locally and become count-bearing filters
+in the left rail. The article menu can persistently remove
 an entry from every on-device list without deleting the shared snapshot.
 The palette and monospaced typography mirror the Ottersec Blog theme while
 remaining e-ink friendly.
