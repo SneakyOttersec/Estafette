@@ -739,6 +739,43 @@ a[aria-disabled="true"] {
   font-size: 0.9rem;
 }
 
+.install-page {
+  max-width: 48rem;
+}
+
+.install-summary {
+  margin-top: 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px dotted var(--muted);
+}
+
+.install-summary p {
+  margin: 0.25rem 0;
+  overflow-wrap: anywhere;
+}
+
+.install-summary strong {
+  display: inline-block;
+  width: 11rem;
+  color: var(--secondary);
+}
+
+.install-page pre {
+  max-width: 100%;
+  padding: 1rem;
+  overflow-x: auto;
+  border: 1px dotted var(--muted);
+  background: #efede7;
+  font: 0.78rem/1.6 "JetBrains Mono", monospace;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.install-page pre code {
+  padding: 0;
+  border: 0;
+}
+
 @media (min-width: 480px) {
   .hero p,
   .drive-card > p,

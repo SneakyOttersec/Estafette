@@ -1,0 +1,32 @@
+AFFECT [[2328484894988065446]]
+    TRAVERSE [[8397788359424131273]]
+        TRAVERSE ?#[[254540341572282132]]
+            LOCATE BEFORE ALL
+            INSERT {
+                apploadVKB: _apploadVirtualKeyboard
+                apploadWindowParent: windowParent
+            }
+        END TRAVERSE
+        LOCATE AFTER [[8397993708429497603]]#rootItem
+        INSERT {
+            Item {
+                id: windowParent
+                anchors.fill: parent
+            }
+            Loader {
+                id: _apploadVirtualKeyboard
+                property var layout: null
+                property var config: null
+                width: parent.width
+                anchors.bottom: parent.bottom
+                anchors.horizontalCenter: parent.horizontalCenter
+                active: false
+                visible: active
+                source: "qrc:/appload/qml/virtualKeyboard/Keyboard.qml"
+                onLoaded: () => {
+                    _apploadVirtualKeyboard.item.rebuildKeyboard(_apploadVirtualKeyboard.layout, _apploadVirtualKeyboard.config);
+                }
+            }
+        }
+    END TRAVERSE
+END AFFECT

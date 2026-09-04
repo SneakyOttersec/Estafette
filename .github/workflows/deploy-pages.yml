@@ -1,12 +1,7 @@
-name: Deploy Estafette registration page
+name: Redeploy Estafette site from validated snapshot
 
 on:
   workflow_dispatch: {}
-  push:
-    branches: [main]
-    paths:
-      - "site/**"
-      - ".github/workflows/deploy-pages.yml"
 
 permissions:
   contents: read
@@ -15,7 +10,7 @@ permissions:
 
 concurrency:
   group: github-pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -30,8 +25,18 @@ jobs:
       - name: Configure registration endpoint
         env:
           ESTAFETTE_API_URL: ${{ vars.ESTAFETTE_API_URL }}
-          REMARKABLE_APP_URL: ${{ vars.REMARKABLE_APP_URL }}
-        run: envsubst '$ESTAFETTE_API_URL $REMARKABLE_APP_URL' < site/config.template.js > site/config.js
+        run: envsubst '$ESTAFETTE_API_URL' < site/config.template.js > site/config.js
+
+      - name: Expand the last validated reMarkable snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/estafette-release
+          gh release download remarkable-content \
+            --pattern remarkable-content.tar.gz \
+            --dir /tmp/estafette-release
+          python src/expand_remarkable_snapshot.py \
+            /tmp/estafette-release/remarkable-content.tar.gz site
 
       - name: Configure Pages
         # The repository's Pages publishing source is configured as GitHub Actions.

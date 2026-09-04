@@ -114,10 +114,9 @@ Under **Settings → Secrets and variables → Actions → Variables**, configur
 | `GCP_RUNTIME_SERVICE_ACCOUNT` | `estafette-runtime@estafette-prod.iam.gserviceaccount.com` |
 | `GOOGLE_OAUTH_REDIRECT_URI` | `https://SERVICE.run.app/auth/callback` |
 | `ESTAFETTE_API_URL` | `https://SERVICE.run.app` |
-| `REMARKABLE_APP_URL` | Public URL of the reMarkable installer (optional) |
-
-`ESTAFETTE_API_URL` and `REMARKABLE_APP_URL` are public configuration injected
-into the Pages artifact; they are not secrets.
+`ESTAFETTE_API_URL` is public configuration injected into the Pages artifact;
+it is not a secret. The reMarkable installer always uses its same-origin Pages
+path and needs no repository variable.
 
 ## 6. Deploy
 

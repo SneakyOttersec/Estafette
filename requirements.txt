@@ -4,6 +4,7 @@ beautifulsoup4>=4.12
 lxml>=5.2
 feedparser>=6.0
 Pillow>=10.3
+CairoSVG>=2.7
 weasyprint>=62
 google-api-python-client>=2.130
 google-auth>=2.30

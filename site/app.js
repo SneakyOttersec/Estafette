@@ -3,7 +3,6 @@
 
   const config = window.ESTAFETTE_CONFIG || {};
   const apiBaseUrl = String(config.apiBaseUrl || "").replace(/\/$/, "");
-  const remarkableAppUrl = String(config.remarkableAppUrl || "");
   const connect = document.querySelector("#connect-drive");
   const disconnect = document.querySelector("#disconnect-drive");
   const installRemarkable = document.querySelector("#install-remarkable");
@@ -39,10 +38,8 @@
     showStatus("Registration is not configured yet. Set the ESTAFETTE_API_URL repository variable.", true);
   }
 
-  if (remarkableAppUrl) {
-    enableLink(installRemarkable, remarkableAppUrl);
-    if (remarkableNote) remarkableNote.textContent = "The reMarkable app installer is ready.";
-  }
+  enableLink(installRemarkable, "remarkable/");
+  if (remarkableNote) remarkableNote.textContent = "Paper Pro beta: offline daily feed with full text and images.";
 
   for (const link of [connect, disconnect, installRemarkable]) {
     if (!link) continue;

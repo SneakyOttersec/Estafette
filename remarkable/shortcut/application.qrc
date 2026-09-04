@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="/estafette">
+    <file alias="icons/estafette">../app/icon.png</file>
+  </qresource>
+</RCC>

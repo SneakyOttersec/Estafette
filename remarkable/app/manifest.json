@@ -1,0 +1,8 @@
+{
+  "name": "Estafette",
+  "loadsBackend": true,
+  "entry": "/ui/Estafette.qml",
+  "id": "estafette",
+  "supportsScaling": true,
+  "canHaveMultipleFrontends": false
+}

@@ -64,11 +64,13 @@ def _looks_like_feed(text: str, content_type: str) -> bool:
     )
 
 
-def discover_feed(root_url: str, sess: requests.Session) -> str | None:
+def discover_feed(
+    root_url: str, sess: requests.Session, timeout: int = TIMEOUT
+) -> str | None:
     """Find a blog's feed URL: the URL itself if it's a feed, else a <link>
     autodiscovery tag, else a guess from common feed paths. None if not found."""
     try:
-        resp = sess.get(root_url, timeout=TIMEOUT)
+        resp = sess.get(root_url, timeout=timeout)
         resp.raise_for_status()
     except requests.RequestException:
         resp = None
@@ -96,7 +98,7 @@ def discover_feed(root_url: str, sess: requests.Session) -> str | None:
     for candidate in FEED_CANDIDATES:
         cand_url = urljoin(base, candidate)
         try:
-            rr = sess.get(cand_url, timeout=TIMEOUT)
+            rr = sess.get(cand_url, timeout=timeout)
         except requests.RequestException:
             continue
         if rr.status_code == 200 and feedparser.parse(rr.content).entries:

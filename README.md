@@ -1,4 +1,4 @@
-# Estafette — security blogs → PDF → your Google Drive
+# Estafette — security reading for Drive and reMarkable
 
 An automated pipeline and opt-in web app that monitor a list of security blogs,
 detect new posts, render an e-reader-friendly PDF of **only the new post(s)**,
@@ -139,9 +139,9 @@ groups the archive by publication year. Future weekly builds publish both
 formats as GitHub Release assets, which the pages discover automatically
 through GitHub's public API.
 
-The homepage also exposes a reMarkable companion-app installer. Set the public
-`REMARKABLE_APP_URL` repository variable when an installable package is
-available; until then the button remains visibly marked as coming soon.
+The homepage links to the same-origin reMarkable installation page. That page
+publishes the current package checksum, safe and advanced installer paths, and
+manual installation commands.
 
 Users connect through a Cloud Run OAuth callback. The app requests Google's
 narrow `drive.file` scope, creates a user-owned `Estafette` folder, and stores
@@ -155,6 +155,33 @@ Cloud Run, and GitHub Pages setup.
 
 The older `src/upload_drive.py` utility remains available for a single personal
 Drive, but the scheduled web-app flow uses the per-user backend distributor.
+
+## Native reMarkable reader
+
+Estafette also ships an internal AppLoad application for reMarkable Paper Pro.
+It opens the last verified feed immediately and independently synchronizes the
+latest 100 posts—including cleaned full text and optimized images—for offline
+reading. The four categories, unread state, reading position, and typography
+choice are handled by the native QML interface. The synchronization backend is
+a static ARM64 Go binary.
+
+The reader has a completely separate daily publisher state. The Monday PDF
+workflow and `state/seen.json` are unchanged. A stable `remarkable-content`
+GitHub Release contains the publisher state plus previous/current snapshots;
+only its validated current tree is expanded into Pages, so generated articles
+do not accumulate in Git history.
+
+The public beta installation page is [`site/remarkable/index.html`](site/remarkable/index.html).
+Implementation, API, recovery, and device-acceptance details are in
+[`docs/REMARKABLE_READER.md`](docs/REMARKABLE_READER.md).
+
+Build and test locally with Qt 6 `rcc`, Go 1.23+, Pandoc, and the Python
+dependencies installed:
+
+```bash
+make test
+make RCC=/path/to/qt6/rcc remarkable-overlay
+```
 
 ---
 
@@ -192,8 +219,9 @@ PYTHONPATH=backend python backend/distribute.py --dist dist
 
 ## Notes & troubleshooting
 
-- `state/seen.json` is the only persisted state; `work/` and `dist/` are scratch
-  and are git-ignored.
+- `state/seen.json` is the weekly PDF state. The reader's independent publisher
+  state is stored only in the rolling `remarkable-content` Release asset;
+  `work/`, `dist/`, and `remarkable/build/` are scratch and are git-ignored.
 - A post that fails to extract is **not** recorded, so it's retried next run.
 - WeasyPrint renders code blocks, long lines, webp, and SVG, and skips any image
   it can't read rather than failing the whole build.

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Install the Estafette offline security reader on reMarkable Paper Pro.">
+    <title>Install Estafette — reMarkable Paper Pro</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="frame header-inner">
+        <a class="brand" href="../" aria-label="Estafette home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-copy"><strong>Estafette</strong><small>reader for reMarkable</small></span>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="../">Home</a><a href="#safe">Safe install</a><a href="#advanced">Advanced</a><a href="#manual">Manual</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="legal-main frame install-page">
+      <section class="legal-intro">
+        <p class="kicker"><span>Public beta</span> Paper Pro · portrait · English</p>
+        <h1>Read the latest 100 security posts offline.</h1>
+        <p>
+          Estafette synchronizes full cleaned text and optimized images from Offensive,
+          Vuln Dev, Threat Intel, and General sources. Your feed opens from cache first;
+          updates never replace the last valid offline copy until every article and image verifies.
+        </p>
+      </section>
+
+      <section class="install-summary" aria-live="polite">
+        <p><strong>Current package</strong> <span id="app-version">checking…</span></p>
+        <p><strong>Supported model</strong> <span id="supported-model">reMarkable Paper Pro / Ferrari</span></p>
+        <p><strong>Tested firmware</strong> <span id="tested-firmware">3.28.0.172</span></p>
+        <p><strong>SHA-256</strong> <code id="package-hash">checking published manifest…</code></p>
+        <p><a id="package-download" class="text-link" href="app/v1/manifest.json">Open app manifest →</a></p>
+      </section>
+
+      <div class="legal-content">
+        <section id="prerequisites">
+          <h2>Before installing</h2>
+          <p>
+            Enable Developer Mode, confirm root SSH access, back up the tablet, and keep it charged.
+            The safe path requires an already healthy Xovi/AppLoad installation. This is unsupported
+            third-party software; firmware updates can invalidate stock-UI patches.
+          </p>
+        </section>
+
+        <section id="safe">
+          <h2>Safe installer — existing AppLoad</h2>
+          <p>
+            Recommended when AppLoad already opens normally. The computer downloads over validated HTTPS,
+            verifies the published package hash, confirms AppLoad on the tablet, backs up the previous
+            Estafette app, and switches directories atomically. On firmware other than the tested build,
+            it installs the portable AppLoad tile and skips the stock-sidebar shortcut.
+          </p>
+          <pre><code>curl -fsSLO https://sneakyottersec.github.io/Estafette/remarkable/install-safe.sh
+less install-safe.sh
+sh ./install-safe.sh root@10.11.99.1</code></pre>
+        </section>
+
+        <section id="advanced">
+          <h2>Advanced installer — exact 3.28 runtime</h2>
+          <p>
+            This path refuses every device except reMarkable Paper Pro / Ferrari on OS 3.28.0.172.
+            It installs checksum-pinned Xovi v19-23052026 and AppLoad v0.5.3, creates the firmware
+            resource hashtable, applies the reviewed 3.28 compatibility patch, and returns to stock
+            if xochitl fails its health check. It does not alter notebooks or embed passwords.
+          </p>
+          <pre><code>curl -fsSLO https://sneakyottersec.github.io/Estafette/remarkable/install-advanced.sh
+less install-advanced.sh
+sh ./install-advanced.sh root@10.11.99.1</code></pre>
+          <p>
+            Optional triple-tap activation is explicit: add <code>--triple-tap</code>. It uses upstream
+            revision <code>869497aa61435448bf0077fbf75fb264dcba92c5</code> and verifies installer SHA-256
+            <code>c84f0c441118078a74bf3a7e1ee9aa136ab1fed3cc43668637a97a3cd0cddfa2</code>.
+            Estafette never installs automatic xochitl/systemd boot injection.
+          </p>
+        </section>
+
+        <section id="manual">
+          <h2>Manual package verification and install</h2>
+          <p>Download the manifest and package on the computer, compare SHA-256, then copy only the AppLoad bundle:</p>
+          <pre><code>curl -fsSLO https://sneakyottersec.github.io/Estafette/remarkable/app/v1/manifest.json
+# Download package_url from manifest.json, then compare:
+sha256sum estafette-rmpp-*.zip
+unzip estafette-rmpp-*.zip
+ssh root@10.11.99.1 'rm -rf /home/root/xovi/exthome/appload/.estafette-new; mkdir /home/root/xovi/exthome/appload/.estafette-new'
+scp -r estafette/. root@10.11.99.1:/home/root/xovi/exthome/appload/.estafette-new/
+ssh root@10.11.99.1 'set -eu; cd /home/root/xovi/exthome/appload; rm -rf estafette.previous; if [ -e estafette ]; then mv estafette estafette.previous; fi; mv .estafette-new estafette'</code></pre>
+          <p>
+            App cache lives separately at <code>/home/root/.local/share/estafette/</code>, so replacing
+            the application does not erase downloaded reading content or QML reading state.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer"><div class="frame footer-inner"><p>&copy; 2026 Estafette</p><nav><a href="../privacy.html">Privacy</a><a href="https://github.com/SneakyOttersec/Estafette">Source code</a></nav></div></footer>
+    <script>
+      fetch("app/v1/manifest.json", { headers: { Accept: "application/json" } })
+        .then(function (response) { if (!response.ok) throw new Error(response.status); return response.json(); })
+        .then(function (manifest) {
+          document.querySelector("#app-version").textContent = manifest.version;
+          document.querySelector("#supported-model").textContent = manifest.supported_model;
+          document.querySelector("#tested-firmware").textContent = manifest.tested_firmware;
+          document.querySelector("#package-hash").textContent = manifest.sha256;
+          var download = document.querySelector("#package-download");
+          download.href = manifest.package_url; download.textContent = "Download verified AppLoad bundle →";
+        })
+        .catch(function () { document.querySelector("#package-hash").textContent = "beta package is not published yet"; });
+    </script>
+  </body>
+</html>

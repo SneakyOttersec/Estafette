@@ -1,0 +1,7 @@
+<RCC>
+  <qresource>
+    <file>icon.png</file>
+    <file>ui/Estafette.qml</file>
+    <file>ui/logic.js</file>
+  </qresource>
+</RCC>

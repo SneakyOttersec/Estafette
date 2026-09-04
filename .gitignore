@@ -1,6 +1,7 @@
 # Per-run scratch and build output
 work/
 dist/
+remarkable/build/
 
 # Local secrets — never commit
 service_account.json
@@ -13,5 +14,6 @@ gha-creds-*.json
 # Python
 __pycache__/
 *.pyc
+.pytest_cache/
 .venv/
 venv/

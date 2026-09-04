@@ -1,0 +1,43 @@
+const fs = require("fs")
+const vm = require("vm")
+const assert = require("assert")
+
+const source = fs.readFileSync(process.argv[2], "utf8").replace(/^\.pragma library\s*/m, "")
+const context = { module: { exports: {} }, Date: Date, Math: Math, String: String, isNaN: isNaN }
+vm.createContext(context)
+vm.runInContext(source, context)
+const logic = context.module.exports
+
+const articles = [
+  { id: "old", category: "general", published_at: "2026-09-01T00:00:00Z" },
+  { id: "new", category: "offensive", published_at: "2026-09-04T00:00:00Z" },
+  { id: "fallback", category: "general", first_seen_at: "2026-09-03T00:00:00Z" }
+]
+assert.deepStrictEqual(Array.from(logic.newestFirst(articles), x => x.id), ["new", "fallback", "old"])
+assert.deepStrictEqual(Array.from(logic.filterCategory(articles, "general"), x => x.id), ["fallback", "old"])
+assert.strictEqual(logic.categoryCount(articles, "all"), 3)
+assert.strictEqual(logic.categoryCount(articles, "general"), 2)
+assert.strictEqual(logic.categoryLabel("threat-intel"), "Threat Intel")
+assert.strictEqual(logic.shortDate("2026-09-04T00:00:00Z"), "2026-09-04")
+assert.strictEqual(logic.unreadCount(articles, { old: true }), 2)
+assert.strictEqual(logic.normalizeTextSize("huge"), "standard")
+assert.strictEqual(logic.fontScale("large"), 1.22)
+assert.strictEqual(logic.pageTarget(0, 1, 1000, 3000), 900)
+assert.strictEqual(logic.pageTarget(1900, 1, 1000, 2500), 1500)
+assert.strictEqual(logic.positionForPage(2, 1000, 5000), 1800)
+
+let state = { screen: "empty", sync: "idle", offline: false, imageMissing: false }
+state = logic.transition(state, "cached-feed")
+assert.strictEqual(state.screen, "feed")
+state = logic.transition(state, "sync-start")
+assert.strictEqual(state.sync, "running")
+state = logic.transition(state, "network-error")
+assert.strictEqual(state.offline, true)
+state = logic.transition(state, "open-article")
+state = logic.transition(state, "image-error")
+assert.strictEqual(state.imageMissing, true)
+state = logic.transition(state, "back")
+assert.strictEqual(state.screen, "feed")
+state = logic.transition(state, "back")
+assert.strictEqual(state.screen, "closed")
+console.log("QML logic tests: ok")

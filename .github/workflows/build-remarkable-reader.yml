@@ -1,0 +1,142 @@
+name: Publish daily reMarkable reader snapshot
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - "remarkable/**"
+      - "src/remarkable_publisher.py"
+      - "src/package_remarkable_app.py"
+      - "src/expand_remarkable_snapshot.py"
+      - "site/**"
+      - ".github/workflows/deploy-pages.yml"
+      - "urls.txt"
+      - ".github/workflows/build-remarkable-reader.yml"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: "1.23.x"
+          cache-dependency-path: remarkable/backend/go.mod
+
+      - name: Install publisher and QML build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends pandoc qt6-base-dev-tools libcairo2
+          pip install -r requirements.txt
+
+      - name: Test publisher, backend, QML, and installers
+        run: |
+          PYTHONPATH=src:backend pytest -q
+          go test -C remarkable/backend ./...
+          node remarkable/tests/test_qml_logic.js remarkable/app/ui/logic.js
+          sh -n site/remarkable/install-safe.sh site/remarkable/install-advanced.sh remarkable/installers/*.sh
+
+      - name: Build ARM64 AppLoad package
+        env:
+          PUBLIC_ORIGIN: https://sneakyottersec.github.io/Estafette
+        run: |
+          rcc_path=$(command -v rcc || find /usr/lib/qt6 -type f -name rcc -print -quit)
+          test -n "$rcc_path"
+          make RCC="$rcc_path" remarkable-overlay
+
+      - name: Download last published state and snapshots
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p remarkable/build/previous
+          if release_result=$(gh release view remarkable-content 2>&1); then
+            gh release download remarkable-content \
+              --pattern remarkable-content.tar.gz \
+              --dir remarkable/build/previous
+          elif echo "$release_result" | grep -Eqi 'not found|HTTP 404'; then
+            echo "No prior rolling release exists; this is the initial publication."
+          else
+            echo "$release_result" >&2
+            exit 1
+          fi
+
+      - name: Build daily content snapshot
+        env:
+          ESTAFETTE_PUBLIC_ORIGIN: https://sneakyottersec.github.io/Estafette
+        run: |
+          previous_args=()
+          if test -s remarkable/build/previous/remarkable-content.tar.gz; then
+            python src/expand_remarkable_snapshot.py \
+              remarkable/build/previous/remarkable-content.tar.gz \
+              remarkable/build/previous-validated
+            previous_args=(--previous-archive remarkable/build/previous/remarkable-content.tar.gz)
+          fi
+          python src/remarkable_publisher.py \
+            "${previous_args[@]}" \
+            --site-overlay remarkable/build/site-overlay \
+            --pages-output remarkable/build/current-pages \
+            --output-archive remarkable/build/remarkable-content.tar.gz
+
+      - name: Validate release snapshot before publication
+        run: python src/expand_remarkable_snapshot.py remarkable/build/remarkable-content.tar.gz remarkable/build/validated-pages
+
+      - name: Publish stable content release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view remarkable-content >/dev/null 2>&1; then
+            if ! gh release upload remarkable-content remarkable/build/remarkable-content.tar.gz --clobber; then
+              if test -s remarkable/build/previous/remarkable-content.tar.gz; then
+                gh release upload remarkable-content remarkable/build/previous/remarkable-content.tar.gz --clobber
+              fi
+              exit 1
+            fi
+          else
+            gh release create remarkable-content remarkable/build/remarkable-content.tar.gz \
+              --title "Estafette reMarkable content" \
+              --notes "Rolling publisher state plus previous/current validated reader snapshots. This non-edition release is replaced atomically by the daily workflow."
+          fi
+
+      - name: Assemble Pages artifact
+        env:
+          ESTAFETTE_API_URL: ${{ vars.ESTAFETTE_API_URL }}
+        run: |
+          cp -a site remarkable/build/pages
+          cp -a remarkable/build/validated-pages/. remarkable/build/pages/
+          envsubst '$ESTAFETTE_API_URL' < site/config.template.js > remarkable/build/pages/config.js
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: remarkable/build/pages
+
+      - name: Deploy Pages atomically
+        id: deployment
+        uses: actions/deploy-pages@v4
