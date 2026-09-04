@@ -13,8 +13,10 @@ Rectangle {
 
     signal close
 
-    property color paper: "#fafafa"
-    property color softPaper: "#f5f5f5"
+    // Large e-ink surfaces must be true white. Off-white fills are rendered as
+    // a field of dithered black dots on Paper Pro.
+    property color paper: "#ffffff"
+    property color softPaper: "#ffffff"
     property color panel: "#e1e1e1"
     property color ink: "#22272a"
     property color muted: "#666666"

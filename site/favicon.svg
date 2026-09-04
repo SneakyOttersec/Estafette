@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
   <title id="title">Estafette bicorn hat</title>
-  <rect width="512" height="512" rx="72" fill="#f7f4ed"/>
+  <rect width="512" height="512" rx="72" fill="#ffffff"/>
   <path d="M146 307 183 174q30-30 73-30t73 30l37 133Z" fill="#22272a"/>
   <path d="M48 267q82 53 208 53t208-53q-32 91-208 121Q80 358 48 267Z" fill="#22272a"/>
   <path d="M77 291q76 59 179 59t179-59" fill="none" stroke="#567c77" stroke-linecap="round" stroke-width="12"/>

@@ -38,6 +38,8 @@ def test_qml_has_cached_startup_persistence_offline_and_close_contracts():
         "SECTIONS",
         "Logic.categoryCount",
         'property int railWidth: 292',
+        'property color paper: "#ffffff"',
+        'property color softPaper: "#ffffff"',
         'property color accent: "#cc2a41"',
         'property color ink: "#22272a"',
         'property string monoFont: "monospace"',
