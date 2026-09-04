@@ -898,6 +898,17 @@ Rectangle {
                                 font.pixelSize: 15 * typeScale
                                 wrapMode: Text.WrapAnywhere
                             }
+                            Text {
+                                width: parent.width
+                                visible: currentArticle !== null && Logic.isNew(
+                                    currentArticle ? (currentArticle.published_at || currentArticle.first_seen_at) : ""
+                                )
+                                text: "NEW !"
+                                color: accent
+                                font.family: monoFont
+                                font.bold: true
+                                font.pixelSize: 22 * typeScale
+                            }
                             Rectangle { width: parent.width; height: 1; color: quiet }
 
                             Repeater {

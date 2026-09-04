@@ -102,6 +102,14 @@ function shortDate(value) {
     return new Date(when).toISOString().slice(0, 10)
 }
 
+function isNew(value, nowValue) {
+    var when = Date.parse(value || "")
+    if (isNaN(when)) return false
+    var now = nowValue === undefined ? Date.now() : nowValue
+    var age = now - when
+    return age >= 0 && age < 3 * 86400000
+}
+
 function listText(items, ordered) {
     return (items || []).map(function(item, index) {
         return (ordered ? (index + 1) + ". " : "• ") + item
@@ -131,7 +139,8 @@ if (typeof module !== "undefined") {
         flaggedCount: flaggedCount, unreadCount: unreadCount,
         normalizeTextSize: normalizeTextSize,
         fontScale: fontScale, pageTarget: pageTarget, pageNumber: pageNumber,
-        positionForPage: positionForPage, relativeDate: relativeDate, shortDate: shortDate,
+        positionForPage: positionForPage, relativeDate: relativeDate,
+        shortDate: shortDate, isNew: isNew,
         listText: listText, tableText: tableText, transition: transition
     }
 }

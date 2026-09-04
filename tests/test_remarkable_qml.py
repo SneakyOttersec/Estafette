@@ -71,6 +71,13 @@ def test_feed_has_persistent_read_later_and_like_actions():
     assert qml.count("height: 64") >= 2
 
 
+def test_new_badge_uses_the_article_publication_or_first_seen_date():
+    qml = (ROOT / "remarkable/app/ui/Estafette.qml").read_text()
+    assert "Logic.isNew(" in qml
+    assert "currentArticle.published_at || currentArticle.first_seen_at" in qml
+    assert 'text: "NEW !"' in qml
+
+
 def test_shared_bicorn_icon_is_a_transparent_monochrome_mask():
     icon_path = ROOT / "remarkable/app/icon.png"
     with Image.open(icon_path) as source:
