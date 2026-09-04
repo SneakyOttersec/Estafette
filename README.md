@@ -139,6 +139,10 @@ groups the archive by publication year. Future weekly builds publish both
 formats as GitHub Release assets, which the pages discover automatically
 through GitHub's public API.
 
+The homepage also exposes a reMarkable companion-app installer. Set the public
+`REMARKABLE_APP_URL` repository variable when an installable package is
+available; until then the button remains visibly marked as coming soon.
+
 Users connect through a Cloud Run OAuth callback. The app requests Google's
 narrow `drive.file` scope, creates a user-owned `Estafette` folder, and stores
 the refresh grant encrypted in Firestore. The weekly workflow builds the PDF

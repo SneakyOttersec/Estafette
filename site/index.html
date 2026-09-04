@@ -17,7 +17,7 @@
     <header class="site-header">
       <div class="frame header-inner">
         <a class="brand" href="./" aria-label="Estafette home">
-          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="brand-mark" aria-hidden="true"></span>
           <span class="brand-copy">
             <strong>Estafette</strong>
             <small>weekly security relay</small>
@@ -39,81 +39,104 @@
           <h1 id="intro-title">Catch up. <em>Stay sharp.</em></h1>
           <p class="lede">
             Estafette gathers new posts from selected security blogs and turns them
-            into a clean, e-reader-friendly edition. Read it here, or have every new
-            PDF relayed straight to your Google Drive.
+            into a clean, e-reader-friendly edition. Download it here, send each new
+            PDF to Google Drive, or read through the upcoming reMarkable app.
           </p>
           <a class="text-link" href="#latest">Browse the latest edition <span aria-hidden="true">↓</span></a>
         </div>
       </section>
 
-      <div class="dashboard frame">
-        <aside id="connection" class="drive-card" aria-labelledby="drive-title" aria-live="polite">
-          <p class="panel-label">Personal delivery</p>
-          <h2 id="drive-title">Put every edition in your Drive.</h2>
-          <p>
-            Connect once. Estafette creates its own folder and drops in the new PDF
-            each week—no email and no access to unrelated files.
-          </p>
-          <a id="connect-drive" class="drive-action" href="#" aria-disabled="true">
-            <span>Connect my Google Drive</span>
-            <strong aria-hidden="true">→</strong>
-          </a>
-          <p id="connection-note" class="connection-note">
-            Uses Google&rsquo;s limited <code>drive.file</code> permission.
-          </p>
-        </aside>
+      <section id="latest" class="editions-section latest-panel frame" aria-labelledby="latest-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-number">01 / Editions</p>
+            <h2 id="latest-title">Latest download</h2>
+          </div>
+          <p>Take the PDF for your e-reader or the ZIP bundle for archiving.</p>
+        </div>
 
-        <section id="latest" class="editions-section latest-panel" aria-labelledby="latest-title">
-          <div class="section-heading">
-            <div>
-              <p class="section-number">01 / Editions</p>
-              <h2 id="latest-title">Latest download</h2>
+        <div id="edition-list" class="edition-list" data-limit="1">
+          <article class="edition-card" data-edition="offensive-2026-08-24" data-year="2026">
+            <time class="edition-date" datetime="2026-08-24">
+              <strong>24</strong>
+              <span>AUG 2026</span>
+            </time>
+            <div class="edition-copy">
+              <p class="edition-label">Latest edition</p>
+              <h3>Offensive security roundup</h3>
+              <p>A collected edition of the newest offensive-security research.</p>
             </div>
-            <p>Take the PDF for your e-reader or the ZIP bundle for archiving.</p>
-          </div>
+            <div class="download-list" aria-label="Edition downloads">
+              <a
+                href="downloads/OFFENSIVE_24_08_2026.pdf"
+                download
+                data-download-name="OFFENSIVE_24_08_2026.pdf"
+              >
+                <span><strong>PDF</strong><small>1.6 MB</small></span>
+                <b aria-hidden="true">↓</b>
+              </a>
+              <a
+                href="downloads/ESTAFETTE_24_08_2026.zip"
+                download
+                data-download-name="ESTAFETTE_24_08_2026.zip"
+              >
+                <span><strong>ZIP</strong><small>1.6 MB</small></span>
+                <b aria-hidden="true">↓</b>
+              </a>
+            </div>
+          </article>
+        </div>
+        <p id="edition-status" class="edition-status" aria-live="polite">
+          Checking for newer published editions&hellip;
+        </p>
+        <p class="all-editions-link"><a href="editions.html">Browse all editions →</a></p>
+      </section>
 
-          <div id="edition-list" class="edition-list" data-limit="1">
-            <article class="edition-card" data-edition="offensive-2026-08-24" data-year="2026">
-              <time class="edition-date" datetime="2026-08-24">
-                <strong>24</strong>
-                <span>AUG 2026</span>
-              </time>
-              <div class="edition-copy">
-                <p class="edition-label">Latest edition</p>
-                <h3>Offensive security roundup</h3>
-                <p>A collected edition of the newest offensive-security research.</p>
-              </div>
-              <div class="download-list" aria-label="Edition downloads">
-                <a
-                  href="downloads/OFFENSIVE_24_08_2026.pdf"
-                  download
-                  data-download-name="OFFENSIVE_24_08_2026.pdf"
-                >
-                  <span><strong>PDF</strong><small>1.6 MB</small></span>
-                  <b aria-hidden="true">↓</b>
-                </a>
-                <a
-                  href="downloads/ESTAFETTE_24_08_2026.zip"
-                  download
-                  data-download-name="ESTAFETTE_24_08_2026.zip"
-                >
-                  <span><strong>ZIP</strong><small>1.6 MB</small></span>
-                  <b aria-hidden="true">↓</b>
-                </a>
-              </div>
-            </article>
+      <section class="delivery-section frame" aria-labelledby="delivery-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-number">02 / Personal delivery</p>
+            <h2 id="delivery-title">Choose how it arrives</h2>
           </div>
-          <p id="edition-status" class="edition-status" aria-live="polite">
-            Checking for newer published editions&hellip;
-          </p>
-          <p class="all-editions-link"><a href="editions.html">Browse all editions →</a></p>
-        </section>
-      </div>
+        </div>
+
+        <div class="delivery-options">
+          <aside id="connection" class="drive-card" aria-labelledby="drive-title" aria-live="polite">
+            <p class="panel-label">Google Drive</p>
+            <h2 id="drive-title">Put every edition in your Drive.</h2>
+            <p>
+              Connect once. Estafette creates its own folder and drops in the new PDF
+              each week—no email and no access to unrelated files.
+            </p>
+            <a id="connect-drive" class="drive-action" href="#" aria-disabled="true">
+              <span>Connect my Google Drive</span>
+              <strong aria-hidden="true">→</strong>
+            </a>
+            <p id="connection-note" class="connection-note">
+              Uses Google&rsquo;s limited <code>drive.file</code> permission.
+            </p>
+          </aside>
+
+          <aside class="drive-card remarkable-card" aria-labelledby="remarkable-title">
+            <p class="panel-label">reMarkable app</p>
+            <h2 id="remarkable-title">Read Estafette on paper.</h2>
+            <p>
+              Install the companion app to browse editions and send the weekly PDF
+              directly to your reMarkable tablet.
+            </p>
+            <a id="install-remarkable" class="drive-action remarkable-action" href="#" aria-disabled="true">
+              <span>Install reMarkable app</span>
+              <strong aria-hidden="true">↓</strong>
+            </a>
+            <p id="remarkable-note" class="connection-note">App package coming soon.</p>
+          </aside>
+        </div>
+      </section>
 
       <section id="how-it-works" class="process-section frame" aria-labelledby="how-title">
         <div class="section-heading">
           <div>
-            <p class="section-number">02 / Delivery</p>
+            <p class="section-number">03 / How it works</p>
             <h2 id="how-title">A three-step relay</h2>
           </div>
         </div>

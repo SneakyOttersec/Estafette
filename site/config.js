@@ -1,5 +1,6 @@
-// This public value is replaced from the ESTAFETTE_API_URL repository variable
-// during the GitHub Pages deployment. It is not a secret.
+// These public values are replaced from GitHub repository variables during the
+// Pages deployment. They are not secrets.
 window.ESTAFETTE_CONFIG = Object.freeze({
-  apiBaseUrl: ""
+  apiBaseUrl: "",
+  remarkableAppUrl: ""
 });

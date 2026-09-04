@@ -115,35 +115,13 @@ code {
 }
 
 .brand-mark {
-  display: flex;
+  display: block;
   flex: 0 0 50px;
   width: 50px;
   height: 50px;
   margin-right: 20px;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
   border-radius: 5px;
-  background: var(--foreground);
-}
-
-.brand-mark i {
-  display: block;
-  width: 4px;
-  height: 26px;
-  border-radius: 999px;
-  background: var(--accent);
-  transform: rotate(28deg);
-}
-
-.brand-mark i:nth-child(2) {
-  height: 19px;
-  background: var(--secondary);
-}
-
-.brand-mark i:nth-child(3) {
-  height: 12px;
-  background: var(--background);
+  background: var(--foreground) url("favicon.svg") center / 50px 50px no-repeat;
 }
 
 .brand-copy {
@@ -249,14 +227,6 @@ code {
   font-weight: 700;
 }
 
-.dashboard {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2rem;
-  align-items: stretch;
-  margin-top: 3rem;
-}
-
 .drive-card {
   position: relative;
   display: flex;
@@ -280,6 +250,10 @@ code {
   content: "GOOGLE DRIVE";
   font-size: 0.68rem;
   letter-spacing: 0.08em;
+}
+
+.remarkable-card::before {
+  content: "REMARKABLE";
 }
 
 .panel-label {
@@ -323,6 +297,16 @@ code {
   background-image: none;
 }
 
+.remarkable-action {
+  border-color: var(--secondary);
+  background: var(--secondary);
+}
+
+.remarkable-action:hover,
+.remarkable-action:focus-visible {
+  color: var(--secondary);
+}
+
 .drive-action strong {
   font-size: 1.55rem;
   line-height: 1;
@@ -360,6 +344,21 @@ a[aria-disabled="true"] {
 
 .process-section {
   margin-top: 4rem;
+}
+
+.latest-panel {
+  margin-top: 3rem;
+}
+
+.delivery-section {
+  margin-top: 4rem;
+}
+
+.delivery-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  align-items: stretch;
 }
 
 .latest-panel .section-heading > p {
@@ -749,7 +748,7 @@ a[aria-disabled="true"] {
 }
 
 @media (max-width: 720px) {
-  .dashboard {
+  .delivery-options {
     grid-template-columns: 1fr;
   }
 }

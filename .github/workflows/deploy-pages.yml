@@ -30,7 +30,8 @@ jobs:
       - name: Configure registration endpoint
         env:
           ESTAFETTE_API_URL: ${{ vars.ESTAFETTE_API_URL }}
-        run: envsubst '$ESTAFETTE_API_URL' < site/config.template.js > site/config.js
+          REMARKABLE_APP_URL: ${{ vars.REMARKABLE_APP_URL }}
+        run: envsubst '$ESTAFETTE_API_URL $REMARKABLE_APP_URL' < site/config.template.js > site/config.js
 
       - name: Configure Pages
         # The repository's Pages publishing source is configured as GitHub Actions.

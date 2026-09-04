@@ -3,9 +3,12 @@
 
   const config = window.ESTAFETTE_CONFIG || {};
   const apiBaseUrl = String(config.apiBaseUrl || "").replace(/\/$/, "");
+  const remarkableAppUrl = String(config.remarkableAppUrl || "");
   const connect = document.querySelector("#connect-drive");
   const disconnect = document.querySelector("#disconnect-drive");
+  const installRemarkable = document.querySelector("#install-remarkable");
   const note = document.querySelector("#connection-note");
+  const remarkableNote = document.querySelector("#remarkable-note");
   const year = document.querySelector("#year");
   const editionList = document.querySelector("#edition-list");
   const editionStatus = document.querySelector("#edition-status");
@@ -36,7 +39,12 @@
     showStatus("Registration is not configured yet. Set the ESTAFETTE_API_URL repository variable.", true);
   }
 
-  for (const link of [connect, disconnect]) {
+  if (remarkableAppUrl) {
+    enableLink(installRemarkable, remarkableAppUrl);
+    if (remarkableNote) remarkableNote.textContent = "The reMarkable app installer is ready.";
+  }
+
+  for (const link of [connect, disconnect, installRemarkable]) {
     if (!link) continue;
     link.addEventListener("click", function (event) {
       if (link.getAttribute("aria-disabled") === "true") {
