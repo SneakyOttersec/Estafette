@@ -25,7 +25,6 @@ https://www.harmj0y.net/blog/ | tag=offensive | sub=ad,kerberos,bloodhound
 https://blog.ropnop.com/ | tag=offensive | sub=tooling,cloud,containers,windows
 https://krbtgt.pw/ | tag=offensive | sub=ad,kerberos
 https://lsdsecdaemon.com/ | tag=offensive | sub=wireless,wifi,network
-https://beta.hackndo.com/ | tag=offensive | sub=ad,kerberos,windows
 https://decoder.cloud/ | tag=offensive | sub=windows,privesc
 https://tyranidslair.blogspot.com/ | tag=vuln-dev | sub=windows,com,reversing,privesc
 https://www.atredis.com/blog/ | tag=vuln-dev | sub=hardware,web,embedded
@@ -64,8 +63,6 @@ https://pre.empt.blog/ | tag=offensive | sub=c2,maldev,evasion,edr
 https://www.blackhillsinfosec.com/blog/ | tag=offensive | sub=tooling,ad,web
 https://rhinosecuritylabs.com/blog/ | tag=offensive | sub=cloud,aws,web
 https://portswigger.net/research | tag=offensive | sub=web,appsec
-https://blog.orange.tw/ | tag=vuln-dev | sub=web,exploit-dev
-https://devco.re/blog/ | tag=vuln-dev | sub=web,exploit-dev
 https://j00ru.vexillium.org/ | tag=vuln-dev | sub=windows,fuzzing,exploit-dev
 https://www.hexacorn.com/blog/ | tag=offensive | sub=windows,persistence,dfir
 https://blog.deeb.ch/ | tag=offensive | sub=edr,telemetry,maldev,windows

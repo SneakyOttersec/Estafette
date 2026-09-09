@@ -27,6 +27,7 @@ const (
 	MaxSnapshotBytes    = int64(480 * 1024 * 1024)
 	MaxFeedBytes        = int64(2 * 1024 * 1024)
 	MaxArticleJSONBytes = int64(10 * 1024 * 1024)
+	SyncRetention       = 14 * 24 * time.Hour
 )
 
 var shaPattern = regexp.MustCompile(`^[0-9a-f]{64}$`)
@@ -100,6 +101,7 @@ type Client struct {
 	DataDir       string
 	HTTPClient    *http.Client
 	MaxCacheBytes int64
+	Now           func() time.Time
 	cacheMu       sync.RWMutex
 }
 
@@ -156,14 +158,14 @@ func validCategory(category string) bool {
 	return false
 }
 
-func (c *Client) validateFeed(feed *Feed) error {
+func (c *Client) validateFeed(feed *Feed, allowEmpty bool) error {
 	if feed.SchemaVersion != SchemaVersion {
 		return fmt.Errorf("unsupported feed schema %d", feed.SchemaVersion)
 	}
 	if feed.TotalBytes <= 0 || feed.TotalBytes > MaxSnapshotBytes {
 		return errors.New("feed snapshot size is invalid")
 	}
-	if len(feed.Articles) == 0 || len(feed.Articles) > 100 {
+	if (!allowEmpty && len(feed.Articles) == 0) || len(feed.Articles) > 100 {
 		return errors.New("feed article count is invalid")
 	}
 	seen := map[string]bool{}
@@ -191,6 +193,32 @@ func (c *Client) validateFeed(feed *Feed) error {
 		}
 	}
 	return nil
+}
+
+func (c *Client) now() time.Time {
+	if c.Now != nil {
+		return c.Now().UTC()
+	}
+	return time.Now().UTC()
+}
+
+// recentArticles applies the tablet's local retention policy. Publication time
+// is authoritative when present; first-seen time is the fallback for sources
+// that do not expose a publication date. Articles exactly on the cutoff remain.
+func (c *Client) recentArticles(articles []FeedArticle) []FeedArticle {
+	cutoff := c.now().Add(-SyncRetention)
+	recent := make([]FeedArticle, 0, len(articles))
+	for _, article := range articles {
+		raw := article.FirstSeenAt
+		if article.PublishedAt != nil {
+			raw = *article.PublishedAt
+		}
+		published, err := time.Parse(time.RFC3339, raw)
+		if err == nil && !published.Before(cutoff) {
+			recent = append(recent, article)
+		}
+	}
+	return recent
 }
 
 func decodeStrict(data []byte, destination any) error {
@@ -489,11 +517,13 @@ func (c *Client) Sync(report func(Progress)) (*Feed, error) {
 	if err = decodeStrict(feedBytes, &feed); err != nil {
 		return nil, fmt.Errorf("malformed feed: %w", err)
 	}
-	if err = c.validateFeed(&feed); err != nil {
+	if err = c.validateFeed(&feed, false); err != nil {
 		return nil, err
 	}
-	if feed.TotalBytes > c.maximumCache() {
-		return nil, errors.New("published snapshot exceeds tablet cache ceiling")
+	feed.Articles = c.recentArticles(feed.Articles)
+	localFeedBytes, err := json.Marshal(&feed)
+	if err != nil {
+		return nil, fmt.Errorf("encode retained feed: %w", err)
 	}
 	if report == nil {
 		report = func(Progress) {}
@@ -556,10 +586,10 @@ func (c *Client) Sync(report func(Progress)) (*Feed, error) {
 	if info, statErr := os.Stat(filepath.Join(c.DataDir, "feed.json")); statErr == nil {
 		oldFeedSize = info.Size()
 	}
-	if currentSize-oldFeedSize > c.maximumCache()-int64(len(feedBytes)) {
+	if currentSize-oldFeedSize > c.maximumCache()-int64(len(localFeedBytes)) {
 		return nil, errors.New("storage ceiling exceeded before feed commit")
 	}
-	if err = atomicWrite(filepath.Join(c.DataDir, "feed.json"), feedBytes, 0o600); err != nil {
+	if err = atomicWrite(filepath.Join(c.DataDir, "feed.json"), localFeedBytes, 0o600); err != nil {
 		return nil, err
 	}
 	c.prune("articles", referencedArticles)
@@ -602,7 +632,7 @@ func (c *Client) cachedFeedUnlocked() ([]byte, *Feed, error) {
 	if err = decodeStrict(data, &feed); err != nil {
 		return nil, nil, err
 	}
-	if err = c.validateFeed(&feed); err != nil {
+	if err = c.validateFeed(&feed, true); err != nil {
 		return nil, nil, err
 	}
 	return data, &feed, nil

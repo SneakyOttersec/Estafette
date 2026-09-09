@@ -12,6 +12,7 @@ import (
 	"strings"
 	"sync/atomic"
 	"testing"
+	"time"
 )
 
 func sum(data []byte) string { value := sha256.Sum256(data); return hex.EncodeToString(value[:]) }
@@ -22,6 +23,7 @@ type fixture struct {
 	feed, article, image   []byte
 	articleName, imageName string
 	rangeSeen              atomic.Bool
+	articleRequests        atomic.Int32
 }
 
 type roundTripperFunc func(*http.Request) (*http.Response, error)
@@ -40,6 +42,7 @@ func newFixture(t *testing.T) *fixture {
 		case "/remarkable/api/v1/feed.json":
 			w.Write(fixture.feed)
 		case "/remarkable/api/v1/articles/" + fixture.articleName:
+			fixture.articleRequests.Add(1)
 			w.Write(fixture.article)
 		case "/remarkable/api/v1/assets/" + fixture.imageName:
 			if header := r.Header.Get("Range"); header != "" {
@@ -71,9 +74,76 @@ func newFixture(t *testing.T) *fixture {
 		Articles: []FeedArticle{{ID: "article-id", Title: "Article", Source: "source.test", FirstSeenAt: "2026-09-04T00:00:00Z", Category: "general", Topics: []string{"test"}, CanonicalURL: "https://source.test/article", ArticleURL: origin + "/remarkable/api/v1/articles/" + fixture.articleName, Excerpt: "Body", Bytes: int64(len(fixture.article)), SHA256: sum(fixture.article)}},
 	}
 	fixture.feed, _ = json.Marshal(feed)
-	fixture.client = &Client{Origin: origin, FeedURL: origin + DefaultFeedPath, DataDir: t.TempDir(), HTTPClient: fixture.server.Client(), MaxCacheBytes: DefaultMaxCache}
+	fixture.client = &Client{
+		Origin: origin, FeedURL: origin + DefaultFeedPath, DataDir: t.TempDir(),
+		HTTPClient: fixture.server.Client(), MaxCacheBytes: DefaultMaxCache,
+		Now: func() time.Time { return time.Date(2026, 9, 8, 0, 0, 0, 0, time.UTC) },
+	}
 	t.Cleanup(fixture.server.Close)
 	return fixture
+}
+
+func TestRecentArticlesUsesPublishedDateAndIncludesCutoff(t *testing.T) {
+	client := &Client{Now: func() time.Time {
+		return time.Date(2026, 9, 8, 0, 0, 0, 0, time.UTC)
+	}}
+	exact := "2026-08-25T00:00:00Z"
+	old := "2026-08-24T23:59:59Z"
+	items := []FeedArticle{
+		{ID: "cutoff", PublishedAt: &exact, FirstSeenAt: "2026-08-01T00:00:00Z"},
+		{ID: "published-old", PublishedAt: &old, FirstSeenAt: "2026-09-08T00:00:00Z"},
+		{ID: "fallback-recent", FirstSeenAt: "2026-09-01T00:00:00Z"},
+		{ID: "fallback-old", FirstSeenAt: old},
+	}
+
+	recent := client.recentArticles(items)
+	if len(recent) != 2 || recent[0].ID != "cutoff" || recent[1].ID != "fallback-recent" {
+		t.Fatalf("unexpected retained articles: %#v", recent)
+	}
+}
+
+func TestSyncDoesNotDownloadOrRetainExpiredArticles(t *testing.T) {
+	fx := newFixture(t)
+	var feed Feed
+	if err := json.Unmarshal(fx.feed, &feed); err != nil {
+		t.Fatal(err)
+	}
+	old := "2026-08-24T23:59:59Z"
+	feed.Articles[0].PublishedAt = &old
+	feed.Articles[0].FirstSeenAt = "2026-09-08T00:00:00Z"
+	fx.feed, _ = json.Marshal(feed)
+
+	for _, directory := range []string{"articles", "assets"} {
+		if err := os.MkdirAll(filepath.Join(fx.client.DataDir, directory), 0o700); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(filepath.Join(fx.client.DataDir, directory, "stale"), []byte("stale"), 0o600); err != nil {
+			t.Fatal(err)
+		}
+	}
+
+	synced, err := fx.client.Sync(nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(synced.Articles) != 0 || fx.articleRequests.Load() != 0 {
+		t.Fatalf("expired article was synchronized: articles=%d requests=%d", len(synced.Articles), fx.articleRequests.Load())
+	}
+	_, cached, err := fx.client.CachedFeed()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(cached.Articles) != 0 {
+		t.Fatal("expired article remained in cached feed")
+	}
+	for _, path := range []string{
+		filepath.Join(fx.client.DataDir, "articles", "stale"),
+		filepath.Join(fx.client.DataDir, "assets", "stale"),
+	} {
+		if _, err := os.Stat(path); !os.IsNotExist(err) {
+			t.Fatalf("expired cache file was not pruned: %s", path)
+		}
+	}
 }
 
 func TestSyncPrefetchesEveryAssetAndPrunes(t *testing.T) {

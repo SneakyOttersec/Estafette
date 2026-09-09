@@ -1,5 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
-  <title id="title">Estafette black bicorn hat</title>
-  <path d="M124 304q16-107 62-138 30-22 70-22t70 22q46 31 62 138Z" fill="#000000"/>
-  <path d="M35 180q76 96 221 106 145-10 221-106-25 167-221 230Q60 347 35 180Z" fill="#000000"/>
+  <title id="title">Estafette bicorne hat</title>
+  <mask id="cutouts">
+    <rect width="512" height="512" fill="#ffffff"/>
+    <path d="M83 329c61 25 118 37 173 39 55-2 112-14 173-39-54 47-112 70-173 74-61-4-119-27-173-74Z" fill="#000000"/>
+    <circle cx="351" cy="253" r="18" fill="#000000"/>
+    <path d="M343 270l-5 51 14-12 14 12-7-51Z" fill="#000000"/>
+  </mask>
+  <path d="M42 337C91 298 111 221 126 126c43 50 83 78 130 84 47-6 87-34 130-84 15 95 35 172 84 211-64 46-136 70-214 74-78-4-150-28-214-74Z" fill="#000000" mask="url(#cutouts)"/>
+  <circle cx="351" cy="253" r="9" fill="#000000"/>
 </svg>

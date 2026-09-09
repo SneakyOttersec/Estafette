@@ -159,11 +159,12 @@ Drive, but the scheduled web-app flow uses the per-user backend distributor.
 ## Native reMarkable reader
 
 Estafette also ships an internal AppLoad application for reMarkable Paper Pro.
-It opens the last verified feed immediately and independently synchronizes the
-latest 100 posts—including cleaned full text and optimized images—for offline
-reading. The four categories, unread state, reading position, and typography
-choice are handled by the native QML interface. The synchronization backend is
-a static ARM64 Go binary.
+It opens the last verified feed immediately and independently synchronizes up
+to 100 posts from the previous 14 days—including cleaned full text and
+optimized images—for offline reading. Older entries are neither downloaded nor
+retained in the tablet cache. The four categories, unread state, reading
+position, and typography choice are handled by the native QML interface. The
+synchronization backend is a static ARM64 Go binary.
 
 The reader has a completely separate daily publisher state. The Monday PDF
 workflow and `state/seen.json` are unchanged. A stable `remarkable-content`

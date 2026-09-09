@@ -140,7 +140,10 @@ function positionForPage(page, viewport, contentHeight) {
 
 function isAtEnd(position, viewport, contentHeight) {
     var maximum = Math.max(0, contentHeight - viewport)
-    return maximum === 0 || Number(position || 0) >= maximum - 1
+    // QML rounds content positions and the article adds a small bottom gutter.
+    // Treat that gutter as the end so one more page gesture returns to the feed.
+    var tolerance = Math.max(4, Math.min(96, viewport * 0.08))
+    return maximum === 0 || Number(position || 0) >= maximum - tolerance
 }
 
 function clampZoom(value) {

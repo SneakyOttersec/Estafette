@@ -1,6 +1,9 @@
 <RCC>
   <qresource>
     <file>icon.png</file>
+    <file>icons/eraser.svg</file>
+    <file>icons/highlighter.svg</file>
+    <file>icons/pen.svg</file>
     <file>ui/Estafette.qml</file>
     <file>ui/logic.js</file>
   </qresource>

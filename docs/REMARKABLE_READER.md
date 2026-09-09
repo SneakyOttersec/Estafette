@@ -115,7 +115,10 @@ host. Downloads use `.part` files and HTTP Range; checksum-valid files are
 reused. Article/assets are synchronized first and `feed.json` is the atomic
 commit point. Unreferenced immutable files are pruned afterward. The on-disk
 cache may not exceed 512 MiB. A partial or failed run leaves the prior feed and
-all its references readable.
+all its references readable. Before downloading article bodies or assets, the
+tablet filters out entries older than 14 days using `published_at`, or
+`first_seen_at` when no publication time exists. The cutoff is inclusive, and
+expired cached files are pruned when the filtered feed is committed.
 
 The QML UI requests the cached feed and a refresh on startup. Its persistent
 left rail starts with a 72-hour News view, then holds the All, Offensive, Vuln
@@ -128,20 +131,35 @@ actions: assign or replace one personal custom tag, clear that tag, or delete
 the entry. Custom tags are persisted locally and become count-bearing filters
 in the left rail. The article menu can persistently remove
 an entry from every on-device list without deleting the shared snapshot.
+Opening an article replaces the feed chrome with a full-surface reading view;
+a compact toolbar keeps article actions available and provides an exit button
+in the top-right corner. Stock-reader-style gestures page without a persistent
+navigation bar: swipe left or upward to advance, and right or downward to go
+back. The content does not track the finger or coast; release performs exactly
+one viewport replacement. A finger tap in the bottom-left corner moves back;
+a bottom-right tap advances, returning to the blog list when used at the end.
+Stylus input is handled independently: pen, translucent highlighter, and eraser
+modes draw on a persistent per-article canvas without consuming finger page
+gestures. During a stroke, only the new segment's small dirty rectangle is
+painted. The first pen segment requests an immediate paint; subsequent samples
+are coalesced into bounded 16 ms batches, with only one Canvas paint in flight,
+so the e-ink compositor cannot accumulate a delayed refresh queue. Saved
+strokes are replayed only after opening or changing pages. The article menu can
+clear all locally stored annotations.
 The palette and monospaced typography mirror the Ottersec Blog theme while
-remaining e-ink friendly. Feed and menu screens stay in the fast grayscale
-display mode. Article reading uses content-quality refresh, and tapping a valid
-cached image opens a full-screen viewer with 100–400% zoom and drag-to-pan.
-Scrollable regions keep their screen's fixed refresh mode while moving, use
-pixel-aligned updates, and cap inertial motion to roughly 75 ms. Feed scrolling
-therefore stays grayscale-fast without triggering a waveform switch, while the
-article and its image viewer remain in color content mode.
+remaining e-ink friendly. Feed, menu, and image-viewer surfaces use the fast
+grayscale mode, while the article surface uses the ultra-fast waveform for
+single-frame page replacement without a full flashing refresh. Double-tapping
+a valid cached image opens a full-screen viewer with 100–400%
+zoom and drag-to-pan.
+Scrollable feed and image regions keep their screen's fixed refresh mode while
+moving, use pixel-aligned updates, and cap inertial motion. Article content is
+not kinetically scrollable: a completed swipe changes `contentY` once, avoiding
+the refresh storm caused by rendering every intermediate drag frame.
 QSettings owns read/unread state, saved page, selected category, and the
-Compact/Standard/Large type choice. This avoids the Paper Pro 3.28 image's
+stored typography choice. This avoids the Paper Pro 3.28 image's
 missing Qt SQLite driver while keeping navigation independent from preference
-persistence. Page controls move 90% of the viewport.
-AppLoad display-method areas request content-quality refresh for reading and
-fast refresh for controls.
+persistence. Horizontal and vertical page gestures move 90% of the viewport.
 
 ## Installation and recovery
 

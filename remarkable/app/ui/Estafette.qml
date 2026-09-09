@@ -44,6 +44,9 @@ Rectangle {
     property var likeMap: ({})
     property var deletedMap: ({})
     property var tagMap: ({})
+    property var annotationMap: ({})
+    property var activeAnnotationStroke: null
+    property string annotationTool: "pen"
     property var customTagEntries: []
     property string actionArticleId: ""
     property string actionArticleTitle: ""
@@ -58,6 +61,7 @@ Rectangle {
     property int syncDone: 0
     property int syncTotal: 0
     property real typeScale: Logic.fontScale(textSize)
+    property bool articleCleanRefresh: false
 
     // Paper Pro 3.28 ships the QML LocalStorage module without Qt's SQLite
     // driver. QSettings is available on the firmware and persists these small
@@ -73,9 +77,11 @@ Rectangle {
         property string likeStateJson: "{}"
         property string deletedStateJson: "{}"
         property string tagStateJson: "{}"
+        property string annotationStateJson: "{}"
     }
 
     function unloading() {
+        finishAnnotationStroke()
         savePage()
     }
 
@@ -87,6 +93,22 @@ Rectangle {
             // Damaged preferences must never prevent the offline reader opening.
         }
         return {}
+    }
+
+    function cleanedAnnotationMap(source) {
+        var cleaned = {}
+        for (var articleId in source) {
+            var strokes = Array.isArray(source[articleId]) ? source[articleId] : []
+            var valid = strokes.filter(function(stroke) {
+                var points = stroke && Array.isArray(stroke.points) ? stroke.points : []
+                return points.some(function(point) {
+                    return Array.isArray(point) && point.length >= 2
+                            && Number(point[0]) > 0 && Number(point[1]) >= 0
+                })
+            })
+            if (valid.length) cleaned[articleId] = valid
+        }
+        return cleaned
     }
 
     function preference(key, fallback) {
@@ -115,7 +137,77 @@ Rectangle {
         likeMap = storedMap(readingSettings.likeStateJson)
         deletedMap = storedMap(readingSettings.deletedStateJson)
         tagMap = storedMap(readingSettings.tagStateJson)
+        annotationMap = cleanedAnnotationMap(storedMap(readingSettings.annotationStateJson))
+        persistAnnotations()
         updateTagEntries()
+    }
+
+    function annotationsForCurrentArticle() {
+        var strokes = annotationMap[currentArticleId]
+        return Array.isArray(strokes) ? strokes : []
+    }
+
+    function persistAnnotations() {
+        try {
+            readingSettings.annotationStateJson = JSON.stringify(annotationMap)
+        } catch (error) {
+            statusText = "Annotations are available for this session only"
+        }
+    }
+
+    function beginAnnotationStroke(x, y, pressure) {
+        if (!currentArticleId || screen !== "article") return
+        var strokes = annotationsForCurrentArticle().slice(-299)
+        var stroke = {
+            tool: annotationTool,
+            points: [[Number(x), Number(y) + articleFlick.contentY,
+                      Math.max(0, Math.min(1, Number(pressure || 0.5)))]]
+        }
+        strokes.push(stroke)
+        var replacement = {}
+        for (var key in annotationMap) replacement[key] = annotationMap[key]
+        replacement[currentArticleId] = strokes
+        annotationMap = replacement
+        activeAnnotationStroke = stroke
+        articleInkCanvas.paintSegment(stroke.tool, stroke.points[0], stroke.points[0])
+    }
+
+    function extendAnnotationStroke(x, y, pressure) {
+        if (!activeAnnotationStroke) return
+        var points = activeAnnotationStroke.points
+        if (points.length >= 4000) return
+        var nextX = Number(x)
+        var nextY = Number(y) + articleFlick.contentY
+        var previous = points[points.length - 1]
+        var dx = nextX - previous[0]
+        var dy = nextY - previous[1]
+        // The panel cannot display hundreds of updates per second. Sampling
+        // every five pixels preserves the stroke while preventing a refresh
+        // queue from building up behind the pen.
+        if (dx * dx + dy * dy < 25) return
+        var next = [nextX, nextY,
+                    Math.max(0, Math.min(1, Number(pressure || 0.5)))]
+        points.push(next)
+        articleInkCanvas.paintSegment(activeAnnotationStroke.tool, previous, next)
+    }
+
+    function finishAnnotationStroke() {
+        if (!activeAnnotationStroke) return
+        activeAnnotationStroke = null
+        persistAnnotations()
+    }
+
+    function clearArticleAnnotations() {
+        if (!currentArticleId) return
+        var replacement = {}
+        for (var key in annotationMap) {
+            if (key !== currentArticleId) replacement[key] = annotationMap[key]
+        }
+        annotationMap = replacement
+        activeAnnotationStroke = null
+        persistAnnotations()
+        articleInkCanvas.redrawAll()
+        statusText = "Article annotations cleared"
     }
 
     function setRead(id, value) {
@@ -208,12 +300,14 @@ Rectangle {
         toReadMap = withoutKey(toReadMap, id)
         likeMap = withoutKey(likeMap, id)
         tagMap = withoutKey(tagMap, id)
+        annotationMap = withoutKey(annotationMap, id)
 
         try {
             readingSettings.deletedStateJson = JSON.stringify(deletedMap)
             readingSettings.toReadStateJson = JSON.stringify(toReadMap)
             readingSettings.likeStateJson = JSON.stringify(likeMap)
             readingSettings.tagStateJson = JSON.stringify(tagMap)
+            readingSettings.annotationStateJson = JSON.stringify(annotationMap)
         } catch (error) {
             // The entry remains removed in memory if settings cannot be written.
         }
@@ -282,9 +376,21 @@ Rectangle {
     function openArticle(id) {
         if (!id) return
         savePage()
+        articleInkCanvas.clearForArticleChange()
+        articleCleanRefresh = true
+        cleanRefreshTimer.restart()
         currentArticleId = id
         currentArticle = null
         screen = "article"
+        articleFlick.contentY = Logic.positionForPage(
+            savedPage(id), articleFlick.height, articleFlick.contentHeight
+        )
+        Qt.callLater(function() {
+            articleFlick.contentY = Logic.positionForPage(
+                savedPage(id), articleFlick.height, articleFlick.contentHeight
+            )
+            articleInkCanvas.redrawAll()
+        })
         statusText = "Opening cached article…"
         setRead(id, true)
         endpoint.sendMessage(102, JSON.stringify({ id: id }))
@@ -293,6 +399,7 @@ Rectangle {
     function backOrClose() {
         if (screen === "article") {
             savePage()
+            articleInkCanvas.clearForArticleChange()
             screen = "feed"
             currentArticle = null
             currentArticleId = ""
@@ -301,16 +408,35 @@ Rectangle {
         }
     }
 
-    function movePage(direction) {
+    Timer {
+        id: cleanRefreshTimer
+        interval: 350
+        repeat: false
+        onTriggered: root.articleCleanRefresh = false
+    }
+
+    function movePage(direction, fromPosition) {
+        var position = fromPosition === undefined
+                ? articleFlick.contentY : Number(fromPosition)
+        articleFlick.cancelFlick()
         if (direction > 0 && Logic.isAtEnd(
-                articleFlick.contentY, articleFlick.height, articleFlick.contentHeight)) {
+                position, articleFlick.height, articleFlick.contentHeight)) {
             backOrClose()
             return
         }
         articleFlick.contentY = Logic.pageTarget(
-            articleFlick.contentY, direction, articleFlick.height, articleFlick.contentHeight
+            position, direction, articleFlick.height, articleFlick.contentHeight
         )
+        articleInkCanvas.redrawAll()
         savePage()
+    }
+
+    function finishArticleSwipe(deltaX, deltaY) {
+        var horizontal = Math.abs(deltaX) > Math.abs(deltaY)
+        var distance = horizontal ? deltaX : deltaY
+        if (Math.abs(distance) < 60) return
+        // Swiping left or up advances; swiping right or down goes back.
+        movePage(distance < 0 ? 1 : -1)
     }
 
     function openImageViewer(source, caption) {
@@ -366,9 +492,13 @@ Rectangle {
                 try {
                     currentArticle = JSON.parse(contents)
                     Qt.callLater(function() {
+                        // Restore after layout so the stored page is clamped
+                        // against this article rather than the previous one.
                         articleFlick.contentY = Logic.positionForPage(
-                            savedPage(currentArticleId), articleFlick.height, articleFlick.contentHeight
+                            savedPage(currentArticleId), articleFlick.height,
+                            articleFlick.contentHeight
                         )
+                        articleInkCanvas.redrawAll()
                     })
                     statusText = "Available offline"
                 } catch (error) {
@@ -402,7 +532,12 @@ Rectangle {
 
     DisplayMethodArea {
         anchors.fill: parent
-        displayMethod: screen === "article" ? DisplayMethodArea.Content : DisplayMethodArea.Fast
+        // Make the root region authoritative. Nested regions can otherwise
+        // leave the full-screen article on the slower Fast waveform.
+        displayMethod: screen === "article"
+                       ? (articleCleanRefresh
+                          ? DisplayMethodArea.Fast : DisplayMethodArea.UFast)
+                       : DisplayMethodArea.Fast
     }
 
     Rectangle {
@@ -420,7 +555,8 @@ Rectangle {
 
         Rectangle {
             Layout.fillWidth: true
-            Layout.preferredHeight: 144
+            Layout.preferredHeight: screen === "feed" ? 144 : 0
+            visible: screen === "feed"
             color: paper
 
             RowLayout {
@@ -444,22 +580,13 @@ Rectangle {
                             fillMode: Image.PreserveAspectFit
                             smooth: false
                         }
-                        Column {
+                        Text {
                             anchors.verticalCenter: parent.verticalCenter
-                            spacing: 2
-                            Text {
-                                text: "Estafette"
-                                color: ink
-                                font.family: monoFont
-                                font.bold: true
-                                font.pixelSize: 29
-                            }
-                            Text {
-                                text: "OTTERSEC READER"
-                                color: accent
-                                font.family: monoFont
-                                font.pixelSize: 15
-                            }
+                            text: "Estafette"
+                            color: ink
+                            font.family: monoFont
+                            font.bold: true
+                            font.pixelSize: 29
                         }
                     }
                 }
@@ -510,56 +637,15 @@ Rectangle {
                             font.pixelSize: 19
                         }
 
-                        Row {
-                            visible: screen === "article"
-                            spacing: 8
-                            Repeater {
-                                model: ["compact", "standard", "large"]
-                                Rectangle {
-                                    required property string modelData
-                                    width: 52
-                                    height: 52
-                                    color: textSize === modelData ? panel : paper
-                                    border.color: textSize === modelData ? ink : quiet
-                                    border.width: 1
-                                    Text {
-                                        anchors.centerIn: parent
-                                        text: modelData.charAt(0).toUpperCase()
-                                        color: ink
-                                        font.family: monoFont
-                                        font.bold: textSize === modelData
-                                        font.pixelSize: 21
-                                    }
-                                    MouseArea {
-                                        anchors.fill: parent
-                                        onClicked: {
-                                            textSize = modelData
-                                            setPreference("text_size", textSize)
-                                        }
-                                    }
-                                    DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
-                                }
-                            }
-                            Rectangle {
-                                width: 52
-                                height: 52
-                                color: paper
-                                border.color: quiet
-                                Text { anchors.centerIn: parent; text: "···"; color: ink; font.family: monoFont; font.pixelSize: 21 }
-                                MouseArea { anchors.fill: parent; onClicked: articleMenu.open() }
-                                DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
-                            }
-                        }
-
                         Rectangle {
-                            width: screen === "article" ? 174 : 110
+                            width: 110
                             height: 54
                             color: paper
                             border.color: ink
                             border.width: 1
                             Text {
                                 anchors.centerIn: parent
-                                text: screen === "article" ? "‹ WRITINGS" : "× CLOSE"
+                                text: "× CLOSE"
                                 color: ink
                                 font.family: monoFont
                                 font.pixelSize: 18
@@ -586,8 +672,9 @@ Rectangle {
             spacing: 0
 
             Rectangle {
-                Layout.preferredWidth: railWidth
+                Layout.preferredWidth: screen === "feed" ? railWidth : 0
                 Layout.fillHeight: true
+                visible: screen === "feed"
                 color: softPaper
 
                 ColumnLayout {
@@ -1133,26 +1220,39 @@ Rectangle {
                     }
                 }
 
-                Item {
-                    anchors.fill: parent
+                Rectangle {
+                    x: -parent.x
+                    width: root.width
+                    height: parent.height
                     visible: screen === "article"
+                    color: paper
+                    z: 20
+
+                    DisplayMethodArea {
+                        anchors.fill: parent
+                        // A page turn replaces the viewport once; UFast avoids
+                        // the multi-second flashing content waveform.
+                        // Article transitions briefly use Fast to remove any
+                        // residual ink from the previous Canvas backing store.
+                        displayMethod: root.articleCleanRefresh
+                                       ? DisplayMethodArea.Fast : DisplayMethodArea.UFast
+                    }
 
                     Flickable {
                         id: articleFlick
                         anchors.fill: parent
-                        anchors.bottomMargin: 94
                         clip: true
+                        interactive: false
                         boundsBehavior: Flickable.StopAtBounds
-                        flickDeceleration: root.scrollDeceleration
-                        maximumFlickVelocity: root.scrollMaximumVelocity
                         pixelAligned: true
                         contentWidth: width
-                        contentHeight: articleColumn.height + 96
+                        contentHeight: articleColumn.height + 150
+                        onContentYChanged: articleInkCanvas.redrawAll()
 
                         Column {
                             id: articleColumn
                             x: 72
-                            y: 54
+                            y: 108
                             width: articleFlick.width - 144
                             spacing: 28
 
@@ -1224,64 +1324,320 @@ Rectangle {
                         }
                     }
 
-                    MouseArea { anchors.left: parent.left; anchors.top: parent.top; anchors.bottom: articleControls.top; width: parent.width * 0.20; onClicked: movePage(-1) }
-                    MouseArea { anchors.right: parent.right; anchors.top: parent.top; anchors.bottom: articleControls.top; width: parent.width * 0.20; onClicked: movePage(1) }
+                    Canvas {
+                        id: articleInkCanvas
+                        anchors.fill: parent
+                        z: 6
+                        antialiasing: true
+                        renderStrategy: Canvas.Immediate
+                        property bool fullRepaintRequested: true
+                        property var pendingSegments: []
+                        property var scheduledSegments: []
+                        property bool paintScheduled: false
+                        property real dirtyLeft: 0
+                        property real dirtyTop: 0
+                        property real dirtyRight: 0
+                        property real dirtyBottom: 0
+                        property bool hasDirtyRegion: false
 
-                    Rectangle {
-                        id: articleControls
-                        anchors.left: parent.left
-                        anchors.right: parent.right
-                        anchors.bottom: parent.bottom
-                        height: 94
-                        color: softPaper
-                        border.color: panel
-                        border.width: 1
+                        function strokeWidth(tool, pressure) {
+                            if (tool === "eraser") return 42
+                            if (tool === "highlighter") return 34
+                            return 2.5 + 2.5 * Number(pressure || 0.5)
+                        }
 
-                        RowLayout {
-                            anchors.fill: parent
-                            anchors.leftMargin: 24
-                            anchors.rightMargin: 24
-                            anchors.topMargin: 14
-                            anchors.bottomMargin: 14
-
-                            Rectangle {
-                                Layout.preferredWidth: 230
-                                Layout.fillHeight: true
-                                color: softPaper
-                                border.color: ink
-                                Text { anchors.centerIn: parent; text: "‹ PREVIOUS"; color: ink; font.family: monoFont; font.pixelSize: 18 }
-                                MouseArea { anchors.fill: parent; onClicked: movePage(-1) }
-                                DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
+                        function configureStroke(context, tool, pressure) {
+                            context.lineCap = "round"
+                            context.lineJoin = "round"
+                            if (tool === "eraser") {
+                                context.globalCompositeOperation = "destination-out"
+                                context.globalAlpha = 1
+                                context.strokeStyle = "#000000"
+                            } else if (tool === "highlighter") {
+                                context.globalCompositeOperation = "source-over"
+                                context.globalAlpha = 0.28
+                                context.strokeStyle = "#555555"
+                            } else {
+                                context.globalCompositeOperation = "source-over"
+                                context.globalAlpha = 1
+                                context.strokeStyle = "#171717"
                             }
-                            Text {
-                                Layout.fillWidth: true
-                                text: {
-                                    var maximum = Math.max(1, articleFlick.contentHeight - articleFlick.height)
-                                    return Math.round(100 * Math.min(1, articleFlick.contentY / maximum)) + "% READ"
-                                }
-                                color: muted
-                                font.family: monoFont
-                                horizontalAlignment: Text.AlignHCenter
-                                font.pixelSize: 17
+                            context.lineWidth = strokeWidth(tool, pressure)
+                        }
+
+                        function drawSegment(context, tool, from, to) {
+                            configureStroke(context, tool, from[2])
+                            context.beginPath()
+                            context.moveTo(from[0], from[1] - articleFlick.contentY)
+                            var endX = from[0] === to[0] && from[1] === to[1]
+                                    ? to[0] + 0.1 : to[0]
+                            context.lineTo(endX, to[1] - articleFlick.contentY)
+                            context.stroke()
+                        }
+
+                        function paintSegment(tool, from, to) {
+                            pendingSegments.push({ tool: tool, from: from, to: to })
+                            var radius = strokeWidth(tool, from[2]) / 2 + 4
+                            var left = Math.min(from[0], to[0]) - radius
+                            var top = Math.min(from[1], to[1]) - articleFlick.contentY - radius
+                            var right = Math.max(from[0], to[0]) + radius
+                            var bottom = Math.max(from[1], to[1]) - articleFlick.contentY + radius
+                            if (!hasDirtyRegion) {
+                                dirtyLeft = left
+                                dirtyTop = top
+                                dirtyRight = right
+                                dirtyBottom = bottom
+                                hasDirtyRegion = true
+                            } else {
+                                dirtyLeft = Math.min(dirtyLeft, left)
+                                dirtyTop = Math.min(dirtyTop, top)
+                                dirtyRight = Math.max(dirtyRight, right)
+                                dirtyBottom = Math.max(dirtyBottom, bottom)
                             }
-                            Rectangle {
-                                Layout.preferredWidth: 230
-                                Layout.fillHeight: true
-                                color: softPaper
-                                border.color: ink
-                                Text {
-                                    anchors.centerIn: parent
-                                    text: Logic.isAtEnd(articleFlick.contentY, articleFlick.height, articleFlick.contentHeight)
-                                          ? "WRITINGS ›" : "NEXT ›"
-                                    color: ink
-                                    font.family: monoFont
-                                    font.pixelSize: 18
-                                }
-                                MouseArea { anchors.fill: parent; onClicked: movePage(1) }
-                                DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
+                            // Put the first mark on screen without an artificial
+                            // timer delay. Later samples are coalesced to one
+                            // paint per display frame so refreshes cannot queue
+                            // up behind the Marker.
+                            if (!paintScheduled && !inkPaintTimer.running) {
+                                flushSegments()
+                                inkPaintTimer.start()
+                            } else if (!inkPaintTimer.running) {
+                                inkPaintTimer.start()
                             }
                         }
+
+                        function flushSegments() {
+                            if (!hasDirtyRegion || paintScheduled) return
+                            var region = Qt.rect(
+                                dirtyLeft, dirtyTop,
+                                Math.max(1, dirtyRight - dirtyLeft),
+                                Math.max(1, dirtyBottom - dirtyTop)
+                            )
+                            scheduledSegments = pendingSegments
+                            pendingSegments = []
+                            hasDirtyRegion = false
+                            paintScheduled = true
+                            requestPaint(region)
+                        }
+
+                        function redrawAll() {
+                            inkPaintTimer.stop()
+                            fullRepaintRequested = true
+                            pendingSegments = []
+                            scheduledSegments = []
+                            paintScheduled = false
+                            hasDirtyRegion = false
+                            requestPaint()
+                        }
+
+                        function clearForArticleChange() {
+                            inkPaintTimer.stop()
+                            pendingSegments = []
+                            scheduledSegments = []
+                            paintScheduled = false
+                            hasDirtyRegion = false
+                            fullRepaintRequested = true
+                            var context = getContext("2d")
+                            context.clearRect(0, 0, width, height)
+                            requestPaint()
+                        }
+
+                        Timer {
+                            id: inkPaintTimer
+                            interval: 16
+                            repeat: false
+                            onTriggered: articleInkCanvas.flushSegments()
+                        }
+
+                        onPaint: {
+                            var context = getContext("2d")
+                            if (!fullRepaintRequested) {
+                                var segments = scheduledSegments
+                                scheduledSegments = []
+                                for (var segmentIndex = 0; segmentIndex < segments.length; segmentIndex++) {
+                                    var segment = segments[segmentIndex]
+                                    context.save()
+                                    drawSegment(context, segment.tool, segment.from, segment.to)
+                                    context.restore()
+                                }
+                                paintScheduled = false
+                                if (pendingSegments.length && !inkPaintTimer.running) {
+                                    inkPaintTimer.start()
+                                }
+                                return
+                            }
+                            fullRepaintRequested = false
+                            pendingSegments = []
+                            scheduledSegments = []
+                            paintScheduled = false
+                            hasDirtyRegion = false
+                            context.clearRect(0, 0, width, height)
+                            var strokes = root.annotationsForCurrentArticle()
+                            for (var strokeIndex = 0; strokeIndex < strokes.length; strokeIndex++) {
+                                var stroke = strokes[strokeIndex]
+                                var points = stroke.points || []
+                                if (!points.length) continue
+                                context.save()
+                                configureStroke(context, stroke.tool, points[0][2])
+                                context.beginPath()
+                                context.moveTo(points[0][0], points[0][1] - articleFlick.contentY)
+                                if (points.length === 1) {
+                                    context.lineTo(points[0][0] + 0.1, points[0][1] - articleFlick.contentY)
+                                } else {
+                                    for (var pointIndex = 1; pointIndex < points.length; pointIndex++) {
+                                        context.lineTo(points[pointIndex][0], points[pointIndex][1] - articleFlick.contentY)
+                                    }
+                                }
+                                context.stroke()
+                                context.restore()
+                            }
+                        }
+
                     }
+
+                    MouseArea {
+                        id: articlePageSwipe
+                        anchors.fill: parent
+                        z: 5
+                        preventStealing: true
+                        propagateComposedEvents: true
+                        property real pressX: 0
+                        property real pressY: 0
+                        property bool penInput: false
+                        onPressed: function(mouse) {
+                            pressX = mouse.x
+                            pressY = mouse.y
+                            // Qt turns finger touches into synthesized mouse
+                            // events. Marker input arrives as a native event.
+                            penInput = mouse.source === Qt.MouseEventNotSynthesized
+                            if (penInput) {
+                                root.beginAnnotationStroke(mouse.x, mouse.y, mouse.pressure)
+                            }
+                        }
+                        onPositionChanged: function(mouse) {
+                            if (pressed && penInput) {
+                                root.extendAnnotationStroke(mouse.x, mouse.y, mouse.pressure)
+                            }
+                        }
+                        onReleased: function(mouse) {
+                            if (penInput) root.finishAnnotationStroke()
+                            else root.finishArticleSwipe(mouse.x - pressX, mouse.y - pressY)
+                        }
+                        onCanceled: {
+                            if (penInput) root.finishAnnotationStroke()
+                            penInput = false
+                        }
+                        onClicked: function(mouse) {
+                            mouse.accepted = penInput
+                            penInput = false
+                        }
+                        onDoubleClicked: function(mouse) {
+                            mouse.accepted = penInput
+                            penInput = false
+                        }
+                    }
+
+                    Item {
+                        id: articleBottomLeftTap
+                        anchors.left: parent.left
+                        anchors.bottom: parent.bottom
+                        width: 190
+                        height: 190
+                        z: 8
+                        TapHandler {
+                            acceptedDevices: PointerDevice.TouchScreen
+                            gesturePolicy: TapHandler.ReleaseWithinBounds
+                            onTapped: root.movePage(-1)
+                        }
+                    }
+
+                    Item {
+                        id: articleBottomRightTap
+                        anchors.right: parent.right
+                        anchors.bottom: parent.bottom
+                        width: 190
+                        height: 190
+                        z: 8
+                        TapHandler {
+                            acceptedDevices: PointerDevice.TouchScreen
+                            gesturePolicy: TapHandler.ReleaseWithinBounds
+                            onTapped: root.movePage(1)
+                        }
+                    }
+
+                    Row {
+                        id: articleToolbar
+                        anchors.top: parent.top
+                        anchors.topMargin: 22
+                        anchors.right: parent.right
+                        anchors.rightMargin: 26
+                        spacing: 8
+                        z: 10
+
+                        Repeater {
+                            model: [
+                                { key: "pen", icon: "qrc:/icons/pen.svg" },
+                                { key: "highlighter", icon: "qrc:/icons/highlighter.svg" },
+                                { key: "eraser", icon: "qrc:/icons/eraser.svg" }
+                            ]
+                            Rectangle {
+                                required property var modelData
+                                width: 54
+                                height: 54
+                                color: root.annotationTool === modelData.key ? panel : paper
+                                border.color: root.annotationTool === modelData.key ? ink : quiet
+                                border.width: root.annotationTool === modelData.key ? 2 : 1
+                                Image {
+                                    anchors.centerIn: parent
+                                    width: 32
+                                    height: 32
+                                    source: modelData.icon
+                                    sourceSize.width: 32
+                                    sourceSize.height: 32
+                                    fillMode: Image.PreserveAspectFit
+                                }
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: root.annotationTool = modelData.key
+                                }
+                                DisplayMethodArea {
+                                    anchors.fill: parent
+                                    displayMethod: DisplayMethodArea.Fast
+                                }
+                            }
+                        }
+
+                        Rectangle {
+                            width: 54
+                            height: 54
+                            color: paper
+                            border.color: quiet
+                            border.width: 1
+                            Text { anchors.centerIn: parent; text: "···"; color: ink; font.family: monoFont; font.pixelSize: 21 }
+                            MouseArea { anchors.fill: parent; onClicked: articleMenu.open() }
+                            DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
+                        }
+
+                        Rectangle {
+                            id: exitArticleButton
+                            width: 132
+                            height: 54
+                            color: paper
+                            border.color: ink
+                            border.width: 1
+                            Text {
+                                anchors.centerIn: parent
+                                text: "× EXIT"
+                                color: ink
+                                font.family: monoFont
+                                font.bold: true
+                                font.pixelSize: 18
+                            }
+                            MouseArea { anchors.fill: parent; onClicked: backOrClose() }
+                            DisplayMethodArea { anchors.fill: parent; displayMethod: DisplayMethodArea.Fast }
+                        }
+                    }
+
                 }
             }
         }
@@ -1551,7 +1907,7 @@ Rectangle {
         id: articleMenu
         anchors.centerIn: parent
         width: 500
-        height: 316
+        height: 388
         modal: true
         padding: 0
         background: Rectangle { color: paper; border.color: ink; border.width: 2 }
@@ -1568,6 +1924,20 @@ Rectangle {
                 border.color: ink
                 Text { anchors.centerIn: parent; text: "MARK UNREAD"; color: ink; font.family: monoFont; font.pixelSize: 18 }
                 MouseArea { anchors.fill: parent; onClicked: { setRead(currentArticleId, false); articleMenu.close() } }
+            }
+            Rectangle {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 58
+                color: paper
+                border.color: quiet
+                Text { anchors.centerIn: parent; text: "CLEAR ANNOTATIONS"; color: ink; font.family: monoFont; font.pixelSize: 18 }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        articleMenu.close()
+                        root.clearArticleAnnotations()
+                    }
+                }
             }
             Rectangle {
                 Layout.fillWidth: true
@@ -1714,7 +2084,7 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     enabled: !!block.url && !block.damaged && localImage.status === Image.Ready
-                    onClicked: appRoot.openImageViewer(block.url, block.caption || "")
+                    onDoubleClicked: appRoot.openImageViewer(block.url, block.caption || "")
                 }
             }
             Rectangle {
@@ -1735,18 +2105,16 @@ Rectangle {
                 font.pixelSize: 17 * typeScale
                 horizontalAlignment: Text.AlignHCenter
                 wrapMode: Text.Wrap
-                height: visible ? implicitHeight : 0
             }
             Text {
                 width: parent.width
                 visible: !!block.url && !block.damaged && localImage.status === Image.Ready
-                text: "TAP IMAGE TO ZOOM"
+                text: "DOUBLE-TAP IMAGE TO ZOOM"
                 color: secondary
                 font.family: monoFont
                 font.bold: true
                 font.pixelSize: 15 * typeScale
                 horizontalAlignment: Text.AlignHCenter
-                height: visible ? implicitHeight : 0
             }
         }
     }
