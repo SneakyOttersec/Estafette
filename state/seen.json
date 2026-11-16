@@ -10,7 +10,7 @@
     },
     "https://posts.specterops.io/": {
       "feed": "https://specterops.io/feed/",
-      "baseline": "2026-11-06T17:00:00+00:00"
+      "baseline": "2026-11-10T17:00:00+00:00"
     },
     "https://blog.xpnsec.com/": {
       "feed": "https://blog.xpnsec.com/rss.xml",
@@ -78,7 +78,7 @@
     },
     "https://blog.netspi.com/": {
       "feed": "https://www.netspi.com/feed/",
-      "baseline": "2026-11-04T16:22:43+00:00"
+      "baseline": "2026-11-12T22:49:35+00:00"
     },
     "https://secret.club/": {
       "feed": "https://secret.club/feed.xml",
@@ -94,7 +94,7 @@
     },
     "https://googleprojectzero.blogspot.com/": {
       "feed": "https://projectzero.google/feed.xml",
-      "baseline": "2026-10-27T07:00:00+00:00"
+      "baseline": "2026-11-13T08:00:00+00:00"
     },
     "https://www.ctus.io/": {
       "feed": "https://thecontractor.io/rss/",
@@ -154,7 +154,7 @@
     },
     "https://www.trustedsec.com/blog/": {
       "feed": "https://trustedsec.com/feed.rss",
-      "baseline": "2026-11-03T05:00:00+00:00"
+      "baseline": "2026-11-10T05:00:00+00:00"
     },
     "https://www.outflank.nl/blog/": {
       "feed": "https://www.outflank.nl/blog/feed/"
@@ -169,7 +169,7 @@
     },
     "https://www.praetorian.com/blog/": {
       "feed": "https://www.praetorian.com/feed/",
-      "baseline": "2026-10-27T19:31:40+00:00"
+      "baseline": "2026-11-12T14:16:26+00:00"
     },
     "https://mez0.cc/": {
       "feed": "https://mez0.cc/rss.xml",
@@ -181,7 +181,7 @@
     },
     "https://www.blackhillsinfosec.com/blog/": {
       "feed": "https://www.blackhillsinfosec.com/blog/feed/",
-      "baseline": "2026-11-05T21:04:59+00:00"
+      "baseline": "2026-11-11T21:57:25+00:00"
     },
     "https://rhinosecuritylabs.com/blog/": {
       "feed": "https://rhinosecuritylabs.com/blog/feed/",
@@ -201,7 +201,7 @@
     },
     "https://www.hexacorn.com/blog/": {
       "feed": "https://www.hexacorn.com/blog/feed/",
-      "baseline": "2026-10-25T01:11:26+00:00"
+      "baseline": "2026-11-15T01:54:52+00:00"
     },
     "https://blog.deeb.ch/": {
       "feed": "https://blog.deeb.ch/feed.xml",
@@ -213,7 +213,7 @@
     },
     "https://tldrsec.com/": {
       "feed": "https://rss.beehiiv.com/feeds/xgTKUmMmUm.xml",
-      "baseline": "2026-11-05T15:30:00+00:00"
+      "baseline": "2026-11-12T15:30:00+00:00"
     },
     "https://klezvirus.github.io/": {
       "feed": "https://klezvirus.github.io/feed.xml",
@@ -232,7 +232,7 @@
     },
     "https://www.zerodayinitiative.com/blog": {
       "feed": "https://www.thezdi.com/blog?format=rss",
-      "baseline": "2026-10-27T16:39:07+00:00"
+      "baseline": "2026-11-10T19:02:41+00:00"
     },
     "https://h0mbre.github.io/": {
       "feed": "https://h0mbre.github.io/feed.xml",
@@ -244,11 +244,11 @@
     },
     "https://securelist.com/": {
       "feed": "https://securelist.com/feed/",
-      "baseline": "2026-11-06T10:00:12+00:00"
+      "baseline": "2026-11-16T07:00:37+00:00"
     },
     "https://research.checkpoint.com/": {
       "feed": "https://research.checkpoint.com/feed/",
-      "baseline": "2026-11-05T17:22:06+00:00"
+      "baseline": "2026-11-12T13:56:37+00:00"
     },
     "https://www.sentinelone.com/labs/": {
       "feed": "https://www.sentinelone.com/feed/?post_type=labs",
@@ -256,11 +256,11 @@
     },
     "https://blog.talosintelligence.com/": {
       "feed": "https://blog.talosintelligence.com/rss/",
-      "baseline": "2026-11-05T19:00:00+00:00"
+      "baseline": "2026-11-13T20:57:13+00:00"
     },
     "https://unit42.paloaltonetworks.com/": {
       "feed": "https://unit42.paloaltonetworks.com/feed/",
-      "baseline": "2026-11-06T21:15:09+00:00"
+      "baseline": "2026-11-12T15:00:31+00:00"
     },
     "https://maxkersten.nl/": {
       "feed": "https://maxkersten.nl/feed/",
@@ -272,11 +272,11 @@
     },
     "https://blog.includesecurity.com/": {
       "feed": "https://blog.includesecurity.com/feed/",
-      "baseline": "2026-10-29T16:00:46+00:00"
+      "baseline": "2026-11-09T18:02:41+00:00"
     },
     "https://spaceraccoon.dev/": {
       "feed": "https://spaceraccoon.dev/feed.xml",
-      "baseline": "2026-05-24T00:00:00+00:00"
+      "baseline": "2026-11-15T12:00:00+00:00"
     },
     "https://jorianwoltjer.com/": {
       "feed": "https://jorianwoltjer.com/blog/rss.xml",
@@ -288,7 +288,7 @@
     },
     "https://www.schneier.com/": {
       "feed": "https://www.schneier.com/feed/",
-      "baseline": "2026-11-09T12:05:39+00:00"
+      "baseline": "2026-11-16T12:04:42+00:00"
     },
     "https://thedfirreport.com/": {
       "feed": "https://thedfirreport.com/feed/",
@@ -308,11 +308,11 @@
     },
     "https://www.huntress.com/blog": {
       "feed": "https://www.huntress.com/blog/rss.xml",
-      "baseline": "2026-11-06T21:00:00+00:00"
+      "baseline": "2026-11-14T01:50:00+00:00"
     },
     "https://www.welivesecurity.com/en/": {
       "feed": "https://www.welivesecurity.com/en/feed/",
-      "baseline": "2026-11-04T09:55:00+00:00"
+      "baseline": "2026-11-13T10:00:00+00:00"
     },
     "https://blog.fox-it.com/": {
       "feed": "https://blog.fox-it.com/feed/",
@@ -320,11 +320,11 @@
     },
     "https://blog.doyensec.com/": {
       "feed": "https://blog.doyensec.com/atom.xml",
-      "baseline": "2026-10-26T23:00:00+00:00"
+      "baseline": "2026-11-11T23:00:00+00:00"
     },
     "https://blog.intigriti.com/": {
       "feed": "https://blog.intigriti.com/feed/",
-      "baseline": "2026-11-04T00:00:00+00:00"
+      "baseline": "2026-11-10T00:00:00+00:00"
     },
     "https://positive.security/blog": {
       "feed": "https://positive.security/blog/rss.xml",
@@ -340,7 +340,7 @@
     },
     "https://www.pentestpartners.com/security-blog/": {
       "feed": "https://www.pentestpartners.com/feed/",
-      "baseline": "2026-11-04T15:49:10+00:00"
+      "baseline": "2026-11-12T16:18:32+00:00"
     },
     "https://blog.compass-security.com/": {
       "feed": "https://blog.compass-security.com/feed/",
@@ -363,11 +363,11 @@
     },
     "https://thisweekin4n6.com/": {
       "feed": "https://thisweekin4n6.com/feed/",
-      "baseline": "2026-11-08T11:33:49+00:00"
+      "baseline": "2026-11-15T11:26:24+00:00"
     },
     "https://cocomelonc.github.io/": {
       "feed": "https://cocomelonc.github.io/feed.xml",
-      "baseline": "2026-11-04T01:00:00+00:00"
+      "baseline": "2026-11-10T01:00:00+00:00"
     },
     "https://modexp.wordpress.com/": {
       "feed": "https://modexp.wordpress.com/feed/",
@@ -538,7 +538,7 @@
     },
     "https://vulncheck.com/blog": {
       "feed": "https://vulncheck.com/feed/blog/atom.xml",
-      "baseline": "2026-11-08T00:00:00+00:00"
+      "baseline": "2026-11-16T00:00:00+00:00"
     },
     "https://labs.bishopfox.com/tech-blog": {
       "feed": "https://labs.bishopfox.com/tech-blog/rss.xml",
@@ -605,7 +605,7 @@
     },
     "https://www.shielder.com/blog/": {
       "feed": "https://www.shielder.com/blog/index.xml",
-      "baseline": "2026-10-13T11:37:00+00:00"
+      "baseline": "2026-11-10T14:30:00+00:00"
     },
     "https://certitude.consulting/blog/en/": {
       "feed": "https://certitude.consulting/blog/en/feed/",
@@ -633,7 +633,7 @@
     },
     "https://blog.nviso.eu/": {
       "feed": "https://blog.nviso.eu/feed/",
-      "baseline": "2026-11-04T10:29:49+00:00"
+      "baseline": "2026-11-13T08:27:57+00:00"
     },
     "https://pentestlab.blog/": {
       "feed": "https://pentestlab.blog/feed/",
@@ -672,7 +672,7 @@
     },
     "https://www.wiz.io/blog": {
       "feed": "https://www.wiz.io/blog/rss.xml",
-      "baseline": "2026-11-03T13:00:00+00:00"
+      "baseline": "2026-11-13T17:05:02+00:00"
     },
     "https://blog.christophetd.fr/": {
       "feed": "https://blog.christophetd.fr/feed/",
@@ -9168,6 +9168,372 @@
       "title": "Empowering SOC Teams with the Wiz Red and Blue Agents | Wiz Blog",
       "slug": "soc-alerts-red-and-blue-agents",
       "date_processed": "2026-11-09",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://specterops.io/blog/2026/11/10/sage-ai-for-assumed-breach-operations-built-into-mythic/": {
+      "title": "Sage: AI for Assumed-Breach Operations, Built Into Mythic",
+      "slug": "sage-ai-for-assumed-breach-operations-built-into-mythic",
+      "date_processed": "2026-11-16",
+      "source": "https://posts.specterops.io/"
+    },
+    "https://www.netspi.com/blog/executive-blog/critical-vulnerability/apache-http-server-critical-rce-vulnerability-cve-2026-119618/": {
+      "title": "Apache HTTP Server: Critical RCE Vulnerability ( CVE-2026-119618 )",
+      "slug": "apache-http-server-critical-rce-vulnerability-cve-2026-119618",
+      "date_processed": "2026-11-16",
+      "source": "https://blog.netspi.com/"
+    },
+    "https://projectzero.google/2026/11/disclosure-policy.html": {
+      "title": "Policy and Disclosure: 2026 Edition",
+      "slug": "disclosure-policyhtml",
+      "date_processed": "2026-11-16",
+      "source": "https://googleprojectzero.blogspot.com/"
+    },
+    "https://trustedsec.com/blog/cui-and-export-controls": {
+      "title": "CUI and Export Controls",
+      "slug": "cui-and-export-controls",
+      "date_processed": "2026-11-16",
+      "source": "https://www.trustedsec.com/blog/"
+    },
+    "https://www.praetorian.com/blog/cve-2026-119618/": {
+      "title": "CVE-2026-119618: What We Know About the Critical Apache mod_http2 Race Condition",
+      "slug": "cve-2026-119618",
+      "date_processed": "2026-11-16",
+      "source": "https://www.praetorian.com/blog/"
+    },
+    "https://www.blackhillsinfosec.com/log-analysis-guide/": {
+      "title": "Log Analysis Field Guide: Tips for Spotting Patterns and Red Flags",
+      "slug": "log-analysis-guide",
+      "date_processed": "2026-11-16",
+      "source": "https://www.blackhillsinfosec.com/blog/"
+    },
+    "https://www.hexacorn.com/blog/2026/11/15/anti-ai-tricks-part-1/": {
+      "title": "Anti-AI tricks, Part 1",
+      "slug": "anti-ai-tricks-part-1",
+      "date_processed": "2026-11-16",
+      "source": "https://www.hexacorn.com/blog/"
+    },
+    "https://tldrsec.com/p/tldr-sec-354": {
+      "title": "[tl;dr sec] #354 - ARTEX & Agentic Hacking in the Wild, The Patchless Window, Backporting Security Fixes",
+      "slug": "tldr-sec-354",
+      "date_processed": "2026-11-16",
+      "source": "https://tldrsec.com/"
+    },
+    "https://www.thezdi.com/blog/2026/11/10/the-november-2026-security-update-review": {
+      "title": "Zero Day Initiative — The November 2026 Security Update Review",
+      "slug": "the-november-2026-security-update-review",
+      "date_processed": "2026-11-16",
+      "source": "https://www.zerodayinitiative.com/blog"
+    },
+    "https://securelist.com/retadup-delivers-coffeeloader/121908/": {
+      "title": "The Retadup USB worm is back to spread CoffeeLoader",
+      "slug": "121908",
+      "date_processed": "2026-11-16",
+      "source": "https://securelist.com/"
+    },
+    "https://securelist.com/esxi-ransomware/121959/": {
+      "title": "ESXi ransomware: why it is dangerous and how to defend against it",
+      "slug": "121959",
+      "date_processed": "2026-11-16",
+      "source": "https://securelist.com/"
+    },
+    "https://securelist.com/how-a-cloud-pentest-works/121921/": {
+      "title": "Cloud pentesting: testing trust boundaries and tenant isolation",
+      "slug": "121921",
+      "date_processed": "2026-11-16",
+      "source": "https://securelist.com/"
+    },
+    "https://securelist.com/citrus-ransomware/121879/": {
+      "title": "Citrus Ransomware: tactics, techniques, procedures, and links to Toy Ghouls",
+      "slug": "121879",
+      "date_processed": "2026-11-16",
+      "source": "https://securelist.com/"
+    },
+    "https://securelist.com/malware-report-q3-2026-pc-iot-statistics/121843/": {
+      "title": "Desktop and IoT threat statistics for Q3 2026",
+      "slug": "121843",
+      "date_processed": "2026-11-16",
+      "source": "https://securelist.com/"
+    },
+    "https://securelist.com/malware-report-q3-2026-mobile-statistics/121844/": {
+      "title": "Mobile threat report for Q3 2026",
+      "slug": "121844",
+      "date_processed": "2026-11-16",
+      "source": "https://securelist.com/"
+    },
+    "https://research.checkpoint.com/2026/php2shell-exploitation-on-check-point-gateway/": {
+      "title": "PHP2Shell Exploitation on Check Point Gateway - Check Point Research",
+      "slug": "php2shell-exploitation-on-check-point-gateway",
+      "date_processed": "2026-11-16",
+      "source": "https://research.checkpoint.com/"
+    },
+    "https://research.checkpoint.com/2026/not-all-that-glitters-is-gold-tracking-copperdragons-sparrow-framework-around-the-globe/": {
+      "title": "Not All That Glitters Is Gold: Tracking CopperDragon’s Sparrow Framework Around the Globe - Check Point Research",
+      "slug": "not-all-that-glitters-is-gold-tracking-copperdragons-sparrow-framework-around-the-globe",
+      "date_processed": "2026-11-16",
+      "source": "https://research.checkpoint.com/"
+    },
+    "https://research.checkpoint.com/2026/9th-november-threat-intelligence-report/": {
+      "title": "9th November – Threat Intelligence Report - Check Point Research",
+      "slug": "9th-november-threat-intelligence-report",
+      "date_processed": "2026-11-16",
+      "source": "https://research.checkpoint.com/"
+    },
+    "https://blog.talosintelligence.com/artex-and-beyond/": {
+      "title": "ARTEX and beyond: AI-enabled penetration testing platforms",
+      "slug": "artex-and-beyond",
+      "date_processed": "2026-11-16",
+      "source": "https://blog.talosintelligence.com/"
+    },
+    "https://blog.talosintelligence.com/never-be-afraid-to-ask-questions/": {
+      "title": "Never be afraid to ask questions",
+      "slug": "never-be-afraid-to-ask-questions",
+      "date_processed": "2026-11-16",
+      "source": "https://blog.talosintelligence.com/"
+    },
+    "https://blog.talosintelligence.com/microsoft-patch-tuesday-for-november-2026/": {
+      "title": "Microsoft Patch Tuesday for November 2026 — Snort rules and prominent vulnerabilities",
+      "slug": "microsoft-patch-tuesday-for-november-2026",
+      "date_processed": "2026-11-16",
+      "source": "https://blog.talosintelligence.com/"
+    },
+    "https://unit42.paloaltonetworks.com/cairn-framework-ai-autonomous-attacks/": {
+      "title": "Attackers Use Autonomous AI to Target Semiconductor, Defense and Civil Society Sectors",
+      "slug": "cairn-framework-ai-autonomous-attacks",
+      "date_processed": "2026-11-16",
+      "source": "https://unit42.paloaltonetworks.com/"
+    },
+    "https://unit42.paloaltonetworks.com/artex-and-ai-powered-red-teaming-tools/": {
+      "title": "ARTEX and AI-Powered Red Teaming Tools: What Defenders Need to Know",
+      "slug": "artex-and-ai-powered-red-teaming-tools",
+      "date_processed": "2026-11-16",
+      "source": "https://unit42.paloaltonetworks.com/"
+    },
+    "https://unit42.paloaltonetworks.com/falcon-c2-browser-compromise/": {
+      "title": "The XG Files: Falcon C2 Flying Under The (Browser) Radar",
+      "slug": "falcon-c2-browser-compromise",
+      "date_processed": "2026-11-16",
+      "source": "https://unit42.paloaltonetworks.com/"
+    },
+    "https://blog.includesecurity.com/2026/11/why-dont-we-just-use-ai/": {
+      "title": "Why Don't We Just Use AI? - Include Security Research Blog",
+      "slug": "why-dont-we-just-use-ai",
+      "date_processed": "2026-11-16",
+      "source": "https://blog.includesecurity.com/"
+    },
+    "https://spaceraccoon.dev/race-against-the-machine-defender-macos-lpe/": {
+      "title": "Race Against the (Mac)hine: Local Privilege Escalation in Microsoft Defender for macOS",
+      "slug": "race-against-the-machine-defender-macos-lpe",
+      "date_processed": "2026-11-16",
+      "source": "https://spaceraccoon.dev/"
+    },
+    "https://www.schneier.com/blog/archives/2026/11/usable-security-at-luxury-hotels.html": {
+      "title": "Usable Security at Luxury Hotels - Schneier on Security",
+      "slug": "usable-security-at-luxury-hotelshtml",
+      "date_processed": "2026-11-16",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/11/upcoming-speaking-engagements-62.html": {
+      "title": "Upcoming Speaking Engagements - Schneier on Security",
+      "slug": "upcoming-speaking-engagements-62html",
+      "date_processed": "2026-11-16",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-pacific-flying-squid-populations-dropping-in-korean-waters.html": {
+      "title": "Friday Squid Blogging: Pacific Flying Squid Populations Dropping in Korean Waters - Schneier on Security",
+      "slug": "friday-squid-blogging-pacific-flying-squid-populations-dropping-in-korean-watershtml",
+      "date_processed": "2026-11-16",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/11/ai-doesnt-have-to-go-rogue-to-break-the-world.html": {
+      "title": "AI Doesn't Have to Go Rogue to Break the World - Schneier on Security",
+      "slug": "ai-doesnt-have-to-go-rogue-to-break-the-worldhtml",
+      "date_processed": "2026-11-16",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/11/another-way-police-are-locating-people-from-their-smartphones.html": {
+      "title": "Another Way Police Are Locating People from Their Smartphones - Schneier on Security",
+      "slug": "another-way-police-are-locating-people-from-their-smartphoneshtml",
+      "date_processed": "2026-11-16",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/11/three-people-arrested-for-ai-enhanced-impersonation-fraud.html": {
+      "title": "Three People Arrested for AI-Enhanced Impersonation Fraud - Schneier on Security",
+      "slug": "three-people-arrested-for-ai-enhanced-impersonation-fraudhtml",
+      "date_processed": "2026-11-16",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.schneier.com/blog/archives/2026/11/new-openssh-vulnerability.html": {
+      "title": "New OpenSSH Vulnerability - Schneier on Security",
+      "slug": "new-openssh-vulnerabilityhtml",
+      "date_processed": "2026-11-16",
+      "source": "https://www.schneier.com/"
+    },
+    "https://www.huntress.com/blog/fake-crypto-exchange-sessions-screenconnect": {
+      "title": "Attackers use Crypto Exchange Names to Disguise Unauthorized Sessions on 100+ ScreenConnect Servers | Huntress",
+      "slug": "fake-crypto-exchange-sessions-screenconnect",
+      "date_processed": "2026-11-16",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/geovision-camera-software-xmrig-cryptominer": {
+      "title": "GeoVision Camera Software Abused to Deploy XMRig Cryptominer | Huntress",
+      "slug": "geovision-camera-software-xmrig-cryptominer",
+      "date_processed": "2026-11-16",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/crafty-microsoft-teams-booking-flow-disguises-device-code-phishing": {
+      "title": "Crafty Microsoft Teams Booking Flow Disguises Device Code Phishing | Huntress",
+      "slug": "crafty-microsoft-teams-booking-flow-disguises-device-code-phishing",
+      "date_processed": "2026-11-16",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/sckit-worm-rogue-screenconnect": {
+      "title": "SCKit Worm Installs Rogue ScreenConnect Clients and Session Cookie Relays Across Hundreds of Endpoints | Huntress",
+      "slug": "sckit-worm-rogue-screenconnect",
+      "date_processed": "2026-11-16",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/the-evolving-tradecraft-of-clickfix": {
+      "title": "Beyond the clipboard: The evolving tradecraft of ClickFix | Huntress",
+      "slug": "the-evolving-tradecraft-of-clickfix",
+      "date_processed": "2026-11-16",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/n-able-disables-cloud-services-following-disclosure-of-able2shell-exploit-chains": {
+      "title": "N-able Disables Cloud Services Following Disclosure of \"Able2Shell\" Exploit Chains | Huntress",
+      "slug": "n-able-disables-cloud-services-following-disclosure-of-able2shell-exploit-chains",
+      "date_processed": "2026-11-16",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/ahsaycbs-webshells": {
+      "title": "Inside an AhsayCBS Intrusion: Hidden Webshells, a CryptoMiner, and a C2 Implant | Huntress",
+      "slug": "ahsaycbs-webshells",
+      "date_processed": "2026-11-16",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.huntress.com/blog/employee-spotlight-sasha-roshan": {
+      "title": "Sasha Roshan Takes Security Education Beyond the Demo | Huntress",
+      "slug": "employee-spotlight-sasha-roshan",
+      "date_processed": "2026-11-16",
+      "source": "https://www.huntress.com/blog"
+    },
+    "https://www.welivesecurity.com/en/cybersecurity/gta-vi-isnt-out-yet-scams-full-swing/": {
+      "title": "GTA VI isn’t out yet – and the scams are already out in full forc",
+      "slug": "gta-vi-isnt-out-yet-scams-full-swing",
+      "date_processed": "2026-11-16",
+      "source": "https://www.welivesecurity.com/en/"
+    },
+    "https://www.welivesecurity.com/en/eset-research/exchange-for-breakfast-turlas-cereal-tricks-are-not-for-kids/": {
+      "title": "Exchange for breakfast: Turla’s Cereal tricks are not for kids",
+      "slug": "exchange-for-breakfast-turlas-cereal-tricks-are-not-for-kids",
+      "date_processed": "2026-11-16",
+      "source": "https://www.welivesecurity.com/en/"
+    },
+    "https://blog.doyensec.com/2026/11/12/protospector.html": {
+      "title": "Introducing ProtoSpector: A Burp Suite Extension for Analyzing, Tampering With, and Testing Protobuf and gRPC Traffic",
+      "slug": "protospectorhtml",
+      "date_processed": "2026-11-16",
+      "source": "https://blog.doyensec.com/"
+    },
+    "https://www.intigriti.com/blog/business-insights/what-a-live-hacking-event-with-intigriti-can-do": {
+      "title": "The pinnacle of crowdsourced security. What a live hacking event with Intigriti can do for businesses",
+      "slug": "what-a-live-hacking-event-with-intigriti-can-do",
+      "date_processed": "2026-11-16",
+      "source": "https://blog.intigriti.com/"
+    },
+    "https://www.pentestpartners.com/security-blog/printerpix-and-the-not-so-private-photo-album/": {
+      "title": "Printerpix and the not so private photo album | Pen Test Partners",
+      "slug": "printerpix-and-the-not-so-private-photo-album",
+      "date_processed": "2026-11-16",
+      "source": "https://www.pentestpartners.com/security-blog/"
+    },
+    "https://thisweekin4n6.com/2026/11/15/week-46-2026/": {
+      "title": "Week 46 – 2026",
+      "slug": "week-46-2026",
+      "date_processed": "2026-11-16",
+      "source": "https://thisweekin4n6.com/"
+    },
+    "https://cocomelonc.github.io/malware/2026/11/10/malware-tricks-70.html": {
+      "title": "Malware development trick 70: Hardware breakpoint process injection. Simple C example",
+      "slug": "malware-tricks-70html",
+      "date_processed": "2026-11-16",
+      "source": "https://cocomelonc.github.io/"
+    },
+    "https://www.vulncheck.com/blog/control-web-panel-recovery-code-rce": {
+      "title": "One Recovery Code, Two Shells in Control Web Panel | Blog | VulnCheck",
+      "slug": "control-web-panel-recovery-code-rce",
+      "date_processed": "2026-11-16",
+      "source": "https://vulncheck.com/blog"
+    },
+    "https://www.vulncheck.com/blog/exploitation-activity-targeting-japan": {
+      "title": "Exploitation Flows Targeting Japan | Blog | VulnCheck",
+      "slug": "exploitation-activity-targeting-japan",
+      "date_processed": "2026-11-16",
+      "source": "https://vulncheck.com/blog"
+    },
+    "https://www.vulncheck.com/blog/copeland-xweb-evo-unauthenticated-root": {
+      "title": "Code of the Day: Unauthenticated Root in Copeland XWEB EVO | Blog | VulnCheck",
+      "slug": "copeland-xweb-evo-unauthenticated-root",
+      "date_processed": "2026-11-16",
+      "source": "https://vulncheck.com/blog"
+    },
+    "https://www.vulncheck.com/blog/anthropic-glasswing-november-update": {
+      "title": "After 7-months, Glasswing Overwelms Maintainers with Underwhelming Findings | Blog | VulnCheck",
+      "slug": "anthropic-glasswing-november-update",
+      "date_processed": "2026-11-16",
+      "source": "https://vulncheck.com/blog"
+    },
+    "https://www.shielder.com/blog/2026/11/kubernetes-non-core-security-audit/": {
+      "title": "Shielder - Kubernetes Non-Core Security Audit",
+      "slug": "kubernetes-non-core-security-audit",
+      "date_processed": "2026-11-16",
+      "source": "https://www.shielder.com/blog/"
+    },
+    "https://blog.nviso.eu/2026/11/13/detection-engineering-implementing-detection-as-code-in-an-existing-environment-part-3-validation-and-future-possibilities/": {
+      "title": "Detection-as-Code Part 3: Validation and Data Quality",
+      "slug": "detection-engineering-implementing-detection-as-code-in-an-existing-environment-part-3-validation-and-future-possibilities",
+      "date_processed": "2026-11-16",
+      "source": "https://blog.nviso.eu/"
+    },
+    "https://blog.nviso.eu/2026/11/12/breaking-the-semantic-cache-a-litellm-case-study-cve-2026-89032/": {
+      "title": "Semantic Caching Vulnerabilities in LiteLLM",
+      "slug": "breaking-the-semantic-cache-a-litellm-case-study-cve-2026-89032",
+      "date_processed": "2026-11-16",
+      "source": "https://blog.nviso.eu/"
+    },
+    "https://www.wiz.io/blog/inside-green-agent-investigation": {
+      "title": "How The Wiz Green Agent Investigates & Fixes Cloud Risk | Wiz Blog",
+      "slug": "inside-green-agent-investigation",
+      "date_processed": "2026-11-16",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://www.wiz.io/blog/aspm-ai-era-pt-3-fixing-risk-code-speed": {
+      "title": "ASPM in the AI Era Pt 3: Fixing Risk at Code Speed | Wiz Blog",
+      "slug": "aspm-ai-era-pt-3-fixing-risk-code-speed",
+      "date_processed": "2026-11-16",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://www.wiz.io/blog/cve-2026-119618-rce-apache-http-server-vulnerability": {
+      "title": "Critical RCE Vulnerability in Apache HTTP Server: Everything You Need To Know | Wiz Blog",
+      "slug": "cve-2026-119618-rce-apache-http-server-vulnerability",
+      "date_processed": "2026-11-16",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://www.wiz.io/blog/cyber-model-arena-ai-benchmark": {
+      "title": "How to Evaluate AI Agent Cybersecurity Capabilities | Wiz Blog",
+      "slug": "cyber-model-arena-ai-benchmark",
+      "date_processed": "2026-11-16",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://www.wiz.io/blog/wiz-and-ismap-for-japan-public-sector": {
+      "title": "Wiz ISMAP Compliance Roadmap for Japan's Public Sector | Wiz Blog",
+      "slug": "wiz-and-ismap-for-japan-public-sector",
+      "date_processed": "2026-11-16",
+      "source": "https://www.wiz.io/blog"
+    },
+    "https://www.wiz.io/blog/qubole-cross-account-access-abused-in-the-wild": {
+      "title": "Trusted by Default: Qubole Cross-Account Access Abused in the Wild | Wiz Blog",
+      "slug": "qubole-cross-account-access-abused-in-the-wild",
+      "date_processed": "2026-11-16",
       "source": "https://www.wiz.io/blog"
     }
   }
